@@ -1,0 +1,34 @@
+<ion-content>
+  <ion-header class="ion-no-border">
+    <ion-item lines="none">
+      <ion-buttons slot="start">
+        <ion-button (click)="util.openSideMenu()">
+          <ion-icon name="menu"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-label color="dark">
+      Form Rating Catering
+    </ion-label>
+    <ion-buttons slot="end">
+      <ion-icon (click)="onBack()" name="arrow-undo"></ion-icon>
+    </ion-buttons>
+    </ion-item>
+   </ion-header>
+<ion-card>
+  <ion-label class="sub_heading">Deskripsi</ion-label>
+    <ion-label class="sub_heading">Silahkan mengisi aduan apabila ditemukan hal-hal yang tidak berkenan</ion-label>
+
+</ion-card>
+<form class="container" [formGroup]="FormRatingCatering" (ngSubmit)="onSubmitRating()">
+  <ion-item *ngFor="let data of DataRecord; let i=index">{{data.isi}}
+    <ion-select multiple="true" (ionChange)="onChange($event, i)" [value]="data.bobots">
+      <ion-select-option value="{{nilai.pilihan}}" *ngFor="let nilai of data.bobots; let i=index">{{nilai.pilihan}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-card>
+    <ion-input type="text" name="kritik_saran" placeholder="Kritik dan saran"  formControlName="kritik_saran"></ion-input>
+  </ion-card>    
+  <ion-button type="submit" expand="block" color="primary">Submit</ion-button>
+  </form>
+</ion-content>
+
