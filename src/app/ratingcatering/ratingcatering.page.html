@@ -20,14 +20,16 @@
 
 </ion-card>
 <form class="container" [formGroup]="FormRatingCatering" (ngSubmit)="onSubmitRating()">
-  <ion-item *ngFor="let data of DataRecord; let i=index">{{data.isi}}
-    <ion-select multiple="true" (ionChange)="onChange($event, i)" [value]="data.bobots">
-      <ion-select-option value="{{nilai.pilihan}}" *ngFor="let nilai of data.bobots; let i=index">{{nilai.pilihan}}</ion-select-option>
+  <ion-item *ngFor="let data of DataRecord; let i = index">
+    {{data.isi}}
+    <ion-select formControlName="opt">
+      <ion-select-option  *ngFor="let opt of data.bobots; let i = index" value="{{opt.pilihan}}">{{opt.pilihan}}
+      </ion-select-option>
     </ion-select>
   </ion-item>
   <ion-card>
-    <ion-input type="text" name="kritik_saran" placeholder="Kritik dan saran"  formControlName="kritik_saran"></ion-input>
-  </ion-card>    
+    <ion-input type="text" name="kritik" placeholder="Kritik dan saran"  formControlName="kritik"></ion-input>
+  </ion-card>
   <ion-button type="submit" expand="block" color="primary">Submit</ion-button>
   </form>
 </ion-content>

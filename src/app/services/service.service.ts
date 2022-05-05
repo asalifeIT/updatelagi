@@ -154,9 +154,6 @@ export class ServiceService{
     );
   }
 
- 
-
-  
   getRecord(url){
     let dataStorage=JSON.parse(localStorage.getItem(this.TOKEN_KEY));
     this.token=dataStorage;
@@ -167,12 +164,12 @@ export class ServiceService{
     return this.http.get(this.API_URL + url,{ headers: headers, observe: 'response' }).pipe(
       tap(Data => {
         this.DataRecord=Data.body;
-        let message='Rating Anda terkirim.';
+        let message='Koneksi APi Berhasil!';
         return message;
 
       }),
       catchError((err, caught) => {
-        let message = "Gagal Terkirim, Mohon Rating Diisi Lengkap!";
+        let message = "Gagal Koneksi API!";
         return throwError(message);
       }),
        );

@@ -68,6 +68,7 @@ export class AduanlaundryPage implements OnInit {
         Validators.required
       ])),
     });
+    console.log(this.FormAduanLaundry.errors);
   }
 
   async submitAduanLaundry(){
