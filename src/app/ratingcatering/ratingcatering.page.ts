@@ -61,8 +61,7 @@ ngOnInit(){
       this.FormRatingCatering=this.formBuilder.group({
         opt:new FormControl('required', Validators.required),
         kritik:new FormControl('', Validators.compose([Validators.required]))});
-        console.log(this.FormRatingCatering.errors);
-      }
+       }
 
 
     async onSubmitRating(){
@@ -81,7 +80,7 @@ ngOnInit(){
 
         },
         error => {
-          console.log(error);
+        console.log(error);
          this.presentToast("Gagal Terkirim Rating Catering!");
           console.log(this.FormRatingCatering.value);
           this.FormRatingCatering.reset();
