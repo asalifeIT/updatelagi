@@ -14,6 +14,19 @@ import { UtilService } from 'src/app/services/util.service';
   styleUrls: ['./tugashk.page.scss'],
 })
 export class TugashkPage implements OnInit {
+  FormTugasHk:FormGroup;
+  authenticationState = new ReplaySubject(); 
+  authService: any;
+  message:any;
+  validations = {
+     'mess': [
+      { type: 'required', message: 'pilihan mess harus di isi' }
+    ],
+    'no_kamar': [
+      { type: 'required', message: 'nomor kamar harus di isi' }
+    ]
+  };
+  DataRecord: Object;
 
   constructor(
     private formBuilder: FormBuilder, 
@@ -28,8 +41,52 @@ export class TugashkPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    
-  }
+  this.FormTugasHk = this.formBuilder.group({
+    mess:new FormControl('', Validators.compose([
+      Validators.required
+    ])),
+    no_kamar:new FormControl('', Validators.compose([
+      Validators.required
+    ])),
+    });
+  console.log(this.FormTugasHk.errors);
+}
+
+async onsubmitTugasHk(){
+  const loading = await this.loadingController.create({
+    message: 'Please wait...'
+
+  });
+  await loading.present();
+  this.serviceService.submitaduan(this.FormTugasHk.value,'housekeeping/record-add').subscribe(
+    data => {
+      this.presentToast("Terimakasih Tugas Anda Terkirim");
+      console.log(this.FormTugasHk.value);
+      this.FormTugasHk.reset();
+      loading.dismiss();
+
+
+    },
+    error => {
+    console.log(error);
+     this.presentToast("Tugas Gagal Terkirim!");
+      console.log(this.FormTugasHk.value);
+      this.FormTugasHk.reset();
+      loading.dismiss();
+
+
+    }
+
+  );
+ }
+ async presentToast(Message) {
+  const toast = await this.toastController.create({
+    message: Message,
+    duration: 2500,
+    position: "bottom"
+  });
+  toast.present();
+}
 
 
   onBack() {

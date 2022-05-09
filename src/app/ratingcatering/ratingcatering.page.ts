@@ -26,7 +26,7 @@ export class RatingcateringPage implements OnInit {
  opt:FormControl;
  validations = {
    'opt':[{ type: 'required', message: 'pilihan harus dipilih' }],
-   'kritik':[{ type: '', message: 'pilihan harus dipilih' }]
+   'kritik':[{ type: 'required', message: 'pilihan harus dipilih' }]
 
 };
 
@@ -46,10 +46,8 @@ constructor(
 
 ){}
 
-
-
 ngOnInit(){
-    this.serviceService.getRecord("catering/pertanyaan").subscribe(
+    this.serviceService.getRecord('catering/pertanyaan').subscribe(
       data => {
         this.DataRecord=data.body;
         console.log(this.DataRecord);
@@ -60,7 +58,8 @@ ngOnInit(){
       );
       this.FormRatingCatering=this.formBuilder.group({
         opt:new FormControl('required', Validators.required),
-        kritik:new FormControl('', Validators.compose([Validators.required]))});
+        kritik:new FormControl('required', Validators.compose([Validators.required]))});
+   
        }
 
 
@@ -81,7 +80,7 @@ ngOnInit(){
         },
         error => {
         console.log(error);
-         this.presentToast("Gagal Terkirim Rating Catering!");
+         this.presentToast("Gagal Terkirim, Mohon Lengkapi Form Rating Catering!");
           console.log(this.FormRatingCatering.value);
           this.FormRatingCatering.reset();
           loading.dismiss();

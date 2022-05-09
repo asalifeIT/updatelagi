@@ -4828,6 +4828,11 @@
   "resolved" "https://registry.npmjs.org/invert-kv/-/invert-kv-2.0.0.tgz"
   "version" "2.0.0"
 
+"ionic-selectable@^4.9.0":
+  "integrity" "sha512-bM6dKrLi+fKfavMsrnhe3/lNpD98tpKTaufu+djKRXTp4QBk2PZaCcgnR8/5FyLUJV9YoV2SXFvUvQ8ZG5Wz7A=="
+  "resolved" "https://registry.npmjs.org/ionic-selectable/-/ionic-selectable-4.9.0.tgz"
+  "version" "4.9.0"
+
 "ionicons@^5.5.3":
   "integrity" "sha512-3ph8X9my3inhabWEZ7N0XRA0MnnNQ1v9a602mLNgWsIXnxE9G5BybIZ/pws/OZZ/hoNlvSjk801N03yL9/FNgQ=="
   "resolved" "https://registry.npmjs.org/ionicons/-/ionicons-5.5.4.tgz"

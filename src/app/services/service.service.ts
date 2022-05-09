@@ -181,9 +181,6 @@ export class ServiceService{
   //logout
   signout() {
       this.authenticationState.next(false);
-      
-
-
   }
 
 
