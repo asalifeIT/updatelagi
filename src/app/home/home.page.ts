@@ -24,7 +24,7 @@ export class HomePage implements OnInit {
     {id: 1, name: 'HouseKeeping', src: 'assets/svg/handyman.svg', background: '', page: ''},
   ];
 
-  admaintan: any[] = [
+  maintenance: any[] = [
     {id: 1, name: 'Maintenance', src: 'assets/svg/builder.svg', background: '', page: ''},
   ];
 
@@ -81,8 +81,8 @@ openLaundry(){
   this.router.navigate(['aduanlaundry']);
 }
 
-openAdmaintan(){
-  this.router.navigate(['aduanmaintenance']);
+openMaintenance(){
+  this.router.navigate(['maintenance']);
 }
 
 

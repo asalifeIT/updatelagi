@@ -87,10 +87,10 @@
         </ion-card>
       </ion-col>
 
-      <ion-col *ngFor="let item of admaintan" size="6">
+      <ion-col *ngFor="let item of maintenance" size="6">
         <ion-card class="ion-text-center">
           <ion-card-header>
-            <div align="center"(click)="openAdmaintan()" >
+            <div align="center"(click)="openMaintenance()" >
               <ion-thumbnail [style.background]="item?.background">
                 <img [src]="item?.src" />
               </ion-thumbnail>
