@@ -10,25 +10,19 @@ import { UtilService } from 'src/app/services/util.service';
 import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 @Component({
-  selector: 'app-housekeeping',
-  templateUrl: './housekeeping.page.html',
-  styleUrls: ['./housekeeping.page.scss'],
+  selector: 'app-infoaduan',
+  templateUrl: './infoaduan.page.html',
+  styleUrls: ['./infoaduan.page.scss'],
 })
-export class HousekeepingPage implements OnInit {
+export class InfoaduanPage implements OnInit {
   [x: string]: any;
-  DataRecord:any;
-  FormInfo:FormGroup;
-  authService: any;
-  message:any;
-  aduanhkeeping: any[] = [
+ DataRecord:any;
+ FormInfo:FormGroup;
+ authService: any;
+ message:any;
+  aduan: any[1] = [
     {id: 1, name: '', src: '', background: '', page: ''},
-
-  ];
-
-  tugas: any[] = [
-    {id: 1, name: '', src: '', background: '', page: ''},
-
-  ];
+     ];
 
 
   constructor(
@@ -42,9 +36,8 @@ export class HousekeepingPage implements OnInit {
       public util: UtilService
   ) { }
 
-
   ngOnInit() {
-    this.serviceService.getRecord('housekeeping/my').subscribe(
+    this.serviceService.getRecord('catering/my').subscribe(
       data => {
         this.DataRecord=data.body;
         console.log(this.DataRecord);
@@ -55,15 +48,14 @@ export class HousekeepingPage implements OnInit {
       );
   }
 
-  openInfohk() {
-    this.router.navigate(['infohk']);
-  }
-  openTugas() {
-    this.router.navigate(['tugashk']);
-  }
+  
+
   onBack() {
     this.router.navigate(['home']);
   }
 
+  openAdcatering() {
+    this.router.navigate(['aduancatering']);
+    }
 
 }

@@ -41,8 +41,8 @@ export class CateringPage implements OnInit {
     this.router.navigate(['home']);
   }
 
-  openAduancat () {
-  this.router.navigate(['aduancatering']);
+  openInfoaduan () {
+  this.router.navigate(['infoaduan']);
   }
 
   openRatingcat() {

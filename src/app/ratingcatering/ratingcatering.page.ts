@@ -75,8 +75,6 @@ ngOnInit(){
           console.log(this.FormRatingCatering.value);
           this.FormRatingCatering.reset();
           loading.dismiss();
-
-
         },
         error => {
         console.log(error);
@@ -84,10 +82,7 @@ ngOnInit(){
           console.log(this.FormRatingCatering.value);
           this.FormRatingCatering.reset();
           loading.dismiss();
-
-
         }
-
       );
      }
      async presentToast(Message) {

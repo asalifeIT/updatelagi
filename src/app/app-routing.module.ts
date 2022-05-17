@@ -67,7 +67,23 @@ const routes: Routes = [
   {
     path: 'tgsmaintenance',
     loadChildren: () => import('./tgsmaintenance/tgsmaintenance.module').then( m => m.TgsmaintenancePageModule)
+  },  {
+    path: 'infoaduan',
+    loadChildren: () => import('./infoaduan/infoaduan.module').then( m => m.InfoaduanPageModule)
   },
+  {
+    path: 'infolaundry',
+    loadChildren: () => import('./infolaundry/infolaundry.module').then( m => m.InfolaundryPageModule)
+  },
+  {
+    path: 'infohk',
+    loadChildren: () => import('./infohk/infohk.module').then( m => m.InfohkPageModule)
+  },
+  {
+    path: 'infomaintan',
+    loadChildren: () => import('./infomaintan/infomaintan.module').then( m => m.InfomaintanPageModule)
+  },
+
 
 
 ];

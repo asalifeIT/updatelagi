@@ -93,7 +93,7 @@ export class AduancateringPage implements OnInit {
   }
 
   onBack() {
-    this.router.navigate(['catering']);
+    this.router.navigate(['infoaduan']);
   }
 
  // onBack(){

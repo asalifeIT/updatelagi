@@ -79,7 +79,7 @@ openHkeeping() {
 }
 
 openLaundry(){
-  this.router.navigate(['aduanlaundry']);
+  this.router.navigate(['infolaundry']);
 }
 
 openMaintenance(){
