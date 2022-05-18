@@ -1,9 +1,52 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>infomaintan</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-header class="ion-no-border">
+  <ion-item lines="none">
+    <ion-buttons slot="start">
+      <ion-button (click)="util.openSideMenu()">
+        <ion-icon name="menu"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-label color="light">
+    Menu Info Aduan Maintenance
+  </ion-label>
+  <ion-buttons slot="end">
+    <ion-icon (click)="onBack()" name="arrow-undo"></ion-icon>
+  </ion-buttons>
+  </ion-item>
+ </ion-header>
 
-<ion-content>
-
+ <ion-content [fullscreen]="true" color="light">
+  <div class="main-header"></div>
+  <ion-grid>
+    <ion-note color="light" class="ion-margin-start">
+       <b></b> 
+      </ion-note> 
+  <ion-card>
+    <img src="" />
+    <ion-card-header>
+      <ion-card-subtitle color="dark">Klik Aduan Baru</ion-card-subtitle>
+      <ion-card-subtitle color="dark">Deskripsi</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content color="dark" *ngFor="let item of aduan" (click)="openAdmain()">
+     Silahkan mengisi aduan apabila ditemukan hal-hal yang tidak berkenan
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <img src="" />
+    <ion-card-header>
+      <ion-card-subtitle color="dark">Informasi Aduan Maintenance</ion-card-subtitle>
+      <ion-card-subtitle color="dark">List Aduan Anda</ion-card-subtitle>
+      <ion-progress-bar value="0" buffer="1"></ion-progress-bar>
+    </ion-card-header>
+      <ul color="dark" *ngFor="let data of DataRecord; let i = index">
+      
+         <li>Nrp: {{data.user_nrp}}</li>
+          <li>Jenis Aduan:  {{data.jenis_aduan}}</li>
+          <li>Lokasi: {{data.lokasi}}</li>
+          <li>Priority: {{data.priority}}</li>
+          <li>Durasi :{{data.duration}}</li>
+          <li class="warna">Status :{{data.status}}</li>
+          <ion-progress-bar value="0.25" buffer="0.5"></ion-progress-bar>
+        </ul>
+  </ion-card>
+</ion-grid>
 </ion-content>

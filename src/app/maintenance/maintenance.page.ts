@@ -28,8 +28,8 @@ export class MaintenancePage implements OnInit {
 
   ngOnInit() {
   }
-  openAdmaintan() {
-    this.router.navigate(['aduanmaintenance']);
+  openInfomain() {
+    this.router.navigate(['infomaintan']);
   }
   openTgsmain() {
     this.router.navigate(['tugasmaint']);
