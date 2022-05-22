@@ -9,7 +9,7 @@
    Menu House Keeping
   </ion-label>
   <ion-buttons slot="end">
-    <ion-icon (click)="onBack()" name="arrow-undo"></ion-icon>
+    <ion-icon (click)="onBack()" name="home-outline"></ion-icon>
   </ion-buttons>
   </ion-item>
  </ion-header>
@@ -73,11 +73,10 @@
             </ion-row>
            <div class="line"></div>
            </div>
-
+<br>
            <ul color="dark" *ngFor="let data of DataRecord; let i = index">
             <marquee>Aduan Masuk==> Nrp:{{data.user_nrp}}, Lokasi :{{data.lokasi}}, Deskripsi: {{data.deskripsi}}, Status: {{data.status}}</marquee>
-                        
-              <ion-progress-bar value="0.25" buffer="0.5"></ion-progress-bar>
+              <ion-progress-bar value="1" buffer="1"></ion-progress-bar>
             </ul>
 
 

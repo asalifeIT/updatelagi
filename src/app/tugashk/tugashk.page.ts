@@ -83,7 +83,7 @@ async onsubmitTugasHk(){
   const toast = await this.toastController.create({
     message: Message,
     duration: 2500,
-    position: "bottom"
+    position: "top"
   });
   toast.present();
 }

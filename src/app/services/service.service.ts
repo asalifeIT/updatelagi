@@ -147,9 +147,9 @@ export class ServiceService{
         let message='Aduan Anda terkirim.';
         return message;
       }),
-      catchError((err, caught) => {
+      catchError((err) => {
         let message = "Gagal Terkirim, Mohon Aduan Diisi Lengkap!";
-        return throwError(message);
+        return throwError(err);
       })
     );
   }

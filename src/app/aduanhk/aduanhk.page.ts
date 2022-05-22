@@ -79,12 +79,12 @@ export class AduanhkPage implements OnInit {
     const toast = await this.toastController.create({
       message: Message,
       duration: 2500,
-      position: "bottom"
+      position: "top"
     });
     toast.present();
   }
   onBack() {
-    this.router.navigate(['housekeeping']);
+    this.router.navigate(['home']);
   }
 
 

@@ -1259,15 +1259,15 @@
     "semver" "6.3.0"
     "semver-intersect" "1.4.0"
 
-"@stencil/core@^2.4.0":
-  "integrity" "sha512-NYjRwQnjzscyFfqK+iIwRdr/dgYn33u6KE7kyQWdi7xsCkqMHalXYgJlN/QBQ9PN3qXmXKeBrJNG8EkNdCbK5g=="
-  "resolved" "https://registry.npmjs.org/@stencil/core/-/core-2.15.1.tgz"
-  "version" "2.15.1"
-
-"@stencil/core@~2.10.0":
+"@stencil/core@^2.4.0", "@stencil/core@~2.10.0":
   "integrity" "sha512-15rWMTPQ/sp0lSV82HVCXkIya3QLN+uBl7pqK4JnTrp4HiLrzLmNbWjbvgCs55gw0lULbCIGbRIEsFz+Pe/Q+A=="
   "resolved" "https://registry.npmjs.org/@stencil/core/-/core-2.10.0.tgz"
   "version" "2.10.0"
+
+"@stencil/core@~2.12.0":
+  "integrity" "sha512-u24TZ+FEvjnZt5ZgIkLjLpUNsO6Ml3mUZqwmqk81w6RWWz75hgB5p4RFI5rvuErFeh2xvMIGo+pNdG24XUBz1A=="
+  "resolved" "https://registry.npmjs.org/@stencil/core/-/core-2.12.1.tgz"
+  "version" "2.12.1"
 
 "@types/cordova@latest":
   "integrity" "sha1-6nrd907Ow9dimCegw54smt3HPQQ="
@@ -4839,6 +4839,13 @@
   "version" "5.5.4"
   dependencies:
     "@stencil/core" "~2.10.0"
+
+"ionicons@^6.0.1":
+  "integrity" "sha512-xQekOJsxH82O7oB+3F60zeRggCdND9pJ/k0E6IJDVUGGlCj5mlyFqNgxUimytKgstPGv3S+3EmCxjefvtGgWUg=="
+  "resolved" "https://registry.npmjs.org/ionicons/-/ionicons-6.0.1.tgz"
+  "version" "6.0.1"
+  dependencies:
+    "@stencil/core" "~2.12.0"
 
 "ip-regex@^2.1.0":
   "integrity" "sha1-+ni/XS5pE8kRzp+BnuUUa7bYROk="

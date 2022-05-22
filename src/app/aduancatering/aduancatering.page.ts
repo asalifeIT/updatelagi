@@ -87,13 +87,13 @@ export class AduancateringPage implements OnInit {
     const toast = await this.toastController.create({
       message: Message,
       duration: 2500,
-      position: "bottom"
+      position: "top"
     });
     toast.present();
   }
 
   onBack() {
-    this.router.navigate(['infoaduan']);
+    this.router.navigate(['home']);
   }
 
  // onBack(){

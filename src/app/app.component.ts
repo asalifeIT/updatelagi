@@ -43,9 +43,9 @@ export class AppComponent {
       if (data==true) {
           this.navCtrl.navigateRoot(['home']);
         } else {
-          this.navCtrl.navigateRoot(['login']);
+          this.navCtrl.navigateRoot(['welcome-page']);
         }
-   });
+        });
   }
 
 

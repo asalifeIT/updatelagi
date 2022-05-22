@@ -37,7 +37,7 @@ export class InfoaduanPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.serviceService.getRecord('catering/my').subscribe(
+    this.serviceService.getRecord('catering/all').subscribe(
       data => {
         this.DataRecord=data.body;
         console.log(this.DataRecord);

@@ -53,14 +53,15 @@ export class LoginPage implements OnInit {
       message: 'Please wait...'
     });
     await loading.present();
-
     this.serviceService.loginApi(this.FormLogin.value,'signin').subscribe(
       data => {
         this.dataLogin=data;
+        this.presentToast("Login Berhasil !")
         loading.dismiss();
       },
       error => {
         this.presentToast(error);
+        this.presentToast("Gagal Login, Anda Belum Register!")
         loading.dismiss();
       }
     );
@@ -78,13 +79,13 @@ export class LoginPage implements OnInit {
     const toast = await this.toastController.create({
       message: Message,
       duration: 2500,
-      position: "bottom"
+      position: "top"
     });
     toast.present();
   }
 
   Login() {
-    console.log("anda sekarang login")
+    console.log("Anda sekarang login")
     this.authService.login(this.nrp, this.password)
     }
   nrp(nrp: any, password: any) {

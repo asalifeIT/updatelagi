@@ -15,11 +15,18 @@ ion-header {
       margin: 10px;
       ion-label {
         font-weight: bold;
-        color: #ff7c31;
+        color: #5916c4;
       }
     }
   }
 }
+.heading{
+  font-family: "medium";
+}
+.sub_heading{
+  font-family: "regular";
+}
+
 
 ion-slides {
   ion-slide {
@@ -55,14 +62,14 @@ ion-slides {
     position: absolute;
     right: 20px;
     height: 60px;
-    --background: linear-gradient(#ffa124, #ff7c31);
+    --background: linear-gradient(#5916c4, #5916c4);
   }
 }
 .dot {
   height: 5px;
   width: 7px;
   border-radius: 50%;
-  background-color: #ff7d3157;
+  background-color: #5916c4;
   margin: 0px 2px;
 }
 
@@ -71,6 +78,6 @@ ion-slides {
   width: 10px;
   border-radius: 50%;
   border-radius: 20px;
-  background-color: #ff7c31;
+  background-color: #5916c4;
   margin: 0px 2px;
 }
