@@ -25,7 +25,7 @@ export class TugashkPage implements OnInit {
     'no_kamar': [
       { type: 'required', message: 'nomor kamar harus di isi' }
     ]
-  };
+     };
   DataRecord: Object;
 
   constructor(

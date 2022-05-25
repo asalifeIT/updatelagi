@@ -36,8 +36,8 @@ export class HomePage implements OnInit {
     public loadingController: LoadingController,
     private serviceService: ServiceService,
     private router: Router,
-    public util: UtilService
-
+    public util: UtilService,
+    public navCtrl: NavController
   ) {}
 
   ngOnInit() {

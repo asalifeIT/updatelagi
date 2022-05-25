@@ -56,7 +56,7 @@ export class LoginPage implements OnInit {
     this.serviceService.loginApi(this.FormLogin.value,'signin').subscribe(
       data => {
         this.dataLogin=data;
-        this.presentToast("Login Berhasil !")
+        this.presentToast("Anda Login")
         loading.dismiss();
       },
       error => {

@@ -24,8 +24,12 @@ const routes: Routes = [
   },
   {
     path: 'catering',
+    
+    loadChildren: () => import('./catering/catering.module').then( m => m.CateringPageModule),
     canActivate: [AuthGuard],
-    loadChildren: () => import('./catering/catering.module').then( m => m.CateringPageModule)
+    data: {
+      role: 'ROLE_ADMIN'
+    }
   },
   {
     path: 'ratingcatering',
