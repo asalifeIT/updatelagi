@@ -42,11 +42,6 @@ const routes: Routes = [
     loadChildren: () => import('./aduanhk/aduanhk.module').then( m => m.AduanhkPageModule)
   },
   {
-    path: 'ratinghk',
-    canActivate: [AuthGuard],
-    loadChildren: () => import('./ratinghk/ratinghk.module').then( m => m.RatinghkPageModule)
-  },
-  {
     path: 'aduanlaundry',
     canActivate: [AuthGuard],
     loadChildren: () => import('./aduanlaundry/aduanlaundry.module').then( m => m.AduanlaundryPageModule)
@@ -110,6 +105,19 @@ const routes: Routes = [
     path: 'welcome-page',
     loadChildren: () => import('./welcome-page/welcome-page.module').then( m => m.WelcomePagePageModule)
   },
+  {
+    path: 'kamar',
+    loadChildren: () => import('./kamar/kamar.module').then( m => m.KamarPageModule)
+  },
+  {
+    path: 'nonkamar',
+    loadChildren: () => import('./nonkamar/nonkamar.module').then( m => m.NonkamarPageModule)
+  },
+  {
+    path: 'sub',
+    loadChildren: () => import('./sub/sub.module').then( m => m.SubPageModule)
+  },
+
 
 
 ];

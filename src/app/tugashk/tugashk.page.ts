@@ -14,7 +14,7 @@ import { UtilService } from 'src/app/services/util.service';
   styleUrls: ['./tugashk.page.scss'],
 })
 export class TugashkPage implements OnInit {
-  FormTugasHk:FormGroup;
+  FrmTgshk:FormGroup;
   authenticationState = new ReplaySubject(); 
   authService: any;
   message:any;
@@ -25,6 +25,9 @@ export class TugashkPage implements OnInit {
     'no_kamar': [
       { type: 'required', message: 'nomor kamar harus di isi' }
     ]
+
+
+    
      };
   DataRecord: Object;
 
@@ -41,7 +44,7 @@ export class TugashkPage implements OnInit {
   ) { }
 
   ngOnInit() {
-  this.FormTugasHk = this.formBuilder.group({
+  this.FrmTgshk = this.formBuilder.group({
     mess:new FormControl('', Validators.compose([
       Validators.required
     ])),
@@ -49,20 +52,20 @@ export class TugashkPage implements OnInit {
       Validators.required
     ])),
     });
-  console.log(this.FormTugasHk.errors);
+  console.log(this.FrmTgshk.errors);
 }
 
-async onsubmitTugasHk(){
+async onsubmitTgshk(){
   const loading = await this.loadingController.create({
     message: 'Please wait...'
 
   });
   await loading.present();
-  this.serviceService.submitaduan(this.FormTugasHk.value,'housekeeping/record-add').subscribe(
+  this.serviceService.submitaduan(this.FrmTgshk.value,'housekeeping/record-add').subscribe(
     data => {
       this.presentToast("Terimakasih Tugas Anda Terkirim");
-      console.log(this.FormTugasHk.value);
-      this.FormTugasHk.reset();
+      console.log(this.FrmTgshk.value);
+      this.FrmTgshk.reset();
       loading.dismiss();
 
 
@@ -70,8 +73,8 @@ async onsubmitTugasHk(){
     error => {
     console.log(error);
      this.presentToast("Tugas Gagal Terkirim!");
-      console.log(this.FormTugasHk.value);
-      this.FormTugasHk.reset();
+      console.log(this.FrmTgshk.value);
+      this.FrmTgshk.reset();
       loading.dismiss();
 
 

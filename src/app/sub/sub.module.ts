@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { RatinghkPageRoutingModule } from './ratinghk-routing.module';
+import { SubPageRoutingModule } from './sub-routing.module';
 
-import { RatinghkPage } from './ratinghk.page';
+import { SubPage } from './sub.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RatinghkPageRoutingModule
+    SubPageRoutingModule
   ],
-  declarations: [RatinghkPage]
+  declarations: [SubPage]
 })
-export class RatinghkPageModule {}
+export class SubPageModule {}

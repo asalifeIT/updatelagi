@@ -23,11 +23,13 @@
      </ion-note> 
 <br>
 <br>
-<ion-card size="5">
+
+<ion-card size="4">
+  <form class="container" [formGroup]="FrmTgshk" (ngSubmit)="submitTgshk()">
     <ion-item lines="none" class="dua" >
         <ion-label>Pilih Mess</ion-label>
         <ion-select>
-          <ion-select-option value="small">  Mess Cheerful</ion-select-option>
+          <ion-select-option value="small">Mess Cheerful</ion-select-option>
           <ion-select-option value="small">Mess Funtastik</ion-select-option>
           <ion-select-option value="small">Mess Joyfull</ion-select-option>
           <ion-select-option value="small">Mess Safety</ion-select-option>
@@ -37,17 +39,15 @@
           <ion-select-option value="small">Mess Happyness</ion-select-option>
           <ion-select-option value="small">Mess Powerfull</ion-select-option>
         </ion-select>
-    </ion-item></ion-card>
- 
-    <ion-card size="5">
+    </ion-item>
+
+    <ion-card size="4">
     <ion-item lines="none" class="dua">
   <ion-input type="text" placeholder=" Isikan Nomor Mess"></ion-input>
     </ion-item></ion-card>
 
-
-
-    
-    <br>
+   <br>
+    <div class="header"></div>
     <ion-note class="dua">Silahkan Check List komponen di bawah ini</ion-note>
        <ion-card size="5">
       <ion-segment [(ngModel)]="current" >
@@ -74,82 +74,73 @@
            </ion-note> 
            <ion-item>
             <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-            <ion-label>Lantai Kamar</ion-label>
+            <ion-label formControlName="ltkmr">Lantai Kamar</ion-label>
           </ion-item>
           <ion-item>
             <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-            <ion-label>Lantai Toilet</ion-label>
+            <ion-label formControlName="lttoi>Lantai Toilet</ion-label>
           </ion-item>
           <ion-item>
             <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-            <ion-label>Lantai Kamar Mandi</ion-label>
+            <ion-label formControlName="ltkmrmndi>Lantai Kamar Mandi</ion-label>
           </ion-item>
           <ion-item>
              <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-            <ion-label>WC</ion-label>
+            <ion-label formControlName="wc">WC</ion-label>
           </ion-item>
           <ion-item>
             <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-            <ion-label>Wastafel</ion-label>
+            <ion-label formControlName="wastfl">Wastafel</ion-label>
           </ion-item>
           <ion-item>
             <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-            <ion-label>Tempat Tidur</ion-label>
+            <ion-label formControlName="tmtdr">Tempat Tidur</ion-label>
           </ion-item>
           <ion-item>
             <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-            <ion-label>Sprei</ion-label>
+            <ion-label formControlName="sprei">Sprei</ion-label>
           </ion-item>
           <ion-item>
             <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-            <ion-label>Selimut</ion-label>
+            <ion-label formControlName="seli">Selimut</ion-label>
           </ion-item>
           <ion-item>
             <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-            <ion-label>AC</ion-label>
+            <ion-label formControlName="ac">AC</ion-label>
           </ion-item>
           <ion-item>
           <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-            <ion-label>Meja</ion-label>
+            <ion-label formControlName="meja">Meja</ion-label>
           </ion-item>
           <ion-item>
             <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-            <ion-label>Cermin</ion-label>
+            <ion-label formControlName="cermin">Cermin</ion-label>
           </ion-item>
           <ion-item>
             <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-            <ion-label>Kran</ion-label>
+            <ion-label formControlName="kran">Kran</ion-label>
           </ion-item>
           <ion-item>
             <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-            <ion-label>Shower</ion-label>
+            <ion-label formControlName="shower">Shower</ion-label>
           </ion-item>
           <ion-item>
             <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-            <ion-label>Tempat Sampah</ion-label>
+            <ion-labelformControlName="tmsmph">Tempat Sampah</ion-labelformControlName=>
           </ion-item>
           <ion-item>
           <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-          <ion-label>Jendela</ion-label>
+          <ion-label formControlName="jen">Jendela</ion-label>
         </ion-item>
         <ion-item>
         <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-        <ion-label>Gordyen</ion-label>
+        <ion-label formControlName="gor">Gordyen</ion-label>
       </ion-item>
        <ion-item>
       <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-            <ion-label>Lemari</ion-label>
+            <ion-label formControlName="lmri">Lemari</ion-label>
           </ion-item>
-          <ion-toolbar>
-            <ion-buttons slot="start">
-              <ion-button> Clear </ion-button>
-            </ion-buttons>
-            <ion-buttons slot="end">
-              <ion-button> Done </ion-button>
-            </ion-buttons>
-          </ion-toolbar>
-
-         </ion-list>
+              </ion-list>
       </ion-item>
     </div>
 
@@ -162,50 +153,40 @@
            </ion-note> 
            <ion-item>
             <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-            <ion-label>Kaca,Jendela & Kusen</ion-label>
+            <ion-label formControlName="kaca">Kaca,Jendela & Kusen</ion-label>
           </ion-item>
           <ion-item>
             <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-            <ion-label>Cermin</ion-label>
+            <ion-label formControlName="crmn">Cermin</ion-label>
           </ion-item>
           <ion-item>
             <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-            <ion-label>Dispenser</ion-label>
+            <ion-label formControlName="dis">Dispenser</ion-label>
           </ion-item>
           <ion-item>
              <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-            <ion-label>Air Conditioner</ion-label>
+            <ion-label formControlName="ac2">Air Conditioner</ion-label>
           </ion-item>
           <ion-item>
             <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-            <ion-label>Furniture</ion-label>
+            <ion-label formControlName="fur">Furniture</ion-label>
           </ion-item>
           <ion-item>
             <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-            <ion-label>Rack TV</ion-label>
+            <ion-label formControlName="rtv">Rack TV</ion-label>
           </ion-item>
           <ion-item>
             <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-            <ion-label>Tirai & Karpet</ion-label>
+            <ion-label formControlName="tirkar">Tirai & Karpet</ion-label>
           </ion-item>
           <ion-item>
             <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-            <ion-label>Dinding</ion-label>
+            <ion-label formControlName="dind">Dinding</ion-label>
           </ion-item>
           <ion-item>
             <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-            <ion-label>Lantai</ion-label>
+            <ion-label formControlName="lant">Lantai</ion-label>
           </ion-item>
-
-          <ion-toolbar>
-            <ion-buttons slot="start">
-              <ion-button> Clear </ion-button>
-            </ion-buttons>
-            <ion-buttons slot="end">
-              <ion-button> Done </ion-button>
-            </ion-buttons>
-          </ion-toolbar>
-
          </ion-list>
       </ion-item>
     </div>
@@ -219,53 +200,44 @@
            </ion-note> 
            <ion-item>
             <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-            <ion-label>Tempat Sampah</ion-label>
+            <ion-label formControlName="samp2">Tempat Sampah</ion-label>
           </ion-item>
           <ion-item>
             <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-            <ion-label>Pintu</ion-label>
+            <ion-label formControlName="pintu">Pintu</ion-label>
           </ion-item>
           <ion-item>
             <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-            <ion-label>Lantai & Sudut Lantai</ion-label>
+            <ion-label formControlName="lt2">Lantai & Sudut Lantai</ion-label>
           </ion-item>
           <ion-item>
              <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-            <ion-label>Keset</ion-label>
+            <ion-label formControlName="keset">Keset</ion-label>
           </ion-item>
           <ion-item>
             <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-            <ion-label>Pantry</ion-label>
+            <ion-label formControlName="pant">Pantry</ion-label>
           </ion-item>
           <ion-item>
             <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-            <ion-label>Tempat Sampah</ion-label>
+            <ion-label formControlName="samp3">Tempat Sampah</ion-label>
           </ion-item>
           <ion-item>
             <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-            <ion-label>Wastafel & Chrom Fixture</ion-label>
+            <ion-label formControlName="was2">Wastafel & Chrom Fixture</ion-label>
           </ion-item>
           <ion-item>
             <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-            <ion-label>Peralatan Makan & Rack Piring</ion-label>
+            <ion-label formControlName="pmrp">Peralatan Makan & Rack Piring</ion-label>
           </ion-item>
           <ion-item>
             <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-            <ion-label>Pintu & Dinding</ion-label>
+            <ion-label formControlName="pindi">Pintu & Dinding</ion-label>
           </ion-item>
           <ion-item>
             <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-            <ion-label>Kaca, Jendela & Kusen</ion-label>
+            <ion-label formControlName="kcjk">Kaca, Jendela & Kusen</ion-label>
           </ion-item>
-          <ion-toolbar>
-            <ion-buttons slot="start">
-              <ion-button> Clear </ion-button>
-            </ion-buttons>
-            <ion-buttons slot="end">
-              <ion-button> Done </ion-button>
-            </ion-buttons>
-          </ion-toolbar>
-
           </ion-list>
       </ion-item>
     </div>
@@ -278,54 +250,41 @@
            </ion-note> 
            <ion-item>
             <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-            <ion-label>Pintu & Dinding</ion-label>
+            <ion-label formControlName="pindi2">Pintu & Dinding</ion-label>
           </ion-item>
           <ion-item>
             <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-            <ion-label>Tempat Sampah</ion-label>
+            <ion-label formControlName="samp4">Tempat Sampah</ion-label>
           </ion-item>
           <ion-item>
             <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-            <ion-label>Wastafel & Chrom Fixture</ion-label>
+            <ion-label formControlName="was3">Wastafel & Chrom Fixture</ion-label>
           </ion-item>
           <ion-item>
              <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-            <ion-label>Urinoir, Selang & Toilter Bowl</ion-label>
+            <ion-label formControlName="urst">Urinoir, Selang & Toilter Bowl</ion-label>
           </ion-item>
           <ion-item>
             <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-            <ion-label>Shower Area & Curtain</ion-label>
+            <ion-label formControlName="sac">Shower Area & Curtain</ion-label>
           </ion-item>
           <ion-item>
             <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-            <ion-label>Lantai & Sudut Lantai</ion-label>
+            <ion-label formControlName="ltsl">Lantai & Sudut Lantai</ion-label>
           </ion-item>
           <ion-item>
             <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-            <ion-label>Teras</ion-label>
+            <ion-label formControlName="ter1">Teras</ion-label>
           </ion-item>
           <ion-item>
             <ion-checkbox color="primary"  slot="start"></ion-checkbox>
-            <ion-label>Lantai & Sudut Lantai</ion-label>
+            <ion-label formControlName="ltst1">Lantai & Sudut Lantai</ion-label>
           </ion-item>
-
-          <ion-toolbar>
-            <ion-buttons slot="start">
-              <ion-button> Clear </ion-button>
-            </ion-buttons>
-            <ion-buttons slot="end">
-              <ion-button> Done </ion-button>
-            </ion-buttons>
-          </ion-toolbar>
-
-
+          <ion-button type="submit" expand="block" color="primary">Submit</ion-button>
 
          </ion-list>
       </ion-item>
     </div>
-
-
-    
     </ion-card>    
 </ion-grid>
 </ion-content>
