@@ -6,7 +6,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chip</title>
+    <title></title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
     <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
     <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
@@ -28,16 +28,14 @@
           <ion-button color="light">
             <ion-icon slot="icon-only" name="camera-outline" color="medium">
             </ion-icon>
-          </ion-button>t5
+          </ion-button>
      
 
         <ion-card-content class="ion-text-center">
           <h5><ion-text color="light">Selamat datang</ion-text></h5>
           <ion-text color="light">
             <div style="display: flex;" class="ion-justify-content-center">
-              <ion-icon name="location-outline" color="medium">
-              </ion-icon>
-              <p>Anda adalah {{Username}}</p>
+               <p>Anda Login Sebagai {{Username}}</p>
             </div>
           </ion-text>
         </ion-card-content>
@@ -48,8 +46,8 @@
 
   <div class="header-content"> </div> 
       <ion-menu-toggle>
-      <ion-item lines="none" (click)="home()" src="/asset/home.svg">
-        <ion-icon src="/assets/ionic.svg"></ion-icon>
+      <ion-item lines="none">
+        <ion-icon slot="start" name="home" color="primary"></ion-icon>
        <ion-label>HOME</ion-label>
       </ion-item>
       
