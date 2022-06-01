@@ -32,7 +32,7 @@ export class MaintenancePage implements OnInit {
     this.router.navigate(['infomaintan']);
   }
   openTgsmain() {
-    this.router.navigate(['tugasmaint']);
+    this.router.navigate(['tgsmaintenance']);
   }
   onBack() {
     this.router.navigate(['home']);

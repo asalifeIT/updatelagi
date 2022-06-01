@@ -7,6 +7,65 @@
   Copyright and Good Faith Purchasers © 2021-present bunchdevelopers.
 */
 
+/*
+  Authors : bunchdevelopers (Rahul Jograna)
+  Website : https://bunchdevelopers.com/
+  App Name : ionic6Template Pack
+  This App Template Source code is licensed as per the
+  terms found in the Website https://bunchdevelopers.com/license
+  Copyright and Good Faith Purchasers © 2021-present bunchdevelopers.
+*/
+ion-toolbar {
+ 
+
+}
+.awal{
+  font-family:"bold";
+
+}
+.color_div {
+  padding: 16px;
+  .grey_lbl {
+    text-transform: uppercase;
+    font-family: "regular";
+    opacity: 0.3;
+  }
+
+  .loc_flex {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+
+    ion-icon {
+      color: white;
+    }
+    ion-label {
+      color: white;
+      margin-left: 5px;
+      font-size: 15px;
+    }
+  }
+  .awal {
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+
+    ion-input {
+      background: white;
+      font-family: "regular";
+      border-radius: 8px;
+      width: 100%;
+      -webkit-border-radius: 8px;
+      -moz-border-radius: 8px;
+      -ms-border-radius: 8px;
+      -o-border-radius: 8px;
+}
+  }
+}
+ion-content {
+  --background: #f8f9fd;
+}
 
 .main-header {
   height: 45vh;

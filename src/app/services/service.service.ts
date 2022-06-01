@@ -144,11 +144,11 @@ export class ServiceService{
     return this.http.post(this.API_URL + url , form, { headers: headers, observe: 'response' }).pipe(
       tap(Data => {
         this.DataLogin=Data;
-        let message='Aduan Anda terkirim.';
+        let message='Data Anda terkirim.';
         return message;
       }),
       catchError((err) => {
-        let message = "Gagal Terkirim, Mohon Aduan Diisi Lengkap!";
+        let message = "Gagal Terkirim, Mohon Data Diisi Lengkap!";
         return throwError(err);
       })
     );

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import  {ReactiveFormsModule, FormsModule} from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -13,7 +13,8 @@ import { TgsmaintenancePage } from './tgsmaintenance.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    TgsmaintenancePageRoutingModule
+    TgsmaintenancePageRoutingModule,
+    ReactiveFormsModule
   ],
   declarations: [TgsmaintenancePage]
 })

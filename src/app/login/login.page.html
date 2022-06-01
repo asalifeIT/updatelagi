@@ -1,25 +1,15 @@
-<div class="main-header">
+<div class="color_div">
   <ion-card-title>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-     <ion-label class="heading">SELAMAT DATANG</ion-label><br>
-      ASTRO SERVICE - MEMBER ASTRA
-      <ion-grid>
-       <img src="assets/images/asa.png"/>
-        </ion-grid>
-   </ion-card-title>
-   </div><br><br><br>
+    <ion-grid>
+  <img src="assets/images/asa.png"/>
+   </ion-grid>
+</ion-card-title><br>
+  <ion-label class="awal">SELAMAT DATANG</ion-label><br>
+  <ion-label class="awal">ASTRO SERVICE - MEMBER ASTRA</ion-label>
+</div>
    <ion-grid>
-     <ion-card>
-    </ion-card>
- 
-    <ion-card class="ion-no-margin">
-     <ion-card-header>
- 
+    <ion-card-content class="ion-no-margin">
+     <ion-card-header class="ion-no-margin">
    <form [formGroup]="FormLogin" (ngSubmit)="login()">
      <ion-item>
        <div color="dark"  slot="start">
@@ -57,6 +47,6 @@
           <ion-button class="expand-block" type="submit"  [disabled]="!FormLogin.valid">Login</ion-button>
          </section>
    </form>
- </ion-card-header></ion-card>
+ </ion-card-header></ion-card-content>
    </ion-grid>
  
