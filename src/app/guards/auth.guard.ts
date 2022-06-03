@@ -12,16 +12,10 @@ export class AuthGuard implements CanActivate {
   constructor(
     private serviceService: ServiceService,
     private route:Router
-  ) {}
-  login() : void {
-    this.isLoggedIn = true;
+  ) {
+    this.loadUser();
   }
-  signout() : void {
-    this.isLoggedIn = false;
-  }
-  authenticated() : boolean {
-    return this.isLoggedIn;
-  }
+
 
   canActivate(route:ActivatedRouteSnapshot): boolean {
     this.serviceService.authenticationState.subscribe((data) => {

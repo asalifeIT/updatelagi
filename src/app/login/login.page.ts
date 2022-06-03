@@ -14,6 +14,7 @@ export class LoginPage implements OnInit {
   FormLogin:FormGroup;
   showPasswordText:any;
   dataLogin:any;
+  permissions:string[];
 
   validations = {
     'nrp': [

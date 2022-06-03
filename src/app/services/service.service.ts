@@ -1,4 +1,3 @@
-import { AduancateringPage } from './../aduancatering/aduancatering.page';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { tap, timeout, map } from 'rxjs/operators';
@@ -25,6 +24,7 @@ export class ServiceService{
   REFRESH_TOKEN_KEY = 'refreshtoken';
   ROLE = 'role';
   server: string;
+  
 
   constructor(
     private http: HttpClient,
