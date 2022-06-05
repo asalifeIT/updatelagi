@@ -19,6 +19,8 @@ export class KamarPage implements OnInit {
   authenticationState = new ReplaySubject(); 
   authService: any;
   message:any;
+  Username:any;
+  DataLogin:any;
   validations = {
      'mess': [
       { type: 'required', message: 'harus di isi' }
@@ -97,6 +99,19 @@ export class KamarPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    let dataStorage=JSON.parse(localStorage.getItem(this.serviceService.TOKEN_KEY));
+    // this.Username=dataStorage.data.Username;
+    this.serviceService.CekUser().subscribe(
+      data => {
+        this.DataLogin=data;
+        console.log(this.DataLogin)
+        this.Username=this.DataLogin.body.name;
+      },
+      error => {
+        console.log("error");
+      }
+    );
+
     this.FormKamar=this.formBuilder.group({
       mess:new FormControl('', Validators.compose([
         Validators.required

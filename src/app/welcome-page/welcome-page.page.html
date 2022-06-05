@@ -19,6 +19,12 @@
 <ion-content class="ion-padding">
   <ion-slides mode="md" pager="false" scrollbar="ios" #slides (ionSlideDidChange)="slideChanged($event)">
     <ion-slide>
+      <ion-label class="heading">Design by</ion-label>
+      <div class="img" [style.backgroundImage]="'url(assets/images/loj.jpg)'"></div>
+      <div class="title">
+      </div>
+    </ion-slide>
+    <ion-slide>
       <div class="img" [style.backgroundImage]="'url(assets/images/asaserv.jpg)'"></div>
       <div class="title">
         <ion-label class="heading">AUTO SERVICE</ion-label>

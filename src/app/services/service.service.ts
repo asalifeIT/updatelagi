@@ -17,14 +17,11 @@ export class ServiceService{
   DataCheckLogin:any;
   authenticationState = new ReplaySubject();
   token:any;
-
   API_URL = 'http://asabeta.com/api/';
-
   TOKEN_KEY = 'accesstoken';
   REFRESH_TOKEN_KEY = 'refreshtoken';
   ROLE = 'role';
   server: string;
-  
 
   constructor(
     private http: HttpClient,
@@ -36,6 +33,9 @@ export class ServiceService{
     });
    }
 
+   public getRoles(){
+    return JSON.parse(localStorage.getItem("roles"));
+  }
 
   options(arg0: string, options: any) {
     throw new Error('Method not implemented.');
@@ -63,6 +63,7 @@ export class ServiceService{
 
   //cek user di sisi client
   CekUser(){
+    
     //ambil data dari localstorage
     let dataStorage=JSON.parse(localStorage.getItem(this.TOKEN_KEY));
     this.token=dataStorage;
@@ -71,7 +72,9 @@ export class ServiceService{
         'Content-Type': 'application/json',
         'Authorization': "Bearer "+ this.token
       });
-    return this.http.get(this.API_URL + 'users/my', { headers: headers, observe: 'response' }).pipe(
+    return this.http.get(this.API_URL + 'users/my', { headers: headers, observe: 'response' })
+    .pipe(
+      
       timeout(8000),
       tap(Data => {
         return Data;
@@ -88,12 +91,11 @@ export class ServiceService{
     return this.http.post(this.API_URL + type, credentials, { headers: headers, observe: 'response' }).pipe(
       tap(Data => {
         this.DataLogin=Data.body;
-
         if(Data.status==200){
           localStorage.setItem(this.TOKEN_KEY, JSON.stringify(this.DataLogin.access_token));
           localStorage.setItem(this.REFRESH_TOKEN_KEY, JSON.stringify(this.DataLogin.refresh_token));
           localStorage.setItem(this.ROLE, JSON.stringify(this.DataLogin.roles[1]));
-          console.log(this.DataLogin.roles[1]);
+          console.log(this.DataLogin.roles [1]);
           this.authenticationState.next(true);
         }else{
           this.authenticationState.next(false);
@@ -102,7 +104,6 @@ export class ServiceService{
       }),
       catchError((err, caught) => {
         let message = "error";
-
         if(err.status==400){
           message='User belum terdaftar. Silahkan hubungi admin.';
         } else if(err.status==401){
@@ -128,7 +129,7 @@ export class ServiceService{
           this.authenticationState.next(true);
         }else{
           this.authenticationState.next(false);
-        }
+        } 
         return Data;
       }),
     );

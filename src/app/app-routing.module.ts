@@ -1,6 +1,5 @@
 import { TugashkPage } from './tugashk/tugashk.page';
 import { TgsmaintenancePage } from './tgsmaintenance/tgsmaintenance.page';
-import { RoleGuardGuard } from './core/guards/role-guard.guard';
 import { AuthGuard } from './guards/auth.guard';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes, CanActivate } from '@angular/router';
@@ -66,12 +65,7 @@ const routes: Routes = [
   },
   {
     path: 'tugashk',
-    canActivate: [AuthGuard, RoleGuardGuard],
-    data:{
-      expectedRole:['ADMIN']
-    },
-      loadChildren: () => import('./tugashk/tugashk.module').then( m => m.TugashkPageModule)
-    
+     loadChildren: () => import('./tugashk/tugashk.module').then( m => m.TugashkPageModule)
     },
 
   {
@@ -110,18 +104,14 @@ const routes: Routes = [
   },
   {
     path: 'kamar',
-    canActivate: [AuthGuard, RoleGuardGuard],
-    data:{
-      expectedRole:['ADMIN']
-    },
+    canActivate:[AuthGuard],
+    data:{ roles:['HK']} || {roles:['HCGS'] },
     loadChildren: () => import('./kamar/kamar.module').then( m => m.KamarPageModule)
   },
   {
     path: 'nonkamar',
-    canActivate: [AuthGuard, RoleGuardGuard],
-    data:{
-      expectedRole:['ADMIN']
-    },
+    canActivate:[AuthGuard],
+    data:{ roles:['HK']} || {roles:['HCGS'] },
     loadChildren: () => import('./nonkamar/nonkamar.module').then( m => m.NonkamarPageModule)
   },
   {
