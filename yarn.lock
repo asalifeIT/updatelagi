@@ -6216,6 +6216,13 @@
   "resolved" "https://registry.npmjs.org/neo-async/-/neo-async-2.6.2.tgz"
   "version" "2.6.2"
 
+"ngx-permissions@^13.0.1":
+  "integrity" "sha512-KanBkK9v8aoQ9siSEmB69G+OPtF1i71Ie5ORuobOlKcpUMvmpcuCXG9eiu1j3k+8/Q+sv1jCbL9VviLiQF5PFA=="
+  "resolved" "https://registry.npmjs.org/ngx-permissions/-/ngx-permissions-13.0.1.tgz"
+  "version" "13.0.1"
+  dependencies:
+    "tslib" "^2.1.0"
+
 "nice-try@^1.0.4":
   "integrity" "sha512-1nh45deeb5olNY7eX82BkPO7SSxR5SSYJiPTrTdFUVYwAl8CKMA5N9PjTYkHiRjisVcxcQ1HXdLhx2qxxJzLNQ=="
   "resolved" "https://registry.npmjs.org/nice-try/-/nice-try-1.0.5.tgz"

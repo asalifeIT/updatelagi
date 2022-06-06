@@ -35,7 +35,9 @@ export class ServiceService{
 
    public getRoles(){
     return JSON.parse(localStorage.getItem("roles"));
-  }
+
+
+    }
 
   options(arg0: string, options: any) {
     throw new Error('Method not implemented.');
@@ -95,6 +97,8 @@ export class ServiceService{
           localStorage.setItem(this.TOKEN_KEY, JSON.stringify(this.DataLogin.access_token));
           localStorage.setItem(this.REFRESH_TOKEN_KEY, JSON.stringify(this.DataLogin.refresh_token));
           localStorage.setItem(this.ROLE, JSON.stringify(this.DataLogin.roles[1]));
+          localStorage.setItem("user", JSON.stringify(this.DataLogin));
+          localStorage.setItem("roles",JSON.stringify(this.DataLogin.roles));
           console.log(this.DataLogin.roles [1]);
           this.authenticationState.next(true);
         }else{
@@ -115,6 +119,8 @@ export class ServiceService{
       })
     );
   }
+
+
 
   //register
   RegisterApi(credentials, type){
