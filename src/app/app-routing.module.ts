@@ -1,8 +1,9 @@
 import { TugashkPage } from './tugashk/tugashk.page';
 import { TgsmaintenancePage } from './tgsmaintenance/tgsmaintenance.page';
-import { AuthGuard } from './guards/auth.guard';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes, CanActivate } from '@angular/router';
+import { AuthenticationGuard } from './guards/authentication.guard';
+import { RoleGuard } from './guards/role.guard';
 
 
 const routes: Routes = [
@@ -65,6 +66,7 @@ const routes: Routes = [
   },
   {
     path: 'tugashk',
+    
      loadChildren: () => import('./tugashk/tugashk.module').then( m => m.TugashkPageModule)
     },
 
@@ -104,14 +106,18 @@ const routes: Routes = [
   },
   {
     path: 'kamar',
-    canActivate:[AuthGuard],
-    data:{ roles:['HK']} || {roles:['HCGS'] },
+    canActivate:[RoleGuard, AuthenticationGuard],
+    data:{
+      role: ["ROLE_WORKER"],
+    },
     loadChildren: () => import('./kamar/kamar.module').then( m => m.KamarPageModule)
   },
   {
     path: 'nonkamar',
-    canActivate:[AuthGuard],
-    data:{ roles:['HK']} || {roles:['HCGS'] },
+    canActivate:[RoleGuard, AuthenticationGuard],
+    data:{
+      role: ["ROLE_WORKER"],
+    },
     loadChildren: () => import('./nonkamar/nonkamar.module').then( m => m.NonkamarPageModule)
   },
   {
