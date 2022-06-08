@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Injectable } from '@angular/core';
 import { CanDeactivate } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -18,9 +17,5 @@ export class DeactivateGuardService implements CanDeactivate<IDeactivateComponen
     return component.canExit ? component.canExit() : true;
   }
 
-  public canExit(): boolean {
-    return this.ngFormRef.dirty
-      ? window.confirm('Anda belum menyimpan, tinggalkan laman?')
-      : true;
-  };
+
 }
