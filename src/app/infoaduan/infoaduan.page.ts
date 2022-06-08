@@ -58,4 +58,5 @@ export class InfoaduanPage implements OnInit {
     this.router.navigate(['aduancatering']);
     }
 
+    
 }

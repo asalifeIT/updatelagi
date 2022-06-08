@@ -12,6 +12,7 @@ import { UtilService } from 'src/app/services/util.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
+  private routerEvents: any;
   features: any[] = [
     {id: 1, name: 'Catering', src: 'assets/svg/dining.svg', background: '', page: ''},
   ]; 
@@ -86,6 +87,9 @@ openMaintenance(){
   this.router.navigate(['maintenance']);
 }
 
+ngOnDestroy() {
+  if (typeof this.routerEvents !== 'undefined') this.routerEvents.unsubscribe();
+}
 
 }
 

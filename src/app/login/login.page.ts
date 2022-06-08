@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
-import { NavController, ModalController, LoadingController, ToastController,Platform } from '@ionic/angular';
+import { NavController, ModalController, LoadingController, ToastController } from '@ionic/angular';
 import { RegisterPage } from '../register/register.page';
 import { ServiceService } from '../services/service.service';
+import { IonRouterOutlet, Platform } from '@ionic/angular';
+import { nextTick } from 'process';
+
 
 @Component({
   selector: 'app-login',
@@ -15,6 +18,7 @@ export class LoginPage implements OnInit {
   showPasswordText:any;
   dataLogin:any;
   permissions:string[];
+  private routerEvents: any;
 
   validations = {
     'nrp': [
@@ -26,6 +30,7 @@ export class LoginPage implements OnInit {
   };
   authService: any;
 
+  
   constructor(
     private formBuilder: FormBuilder,
     private navCtrl: NavController,
@@ -34,9 +39,13 @@ export class LoginPage implements OnInit {
     private platform: Platform,
     public toastController: ToastController,
     private serviceService: ServiceService,
-  ) { }
+    private routerOutlet: IonRouterOutlet
+    
+    
+  ) {  }
 
   ngOnInit() {
+    
     //setting form login
     this.FormLogin=this.formBuilder.group({
       nrp:new FormControl('', Validators.compose([
@@ -46,6 +55,7 @@ export class LoginPage implements OnInit {
         Validators.required
       ]))
     });
+
   }
 
   //fungsi login
@@ -96,6 +106,8 @@ export class LoginPage implements OnInit {
     throw new Error('Method not implemented.');
   }
 
-
+  ngOnDestroy() {
+    if (typeof this.routerEvents !== 'undefined') this.routerEvents.unsubscribe();
+}
 
 }

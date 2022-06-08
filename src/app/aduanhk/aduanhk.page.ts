@@ -16,6 +16,7 @@ import { UtilService } from 'src/app/services/util.service';
   styleUrls: ['./aduanhk.page.scss'],
 })
 export class AduanhkPage implements OnInit {
+
   FormAduanHk:FormGroup;
   authenticationState = new ReplaySubject(); 
   authService: any;

@@ -49,12 +49,7 @@ const routes: Routes = [
 
     loadChildren: () => import('./aduanmaintenance/aduanmaintenance.module').then( m => m.AduanmaintenancePageModule)
   },
-  {
-    path: 'ratingmaintenance',
-
-    loadChildren: () => import('./ratingmaintenance/ratingmaintenance.module').then( m => m.RatingmaintenancePageModule)
-  },
-  {
+   {
     path: 'aduancatering',
 
     loadChildren: () => import('./aduancatering/aduancatering.module').then( m => m.AduancateringPageModule)
