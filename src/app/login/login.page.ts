@@ -109,5 +109,7 @@ export class LoginPage implements OnInit {
   ngOnDestroy() {
     if (typeof this.routerEvents !== 'undefined') this.routerEvents.unsubscribe();
 }
-
+public clear() {
+  localStorage.clear();
+}
 }

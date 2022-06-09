@@ -15,12 +15,23 @@ export class RoleGuard implements CanActivate {
   ){ }
 
   canActivate(){
-    
     let Role= JSON.parse(localStorage.getItem("role"));
     if(Role == "ROLE_WORKER"){
-     alert("Anda Sebagai Role WORKER")
+     alert("Anda Login Sebagai Role WORKER")
       return true;
+      } else {
+        if(Role == "ROLE_MEGAUSER"){
+          alert("Anda Login Sebagai Role MEGA USER")
+           return true;
+      } else {
+        if(Role == "ROLE_SUPERUSER"){
+          alert("Anda Login Sebagai Role SUPER USER")
+           return true;
       }
+    } 
+  }
+  
+   
     alert("Maaf, Anda Tidak Punya Aksess!!")
     return false;
     }

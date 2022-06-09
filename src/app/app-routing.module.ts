@@ -103,7 +103,7 @@ const routes: Routes = [
     path: 'kamar',
     canActivate:[RoleGuard, AuthenticationGuard],
     data:{
-      role: ["ROLE_WORKER"],
+      role: ["ROLE_WORKER","ROLE_MEGAUSER","ROLE_SUPERUSER"],
     },
     loadChildren: () => import('./kamar/kamar.module').then( m => m.KamarPageModule)
   },
@@ -111,7 +111,7 @@ const routes: Routes = [
     path: 'nonkamar',
     canActivate:[RoleGuard, AuthenticationGuard],
     data:{
-      role: ["ROLE_WORKER"],
+      role: ["ROLE_WORKER","ROLE_MEGAUSER","ROLE_SUPERUSER"],
     },
     loadChildren: () => import('./nonkamar/nonkamar.module').then( m => m.NonkamarPageModule)
   },

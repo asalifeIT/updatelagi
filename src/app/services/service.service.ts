@@ -33,12 +33,7 @@ export class ServiceService{
     });
    }
 
-   public getRoles(){
-    return JSON.parse(localStorage.getItem("roles"));
-
-
-    }
-
+  
   options(arg0: string, options: any) {
     throw new Error('Method not implemented.');
   }
