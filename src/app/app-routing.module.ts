@@ -150,7 +150,11 @@ const routes: Routes = [
   {
     path: 'dash-aduancat',
     loadChildren: () => import('./dash-aduancat/dash-aduancat.module').then( m => m.DashAduancatPageModule)
+  },  {
+    path: 'table',
+    loadChildren: () => import('./table/table.module').then( m => m.TablePageModule)
   },
+
 
 ];
 

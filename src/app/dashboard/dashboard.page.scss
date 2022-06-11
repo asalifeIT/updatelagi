@@ -19,6 +19,20 @@ ion-header {
     }
   }
 }
+
+.dash{
+  display: flex;
+      flex-direction: column;
+      .name_lbl {
+        margin-bottom: 5px;
+        font-family: "bold";
+      }
+      .center {
+        font-size: 14px;
+        display: flex;
+        margin-left: 2rem;
+}
+}
 .main-header {
   height: 5vh;
   width: 150%;

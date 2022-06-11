@@ -15,6 +15,7 @@ import { ServiceService } from './services/service.service';
 
 
 export class AppComponent {
+  rootPage:any = 'TablePage';
   [x: string]: any;
   Username:any;
   DataLogin:any;
@@ -26,8 +27,12 @@ export class AppComponent {
     private serviceService: ServiceService,
     private navCtrl: NavController,
     private router: Router,
-    public util: UtilService
-  ) {
+    public util: UtilService) {
+      platform.ready().then(() => {
+        statusBar.styleDefault();
+        splashScreen.hide();
+      });
+
     this.initializeApp();
   }
 

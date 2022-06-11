@@ -52,7 +52,21 @@ export class DashboardPage implements OnInit {
     if (typeof this.routerEvents !== 'undefined') this.routerEvents.unsubscribe();
   }
 
-  openAduan(){
+  dashCat(){
   this.router.navigate(['dash-aduancat']);
-}
+  }
+
+  dashLaundry(){
+    this.router.navigate(['dash-aduanlaundry']);
+  }
+
+  dashHk(){
+    this.router.navigate(['dash-aduanhk']);
+  }
+
+  dashMain(){
+    this.router.navigate(['dash-aduanmt']);
+  }
+
+
 }

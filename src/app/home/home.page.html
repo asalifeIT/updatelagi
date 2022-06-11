@@ -1,16 +1,16 @@
-<ion-header class="ion-no-border" mode="md">
+<ion-header class="ion-no-border">
   <ion-item lines="none">
-    <ion-buttons slot="start" color="light">
+    <ion-buttons slot="start">
       <ion-button (click)="util.openSideMenu()">
         <ion-icon name="menu"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-label color="dark">
-      Menu Dashboard
-    </ion-label>
-    <ion-buttons slot="end" color="dark">
-      <ion-icon (click)="signout()" name="power-sharp"></ion-icon>
-    </ion-buttons>
+    <ion-label color="light">
+   Menu Home
+  </ion-label>
+  <ion-buttons slot="end">
+    <ion-icon (click)="onBack()" name="home-outline"></ion-icon>
+  </ion-buttons>
   </ion-item>
  </ion-header>
 
