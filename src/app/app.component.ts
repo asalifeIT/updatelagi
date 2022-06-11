@@ -15,6 +15,7 @@ import { ServiceService } from './services/service.service';
 
 
 export class AppComponent {
+  [x: string]: any;
   Username:any;
   DataLogin:any;
   loadingController: any;
@@ -74,7 +75,15 @@ export class AppComponent {
   
    logout(){
     this.router.navigate(['login']);
-
-   }
-
+    localStorage.removeItem("signin");
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("roles");
+    localStorage.removeItem("user");
+    localStorage.removeItem("refresh_token");
+    localStorage.removeItem("discount_");
+    localStorage.removeItem("discount_type");
+      }
+      ngOnDestroy() {
+        if (typeof this.routerEvents !== 'undefined') this.routerEvents.unsubscribe();
+    }
 }

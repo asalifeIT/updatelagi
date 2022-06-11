@@ -12,7 +12,7 @@ import { UtilService } from 'src/app/services/util.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
-  private routerEvents: any;
+
   features: any[] = [
     {id: 1, name: 'Catering', src: 'assets/svg/dining.svg', background: '', page: ''},
   ]; 
@@ -28,9 +28,15 @@ export class HomePage implements OnInit {
   maintenance: any[] = [
     {id: 1, name: 'Maintenance', src: 'assets/svg/builder.svg', background: '', page: ''},
   ];
+  dashboard: any[] = [
+    {id: 1, name: 'Dashboard', src: 'assets/svg/dashboard.svg', background: '', page: ''},
+  ];
+  info: any[] = [
+    {id: 1, name: 'Informasi', src: 'assets/svg/info.svg', background: '', page: ''},
+  ];
 
 
-
+  private routerEvents: any;
   Username:any;
   DataLogin:any;
   constructor(
@@ -87,6 +93,9 @@ openMaintenance(){
   this.router.navigate(['maintenance']);
 }
 
+openDashboard(){
+  this.router.navigate(['dashboard']);
+}
 ngOnDestroy() {
   if (typeof this.routerEvents !== 'undefined') this.routerEvents.unsubscribe();
 }

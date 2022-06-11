@@ -5,7 +5,7 @@ import { RegisterPage } from '../register/register.page';
 import { ServiceService } from '../services/service.service';
 import { IonRouterOutlet, Platform } from '@ionic/angular';
 import { nextTick } from 'process';
-
+import { UtilService } from '../services/util.service';
 
 @Component({
   selector: 'app-login',
@@ -19,6 +19,7 @@ export class LoginPage implements OnInit {
   dataLogin:any;
   permissions:string[];
   private routerEvents: any;
+  
 
   validations = {
     'nrp': [
@@ -39,7 +40,8 @@ export class LoginPage implements OnInit {
     private platform: Platform,
     public toastController: ToastController,
     private serviceService: ServiceService,
-    private routerOutlet: IonRouterOutlet
+    private routerOutlet: IonRouterOutlet,
+    private util: UtilService
     
     
   ) {  }
@@ -62,6 +64,7 @@ export class LoginPage implements OnInit {
   async login(){
     const loading = await this.loadingController.create({
       message: 'Please wait...'
+      
     });
     await loading.present();
     this.serviceService.loginApi(this.FormLogin.value,'signin').subscribe(
@@ -93,6 +96,8 @@ export class LoginPage implements OnInit {
       position: "top"
     });
     toast.present();
+    
+    
   }
 
   Login() {

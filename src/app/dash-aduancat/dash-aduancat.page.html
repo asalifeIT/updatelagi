@@ -1,0 +1,114 @@
+<!--
+  Authors : bunchdevelopers (Rahul Jograna)
+  Website : https://bunchdevelopers.com/
+  App Name : ionic6Template Pack
+  This App Template Source code is licensed as per the
+  terms found in the Website https://bunchdevelopers.com/license
+  Copyright and Good Faith Purchasers © 2021-present bunchdevelopers.
+ -->
+ <ion-header class="ion-no-border" mode="md">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="onClick()">
+        <ion-icon slot="start" name="ellipsis-horizontal" color="dark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+<ion-buttons slot="end">
+      <ion-button (click)="signout()">
+        <ion-icon slot="start" name="exit-outline" color="dark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-label color="dark">
+     Dashboard Aduan Catering
+    </ion-label>
+  </ion-toolbar>
+</ion-header>
+  
+   <ion-content [fullscreen]="true">
+    <div class="main-header">
+    </div>
+    <ion-item lines="none">
+      <ion-thumbnail>
+        <img src="assets/images/cus.png"/>
+      </ion-thumbnail>
+      <div class="name">
+        <ion-label class="center"><div>
+          <div>
+           Anda Login Sebagai {{Username}}
+          </div></div></ion-label>
+      </div>
+    </ion-item>
+    
+    <div class="account">
+      <ion-label class="head_lbl">All Aduan Catering Yang Masuk</ion-label>
+      <ion-grid class="contnr">
+        <ion-row style="" class="grid-head">
+          <ion-col width-40>
+            Nama
+          </ion-col>
+          <ion-col width-40>
+            NRP
+          </ion-col>
+          <ion-col width-40 >
+           Lokasi
+          </ion-col>
+          <ion-col width-40 >
+            Deskripsi
+          </ion-col>
+          <ion-col  width-40>
+            Kritik dan Saran
+          </ion-col >
+          <ion-col  width-40>
+          Status
+          </ion-col>
+          <ion-col  width-40>
+           Tanggal Aduan
+          </ion-col>
+        </ion-row>
+        <ion-row *ngFor="let data of DataRecord; let i = index" class="cont-rows">
+            <ion-col width-40>
+            {{data.user_name}
+          </ion-col>
+          <ion-col width-40>
+            {{data.user_nrp}}
+          </ion-col>
+          <ion-col width-40>
+            {{data.lokasi}}
+          </ion-col>
+          <ion-col width-40>
+            {{data.deskripsi}
+          </ion-col>
+          <ion-col width-40>
+            {{data.status}}
+          </ion-col>
+          <ion-col width-40>
+            {{data.kritik_saran}}
+          </ion-col>
+          <ion-col width-40>
+            {{data.status}}
+          </ion-col>
+          <ion-col width-40>
+            {{data.tanggal_aduan}}
+          </ion-col>
+
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            Total Aduan
+          </ion-col>
+  
+          <ion-col>
+            {{grossTotal}}
+          </ion-col>
+          <ion-col>
+            {{Nets}}
+          </ion-col>
+  
+        </ion-row>
+      </ion-grid>
+     
+    </div>
+
+  </ion-content>
+  
+  

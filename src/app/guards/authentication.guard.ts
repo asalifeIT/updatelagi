@@ -18,7 +18,7 @@ export class AuthenticationGuard implements CanActivate {
     if(this.serviceService.DataLogin){
       return true;
     }
-    alert("Maaf")
+    alert("Maaf, Anda Tidak Punya Akses!!")
     return false;
   }
 

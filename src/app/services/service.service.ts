@@ -60,7 +60,7 @@ export class ServiceService{
 
   //cek user di sisi client
   CekUser(){
-    
+
     //ambil data dari localstorage
     let dataStorage=JSON.parse(localStorage.getItem(this.TOKEN_KEY));
     this.token=dataStorage;
@@ -71,7 +71,6 @@ export class ServiceService{
       });
     return this.http.get(this.API_URL + 'users/my', { headers: headers, observe: 'response' })
     .pipe(
-      
       timeout(8000),
       tap(Data => {
         return Data;

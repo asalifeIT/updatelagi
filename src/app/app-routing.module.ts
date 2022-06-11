@@ -1,5 +1,3 @@
-import { TugashkPage } from './tugashk/tugashk.page';
-import { TgsmaintenancePage } from './tgsmaintenance/tgsmaintenance.page';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes, CanActivate } from '@angular/router';
 import { AuthenticationGuard } from './guards/authentication.guard';
@@ -31,7 +29,10 @@ const routes: Routes = [
   },
   {
     path: 'ratingcatering',
-
+    canActivate:[RoleGuard, AuthenticationGuard],
+    data:{
+      role: ["ROLE_WORKER"],
+    },
     loadChildren: () => import('./ratingcatering/ratingcatering.module').then( m => m.RatingcateringPageModule)
   },
   {
@@ -61,6 +62,10 @@ const routes: Routes = [
   },
   {
     path: 'tugashk',
+    canActivate:[RoleGuard, AuthenticationGuard],
+    data:{
+      role: ["ROLE_WORKER"],
+    },
     
      loadChildren: () => import('./tugashk/tugashk.module').then( m => m.TugashkPageModule)
     },
@@ -72,7 +77,10 @@ const routes: Routes = [
   },
   {
     path: 'tgsmaintenance',
-
+    canActivate:[RoleGuard, AuthenticationGuard],
+    data:{
+      role: ["ROLE_WORKER"],
+    },
     loadChildren: () => import('./tgsmaintenance/tgsmaintenance.module').then( m => m.TgsmaintenancePageModule)
   },
   {
@@ -103,7 +111,7 @@ const routes: Routes = [
     path: 'kamar',
     canActivate:[RoleGuard, AuthenticationGuard],
     data:{
-      role: ["ROLE_WORKER","ROLE_MEGAUSER","ROLE_SUPERUSER"],
+      role: ["ROLE_WORKER","ROLE_MEGAUSER","ROLE_SUPERUSER", "ROLE_HCGS"],
     },
     loadChildren: () => import('./kamar/kamar.module').then( m => m.KamarPageModule)
   },
@@ -111,7 +119,7 @@ const routes: Routes = [
     path: 'nonkamar',
     canActivate:[RoleGuard, AuthenticationGuard],
     data:{
-      role: ["ROLE_WORKER","ROLE_MEGAUSER","ROLE_SUPERUSER"],
+      role: ["ROLE_WORKER","ROLE_MEGAUSER","ROLE_SUPERUSER", "ROLE_HCGS"],
     },
     loadChildren: () => import('./nonkamar/nonkamar.module').then( m => m.NonkamarPageModule)
   },
@@ -119,8 +127,30 @@ const routes: Routes = [
     path: 'sub',
     loadChildren: () => import('./sub/sub.module').then( m => m.SubPageModule)
   },
-
-
+  {
+    path: 'dashboard',
+    canActivate:[RoleGuard, AuthenticationGuard],
+    data:{
+      role: ["ROLE_WORKER","ROLE_MEGAUSER","ROLE_SUPERUSER", "ROLE_HCGS"],
+    },
+    loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule)
+  },
+  {
+    path: 'dash-aduanmt',
+    loadChildren: () => import('./dash-aduanmt/dash-aduanmt.module').then( m => m.DashAduanmtPageModule)
+  },
+  {
+    path: 'dash-aduanhk',
+    loadChildren: () => import('./dash-aduanhk/dash-aduanhk.module').then( m => m.DashAduanhkPageModule)
+  },
+  {
+    path: 'dash-aduanlaundry',
+    loadChildren: () => import('./dash-aduanlaundry/dash-aduanlaundry.module').then( m => m.DashAduanlaundryPageModule)
+  },
+  {
+    path: 'dash-aduancat',
+    loadChildren: () => import('./dash-aduancat/dash-aduancat.module').then( m => m.DashAduancatPageModule)
+  },
 
 ];
 

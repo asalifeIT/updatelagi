@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { access } from 'fs';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +18,7 @@ export class UserAuthService {
     localStorage.setItem("access_token", token);
   }
   public getToken():string {
-    return JSON.parse(localStorage.getItem("access_token");
+    return JSON.parse(localStorage.getItem("access_token"));
   }
 public clear() {
   localStorage.clear();
