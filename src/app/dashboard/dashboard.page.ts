@@ -38,16 +38,9 @@ export class DashboardPage implements OnInit {
       );
   }
 
-  async signout(){
-    const loading = await this.loadingController.create({
-      message: 'Please wait...'
-    });
-    await loading.present();
-    localStorage.clear();
-    this.serviceService.signout();
-    loading.dismiss();
-   }
-
+  signout(){
+    this.router.navigate(['home']);
+  }
   ngOnDestroy() {
     if (typeof this.routerEvents !== 'undefined') this.routerEvents.unsubscribe();
   }

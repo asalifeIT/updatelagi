@@ -31,15 +31,14 @@ export class RoleGuard implements CanActivate {
         if(Role == "ROLE_HCGS"){
           alert("Anda Login Sebagai HCGS")
            return true;
-    } 
-  }
-   
-  }
-  
-   
-    alert("Maaf, Anda Tidak Punya Aksess!!")
-    return false;
     }
+  }
+
+  }
+
+    alert("Maaf, Anda Tidak Punya Aksess!!!")
+    return false;
+    } 
    
   }
 }

@@ -9,9 +9,8 @@
  <ion-header class="ion-no-border" mode="md">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button (click)="onClick()"><ion-label>Home</ion-label>
-        <ion-icon slot="start" name="ellipsis-horizontal" color="dark"></ion-icon>
-      </ion-button>
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button color="danger">Back</ion-back-button>
     </ion-buttons>
     <ion-buttons slot="end">
       <ion-button (click)="signout()"><ion-label>Exit</ion-label>
@@ -19,7 +18,6 @@
       </ion-button>
     </ion-buttons>
     <ion-label color="dark">
-   
     </ion-label>
   </ion-toolbar>
 </ion-header>
@@ -38,6 +36,7 @@
         </div></div></ion-label>
     </div>
   </ion-item>
+  <ion-card>
     <div class="account"><br>
       <ion-label class="head_lbl">Inbox Aduan Catering</ion-label><br><br>
       <ion-progress-bar value="0" buffer="1"></ion-progress-bar>
@@ -47,14 +46,16 @@
           <li>Nama :{{data.user_name}}</li>
             <li>Lokasi :{{data.lokasi}}</li>
             <li>Deskripsi: {{data.kritik_saran}}</li>
-            <li class="warna">Status: {{data.status}}</li>
+            <li class="warna">
+              Status: {{data.status}}</li>
+            <ion-button slot="end" shape="round" (click)="editEd()">
+              Edit
+            </ion-button>
             <ion-progress-bar value="0.25" buffer="0.5"></ion-progress-bar>
+            <ion-progress-bar value="0" buffer="1"></ion-progress-bar>
+           
           </ul>
- 
       </ion-grid>
-     
     </div>
-
+  </ion-card>
   </ion-content>
-  
-  
