@@ -155,8 +155,18 @@ const routes: Routes = [
     path: 'table',
     loadChildren: () => import('./table/table.module').then( m => m.TablePageModule)
   },
-
-
+  {
+    path: 'dash-tugashk',
+    loadChildren: () => import('./dashboard/dash-tugashk/dash-tugashk.module').then( m => m.DashTugashkPageModule)
+  },
+  {
+    path: 'dash-tugasmt',
+    loadChildren: () => import('./dashboard/dash-tugasmt/dash-tugasmt.module').then( m => m.DashTugasmtPageModule)
+  },
+  {
+    path: 'dash-ratingcatering',
+    loadChildren: () => import('./dashboard/dash-ratingcatering/dash-ratingcatering.module').then( m => m.DashRatingcateringPageModule)
+  },
 ];
 
 @NgModule({

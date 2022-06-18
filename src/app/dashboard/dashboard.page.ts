@@ -3,6 +3,8 @@ import { Platform, NavController,LoadingController } from '@ionic/angular';
 import { ServiceService } from '../services/service.service';
 import { Router } from '@angular/router';
 import { UtilService } from 'src/app/services/util.service';
+import { PreloadAllModules, RouterModule, Routes, CanActivate } from '@angular/router';
+import { NgModule } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -61,5 +63,16 @@ export class DashboardPage implements OnInit {
     this.router.navigate(['dash-aduanmt']);
   }
 
+  dashTgsHk(){
+    this.router.navigate(['dash-tugashk']);
+  }
+
+  dashTgsMt(){
+    this.router.navigate(['dash-tugasmt']);
+  }
+
+  dashRating(){
+    this.router.navigate(['dash-ratingcatering']);
+  }
 
 }

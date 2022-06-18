@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
 import { DashboardPage } from './dashboard.page';
 
 const routes: Routes = [
@@ -20,7 +19,16 @@ const routes: Routes = [
     path: 'dash-ratingcatering',
     loadChildren: () => import('./dash-ratingcatering/dash-ratingcatering.module').then( m => m.DashRatingcateringPageModule)
   },
+  {
+    path: 'dash-tugashk',
+    loadChildren: () => import('./dash-tugashk/dash-tugashk.module').then( m => m.DashTugashkPageModule)
+  },
+  {
+    path: 'dash-tugasmt',
+    loadChildren: () => import('./dash-tugasmt/dash-tugasmt.module').then( m => m.DashTugasmtPageModule)
+  },
 
+  
 ];
 
 @NgModule({

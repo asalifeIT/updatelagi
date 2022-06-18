@@ -68,12 +68,12 @@
     <ion-item lines="none">
       <ion-icon name="bed-outline" color="primary" style="margin-right: 10px;"></ion-icon>
       <ion-label>House Keeping</ion-label>
-      <ion-icon slot="end" name="chevron-forward" color="medium"></ion-icon>
-    </ion-item>
+      <ion-icon slot="end" name="chevron-forward" color="medium" (click)="dashTgsHk()"></ion-icon>
+      </ion-item>
     <ion-item lines="none">
       <ion-icon name="construct-outline" color="primary" style="margin-right: 10px;"></ion-icon>
       <ion-label>Maintenance</ion-label>
-      <ion-icon slot="end" name="chevron-forward" color="medium"></ion-icon>
+      <ion-icon slot="end" name="chevron-forward" color="medium" (click)="dashTgsMt()"></ion-icon>
     </ion-item>
   </div>
 
@@ -82,7 +82,7 @@
     <ion-item lines="none">
       <ion-icon name="restaurant-outline" color="primary" style="margin-right: 10px;"></ion-icon>
       <ion-label>Catering</ion-label>
-      <ion-icon slot="end" name="chevron-forward" color="medium"></ion-icon>
+      <ion-icon slot="end" name="chevron-forward" color="medium" (click)="dashRating()"></ion-icon>
     </ion-item>
 
   </div>
