@@ -46,6 +46,9 @@
             <li>Lokasi :{{data.lokasi}}</li>
             <li>Deskripsi: {{data.kritik_saran}}</li>
             <li class="warna">Status: {{data.status}}</li>
+            <ion-select multiple="false" class="selectModal" placeholder="Edit Status" text="Hello" okText="Ok" cancelText="Dismiss" (ionChange)="activitySelect($event)">
+              <ion-select-option *ngFor="let data of DataRecord; let i=index" value="{{data.status}}">{{data.status}}</ion-select-option>
+            </ion-select>
             <ion-button slot="end" shape="round"(click)="editEd()">
               Edit
             </ion-button>

@@ -57,7 +57,20 @@ export class DashAduanlaundryPage implements OnInit {
           console.log("error");
         }
       );
-  }
+       }
+
+       editEd() {
+        this.serviceService.putRecord('laundry/update/1').subscribe(
+          data => {
+            this.DataRecord=data.body;
+            localStorage.putItem(JSON.stringify(this.DataRecord));
+            console.log(this.DataRecord);
+            },
+            error => {
+            console.log("err", error);
+            }
+          );
+      }
 
     signout(){
     this.router.navigate(['dashboard']);
