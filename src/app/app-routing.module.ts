@@ -137,20 +137,21 @@ const routes: Routes = [
   },
   {
     path: 'dash-aduanmt',
-    loadChildren: () => import('./dash-aduanmt/dash-aduanmt.module').then( m => m.DashAduanmtPageModule)
+    loadChildren: () => import('./dashboard/dash-aduanmt/dash-aduanmt.module').then( m => m.DashAduanmtPageModule)
   },
   {
     path: 'dash-aduanhk',
-    loadChildren: () => import('./dash-aduanhk/dash-aduanhk.module').then( m => m.DashAduanhkPageModule)
+    loadChildren: () => import('./dashboard/dash-aduanhk/dash-aduanhk.module').then( m => m.DashAduanhkPageModule)
   },
   {
     path: 'dash-aduanlaundry',
-    loadChildren: () => import('./dash-aduanlaundry/dash-aduanlaundry.module').then( m => m.DashAduanlaundryPageModule)
+    loadChildren: () => import('./dashboard/dash-aduanlaundry/dash-aduanlaundry.module').then( m => m.DashAduanlaundryPageModule)
   },
   {
     path: 'dash-aduancat',
-    loadChildren: () => import('./dash-aduancat/dash-aduancat.module').then( m => m.DashAduancatPageModule)
-  },  {
+    loadChildren: () => import('./dashboard/dash-aduancat/dash-aduancat.module').then( m => m.DashAduancatPageModule)
+  },
+  {
     path: 'table',
     loadChildren: () => import('./table/table.module').then( m => m.TablePageModule)
   },
