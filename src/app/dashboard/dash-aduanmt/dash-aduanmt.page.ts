@@ -15,11 +15,20 @@ import { connectableObservableDescriptor } from 'rxjs/internal/observable/Connec
 })
 export class DashAduanmtPage implements OnInit {
   [x: string]: any; 
+  FormStatus:FormGroup;
+  authenticationState = new ReplaySubject(); 
+  authService: any;
+  message:any;
   Data:any;
   DataLogin:any;
   DataResponse:any;
   DataCheckLogin:any;
-  DataRecord: any;  
+  DataRecord: any;
+  validations = {
+    'status': [
+     { type: 'required', message: 'pilihan edit status harus di isi' }
+    ]
+    };   
   constructor(
     private serviceService:ServiceService,
     private navCtrl: NavController, 
@@ -32,7 +41,11 @@ export class DashAduanmtPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.serviceService.getRecord('maintenance/my').subscribe(
+    this.FormStatus=this.formBuilder.group({
+      status:new FormControl('', Validators.compose([Validators.required])),
+    });
+    console.log(this.FormStatus.errors);
+    this.serviceService.getRecord('maintenance/task-my').subscribe(
       data => {
         this.DataRecord=data.body;
         localStorage.getItem(JSON.stringify(this.DataRecord));
@@ -56,6 +69,38 @@ export class DashAduanmtPage implements OnInit {
         }
       );
   }
+
+  async submitStatus(){
+    const loading = await this.loadingController.create({
+      message: 'Please wait...'
+    });
+    await loading.present();
+    this.serviceService.submitaduan(this.FormStatus.value, 'laundry/update/1').subscribe(
+      data => {
+        this.presentToast("Edit Aduan Laundry Sukses");
+        console.log(this.FormStatus.value);
+        this.FormStatus.reset();
+        loading.dismiss();
+      },
+      error => {
+        console.log(error);
+        this.presentToast("Edit Aduan Laundry Gagal!!");
+        console.log(this.FormStatus.value);
+        this.FormStatus.reset();
+        loading.dismiss();
+      }
+    );
+   }
+
+   async presentToast(Message) {
+    const toast = await this.toastController.create({
+      message: Message,
+      duration: 2500,
+      position: "top"
+    });
+    toast.present();
+  }
+
 
     signout(){
     this.router.navigate(['dashboard']);

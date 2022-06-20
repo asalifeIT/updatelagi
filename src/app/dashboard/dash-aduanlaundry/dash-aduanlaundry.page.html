@@ -38,30 +38,30 @@
   </ion-item>
   <ion-card>
     <div class="account"><br>
+      <form class="container" [formGroup]="FormStatus" (ngSubmit)="submitStatus()">
       <ion-label class="head_lbl">Inbox Aduan Laundry</ion-label><br><br>
       <ion-progress-bar value="0" buffer="1"></ion-progress-bar>
       <ion-grid class="contnr">
         <ul color="dark" *ngFor="let data of DataRecord; let i = index">
           <li>Nrp :{{data.user_nrp}}</li>
           <li>Nama :{{data.user_name}}</li>
-            <li>Lokasi :{{data.mess}}</li>
-            <li>Tanggal Laundry :{{data.tanggal_laundry}}</li>
-            <li>Tanggal Aduan :{{data.tanggal_aduan}}</li>
-            <li>Status Aduan:{{data.status}}</li>
-            <ion-select multiple="false" class="selectModal" placeholder="Edit Status" text="Hello" okText="Ok" cancelText="Dismiss" (ionChange)="activitySelect($event)">
-              <ion-select-option *ngFor="let data of DataRecord; let i=index" value="{{data.status}}">{{data.status}}</ion-select-option>
-            </ion-select>
-            
-            <ion-button slot="end" shape="round"(click)="editEd()">
-              Edit
-            </ion-button>
+            <li>Mess :{{data.mess}}</li>
+            <li>Jenis Pakaian: {{data.jenis_pakaian}}</li>
+            <li>Jenis Deviasi: {{data.jenis_deviasi}}</li>
+            <li class="warna"> Status: {{data.status}}</li>
+            <li>
+           <ion-label>Edit Status</ion-label>  <ion-select formControlName="status">
+          <ion-select-option ngvalue="SEARCHING">SEARCHING</ion-select-option>
+          <ion-select-option ngvalue="COMPENSATION">COMPENSATION</ion-select-option>
+          <ion-select-option ngvalue="DONE">DONE</ion-select-option>
+          </ion-select> 
+        </li>
+          <ion-button type="submit" color="primary">Simpan</ion-button>
             <ion-progress-bar value="0.25" buffer="0.5"></ion-progress-bar>
             <ion-progress-bar value="0" buffer="1"></ion-progress-bar>
           </ul>
       </ion-grid>
+    </form>
     </div>
   </ion-card>
-
   </ion-content>
-  
-  

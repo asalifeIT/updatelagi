@@ -38,6 +38,7 @@
   </ion-item>
   <ion-card>
     <div class="account"><br>
+      <form class="container" [formGroup]="FormStatus" (ngSubmit)="submitStatus()">
       <ion-label class="head_lbl">Inbox Aduan Catering</ion-label><br><br>
       <ion-progress-bar value="0" buffer="1"></ion-progress-bar>
       <ion-grid class="contnr">
@@ -47,17 +48,18 @@
             <li>Lokasi :{{data.lokasi}}</li>
             <li>Deskripsi: {{data.kritik_saran}}</li>
             <li class="warna"> Status: {{data.status}}</li>
-            <ion-select multiple="false" class="selectModal" placeholder="Edit Status" text="Hello" okText="Ok" cancelText="Dismiss" (ionChange)="activitySelect($event)">
-              <ion-select-option *ngFor="let data of DataRecord; let i=index" value="{{data.status}}">{{data.status}}</ion-select-option>
-            </ion-select>
-            <ion-button slot="end" shape="round" (click)="editEd()">
-              Edit
-            </ion-button>
+            <li>Edit Status</li>
+             <ion-select formControlName="status">
+          <ion-select-option ngvalue="INQUIRY">INQUIRY</ion-select-option>
+          <ion-select-option ngvalue="INVESTIGATION">INVESTIGATION</ion-select-option>
+          <ion-select-option ngvalue="CLOSED">CLOSED</ion-select-option>
+          </ion-select> 
+          <ion-button type="submit" color="primary">Simpan</ion-button>
             <ion-progress-bar value="0.25" buffer="0.5"></ion-progress-bar>
             <ion-progress-bar value="0" buffer="1"></ion-progress-bar>
-           
           </ul>
       </ion-grid>
+    </form>
     </div>
   </ion-card>
   </ion-content>

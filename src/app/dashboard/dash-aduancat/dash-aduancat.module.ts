@@ -1,19 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
-
 import { DashAduancatPageRoutingModule } from './dash-aduancat-routing.module';
-
 import { DashAduancatPage } from './dash-aduancat.page';
+import  {ReactiveFormsModule, FormsModule} from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DashAduancatPageRoutingModule
+    DashAduancatPageRoutingModule,
+    ReactiveFormsModule
   ],
   declarations: [DashAduancatPage]
 })

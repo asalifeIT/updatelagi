@@ -15,11 +15,20 @@ import { connectableObservableDescriptor } from 'rxjs/internal/observable/Connec
 })
 export class DashAduanlaundryPage implements OnInit {
   [x: string]: any; 
+  FormStatus:FormGroup;
+  authenticationState = new ReplaySubject(); 
+  authService: any;
+  message:any;
   Data:any;
   DataLogin:any;
   DataResponse:any;
   DataCheckLogin:any;
-  DataRecord: any;  
+  DataRecord: any;
+  validations = {
+    'status': [
+     { type: 'required', message: 'pilihan edit status harus di isi' }
+    ]
+    };  
 
   constructor(
     private serviceService:ServiceService,
@@ -29,10 +38,15 @@ export class DashAduanlaundryPage implements OnInit {
       private platform: Platform,
       public toastController: ToastController,
       private router: Router,
-      public util: UtilService
+      public util: UtilService,
+      private formBuilder: FormBuilder
   ) { }
 
   ngOnInit() {
+    this.FormStatus=this.formBuilder.group({
+      status:new FormControl('', Validators.compose([Validators.required])),
+    });
+    console.log(this.FormStatus.errors);
     this.serviceService.getRecord('laundry/all').subscribe(
       data => {
         this.DataRecord=data.body;
@@ -58,18 +72,40 @@ export class DashAduanlaundryPage implements OnInit {
       );
        }
 
-       editEd() {
-        this.serviceService.putRecord('laundry/update/1').subscribe(
+  
+      async submitStatus(){
+        const loading = await this.loadingController.create({
+          message: 'Please wait...'
+        });
+        await loading.present();
+        this.serviceService.submitaduan(this.FormStatus.value, 'laundry/update/1').subscribe(
           data => {
-            this.DataRecord=data.body;
-            localStorage.putItem(JSON.stringify(this.DataRecord));
-            console.log(this.DataRecord);
-            },
-            error => {
-            console.log("err", error);
-            }
-          );
+            this.presentToast("Edit Aduan Laundry Sukses");
+            console.log(this.FormStatus.value);
+            this.FormStatus.reset();
+            loading.dismiss();
+          },
+          error => {
+            console.log(error);
+            this.presentToast("Edit Aduan Laundry Gagal!!");
+            console.log(this.FormStatus.value);
+            this.FormStatus.reset();
+            loading.dismiss();
+          }
+        );
+       }
+    
+       async presentToast(Message) {
+        const toast = await this.toastController.create({
+          message: Message,
+          duration: 2500,
+          position: "top"
+        });
+        toast.present();
       }
+
+
+
 
     signout(){
     this.router.navigate(['dashboard']);
