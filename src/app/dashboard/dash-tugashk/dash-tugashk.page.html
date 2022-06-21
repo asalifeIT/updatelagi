@@ -23,6 +23,7 @@
 </ion-header>
 
  <ion-content [fullscreen]="true">
+  
   <div class="main-header"><ion-chip class="dash" color="light">DASHBOARD TUGAS HOUSEKEEPING</ion-chip>
   </div>
    <ion-item lines="none">
@@ -36,28 +37,77 @@
         </div></div></ion-label>
     </div>
   </ion-item>
-  <ion-card>
-    <div class="account"><br>
-      <ion-label class="head_lbl">Inbox Tugas Housekeeping</ion-label><br><br>
-      <ion-progress-bar value="0" buffer="1"></ion-progress-bar>
-      <ion-grid class="contnr">
-        <ul color="dark" *ngFor="let data of DataRecord; let i = index">
-          <li>Nrp :{{data.user_nrp}}</li>
-          <li>Nama :{{data.user_name}}</li>
-            <li>Lokasi :{{data.lokasi}}</li>
-            <li>Deskripsi: {{data.deskripsi}}</li>
-            <li class="warna"> Status: {{data.status}}</li>
-            <ion-select multiple="false" class="selectModal" placeholder="Edit Status" text="Hello" okText="Ok" cancelText="Dismiss" (ionChange)="activitySelect($event)">
-              <ion-select-option *ngFor="let data of DataRecord; let i=index" value="{{data.status}}">{{data.status}}</ion-select-option>
-            </ion-select>
-            <ion-button slot="end" shape="round" (click)="editEd()">
-              Edit
-            </ion-button>
-            <ion-progress-bar value="0.25" buffer="0.5"></ion-progress-bar>
-            <ion-progress-bar value="0" buffer="1"></ion-progress-bar>
-           
-          </ul>
-      </ion-grid>
+
+  <ion-content class="ion-padding">
+    <div class="main-header"><ion-chip class="dash" color="light">Inbox Tugas Housekeeping</ion-chip></div>
+
+    <div class="segments">
+      <ion-segment mode="md" [(ngModel)]="current">
+        <ion-segment-button [value]="1">
+          <ion-label>Kamar</ion-label>
+        </ion-segment-button>
+        <ion-segment-button [value]="2">
+          <ion-label>Non Kamar</ion-label>
+        </ion-segment-button>
+      </ion-segment>
     </div>
-  </ion-card>
+  
+    <div *ngIf="current == 1">
+    
+        <div class="account"><br>
+          <form class="container" [formGroup]="FormStatus" (ngSubmit)="submitStatus()">
+         
+          <ion-grid class="contnr">
+                 <ul color="dark" *ngFor="let data of DataRecord; let i = index">
+                <ion-label>Komponen Kamar / Room</ion-label>
+                <ion-progress-bar value="" buffer="1"></ion-progress-bar>
+                <li>Lantai Kamar:{{data.lantai_kamar}}</li>
+                <li>Lantai Toilet:{{data.lantai_toilet}}</li>
+                <li>Nomor Kamar:{{data.no_kamar}}</li>
+                <li>Nama Mess:{{data.mess}}</li>
+                <li>Edit Tugas</li>
+                 <ion-select formControlName="status">
+              <ion-select-option ngvalue="TRUE">TRUE</ion-select-option>
+              <ion-select-option ngvalue="FALSE">FALSE</ion-select-option>
+              </ion-select> 
+              <ion-button type="submit" color="primary">Simpan</ion-button>
+                <ion-progress-bar value="0.25" buffer="0.5"></ion-progress-bar>
+                <ion-progress-bar value="0" buffer="1"></ion-progress-bar>
+              </ul>
+          </ion-grid>
+        </form>
+        </div>
+  
+  
+    </div>
+  
+    <div *ngIf="current == 2">
+      <div class="account"><br>
+        <form class="container" [formGroup]="FormStatus" (ngSubmit)="submitStatus()">
+        <ion-grid class="contnr">
+               <ul color="dark" *ngFor="let data of DataRecord; let i = index">
+              <ion-label>Komponen Non Kamar / Room</ion-label>
+              <ion-progress-bar value="" buffer="1"></ion-progress-bar>
+              <li>Lantai Kamar:{{data.lantai_kamar}}</li>
+              <li>Lantai Toilet:{{data.lantai_toilet}}</li>
+              <li>Nomor Kamar:{{data.no_kamar}}</li>
+              <li>Nama Mess:{{data.mess}}</li>
+              <li>Edit Tugas</li>
+               <ion-select formControlName="status">
+            <ion-select-option ngvalue="TRUE">TRUE</ion-select-option>
+            <ion-select-option ngvalue="FALSE">FALSE</ion-select-option>
+            </ion-select> 
+            <ion-button type="submit" color="primary">Simpan</ion-button>
+              <ion-progress-bar value="0.25" buffer="0.5"></ion-progress-bar>
+              <ion-progress-bar value="0" buffer="1"></ion-progress-bar>
+            </ul>
+        </ion-grid>
+      </form>
+      </div>
+      
+  
+    </div>
+
+
+
   </ion-content>

@@ -27,6 +27,14 @@ const routes: Routes = [
     path: 'dash-tugasmt',
     loadChildren: () => import('./dash-tugasmt/dash-tugasmt.module').then( m => m.DashTugasmtPageModule)
   },
+  {
+    path: 'dashroom',
+    loadChildren: () => import('./dashroom/dashroom.module').then( m => m.DashroomPageModule)
+  },
+  {
+    path: 'dashnonroom',
+    loadChildren: () => import('./dashnonroom/dashnonroom.module').then( m => m.DashnonroomPageModule)
+  },
 
   
 ];

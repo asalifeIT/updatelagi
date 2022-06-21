@@ -78,7 +78,7 @@ export class DashAduanlaundryPage implements OnInit {
           message: 'Please wait...'
         });
         await loading.present();
-        this.serviceService.submitaduan(this.FormStatus.value, 'laundry/update/1').subscribe(
+        this.serviceService.submitaduan(this.FormStatus.value, 'laundry/my').subscribe(
           data => {
             this.presentToast("Edit Aduan Laundry Sukses");
             console.log(this.FormStatus.value);

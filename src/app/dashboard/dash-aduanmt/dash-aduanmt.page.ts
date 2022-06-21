@@ -37,7 +37,8 @@ export class DashAduanmtPage implements OnInit {
       private platform: Platform,
       public toastController: ToastController,
       private router: Router,
-      public util: UtilService
+      public util: UtilService,
+      private formBuilder: FormBuilder
   ) { }
 
   ngOnInit() {
@@ -45,7 +46,7 @@ export class DashAduanmtPage implements OnInit {
       status:new FormControl('', Validators.compose([Validators.required])),
     });
     console.log(this.FormStatus.errors);
-    this.serviceService.getRecord('maintenance/task-my').subscribe(
+    this.serviceService.getRecord('maintenance/my').subscribe(
       data => {
         this.DataRecord=data.body;
         localStorage.getItem(JSON.stringify(this.DataRecord));
@@ -75,16 +76,16 @@ export class DashAduanmtPage implements OnInit {
       message: 'Please wait...'
     });
     await loading.present();
-    this.serviceService.submitaduan(this.FormStatus.value, 'laundry/update/1').subscribe(
+    this.serviceService.submitaduan(this.FormStatus.value, 'maintenance/all').subscribe(
       data => {
-        this.presentToast("Edit Aduan Laundry Sukses");
+        this.presentToast("Edit Aduan Maintenance Sukses");
         console.log(this.FormStatus.value);
         this.FormStatus.reset();
         loading.dismiss();
       },
       error => {
         console.log(error);
-        this.presentToast("Edit Aduan Laundry Gagal!!");
+        this.presentToast("Edit Aduan Maintenance Gagal!!");
         console.log(this.FormStatus.value);
         this.FormStatus.reset();
         loading.dismiss();
@@ -112,3 +113,4 @@ export class DashAduanmtPage implements OnInit {
 
 
 }
+

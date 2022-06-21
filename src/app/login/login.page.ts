@@ -96,8 +96,7 @@ export class LoginPage implements OnInit {
       position: "top"
     });
     toast.present();
-    
-    
+
   }
 
   Login() {

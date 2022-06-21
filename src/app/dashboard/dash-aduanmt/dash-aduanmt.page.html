@@ -45,14 +45,15 @@
         <ul color="dark" *ngFor="let data of DataRecord; let i = index">
           <li>Nrp :{{data.user_nrp}}</li>
           <li>User :{{data.user_name}}</li>
-          <li>Jenis Aset:{{data.jenis_aset}}</li>
-            <li>Lokasi Aset :{{data.lokasi_aset}}</li>
+          <li>Jenis Aduan:{{data.jenis_aduan}}</li>
+            <li>Lokasi Aset :{{data.lokasi}}</li>
             <li class="warna"> Status: {{data.status}}</li>
-            <li class="warna"> Keterangan: {{data.keterangan}}</li>
             <li>Edit Status</li>
              <ion-select formControlName="status">
-          <ion-select-option ngvalue="CLEANING_PROGRESS">CLEANING_PROGRESS</ion-select-option>
-          <ion-select-option ngvalue="DONE">DONE</ion-select-option>
+          <ion-select-option ngvalue="OPEN">OPEN</ion-select-option>
+          <ion-select-option ngvalue="PROGRESS">PROGRESS</ion-select-option>
+          <ion-select-option ngvalue="HOLD">HOLD</ion-select-option>
+          <ion-select-option ngvalue="CLOSED">CLOSED</ion-select-option>
           </ion-select> 
           <ion-button type="submit" color="primary">Simpan</ion-button>
             <ion-progress-bar value="0.25" buffer="0.5"></ion-progress-bar>
