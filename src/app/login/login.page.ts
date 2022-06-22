@@ -19,7 +19,6 @@ export class LoginPage implements OnInit {
   dataLogin:any;
   permissions:string[];
   private routerEvents: any;
-  
 
   validations = {
     'nrp': [
@@ -110,10 +109,9 @@ export class LoginPage implements OnInit {
     throw new Error('Method not implemented.');
   }
 
-  ngOnDestroy() {
-    if (typeof this.routerEvents !== 'undefined') this.routerEvents.unsubscribe();
-}
+
 public clear() {
   localStorage.clear();
 }
+
 }

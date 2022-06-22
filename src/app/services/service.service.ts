@@ -175,9 +175,28 @@ export class ServiceService{
       }),
        );
   }
+  
+  getRecord2(url){
+    let dataStorage=JSON.parse(localStorage.getItem(this.TOKEN_KEY));
+    this.token=dataStorage;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': "Bearer "+ this.token
+    });
+    return this.http.get(this.API_URL + url,{ headers: headers, observe: 'response' }).pipe(
+      tap(Data => {
+        this.DataRecord2=Data.body;
+        let message='Koneksi APi Berhasil!';
+        return message;
 
-
-
+      }),
+      catchError((err, caught) => {
+        let message = "Gagal Koneksi API!";
+        return throwError(message);
+      }),
+       );
+  }
+  
 
   //logout
   signout() {

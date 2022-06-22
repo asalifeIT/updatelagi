@@ -56,15 +56,32 @@
     
         <div class="account"><br>
           <form class="container" [formGroup]="FormStatus" (ngSubmit)="submitStatus()">
-         
           <ion-grid class="contnr">
                  <ul color="dark" *ngFor="let data of DataRecord; let i = index">
                 <ion-label>Komponen Kamar / Room</ion-label>
                 <ion-progress-bar value="" buffer="1"></ion-progress-bar>
-                <li>Lantai Kamar:{{data.lantai_kamar}}</li>
-                <li>Lantai Toilet:{{data.lantai_toilet}}</li>
+                <li>Work User:{{data.user}}</li>
+                <li>Department:{{data.department}}</li>
                 <li>Nomor Kamar:{{data.no_kamar}}</li>
                 <li>Nama Mess:{{data.mess}}</li>
+                <li>Lantai Kamar:{{data.lantai_kamar}}</li>
+                <li>Lantai Toilet:{{data.lantai_toilet}}</li>
+                <li>Lantai Langit Kamar:{{data.lantai_langit_kamar}}</li>
+                <li>Lantai Langit Kamar mandi:{{data.lantai_langit_kamar_mandi}}</li>
+                <li>WC:{{data.wc}}</li>
+                <li>Wastafel:{{data.wastafel}}</li>
+                <li>Tempat Tidur:{{data.tempat_tidur}}</li>
+                <li>Sprei:{{data.sprei}}</li>
+                <li>Selimut:{{data.selimut}}</li>
+                <li>AC:{{data.ac}}</li>
+                <li>Meja:{{data.meja}}</li>
+                <li>Cermin:{{data.cermin}}</li>
+                <li>Keran:{{data.keran}}</li>
+                <li>Shower:{{data.shower}}</li>
+                <li>Tempat Sampah:{{data.tempat_sampah}}</li>
+                <li>Jendela:{{data.jendela}}</li>
+                <li>Gorden:{{data.gorden}}</li>
+                <li>Lemari:{{data.lemari}}</li>
                 <li>Edit Tugas</li>
                  <ion-select formControlName="status">
               <ion-select-option ngvalue="TRUE">TRUE</ion-select-option>
@@ -72,34 +89,55 @@
               </ion-select> 
               <ion-button type="submit" color="primary">Simpan</ion-button>
                 <ion-progress-bar value="0.25" buffer="0.5"></ion-progress-bar>
-                <ion-progress-bar value="0" buffer="1"></ion-progress-bar>
+                <ion-progress-bar value="0.25" buffer="1"></ion-progress-bar>
               </ul>
           </ion-grid>
         </form>
         </div>
-  
-  
     </div>
   
     <div *ngIf="current == 2">
       <div class="account"><br>
-        <form class="container" [formGroup]="FormStatus" (ngSubmit)="submitStatus()">
+        <form class="container" [formGroup]="FormStatus2" (ngSubmit)="submitStatus()">
         <ion-grid class="contnr">
-               <ul color="dark" *ngFor="let data of DataRecord; let i = index">
+               <ul color="dark" *ngFor="let data of DataRecord2; let i = index">
               <ion-label>Komponen Non Kamar / Room</ion-label>
               <ion-progress-bar value="" buffer="1"></ion-progress-bar>
-              <li>Lantai Kamar:{{data.lantai_kamar}}</li>
-              <li>Lantai Toilet:{{data.lantai_toilet}}</li>
-              <li>Nomor Kamar:{{data.no_kamar}}</li>
+              <li>Work User:{{data.user}}</li>
+             <li>Department:{{data.department}}</li>
               <li>Nama Mess:{{data.mess}}</li>
+              <li>Ruang TV Kaca Jendela Kusen:{{data.ruang_tv_kaca_jendela_kusen}}</li>
+              <li>Ruang TV Cermin:{{data.ruang_tv_cermin}}</li>
+              <li>Ruang TV Dispenser:{{data.ruang_tv_dispenser}}</li>
+              <li>Ruang TV AC:{{data.ruang_tv_ac}}</li>
+              <li>Ruang TV Rak TV:{{data.ruang_tv_rak_tv}}</li>
+              <li>Ruang TV Tirai Karpet:{{data.ruang_tv_tirai_karpet}}</li>
+              <li>Ruang TV TV Dinding:{{data.ruang_tv_dinding}}</li>
+              <li>Ruang TV TV Lantai:{{data.ruang_tv_lantai}}</li>
+              <li>Koridor Tempat Sampah:{{data.koridor_tempat_sampah}}</li>
+              <li>Koridor Pintu:{{data.koridor_pintu}}</li>
+              <li>Koridor Lantai Sudut Lantai:{{data.koridor_lantai_sudut_lantai}}</li>
+              <li>Koridor Keset:{{data.koridor_keset}}</li>
+              <li>Koridor Pantry:{{data.koridor_pantry}}</li>
+              <li>Koridor Wastafel Chrome Fixture:{{data.koridor_wastafel_chrome_fixture}}</li>
+              <li>Koridor Perlatan Makan Rak Piring:{{data.koridor_peralatan_makan_rak_piring}}</li>
+              <li>Koridor Pintu Dinding:{{data.koridor_pintu_dinding}}</li>
+              <li>Koridor Kaca Jendela Kusen:{{data.koridor_kanca_jendela_kusen}}</li>
+              <li>Toilet Pintu Dinding:{{data.toilet_pintu_dinding}}</li>
+              <li>Toilet Tempat Sampah:{{data.toilet_tempat_sampah}}</li>
+              <li>Toilet Wastafel Chrome Fixture:{{data.toilet_wastafel_chrome_fixture}}</li>
+              <li>Toilet Urinoir Selang Toilet Bowl:{{data.toilet_urinoir_selang_toilet_bowl}}</li>
+              <li>Toilet Shower Area Curtain:{{data.toilet_shower_area_curtain}}</li>
+              <li>Toilet Sudut Lantai:{{data.toilet_lantai_sudut_lantai}}</li>
+              <li>Toilet Teras:{{data.toilet_teras}}</li>
               <li>Edit Tugas</li>
-               <ion-select formControlName="status">
+              <ion-select formControlName="status">
             <ion-select-option ngvalue="TRUE">TRUE</ion-select-option>
             <ion-select-option ngvalue="FALSE">FALSE</ion-select-option>
             </ion-select> 
-            <ion-button type="submit" color="primary">Simpan</ion-button>
+            <ion-button type="submit2" color="primary">Simpan</ion-button>
               <ion-progress-bar value="0.25" buffer="0.5"></ion-progress-bar>
-              <ion-progress-bar value="0" buffer="1"></ion-progress-bar>
+              <ion-progress-bar value="0.25" buffer="1"></ion-progress-bar>
             </ul>
         </ion-grid>
       </form>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Platform, NavController,LoadingController } from '@ionic/angular';
 import { ServiceService } from '../services/service.service';
-import { Router } from '@angular/router';
+import { Router, CanActivate } from '@angular/router';
 import { UtilService } from 'src/app/services/util.service';
 
 
@@ -44,7 +44,8 @@ export class HomePage implements OnInit {
     private serviceService: ServiceService,
     private router: Router,
     public util: UtilService,
-    public navCtrl: NavController
+    public navCtrl: NavController,
+
   ) {}
 
   ngOnInit() {
@@ -61,9 +62,8 @@ export class HomePage implements OnInit {
         console.log("error");
       }
     );
+
   }
-
-
 
 
 async signout(){
@@ -75,6 +75,7 @@ async signout(){
     this.serviceService.signout();
     loading.dismiss();
    }
+
 
 
 openRest() {

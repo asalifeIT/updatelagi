@@ -16,6 +16,7 @@ import { connectableObservableDescriptor } from 'rxjs/internal/observable/Connec
 export class DashTugashkPage implements OnInit {
   [x: string]: any; 
   FormStatus:FormGroup;
+  FormStatus2:FormGroup;
   authenticationState = new ReplaySubject(); 
   authService: any;
   message:any;
@@ -29,7 +30,10 @@ export class DashTugashkPage implements OnInit {
   validations = {
     'status': [
      { type: 'required', message: 'pilihan edit status harus di isi' }
-    ]
+    ],
+    'status2': [
+      { type: 'required', message: 'pilihan edit status harus di isi' }
+     ]
     };  
   constructor(
     private serviceService:ServiceService,
@@ -44,6 +48,7 @@ export class DashTugashkPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.someOtherMethod();
     this.FormStatus=this.formBuilder.group({
       status:new FormControl('', Validators.compose([Validators.required])),
     });
@@ -71,15 +76,45 @@ export class DashTugashkPage implements OnInit {
           console.log("error");
         }
       );
-
-  }
-
+      
+    }
+  
+    someOtherMethod() {
+      this.FormStatus2=this.formBuilder.group({
+        status2:new FormControl('', Validators.compose([Validators.required])),
+      });
+      console.log(this.FormStatus2.errors);
+      this.serviceService.getRecord2('task/mess').subscribe(
+        data => {
+          this.DataRecord2=data.body;
+          localStorage.getItem(JSON.stringify(this.DataRecord2));
+          console.log(this.DataRecord2);
+          },
+          error => {
+          console.log("err", error);
+          }
+        );
+        let dataStorage=JSON.parse(localStorage.getItem(this.serviceService.TOKEN_KEY));
+        // this.Username=dataStorage.data.Username;
+        this.serviceService.CekUser().subscribe(
+          data => {
+            this.DataLogin=data;
+            console.log(this.DataLogin)
+            this.Username=this.DataLogin.body.name;
+            localStorage.getItem(JSON.parse(localStorage.getItem("role")));
+          },
+          error => {
+            console.log("error");
+          }
+        );
+        
+      }
   async submitStatus(){
     const loading = await this.loadingController.create({
       message: 'Please wait...'
     });
     await loading.present();
-    this.serviceService.submitaduan(this.FormStatus.value, 'housekeeping/task/room').subscribe(
+    this.serviceService.submitaduan(this.FormStatus.value, 'task/room').subscribe(
       data => {
         this.presentToast("Edit Tugas Housekeeping Sukses");
         console.log(this.FormStatus.value);
@@ -96,6 +131,28 @@ export class DashTugashkPage implements OnInit {
     );
    }
 
+   async submitStatus2(){
+    const loading = await this.loadingController.create({
+      message: 'Please wait...'
+    });
+    await loading.present();
+    this.serviceService.submitaduan(this.FormStatus2.value, 'task/mess').subscribe(
+      data => {
+        this.presentToast("Edit Tugas Housekeeping Sukses");
+        console.log(this.FormStatus2.value);
+        this.FormStatus2.reset();
+        loading.dismiss();
+      },
+      error => {
+        console.log(error);
+        this.presentToast("Edit Tugas Housekeeping Gagal!!");
+        console.log(this.FormStatus2.value);
+        this.FormStatus2.reset();
+        loading.dismiss();
+      }
+    );
+   }
+
    async presentToast(Message) {
     const toast = await this.toastController.create({
       message: Message,
@@ -105,15 +162,17 @@ export class DashTugashkPage implements OnInit {
     toast.present();
   }
 
-  
-
+  refresh(): void {
+    window.location.reload();
+}
 
   signout(){
     this.router.navigate(['dashboard']);
   }
    
    ngOnDestroy() {
-    if (typeof this.routerEvents !== 'undefined') this.routerEvents.unsubscribe();
+    this.this.FormStatus.unsubscribe();
+    this.this.FormStatus2.unsubscribe();
   }
   public clear() {
     localStorage.clear();
