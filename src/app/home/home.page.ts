@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Platform, NavController,LoadingController } from '@ionic/angular';
 import { ServiceService } from '../services/service.service';
-import { Router, CanActivate } from '@angular/router';
+import { Router, CanActivate} from '@angular/router';
 import { UtilService } from 'src/app/services/util.service';
+import { RouterEvent } from '@angular/router';
 
 
 
@@ -44,7 +45,7 @@ export class HomePage implements OnInit {
     private serviceService: ServiceService,
     private router: Router,
     public util: UtilService,
-    public navCtrl: NavController,
+    public navCtrl: NavController
 
   ) {}
 
@@ -97,8 +98,8 @@ openMaintenance(){
 openDashboard(){
   this.router.navigate(['dashboard']);
 }
-ngOnDestroy() {
-  if (typeof this.routerEvents !== 'undefined') this.routerEvents.unsubscribe();
+public ngOnDestroy() {
+  this.routerEvents.unsubscribe();
 }
 
 }
