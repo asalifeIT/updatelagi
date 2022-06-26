@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: "http://asabeta.com:8080/api/"
+  apiUrl: "http://asabeta.com/api/"
 };
 
 

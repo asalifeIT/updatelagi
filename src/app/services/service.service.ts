@@ -12,12 +12,12 @@ import { Observable, throwError } from 'rxjs';
 export class ServiceService{
   [x: string]: any; 
   Data:any;
-  DataLogin:any;
+   DataLogin:any;
   DataResponse:any;
   DataCheckLogin:any;
   authenticationState = new ReplaySubject();
   token:any;
-  API_URL = "http://asabeta.com:8080/api/";
+  API_URL = 'http://asabeta.com:8080/api/';
   TOKEN_KEY = 'accesstoken';
   REFRESH_TOKEN_KEY = 'refreshtoken';
   ROLE = 'role';
@@ -197,6 +197,29 @@ export class ServiceService{
        );
   }
   
+
+  updateaduan(form, url){
+    let dataStorage=JSON.parse(localStorage.getItem(this.TOKEN_KEY));
+    this.token=dataStorage;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': "Bearer "+ this.token
+    });
+    return this.http.put(this.API_URL + url, form, { headers: headers, observe: 'response' }).pipe(
+      tap(Data => {
+        this.DataResponse=Data;        
+        let message='Data Anda terupdate.';
+        return message;
+      }),
+      
+      catchError((err) => {
+        let message = "Gagal update! ";
+        return throwError(err);
+      })
+    );
+  }
+
+
 
   //logout
   signout() {

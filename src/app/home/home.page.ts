@@ -13,7 +13,7 @@ import { RouterEvent } from '@angular/router';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
-
+  RouterEvent : any;
   features: any[] = [
     {id: 1, name: 'Catering', src: 'assets/svg/dining.svg', background: '', page: ''},
   ]; 

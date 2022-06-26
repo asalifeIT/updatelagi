@@ -38,12 +38,13 @@
   </ion-item>
   <ion-card>
     <div class="account"><br>
-      <form class="container" [formGroup]="FormStatus" (ngSubmit)="submitStatus()">
+      <form class="container" [formGroup]="FormStatus" (ngSubmit)="updateaduan()">
       <ion-label class="head_lbl">Inbox Aduan Catering</ion-label><br><br>
       <ion-progress-bar value="0" buffer="1"></ion-progress-bar>
       <ion-grid class="contnr">
         <ul color="dark" *ngFor="let data of DataRecord; let i = index">
           <li>Nrp :{{data.user_nrp}}</li>
+          <li formControlName="id">id :{{data.id}}</li>
           <li>Nama :{{data.user_name}}</li>
             <li>Lokasi :{{data.lokasi}}</li>
             <li>Deskripsi: {{data.kritik_saran}}</li>
@@ -54,6 +55,7 @@
           <ion-select-option ngvalue="INVESTIGATION">INVESTIGATION</ion-select-option>
           <ion-select-option ngvalue="CLOSED">CLOSED</ion-select-option>
           </ion-select> 
+
           <ion-button type="submit" color="primary">Simpan</ion-button>
             <ion-progress-bar value="0.25" buffer="0.5"></ion-progress-bar>
             <ion-progress-bar value="0" buffer="1"></ion-progress-bar>
