@@ -1,12 +1,10 @@
 import { ServiceService } from 'src/app/services/service.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators, ReactiveFormsModule, FormArray, AbstractControl } from '@angular/forms';
+import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController, ModalController, LoadingController, ToastController, Platform } from '@ionic/angular';
-import { Observable, ReplaySubject, throwError } from "rxjs/index";
-import { catchError } from 'rxjs/operators';
+import { ReplaySubject } from "rxjs/index";
 import { UtilService } from 'src/app/services/util.service';
-import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 import { UpdateStatusComponent } from './update-status/update-status.component';
 
 @Component({
@@ -25,11 +23,15 @@ export class DashAduancatPage implements OnInit {
   DataResponse: any;
   DataCheckLogin: any;
   DataRecord: any;
+  test: any;
   validations = {
     'status': [
+     { type: 'required', message: 'pilihan edit status harus di isi' }
+    ],
+    'id': [
       { type: 'required', message: 'pilihan edit status harus di isi' }
-    ]
-  };
+     ]
+    };
 
   constructor(
     private serviceService: ServiceService,
@@ -74,25 +76,26 @@ export class DashAduancatPage implements OnInit {
     );
   }
 
-  async submitStatus() {
+  async updateaduan(id:string){
     const loading = await this.loadingController.create({
       message: 'Please wait...'
     });
     await loading.present();
-    this.serviceService.submitaduan(this.FormStatus.value, 'catering/update-status').subscribe(
+    this.serviceService.updateaduan(this.FormStatus.value, 'catering/update-status/'+ 'id').subscribe(
       data => {
-        this.presentToast("Edit Aduan Catering Sukses");
+        this.presentToast("Edit Status Aduan Catering Sukses");
         console.log(this.FormStatus.value);
         this.FormStatus.reset();
         loading.dismiss();
       },
+
       error => {
         console.log(error);
-        this.presentToast("Edit Aduan Catering Gagal!!");
+        this.presentToast("Edit Status Aduan Catering Gagal!!");
         console.log(this.FormStatus.value);
         this.FormStatus.reset();
         loading.dismiss();
-      }
+      }  
     );
   }
 
@@ -112,7 +115,7 @@ export class DashAduancatPage implements OnInit {
   ngOnDestroy() {
     if (typeof this.routerEvents !== 'undefined') this.routerEvents.unsubscribe();
   }
-
+  
   async openModal(data) {
     const modal = await this.modalController.create({
       component: UpdateStatusComponent,

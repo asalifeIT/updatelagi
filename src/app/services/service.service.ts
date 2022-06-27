@@ -198,6 +198,29 @@ export class ServiceService {
   }
 
 
+  updateaduan(form, url){
+    let dataStorage=JSON.parse(localStorage.getItem(this.TOKEN_KEY));
+    this.token=dataStorage;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': "Bearer "+ this.token
+    });
+    return this.http.put(this.API_URL + url, form, { headers: headers, observe: 'response' }).pipe(
+      tap(Data => {
+        this.DataResponse=Data;        
+        let message='Data Anda terupdate.';
+        return message;
+      }),
+      
+      catchError((err) => {
+        let message = "Gagal update! ";
+        return throwError(err);
+      })
+    );
+  }
+
+
+
   //logout
   signout() {
     this.authenticationState.next(false);
