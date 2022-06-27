@@ -1,0 +1,47 @@
+<ion-header class="ion-no-border" mode="md">
+  <ion-toolbar>
+    <ion-title>Update Status</ion-title>
+    <ion-button slot="end">
+      <ion-button (click)="dismissModal()">Close</ion-button>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <!-- <form class="container" [formGroup]="FormStatusDetail" (ngSubmit)="submitStatus()"> -->
+
+  <ion-item>
+    <ion-label position="floating">Status</ion-label>
+    <ion-select [formControl]="statusInput" value={{status}}>
+      <ion-select-option value="OPEN">OPEN</ion-select-option>
+      <ion-select-option value="PROGRESS">PROGRESS</ion-select-option>
+      <ion-select-option value="HOLD">HOLD</ion-select-option>
+      <ion-select-option value="CLOSED">CLOSED</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">PIC</ion-label>
+    <ion-select [formControl]="picInput" value="{{pic_nrp}}">
+      <ion-select-option *ngFor="let data of usersMt" value="{{data.nrp}}">{{data.nrp}} ( {{data.name}} ) </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Durasi</ion-label>
+    <ion-datetime value="{{duration.substring(0, 10)}}" placeholder="Select Date" [formControl]="durasiInput"></ion-datetime>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating" >Priority</ion-label>
+    <ion-select [formControl]="priorityInput" value={{priority}}>
+      <ion-select-option value="IMPORTANT">Important</ion-select-option>
+      <ion-select-option value="CRITICAL">Critical</ion-select-option>
+      <ion-select-option value="IMPORTANT_CRITICAL">Important & Critical</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-button expand="block" (click)="updateStatusAndDetail()" class="ion-margin-top">
+    Update
+  </ion-button>
+  <!-- </form> -->
+</ion-content>

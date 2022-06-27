@@ -1,0 +1,85 @@
+<ion-header class="ion-no-border" mode="md">
+  <ion-toolbar>
+    <ion-title>Verifikasi HK</ion-title>
+    <ion-button slot="end" (click)="dismissModal()">Close</ion-button>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <div [formGroup]="verifKamar">
+    <ion-label class="sub_heading">Komponen Ruang Kamar </ion-label>
+    <ion-item>
+      <ion-checkbox color="primary" slot="end" formControlName="lantaikamar" [checked]="isChecked"></ion-checkbox>
+      <ion-label>Lantai Kamar</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-checkbox color="primary" slot="end" formControlName="lantaitoilet" [checked]="isChecked"></ion-checkbox>
+      <ion-label>Lantai Toilet</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-checkbox color="primary" slot="end" formControlName="lantailangitkamar" [checked]="isChecked"></ion-checkbox>
+      <ion-label>Lantai Langit Kamar</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-checkbox color="primary" slot="end" formControlName="lantailangitkamarmandi" [checked]="isChecked">
+      </ion-checkbox>
+      <ion-label>Lantai Langit Kamar Mandi</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-checkbox color="primary" slot="end" formControlName="wc" [checked]="isChecked"></ion-checkbox>
+      <ion-label>WC</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-checkbox color="primary" slot="end" formControlName="wastafel" [checked]="isChecked"></ion-checkbox>
+      <ion-label>Wastafel</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-checkbox color="primary" slot="end" formControlName="tempattidur" [checked]="isChecked"></ion-checkbox>
+      <ion-label>Tempat Tidur</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-checkbox color="primary" slot="end" formControlName="sprei" [checked]="isChecked"></ion-checkbox>
+      <ion-label>Sprei</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-checkbox color="primary" slot="end" formControlName="selimut" [checked]="isChecked"></ion-checkbox>
+      <ion-label>Selimut</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-checkbox color="primary" slot="end" formControlName="ac" [checked]="isChecked"></ion-checkbox>
+      <ion-label>AC</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-checkbox color="primary" slot="end" formControlName="meja" [checked]="isChecked"></ion-checkbox>
+      <ion-label>Meja</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-checkbox color="primary" slot="end" formControlName="cermin" [checked]="isChecked"></ion-checkbox>
+      <ion-label>Cermin</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-checkbox color="primary" slot="end" formControlName="keran" [checked]="isChecked"></ion-checkbox>
+      <ion-label>Keran</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-checkbox color="primary" slot="end" formControlName="shower" [checked]="isChecked"></ion-checkbox>
+      <ion-label>Shower</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-checkbox color="primary" slot="end" formControlName="tempatsampah" [checked]="isChecked"></ion-checkbox>
+      <ion-label>Tempat Sampah</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-checkbox color="primary" slot="end" formControlName="jendela" [checked]="isChecked"></ion-checkbox>
+      <ion-label>Jendela</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-checkbox color="primary" slot="end" formControlName="gorden" [checked]="isChecked"></ion-checkbox>
+      <ion-label>Gorden</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-checkbox color="primary" slot="end" formControlName="lemari" [checked]="isChecked"></ion-checkbox>
+      <ion-label>Lemari</ion-label>
+    </ion-item>
+    <ion-button expand="block" (click)="updateDetailRoom()" class="ion-margin-top">Verifikasi</ion-button>
+  </div>
+</ion-content>

@@ -1,19 +1,12 @@
-<!--
-  Authors : bunchdevelopers (Rahul Jograna)
-  Website : https://bunchdevelopers.com/
-  App Name : ionic6Template Pack
-  This App Template Source code is licensed as per the
-  terms found in the Website https://bunchdevelopers.com/license
-  Copyright and Good Faith Purchasers © 2021-present bunchdevelopers.
- -->
- <ion-header class="ion-no-border" mode="md">
+<ion-header class="ion-no-border" mode="md">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
       <ion-back-button color="danger">Back</ion-back-button>
     </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button (click)="signout()"><ion-label>Exit</ion-label>
+      <ion-button (click)="signout()">
+        <ion-label>Exit</ion-label>
         <ion-icon slot="end" name="exit-outline" color="dark"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -22,42 +15,33 @@
   </ion-toolbar>
 </ion-header>
 
- <ion-content [fullscreen]="true">
-  <div class="main-header"><ion-chip class="dash" color="light">DASHBOARD RATING CATERING</ion-chip>
+<ion-content [fullscreen]="true">
+  <div class="main-header">
+    <ion-chip class="dash" color="light">DASHBOARD RATING CATERING</ion-chip>
   </div>
-   <ion-item lines="none">
+  <ion-item lines="none">
     <ion-thumbnail>
-      <img src="assets/images/cus.png"/>
+      <img src="assets/images/cus.png" />
     </ion-thumbnail>
     <div class="name">
-      <ion-label class="center"><div>
+      <ion-label class="center">
         <div>
-        Selamat Datang {{Username}}
-        </div></div></ion-label>
+          <div>
+            Selamat Datang {{Username}}
+          </div>
+        </div>
+      </ion-label>
     </div>
   </ion-item>
-  <ion-card>
-    <div class="account"><br>
-      <ion-label class="head_lbl">Inbox Rating Catering</ion-label><br><br>
-      <ion-progress-bar value="0" buffer="1"></ion-progress-bar>
-      <ion-grid class="contnr">
-        <ul color="dark" *ngFor="let data of DataRecord; let i = index">
-          <li>Nrp :{{data.user_nrp}}</li>
-          <li>Nama :{{data.user_name}}</li>
-            <li>Lokasi :{{data.lokasi}}</li>
-            <li>Deskripsi: {{data.deskripsi}}</li>
-            <li class="warna"> Status: {{data.status}}</li>
-            <ion-select multiple="false" class="selectModal" placeholder="Edit Status" text="Hello" okText="Ok" cancelText="Dismiss" (ionChange)="activitySelect($event)">
-              <ion-select-option *ngFor="let data of DataRecord; let i=index" value="{{data.status}}">{{data.status}}</ion-select-option>
-            </ion-select>
-            <ion-button slot="end" shape="round" (click)="editEd()">
-              Edit
-            </ion-button>
-            <ion-progress-bar value="0.25" buffer="0.5"></ion-progress-bar>
-            <ion-progress-bar value="0" buffer="1"></ion-progress-bar>
-           
-          </ul>
-      </ion-grid>
-    </div>
-  </ion-card>
+  <ion-content class="ion-padding">
+    <ion-list>
+      <ion-item button *ngFor="let data of DataRecord; let i = index" (click)="openModal(data)">
+        <ion-label>
+          <h2>User: {{data.user.name}}</h2>
+          <p>Saran: {{data.saran}}</p>
+          <p>Poin: {{data.nilai1 + data.nilai2 + data.nilai3 + data.nilai4 + data.nilai5 + data.nilai6 + data.nilai7 + data.nilai8}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
   </ion-content>
+</ion-content>

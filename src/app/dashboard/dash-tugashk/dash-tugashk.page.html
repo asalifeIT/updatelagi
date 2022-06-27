@@ -1,19 +1,12 @@
-<!--
-  Authors : bunchdevelopers (Rahul Jograna)
-  Website : https://bunchdevelopers.com/
-  App Name : ionic6Template Pack
-  This App Template Source code is licensed as per the
-  terms found in the Website https://bunchdevelopers.com/license
-  Copyright and Good Faith Purchasers © 2021-present bunchdevelopers.
- -->
- <ion-header class="ion-no-border" mode="md">
+<ion-header class="ion-no-border" mode="md">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
       <ion-back-button color="danger">Back</ion-back-button>
     </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button (click)="signout()"><ion-label>Exit</ion-label>
+      <ion-button (click)="signout()">
+        <ion-label>Exit</ion-label>
         <ion-icon slot="end" name="exit-outline" color="dark"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -22,24 +15,30 @@
   </ion-toolbar>
 </ion-header>
 
- <ion-content [fullscreen]="true">
-  
-  <div class="main-header"><ion-chip class="dash" color="light">DASHBOARD TUGAS HOUSEKEEPING</ion-chip>
+<ion-content [fullscreen]="true">
+
+  <div class="main-header">
+    <ion-chip class="dash" color="light">DASHBOARD TUGAS HOUSEKEEPING</ion-chip>
   </div>
-   <ion-item lines="none">
+  <ion-item lines="none">
     <ion-thumbnail>
-      <img src="assets/images/cus.png"/>
+      <img src="assets/images/cus.png" />
     </ion-thumbnail>
     <div class="name">
-      <ion-label class="center"><div>
+      <ion-label class="center">
         <div>
-        Selamat Datang {{Username}}
-        </div></div></ion-label>
+          <div>
+            Selamat Datang {{Username}}
+          </div>
+        </div>
+      </ion-label>
     </div>
   </ion-item>
 
   <ion-content class="ion-padding">
-    <div class="main-header"><ion-chip class="dash" color="light">Inbox Tugas Housekeeping</ion-chip></div>
+    <div class="main-header">
+      <ion-chip class="dash" color="light">Inbox Tugas Housekeeping</ion-chip>
+    </div>
 
     <div class="segments">
       <ion-segment mode="md" [(ngModel)]="current">
@@ -51,101 +50,36 @@
         </ion-segment-button>
       </ion-segment>
     </div>
-  
-    <div *ngIf="current == 1">
-    
-        <div class="account"><br>
-          <form class="container" [formGroup]="FormStatus" (ngSubmit)="submitStatus()">
-          <ion-grid class="contnr">
-                 <ul color="dark" *ngFor="let data of DataRecord; let i = index">
-                <ion-label>Komponen Kamar / Room</ion-label>
-                <ion-progress-bar value="" buffer="1"></ion-progress-bar>
-                <li>Work User:{{data.user}}</li>
-                <li>Department:{{data.department}}</li>
-                <li>Nomor Kamar:{{data.no_kamar}}</li>
-                <li>Nama Mess:{{data.mess}}</li>
-                <li>Lantai Kamar:{{data.lantai_kamar}}</li>
-                <li>Lantai Toilet:{{data.lantai_toilet}}</li>
-                <li>Lantai Langit Kamar:{{data.lantai_langit_kamar}}</li>
-                <li>Lantai Langit Kamar mandi:{{data.lantai_langit_kamar_mandi}}</li>
-                <li>WC:{{data.wc}}</li>
-                <li>Wastafel:{{data.wastafel}}</li>
-                <li>Tempat Tidur:{{data.tempat_tidur}}</li>
-                <li>Sprei:{{data.sprei}}</li>
-                <li>Selimut:{{data.selimut}}</li>
-                <li>AC:{{data.ac}}</li>
-                <li>Meja:{{data.meja}}</li>
-                <li>Cermin:{{data.cermin}}</li>
-                <li>Keran:{{data.keran}}</li>
-                <li>Shower:{{data.shower}}</li>
-                <li>Tempat Sampah:{{data.tempat_sampah}}</li>
-                <li>Jendela:{{data.jendela}}</li>
-                <li>Gorden:{{data.gorden}}</li>
-                <li>Lemari:{{data.lemari}}</li>
-                <li>Edit Tugas</li>
-                 <ion-select formControlName="status">
-              <ion-select-option ngvalue="TRUE">TRUE</ion-select-option>
-              <ion-select-option ngvalue="FALSE">FALSE</ion-select-option>
-              </ion-select> 
-              <ion-button type="submit" color="primary">Simpan</ion-button>
-                <ion-progress-bar value="0.25" buffer="0.5"></ion-progress-bar>
-                <ion-progress-bar value="0.25" buffer="1"></ion-progress-bar>
-              </ul>
-          </ion-grid>
-        </form>
-        </div>
-    </div>
-  
-    <div *ngIf="current == 2">
-      <div class="account"><br>
-        <form class="container" [formGroup]="FormStatus2" (ngSubmit)="submitStatus()">
-        <ion-grid class="contnr">
-               <ul color="dark" *ngFor="let data of DataRecord2; let i = index">
-              <ion-label>Komponen Non Kamar / Room</ion-label>
-              <ion-progress-bar value="" buffer="1"></ion-progress-bar>
-              <li>Work User:{{data.user}}</li>
-             <li>Department:{{data.department}}</li>
-              <li>Nama Mess:{{data.mess}}</li>
-              <li>Ruang TV Kaca Jendela Kusen:{{data.ruang_tv_kaca_jendela_kusen}}</li>
-              <li>Ruang TV Cermin:{{data.ruang_tv_cermin}}</li>
-              <li>Ruang TV Dispenser:{{data.ruang_tv_dispenser}}</li>
-              <li>Ruang TV AC:{{data.ruang_tv_ac}}</li>
-              <li>Ruang TV Rak TV:{{data.ruang_tv_rak_tv}}</li>
-              <li>Ruang TV Tirai Karpet:{{data.ruang_tv_tirai_karpet}}</li>
-              <li>Ruang TV TV Dinding:{{data.ruang_tv_dinding}}</li>
-              <li>Ruang TV TV Lantai:{{data.ruang_tv_lantai}}</li>
-              <li>Koridor Tempat Sampah:{{data.koridor_tempat_sampah}}</li>
-              <li>Koridor Pintu:{{data.koridor_pintu}}</li>
-              <li>Koridor Lantai Sudut Lantai:{{data.koridor_lantai_sudut_lantai}}</li>
-              <li>Koridor Keset:{{data.koridor_keset}}</li>
-              <li>Koridor Pantry:{{data.koridor_pantry}}</li>
-              <li>Koridor Wastafel Chrome Fixture:{{data.koridor_wastafel_chrome_fixture}}</li>
-              <li>Koridor Perlatan Makan Rak Piring:{{data.koridor_peralatan_makan_rak_piring}}</li>
-              <li>Koridor Pintu Dinding:{{data.koridor_pintu_dinding}}</li>
-              <li>Koridor Kaca Jendela Kusen:{{data.koridor_kanca_jendela_kusen}}</li>
-              <li>Toilet Pintu Dinding:{{data.toilet_pintu_dinding}}</li>
-              <li>Toilet Tempat Sampah:{{data.toilet_tempat_sampah}}</li>
-              <li>Toilet Wastafel Chrome Fixture:{{data.toilet_wastafel_chrome_fixture}}</li>
-              <li>Toilet Urinoir Selang Toilet Bowl:{{data.toilet_urinoir_selang_toilet_bowl}}</li>
-              <li>Toilet Shower Area Curtain:{{data.toilet_shower_area_curtain}}</li>
-              <li>Toilet Sudut Lantai:{{data.toilet_lantai_sudut_lantai}}</li>
-              <li>Toilet Teras:{{data.toilet_teras}}</li>
-              <li>Edit Tugas</li>
-              <ion-select formControlName="status">
-            <ion-select-option ngvalue="TRUE">TRUE</ion-select-option>
-            <ion-select-option ngvalue="FALSE">FALSE</ion-select-option>
-            </ion-select> 
-            <ion-button type="submit2" color="primary">Simpan</ion-button>
-              <ion-progress-bar value="0.25" buffer="0.5"></ion-progress-bar>
-              <ion-progress-bar value="0.25" buffer="1"></ion-progress-bar>
-            </ul>
-        </ion-grid>
-      </form>
+
+    <div *ngIf="current == 1 || current == null">
+      <div class="account">
+        <ion-content class="ion-padding">
+          <ion-list>
+            <ion-item button *ngFor="let data of DataRecordRoom; let i = index" (click)="openModalRoom(data)">
+              <ion-label>
+                <h2>User: {{data.user.name}}</h2>
+                <p>{{data.mess}} No. {{data.no_kamar}}</p>
+                <p>Poin: {{countPoinRoom(data)}}</p>
+              </ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-content>
       </div>
-      
-  
     </div>
 
-
-
+    <div *ngIf="current == 2">
+      <div class="account">
+        <ion-content class="ion-padding">
+          <ion-list>
+            <ion-item button *ngFor="let data of DataRecordNonRoom; let i = index" (click)="openModalNonRoom(data)">
+              <ion-label>
+                <h2>User: {{data.user.name}}</h2>
+                <p>{{data.mess}}</p>
+                <p>Poin: {{countPoinNonRoom(data)}}</p>
+              </ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-content>
+      </div>
+    </div>
   </ion-content>

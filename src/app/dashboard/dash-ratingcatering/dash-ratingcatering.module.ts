@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { DashRatingcateringPageRoutingModule } from './dash-ratingcatering-routing.module';
 
 import { DashRatingcateringPage } from './dash-ratingcatering.page';
+import { DetailRatingComponent } from './detail-rating/detail-rating.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,8 @@ import { DashRatingcateringPage } from './dash-ratingcatering.page';
     IonicModule,
     DashRatingcateringPageRoutingModule
   ],
-  declarations: [DashRatingcateringPage]
+  declarations: [DashRatingcateringPage, DetailRatingComponent],
+  entryComponents: [DetailRatingComponent]
+
 })
 export class DashRatingcateringPageModule {}

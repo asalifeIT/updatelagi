@@ -4,6 +4,8 @@ import { IonicModule } from '@ionic/angular';
 import { DashTugashkPageRoutingModule } from './dash-tugashk-routing.module';
 import { DashTugashkPage } from './dash-tugashk.page';
 import  {ReactiveFormsModule, FormsModule} from '@angular/forms';
+import { UpdateDetailRoomComponent } from './update-detail-room/update-detail-room.component';
+import { UpdateDetailNonroomComponent } from './update-detail-nonroom/update-detail-nonroom.component';
 
 @NgModule({
   imports: [
@@ -13,6 +15,7 @@ import  {ReactiveFormsModule, FormsModule} from '@angular/forms';
     DashTugashkPageRoutingModule,
     ReactiveFormsModule
   ],
-  declarations: [DashTugashkPage]
+  declarations: [DashTugashkPage, UpdateDetailRoomComponent, UpdateDetailNonroomComponent],
+  entryComponents: [UpdateDetailRoomComponent, UpdateDetailNonroomComponent]
 })
 export class DashTugashkPageModule {}

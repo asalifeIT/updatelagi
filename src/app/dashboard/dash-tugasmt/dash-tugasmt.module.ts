@@ -4,6 +4,7 @@ import { IonicModule } from '@ionic/angular';
 import { DashTugasmtPageRoutingModule } from './dash-tugasmt-routing.module';
 import { DashTugasmtPage } from './dash-tugasmt.page';
 import  {ReactiveFormsModule, FormsModule} from '@angular/forms';
+import { UpdateStatusComponent } from './update-status/update-status.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -12,6 +13,7 @@ import  {ReactiveFormsModule, FormsModule} from '@angular/forms';
     DashTugasmtPageRoutingModule,
     ReactiveFormsModule
   ],
-  declarations: [DashTugasmtPage]
+  declarations: [DashTugasmtPage, UpdateStatusComponent],
+  entryComponents: [UpdateStatusComponent]
 })
 export class DashTugasmtPageModule {}

@@ -1,159 +1,79 @@
 import { ServiceService } from 'src/app/services/service.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators, ReactiveFormsModule,FormArray, AbstractControl } from '@angular/forms';
-import { NavController, ModalController, LoadingController, ToastController,Platform } from '@ionic/angular';
-import {Observable, ReplaySubject, throwError} from "rxjs/index";
-import { catchError } from 'rxjs/operators';
+import { ModalController, LoadingController, ToastController } from '@ionic/angular';
+import { ReplaySubject } from "rxjs/index";
 import { UtilService } from 'src/app/services/util.service';
-import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
+import { UpdateDetailRoomComponent } from './update-detail-room/update-detail-room.component';
+import { UpdateDetailNonroomComponent } from './update-detail-nonroom/update-detail-nonroom.component';
 
 @Component({
   selector: 'app-dash-tugashk',
   templateUrl: './dash-tugashk.page.html',
   styleUrls: ['./dash-tugashk.page.scss'],
 })
+
 export class DashTugashkPage implements OnInit {
-  [x: string]: any; 
-  FormStatus:FormGroup;
-  FormStatus2:FormGroup;
-  authenticationState = new ReplaySubject(); 
+  [x: string]: any;
+  authenticationState = new ReplaySubject();
   authService: any;
-  message:any;
-  Data:any;
-  DataLogin:any;
-  DataResponse:any;
-  DataCheckLogin:any;
-  DataRecord: any;
+  message: any;
+  Data: any;
+  DataLogin: any;
+  DataResponse: any;
+  DataCheckLogin: any;
+  DataRecordRoom: any;
+  DataRecordNonRoom: any;
   stringJson: any;
   stringObject: any;
-  validations = {
-    'status': [
-     { type: 'required', message: 'pilihan edit status harus di isi' }
-    ],
-    'status2': [
-      { type: 'required', message: 'pilihan edit status harus di isi' }
-     ]
-    };  
+
   constructor(
-    private serviceService:ServiceService,
-    private navCtrl: NavController, 
-      public loadingController: LoadingController,
-      public modalController: ModalController,
-      private platform: Platform,
-      public toastController: ToastController,
-      private router: Router,
-      public util: UtilService,
-      private formBuilder: FormBuilder
+    private serviceService: ServiceService,
+    public loadingController: LoadingController,
+    public modalController: ModalController,
+    public toastController: ToastController,
+    private router: Router,
+    public util: UtilService,
   ) { }
 
   ngOnInit() {
     this.someOtherMethod();
-    this.FormStatus=this.formBuilder.group({
-      status:new FormControl('', Validators.compose([Validators.required])),
-    });
-    console.log(this.FormStatus.errors);
+
     this.serviceService.getRecord('task/room').subscribe(
       data => {
-        this.DataRecord=data.body;
-        localStorage.getItem(JSON.stringify(this.DataRecord));
-        console.log(this.DataRecord);
-        },
-        error => {
+        this.DataRecordRoom = data.body;
+      },
+      error => {
         console.log("err", error);
-        }
-      );
-      let dataStorage=JSON.parse(localStorage.getItem(this.serviceService.TOKEN_KEY));
-      // this.Username=dataStorage.data.Username;
-      this.serviceService.CekUser().subscribe(
-        data => {
-          this.DataLogin=data;
-          console.log(this.DataLogin)
-          this.Username=this.DataLogin.body.name;
-          localStorage.getItem(JSON.parse(localStorage.getItem("role")));
-        },
-        error => {
-          console.log("error");
-        }
-      );
-      
-    }
-  
-    someOtherMethod() {
-      this.FormStatus2=this.formBuilder.group({
-        status2:new FormControl('', Validators.compose([Validators.required])),
-      });
-      console.log(this.FormStatus2.errors);
-      this.serviceService.getRecord2('task/mess').subscribe(
-        data => {
-          this.DataRecord2=data.body;
-          localStorage.getItem(JSON.stringify(this.DataRecord2));
-          console.log(this.DataRecord2);
-          },
-          error => {
-          console.log("err", error);
-          }
-        );
-        let dataStorage=JSON.parse(localStorage.getItem(this.serviceService.TOKEN_KEY));
-        // this.Username=dataStorage.data.Username;
-        this.serviceService.CekUser().subscribe(
-          data => {
-            this.DataLogin=data;
-            console.log(this.DataLogin)
-            this.Username=this.DataLogin.body.name;
-            localStorage.getItem(JSON.parse(localStorage.getItem("role")));
-          },
-          error => {
-            console.log("error");
-          }
-        );
-        
-      }
-  async submitStatus(){
-    const loading = await this.loadingController.create({
-      message: 'Please wait...'
-    });
-    await loading.present();
-    this.serviceService.submitaduan(this.FormStatus.value, 'task/room').subscribe(
-      data => {
-        this.presentToast("Edit Tugas Housekeeping Sukses");
-        console.log(this.FormStatus.value);
-        this.FormStatus.reset();
-        loading.dismiss();
-      },
-      error => {
-        console.log(error);
-        this.presentToast("Edit Tugas Housekeeping Gagal!!");
-        console.log(this.FormStatus.value);
-        this.FormStatus.reset();
-        loading.dismiss();
       }
     );
-   }
 
-   async submitStatus2(){
-    const loading = await this.loadingController.create({
-      message: 'Please wait...'
-    });
-    await loading.present();
-    this.serviceService.submitaduan(this.FormStatus2.value, 'task/mess').subscribe(
+    this.serviceService.CekUser().subscribe(
       data => {
-        this.presentToast("Edit Tugas Housekeeping Sukses");
-        console.log(this.FormStatus2.value);
-        this.FormStatus2.reset();
-        loading.dismiss();
+        this.DataLogin = data;
+        console.log(this.DataLogin)
+        this.Username = this.DataLogin.body.name;
+        localStorage.getItem(JSON.parse(localStorage.getItem("role")));
       },
       error => {
-        console.log(error);
-        this.presentToast("Edit Tugas Housekeeping Gagal!!");
-        console.log(this.FormStatus2.value);
-        this.FormStatus2.reset();
-        loading.dismiss();
+        console.log("error");
       }
     );
-   }
 
-   async presentToast(Message) {
+  }
+
+  someOtherMethod() {
+    this.serviceService.getRecord2('task/mess').subscribe(
+      data => {
+        this.DataRecordNonRoom = data.body;
+      },
+      error => {
+        console.log("err", error);
+      }
+    );
+  }
+
+  async presentToast(Message) {
     const toast = await this.toastController.create({
       message: Message,
       duration: 2500,
@@ -164,18 +84,57 @@ export class DashTugashkPage implements OnInit {
 
   refresh(): void {
     window.location.reload();
-}
+  }
 
-  signout(){
+  signout() {
     this.router.navigate(['dashboard']);
   }
-   
-   ngOnDestroy() {
-    this.this.FormStatus.unsubscribe();
-    this.this.FormStatus2.unsubscribe();
-  }
-  public clear() {
-    localStorage.clear();
+
+  ngOnDestroy() {
+    if (typeof this.routerEvents !== 'undefined') this.routerEvents.unsubscribe();
   }
 
+  countPoinRoom(data) {
+    const poin = data.lantai_kamar + data.lantai_toilet + data.lantai_langit_kamar + data.lantai_langit_kamar_mandi + data.wc + data.wastafel + data.tempat_tidur + data.sprei + data.selimut + data.ac + data.meja + data.cermin + data.keran + data.shower + data.tempat_sampah + data.jendela + data.gorden + data.lemari;
+    return poin;
+  }
+
+  countPoinNonRoom(data) {
+    const poin = data.ruang_tv_kaca_jendela_kusen + data.ruang_tv_cermin + data.ruang_tv_dispenser + data.ruang_tv_ac + data.ruang_tv_furniture + data.ruang_tv_rak_tv + data.ruang_tv_tirai_karpet + data.ruang_tv_dinding + data.ruang_tv_lantai + data.koridor_tempat_sampah + data.koridor_pintu + data.koridor_lantai_sudut_lantai + data.koridor_keset + data.koridor_pantry + data.koridor_wastafel_chrome_fixture + data.koridor_peralatan_makan_rak_piring + data.koridor_pintu_dinding + data.koridor_kanca_jendela_kusen + data.toilet_pintu_dinding + data.toilet_tempat_sampah + data.toilet_wastafel_chrome_fixture + data.toilet_urinoir_selang_toilet_bowl + data.toilet_shower_area_curtain + data.toilet_lantai_sudut_lantai + data.toilet_teras;
+    return poin;
+  }
+
+  async openModalRoom(data) {
+    const modal = await this.modalController.create({
+      component: UpdateDetailRoomComponent,
+      componentProps: {
+        data: data
+      }
+    });
+    await modal.present();
+    const message = await modal.onWillDismiss();
+    if (message.data === 'success') {
+      this.ngOnInit();
+    }
+    if (message.data) {
+      this.presentToast(message.data);
+    }
+  }
+
+  async openModalNonRoom(data) {
+    const modal = await this.modalController.create({
+      component: UpdateDetailNonroomComponent,
+      componentProps: {
+        data: data
+      }
+    });
+    await modal.present();
+    const message = await modal.onWillDismiss();
+    if (message.data === 'success') {
+      this.ngOnInit();
+    }
+    if (message.data) {
+      this.presentToast(message.data);
+    }
+  }
 }
