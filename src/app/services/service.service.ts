@@ -9,6 +9,7 @@ import { Observable, throwError } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class ServiceService {
   [x: string]: any;
   Data: any;
@@ -218,8 +219,6 @@ export class ServiceService {
       })
     );
   }
-
-
 
   //logout
   signout() {
