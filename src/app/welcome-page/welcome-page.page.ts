@@ -22,7 +22,6 @@ export class WelcomePagePage implements OnInit {
   ) {
     setTimeout(() => {
       this.slides.length().then((data: any) => {
-        console.log(data);
         this.slideLength = data;
         this.slidesNumber = [];
         for (let i = 0; i < this.slideLength; i++) {
@@ -39,12 +38,10 @@ export class WelcomePagePage implements OnInit {
 
   slideChanged(event) {
     this.slides.getActiveIndex().then((data: any) => {
-      console.log(data);
       this.index = data;
     });
 
     this.slides.isEnd().then(data => {
-      console.log('is end', data);
       this.isLastSlide = data;
     })
   }
