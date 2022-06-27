@@ -7,6 +7,7 @@ import {Observable, ReplaySubject, throwError} from "rxjs/index";
 import { catchError } from 'rxjs/operators';
 import { UtilService } from 'src/app/services/util.service';
 import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-dash-aduancat',
@@ -85,7 +86,7 @@ export class DashAduancatPage implements OnInit {
       message: 'Please wait...'
     });
     await loading.present();
-    this.serviceService.updateaduan(this.FormStatus.value, 'catering/update-status/'+id+'.{{data.value.id}}' ).subscribe(
+    this.serviceService.updateaduan(this.FormStatus.value, 'catering/update-status/'+ 'id').subscribe(
       data => {
         this.presentToast("Edit Status Aduan Catering Sukses");
         console.log(this.FormStatus.value);
