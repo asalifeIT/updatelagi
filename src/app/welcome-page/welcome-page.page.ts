@@ -1,11 +1,4 @@
-/*
-  Authors : bunchdevelopers (Rahul Jograna)
-  Website : https://bunchdevelopers.com/
-  App Name : ionic6Template Pack
-  This App Template Source code is licensed as per the
-  terms found in the Website https://bunchdevelopers.com/license
-  Copyright and Good Faith Purchasers © 2021-present bunchdevelopers.
-*/
+ 
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonSlides } from '@ionic/angular';
@@ -29,7 +22,6 @@ export class WelcomePagePage implements OnInit {
   ) {
     setTimeout(() => {
       this.slides.length().then((data: any) => {
-        console.log(data);
         this.slideLength = data;
         this.slidesNumber = [];
         for (let i = 0; i < this.slideLength; i++) {
@@ -46,12 +38,10 @@ export class WelcomePagePage implements OnInit {
 
   slideChanged(event) {
     this.slides.getActiveIndex().then((data: any) => {
-      console.log(data);
       this.index = data;
     });
 
     this.slides.isEnd().then(data => {
-      console.log('is end', data);
       this.isLastSlide = data;
     })
   }

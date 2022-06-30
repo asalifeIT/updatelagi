@@ -1,12 +1,4 @@
-<!--
-  Authors : bunchdevelopers (Rahul Jograna)
-  Website : https://bunchdevelopers.com/
-  App Name : ionic6Template Pack
-  This App Template Source code is licensed as per the
-  terms found in the Website https://bunchdevelopers.com/license
-  Copyright and Good Faith Purchasers © 2021-present bunchdevelopers.
- -->
- <ion-header>
+<ion-header>
   <ion-toolbar mode="md">
     <ion-buttons slot="end">
       <ion-button (click)="onSkip()" *ngIf="isLastSlide == false">
@@ -16,66 +8,65 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content class="ion-padding" scrollY="false">
   <ion-slides mode="md" pager="false" scrollbar="ios" #slides (ionSlideDidChange)="slideChanged($event)">
     <ion-slide>
       <ion-label class="heading">Design by</ion-label>
       <div class="img" [style.backgroundImage]="'url(assets/images/loj.jpg)'"></div>
-      <div class="title">
-      </div>
+      <div class="title"></div>
     </ion-slide>
     <ion-slide>
       <div class="img" [style.backgroundImage]="'url(assets/images/asaserv.jpg)'"></div>
       <div class="title">
-        <ion-label class="heading">AUTO SERVICE</ion-label>
-        <ion-label class="sub_heading">ASA - App_beta-01</ion-label>
+        <ion-label class="heading">Asto Service App</ion-label>
+        <ion-label class="sub_heading">Help Better Life With ASA!</ion-label>
       </div>
     </ion-slide>
 
-  
+
     <ion-slide>
       <div class="img" [style.backgroundImage]="'url(assets/images/sgms.jpg)'"></div>
       <div class="title">
-        <ion-label class="heading">Coming Soon..</ion-label>
-        <ion-label class="sub_heading">ASA - SGMS </ion-label>
+        <ion-label class="heading">ASA - SGMS</ion-label>
+        <ion-label class="sub_heading">Coming Soon..</ion-label>
       </div>
     </ion-slide>
 
     <ion-slide>
       <div class="img" [style.backgroundImage]="'url(assets/images/asaevent.jpg)'"></div>
       <div class="title">
-        <ion-label class="heading">Coming Soon...</ion-label>
-        <ion-label class="sub_heading">ASA - SHE </ion-label>
+        <ion-label class="heading">ASA - SHE</ion-label>
+        <ion-label class="sub_heading">Coming Soon..</ion-label>
       </div>
     </ion-slide>
 
     <ion-slide>
       <div class="img" [style.backgroundImage]="'url(assets/images/asashop.jpg)'"></div>
       <div class="title">
-        <ion-label class="heading">Coming Soon..</ion-label>
-        <ion-label class="sub_heading">ASA - SHOP </ion-label>
+        <ion-label class="heading">ASA - SHOP</ion-label>
+        <ion-label class="sub_heading">Coming Soon..</ion-label>
       </div>
     </ion-slide>
     <ion-slide>
       <div class="img" [style.backgroundImage]="'url(assets/images/asalife.jpg)'"></div>
       <div class="title">
-        <ion-label class="heading">Coming Soon..</ion-label>
-        <ion-label class="sub_heading">ASA - LIFE </ion-label>
+        <ion-label class="heading">ASA - LIFE</ion-label>
+        <ion-label class="sub_heading">Ready to serve!</ion-label>
       </div>
     </ion-slide>
   </ion-slides>
   <div style="display: flex;flex-direction: row; justify-content: center;">
   </div>
-  <div class="btn">
-    <ion-button class="content_button" (click)="onBack()" *ngIf="index > 0">
-      Back
-    </ion-button>
-    <ion-button class="content_button" (click)="onNext()" *ngIf="isLastSlide == false">
-      Next
-    </ion-button>
-    <ion-button class="content_button"(click)="onSkip()" *ngIf="isLastSlide == true">
-      Finish
-    </ion-button>
-  </div>
-
 </ion-content>
+
+<ion-footer class="ion-no-border btn">
+  <ion-button class="content_button" (click)="onBack()" *ngIf="index > 0">
+    Back
+  </ion-button>
+  <ion-button class="content_button" (click)="onNext()" *ngIf="isLastSlide == false">
+    Next
+  </ion-button>
+  <ion-button class="content_button" (click)="onSkip()" *ngIf="isLastSlide == true">
+    Finish
+  </ion-button>
+</ion-footer>

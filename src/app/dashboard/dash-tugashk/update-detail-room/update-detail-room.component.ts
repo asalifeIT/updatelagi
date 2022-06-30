@@ -1,6 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoadingController, ModalController, Platform } from '@ionic/angular';
+=======
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { AlertController, LoadingController, ModalController } from '@ionic/angular';
+>>>>>>> 8f396adbcaac91ea88b3ed51f50fb5c4fbd79562
 import { ServiceService } from 'src/app/services/service.service';
 
 @Component({
@@ -8,7 +13,7 @@ import { ServiceService } from 'src/app/services/service.service';
   templateUrl: './update-detail-room.component.html',
   styleUrls: ['./update-detail-room.component.scss'],
 })
-export class UpdateDetailRoomComponent implements OnInit{
+export class UpdateDetailRoomComponent implements OnInit {
   @Input() data: any;
   resultMessage: any;
   verifKamar: FormGroup;
@@ -18,7 +23,11 @@ export class UpdateDetailRoomComponent implements OnInit{
     public loadingController: LoadingController,
     private serviceService: ServiceService,
     private formBuilder: FormBuilder,
+<<<<<<< HEAD
     private platform: Platform
+=======
+    private alertControl: AlertController,
+>>>>>>> 8f396adbcaac91ea88b3ed51f50fb5c4fbd79562
   ) { }
 
   dismissModal() {
@@ -53,25 +62,64 @@ export class UpdateDetailRoomComponent implements OnInit{
     const loading = await this.loadingController.create({
       message: 'Please wait...'
     });
+
+    if (this.isAnyNullValue(this.verifKamar.value)) {
+      await this.presentAlertConfirm(loading);
+      return 0;
+    }
+
     await loading.present();
-
-    console.log(this.verifKamar.value);
-
-    loading.dismiss();
-    // this.serviceService.updateStatus(payload, 'catering/update-status/', this.data.id).subscribe(
-    //   data => {
-    //     console.log(data.body);
-    //     this.resultMessage = 'success';
-        
-    //     this.modalController.dismiss(this.resultMessage, 'resultMessage');
-    //     loading.dismiss();
-    //   },
-    //   error => {
-    //     console.log(error.message);
-    //     this.resultMessage = 'Error';
-    //     loading.dismiss();
-    //   }
-    // );
+    await this.updateDetailRoomAPi(loading)
   }
 
+  async updateDetailRoomAPi(loading) {
+    this.serviceService.updateStatus(this.verifKamar.value, 'task/room-update/', this.data.id).subscribe(
+      data => {
+        console.log(data.body);
+        this.resultMessage = 'success';
+        this.modalController.dismiss(this.resultMessage, 'resultMessage');
+        loading.dismiss();
+      },
+      error => {
+        console.log(error.message);
+        this.resultMessage = 'Error';
+        loading.dismiss();
+      }
+    );
+  }
+
+  async presentAlertConfirm(loading) {
+    const alert = await this.alertControl.create({
+      cssClass: 'my-custom-class',
+      header: 'Konfirmasi!',
+      message: 'Ada komponen yang tidak di ceklis. Tetap lanjutkan?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          },
+        },
+        {
+          text: 'Okay',
+          handler: () => {
+            loading.present();
+            this.updateDetailRoomAPi(loading);
+          },
+        },
+      ],
+    });
+    await alert.present();
+  }
+
+  isAnyNullValue(data) {
+    for (const [key, value] of Object.entries(data)) {
+      if (value === 'false') {
+        return true;
+      }
+    }
+    return false;
+  }
 }
