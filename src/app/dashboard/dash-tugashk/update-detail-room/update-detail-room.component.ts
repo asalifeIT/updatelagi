@@ -1,11 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-<<<<<<< HEAD
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { LoadingController, ModalController, Platform } from '@ionic/angular';
-=======
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { AlertController, LoadingController, ModalController } from '@ionic/angular';
->>>>>>> 8f396adbcaac91ea88b3ed51f50fb5c4fbd79562
 import { ServiceService } from 'src/app/services/service.service';
 
 @Component({
@@ -23,11 +18,7 @@ export class UpdateDetailRoomComponent implements OnInit {
     public loadingController: LoadingController,
     private serviceService: ServiceService,
     private formBuilder: FormBuilder,
-<<<<<<< HEAD
-    private platform: Platform
-=======
     private alertControl: AlertController,
->>>>>>> 8f396adbcaac91ea88b3ed51f50fb5c4fbd79562
   ) { }
 
   dismissModal() {
