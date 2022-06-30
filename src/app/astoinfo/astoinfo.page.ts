@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { Platform, NavController,LoadingController, ModalController } from '@ionic/angular';
+import { ServiceService } from '../services/service.service';
+import { Router } from '@angular/router';
+import { UtilService } from 'src/app/services/util.service';
+import { PreloadAllModules, RouterModule, Routes, CanActivate } from '@angular/router';
+import { NgModule } from '@angular/core';
 
 @Component({
   selector: 'app-astoinfo',
@@ -8,13 +13,23 @@ import { ModalController } from '@ionic/angular';
 })
 export class AstoinfoPage implements OnInit {
 
-  constructor(private modalCtrl: ModalController) { }
+  constructor(
+    private modalCtrl: ModalController,
+    public loadingController: LoadingController,
+    private serviceService: ServiceService,
+    private router: Router,
+    public util: UtilService,
+    public navCtrl: NavController,
+    private platform: Platform,
+    
+ 
+    ) { }
 
     ngOnInit() {
     }
 
-    close() {
-        this.modalCtrl.dismiss();
-    }
 
+    close(){
+      this.router.navigate(['information']);
+    }
 }

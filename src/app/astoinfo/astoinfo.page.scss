@@ -42,5 +42,30 @@
         --background: #44da9d;
       }
     }
+    .active {
+      ion-icon {
+        color: rgb(135, 8, 8);
+      }
+      ion-label {
+        color: rgb(135, 8, 8);
+      }
+    }
+
+    .dash{
+      color: rgb(135, 8, 8);
+      font-family: "bold";
+      display: flex;
+          flex-direction: column;
+          .name_lbl {
+            margin-bottom: 5px;
+            font-family: "bold";
+          }
+          .center {
+            font-size: 16px;
+            display: flex;
+            margin-left: 2rem;
+           
+    }
+
   }
-  
+}

@@ -155,5 +155,14 @@ ion-modal.custom_modal {
         width: 100% !important;
     }
 }
+ion-modal.modal {
+  --height: 80%;
+  align-items: flex-end;
+  --border-radius: 15px 15px 0px 0px;
+  .modal-wrapper {
+      width: 100% !important;
+  }
+}
+
 
 }

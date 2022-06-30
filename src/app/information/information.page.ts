@@ -18,21 +18,18 @@ import { AstoinfoPage } from '../astoinfo/astoinfo.page';
 })
 export class InformationPage implements OnInit {
   tabID;
-  constructor(private modalCtrl: ModalController)  { }
+  constructor(
+    private modalCtrl: ModalController,
+    private router: Router
+    )  { }
 
   ngOnInit() {
 
   }
 
-  close() {
-    this.modalCtrl.dismiss();;
-}
+  openAstoinfo(){
+    this.router.navigate(['astoinfo']);
+  }
 
-async openAstoinfo() {
-  const modal = await this.modalCtrl.create({
-      component: AstoinfoPage,
-  });
-  modal.present();
-}
 
 }

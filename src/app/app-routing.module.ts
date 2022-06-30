@@ -194,6 +194,14 @@ const routes: Routes = [
     path: 'astoinfo',
     loadChildren: () => import('./astoinfo/astoinfo.module').then( m => m.AstoinfoPageModule)
   },
+  {
+    path: 'developer',
+    loadChildren: () => import('./developer/developer.module').then( m => m.DeveloperPageModule)
+  },
+  {
+    path: 'myteam',
+    loadChildren: () => import('./myteam/myteam.module').then( m => m.MyteamPageModule)
+  },
 
 
 ];

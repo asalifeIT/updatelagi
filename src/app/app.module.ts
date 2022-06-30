@@ -10,6 +10,7 @@ import { HttpClientModule }    from '@angular/common/http';
 import { RegisterPageModule } from './register/register.module';
 import  {ReactiveFormsModule, FormsModule} from '@angular/forms';
 
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -28,7 +29,7 @@ import  {ReactiveFormsModule, FormsModule} from '@angular/forms';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
-  bootstrap: [AppComponent]
+   bootstrap: [AppComponent]
 })
 export class AppModule {
   

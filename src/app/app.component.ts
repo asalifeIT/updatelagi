@@ -6,7 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { UtilService } from 'src/app/services/util.service';
 import { ServiceService } from './services/service.service';
 import { Location } from '@angular/common';
-
+import { MenuController, ModalController } from '@ionic/angular';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -29,13 +29,16 @@ export class AppComponent {
     private router: Router,
     private _location: Location,
     public alertController: AlertController,
+    private modalCtrl: ModalController, private menuCtrl: MenuController,
     public util: UtilService) {
       platform.ready().then(() => {
         statusBar.styleDefault();
         splashScreen.hide();
       });
-
     this.initializeApp();
+  }
+  close() {
+    this.menuCtrl.close();
   }
 
   initializeApp() {

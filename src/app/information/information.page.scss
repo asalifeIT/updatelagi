@@ -6,8 +6,25 @@
   terms found in the Website https://bunchdevelopers.com/license
   Copyright and Good Faith Purchasers © 2021-present bunchdevelopers.
 */
+
 .main_content_div {
-  padding: 30px 16px;
+  padding: 10px;
+  background: linear-gradient(90deg, var(--ion-color-tertiary) 10%, var(--ion-color-primary) 100%);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    .title {
+      font-size: 24px;
+      font-family: "bold";
+      color: white;
+      padding-bottom: 15px;
+    }
+    .text {
+      font-size: 14px;
+      width: 70%;
+      font-family: "semi-bold";
+      color: white;
+      padding-bottom: 15px;
+    }
 
   ion-col {
     display: flex;
@@ -24,27 +41,30 @@
   }
   .active {
     ion-icon {
-      color: rgb(135, 8, 8);
+      color:  #ffca22;
     }
     ion-label {
-      color: rgb(135, 8, 8);
-    }
+      color:  #ffca22;
   }
 
 }
 
 .dash{
-  color: rgb(135, 8, 8);
+  
+  color: white;
   font-family: "bold";
   display: flex;
       flex-direction: column;
       .name_lbl {
         margin-bottom: 5px;
         font-family: "bold";
+        color: white;
       }
       .center {
         font-size: 14px;
         display: flex;
         margin-left: 2rem;
+       
+}
 }
 }

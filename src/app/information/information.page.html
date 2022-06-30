@@ -11,11 +11,12 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
+    <ion-note class="dash" color="dark">Menu Informasi</ion-note>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="main_content_div"><ion-chip class="dash" color="light">Menu Informasi</ion-chip>
+  <div class="main_content_div"><ion-chip class="dash" color="dark">Profile</ion-chip><br>
     <ion-row style="margin-bottom: 10px;">
       <ion-col size="3" (click)="tabID = 1" [class.active]="tabID == 1" (click)="openAstoinfo()">
         <ion-icon name="logo-web-component"></ion-icon>
@@ -24,7 +25,8 @@
         style="border-left: 1px solid lightgrey;border-right: 1px solid lightgrey">
         <ion-icon name="logo-buffer"></ion-icon>
       </ion-col>
-      <ion-col size="3" (click)="tabID = 3" [class.active]="tabID == 3">
+      <ion-col size="3" (click)="tabID = 3" [class.active]="tabID == 3"
+      style="border-left: 1px solid lightgrey;border-right: 1px solid lightgrey">
         <!-- <ion-icon name="logo-usd"></ion-icon> -->
         <ion-icon name="contract-sharp"></ion-icon>
       </ion-col>
@@ -38,20 +40,20 @@
     <ion-row>
       <ion-col size="3" [class.active]="tabID == 1">
        <p><ion-label>ASTO</ion-label><br>
-        <ion-label>Service</ion-label></p> 
+
       </ion-col>
       <ion-col size="3" [class.active]="tabID == 2">
         <p><ion-label>Developer</ion-label><br>
-        <ion-label>L.O.J</ion-label></p> 
+ 
       </ion-col>
       <ion-col size="3" [class.active]="tabID == 3">
-        <p> <ion-label>My</ion-label>
-        <ion-label>Team</ion-label></p>
-      </ion-col>
+        <p> <ion-label>Team</ion-label>
+       </ion-col>
       <ion-col size="3" [class.active]="tabID == 4">
        <p><ion-label>Hire</ion-label>
         <ion-label>Me</ion-label></p>
       </ion-col>
     </ion-row>
   </div>
+
 </ion-content>
