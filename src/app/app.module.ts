@@ -22,6 +22,7 @@ import  {ReactiveFormsModule, FormsModule} from '@angular/forms';
     ReactiveFormsModule,
     FormsModule
   ],
+  
   providers: [
     StatusBar,
     SplashScreen,
@@ -29,5 +30,7 @@ import  {ReactiveFormsModule, FormsModule} from '@angular/forms';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+  
+}
 

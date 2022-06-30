@@ -131,12 +131,16 @@ const routes: Routes = [
     path: 'dashboard',
     canActivate:[RoleGuard, AuthenticationGuard],
     data:{
-      role: ["ROLE_WORKER","ROLE_MEGAUSER","ROLE_SUPERUSER", "ROLE_HCGS"],
+      role: ["ROLE_WORKER","ROLE_MEGAUSER","ROLE_SUPERUSER", "ROLE_HCGS", "ROLE_CUSTOMER"],
     },
     loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule)
   },
   {
     path: 'dash-aduanmt',
+    canActivate:[RoleGuard, AuthenticationGuard],
+    data:{
+      role: ["ROLE_MEGAUSER","ROLE_SUPERUSER", "ROLE_HCGS","ROLE_CUSTOMER"],
+    },
     loadChildren: () => import('./dashboard/dash-aduanmt/dash-aduanmt.module').then( m => m.DashAduanmtPageModule)
   },
   {
@@ -149,6 +153,10 @@ const routes: Routes = [
   },
   {
     path: 'dash-aduancat',
+    canActivate:[RoleGuard, AuthenticationGuard],
+    data:{
+      role: ["ROLE_MEGAUSER","ROLE_SUPERUSER", "ROLE_HCGS","ROLE_CUSTOMER"],
+    },
     loadChildren: () => import('./dashboard/dash-aduancat/dash-aduancat.module').then( m => m.DashAduancatPageModule)
   },
   {
@@ -157,16 +165,37 @@ const routes: Routes = [
   },
   {
     path: 'dash-tugashk',
+    canActivate:[RoleGuard, AuthenticationGuard],
+    data:{
+      role: ["ROLE_MEGAUSER","ROLE_SUPERUSER", "ROLE_HCGS"],
+    },
     loadChildren: () => import('./dashboard/dash-tugashk/dash-tugashk.module').then( m => m.DashTugashkPageModule)
   },
   {
     path: 'dash-tugasmt',
+    canActivate:[RoleGuard, AuthenticationGuard],
+    data:{
+      role: ["ROLE_MEGAUSER","ROLE_SUPERUSER", "ROLE_HCGS"],
+    },
     loadChildren: () => import('./dashboard/dash-tugasmt/dash-tugasmt.module').then( m => m.DashTugasmtPageModule)
   },
   {
     path: 'dash-ratingcatering',
+    canActivate:[RoleGuard],
+    data:{
+      role: ["ROLE_MEGAUSER","ROLE_SUPERUSER", "ROLE_HCGS"],
+    },
     loadChildren: () => import('./dashboard/dash-ratingcatering/dash-ratingcatering.module').then( m => m.DashRatingcateringPageModule)
   },
+  {
+    path: 'information',
+    loadChildren: () => import('./information/information.module').then( m => m.InformationPageModule)
+  },  {
+    path: 'astoinfo',
+    loadChildren: () => import('./astoinfo/astoinfo.module').then( m => m.AstoinfoPageModule)
+  },
+
+
 ];
 
 @NgModule({

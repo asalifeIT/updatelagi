@@ -35,6 +35,7 @@ export class CateringPage implements OnInit {
   ) { }
 
   ngOnInit() {
+
   }
 
   onBack() {

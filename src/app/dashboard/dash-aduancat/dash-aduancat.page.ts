@@ -51,7 +51,7 @@ export class DashAduancatPage implements OnInit {
     this.FormStatus = this.formBuilder.group({
       status: new FormControl('', Validators.compose([Validators.required])),
     });
-    
+
     console.log(this.FormStatus.errors);
     this.serviceService.getRecord('catering/all').subscribe(
       data => {

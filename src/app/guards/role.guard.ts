@@ -9,6 +9,7 @@ import { NavController, ModalController, LoadingController, ToastController,Plat
 })
 export class RoleGuard implements CanActivate {
   [x: string]: any;
+  DataLogin:any;
   constructor(
     private serviceService:ServiceService,
       public toastController: ToastController,
@@ -27,13 +28,17 @@ export class RoleGuard implements CanActivate {
         if(Role == "ROLE_SUPERUSER"){
           alert("Anda Login Sebagai SUPER USER")
            return true;
-      }else {
+      } else {
         if(Role == "ROLE_HCGS"){
           alert("Anda Login Sebagai HCGS")
            return true;
-    }
-  }
-
+    }else {
+      if(Role == "ROLE_CUSTOMER"){
+        alert("Anda Login Sebagai CUSTOMER")
+         return true;
+        }
+     }
+   }
   }
 
     alert("Maaf, Anda Tidak Punya Aksess!!!")

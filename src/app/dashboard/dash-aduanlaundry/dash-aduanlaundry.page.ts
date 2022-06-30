@@ -45,6 +45,7 @@ export class DashAduanlaundryPage implements OnInit {
     this.FormStatus = this.formBuilder.group({
       status: new FormControl('', Validators.compose([Validators.required])),
     });
+
     console.log(this.FormStatus.errors);
     this.serviceService.getRecord('laundry/all').subscribe(
       data => {

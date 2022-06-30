@@ -54,7 +54,7 @@ export class HousekeepingPage implements OnInit {
         console.log("err", error);
         }
       );
-  }
+      }
 
   openInfohk() {
     this.router.navigate(['infohk']);

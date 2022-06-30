@@ -48,7 +48,7 @@ export class UpdateStatusComponent {
       data => {
         console.log(data.body);
         this.resultMessage = 'success';
-        
+
         this.modalController.dismiss(this.resultMessage, 'resultMessage');
         loading.dismiss();
       },

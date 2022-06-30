@@ -52,6 +52,7 @@ export class RegisterPage implements OnInit {
   ) { }
 
   ngOnInit() {
+
     this.FormRegister = this.formBuilder.group({
       Username:new FormControl('', Validators.compose([
         Validators.required,

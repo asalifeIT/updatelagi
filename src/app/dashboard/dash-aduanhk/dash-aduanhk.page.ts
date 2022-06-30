@@ -46,6 +46,7 @@ export class DashAduanhkPage implements OnInit {
     this.FormStatus = this.formBuilder.group({
       status: new FormControl('', Validators.compose([Validators.required])),
     });
+ 
     console.log(this.FormStatus.errors);
     this.serviceService.getRecord('housekeeping/all').subscribe(
       data => {

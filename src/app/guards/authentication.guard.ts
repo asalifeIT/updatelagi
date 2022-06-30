@@ -9,6 +9,7 @@ import { NavController, ModalController, LoadingController, ToastController,Plat
 })
 export class AuthenticationGuard implements CanActivate {
   DataLogin:any;
+  [x: string]: any;
   constructor(
     private serviceService:ServiceService,
       public toastController: ToastController,

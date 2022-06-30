@@ -115,6 +115,7 @@ export class NonkamarPage implements OnInit {
   ) { }
 
   ngOnInit() {
+
     this.FormNonKamar=this.formBuilder.group({
       mess:new FormControl('', Validators.compose([
         Validators.required

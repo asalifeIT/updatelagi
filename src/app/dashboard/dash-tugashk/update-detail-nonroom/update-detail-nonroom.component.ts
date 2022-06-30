@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { LoadingController, ModalController } from '@ionic/angular';
+import { LoadingController, ModalController, ToastController, Platform  } from '@ionic/angular';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ServiceService } from 'src/app/services/service.service';
 
@@ -18,6 +18,8 @@ export class UpdateDetailNonroomComponent implements OnInit {
     public loadingController: LoadingController,
     private serviceService: ServiceService,
     private formBuilder: FormBuilder,
+    public toastController: ToastController,
+    private platform: Platform
   ) { }
 
   dismissModal() {
@@ -25,6 +27,7 @@ export class UpdateDetailNonroomComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.verifNonKamar = this.formBuilder.group({
       ruangtvkacajendelakusen: new FormControl('false'),
       ruangtvcermin: new FormControl('false'),
@@ -59,11 +62,9 @@ export class UpdateDetailNonroomComponent implements OnInit {
       message: 'Please wait...'
     });
     await loading.present();
-
     console.log(this.verifNonKamar.value);
-
     loading.dismiss();
-
+    
     // this.serviceService.updateStatus(payload, 'catering/update-status/', this.data.id).subscribe(
     //   data => {
     //     console.log(data.body);
@@ -79,5 +80,11 @@ export class UpdateDetailNonroomComponent implements OnInit {
     //   }
     // );
   }
+
+
+  refresh(): void {
+    window.location.reload();
+  }
+
 
 }

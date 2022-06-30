@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Platform, NavController } from '@ionic/angular';
+import { Platform, NavController, AlertController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { UtilService } from 'src/app/services/util.service';
 import { ServiceService } from './services/service.service';
-
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -27,6 +27,8 @@ export class AppComponent {
     private serviceService: ServiceService,
     private navCtrl: NavController,
     private router: Router,
+    private _location: Location,
+    public alertController: AlertController,
     public util: UtilService) {
       platform.ready().then(() => {
         statusBar.styleDefault();
@@ -52,9 +54,43 @@ export class AppComponent {
           this.navCtrl.navigateRoot(['welcome-page']);
         }
         });
+        this.platform.backButton.subscribeWithPriority(10, (processNextHandler) => {
+          console.log('Back press handler!');
+          if (this._location.isCurrentPathEqualTo('/home')) {
+            // Show Exit Alert!
+            console.log('Show Exit Alert!');
+            this.showExitConfirm();
+            processNextHandler();
+          } else {
+            // Navigate to back page
+            console.log('Navigate to back page');
+            this._location.back();
+          }
+        });
   }
 
-
+  showExitConfirm() {
+    this.alertController.create({
+      header: 'App termination',
+      message: 'Do you want to close the app?',
+      backdropDismiss: false,
+      buttons: [{
+        text: 'Stay',
+        role: 'cancel',
+        handler: () => {
+          console.log('Application exit prevented!');
+        }
+      }, {
+        text: 'Exit',
+        handler: () => {
+          navigator['app'].exitApp();
+        }
+      }]
+    })
+      .then(alert => {
+        alert.present();
+      });
+  }
 
   home() {
     this.router.navigate(['home']);
@@ -77,8 +113,7 @@ export class AppComponent {
 
   }
 
-  
-   logout(){
+     logout(){
     this.router.navigate(['login']);
     localStorage.removeItem("signin");
     localStorage.removeItem("access_token");
@@ -91,4 +126,6 @@ export class AppComponent {
       ngOnDestroy() {
         if (typeof this.routerEvents !== 'undefined') this.routerEvents.unsubscribe();
     }
+
+    
 }

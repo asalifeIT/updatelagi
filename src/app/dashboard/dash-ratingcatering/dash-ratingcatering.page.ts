@@ -64,6 +64,7 @@ export class DashRatingcateringPage implements OnInit {
   }
 
   ngOnDestroy() {
+
     if (typeof this.routerEvents !== 'undefined') this.routerEvents.unsubscribe();
   }
 

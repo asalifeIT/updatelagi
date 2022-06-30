@@ -45,6 +45,7 @@ export class InfolaundryPage implements OnInit {
         console.log("err", error);
         }
       );
+
   }
 
   onBack() {

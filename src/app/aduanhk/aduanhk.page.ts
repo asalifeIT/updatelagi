@@ -51,6 +51,7 @@ export class AduanhkPage implements OnInit {
         Validators.required
       ]))
     });
+
   }
 
   async submitAduanHk(){

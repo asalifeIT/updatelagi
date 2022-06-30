@@ -69,6 +69,7 @@ export class AduanlaundryPage implements OnInit {
       ])),
     });
     console.log(this.FormAduanLaundry.errors);
+    
   }
 
   async submitAduanLaundry(){

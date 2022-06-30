@@ -13,6 +13,7 @@ import { RouterEvent } from '@angular/router';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
+  [x: string]: any;
   RouterEvent : any;
   features: any[] = [
     {id: 1, name: 'Catering', src: 'assets/svg/dining.svg', background: '', page: ''},
@@ -40,16 +41,19 @@ export class HomePage implements OnInit {
   private routerEvents: any;
   Username:any;
   DataLogin:any;
+  Dismis:any;
   constructor(
     public loadingController: LoadingController,
     private serviceService: ServiceService,
     private router: Router,
     public util: UtilService,
-    public navCtrl: NavController
+    public navCtrl: NavController,
+    public platform:Platform
 
   ) {}
 
   ngOnInit() {
+    
     //ambil data dari localstorage
     let dataStorage=JSON.parse(localStorage.getItem(this.serviceService.TOKEN_KEY));
     // this.Username=dataStorage.data.Username;
@@ -66,6 +70,16 @@ export class HomePage implements OnInit {
 
   }
 
+  deactivateBackButton()
+  {
+     this.subscribe = this.platform.backButton.subscribeWithPriority(666666,()=>{
+     if (this.constructor.name == "HomePage") {
+       if (window.confirm("Do you want to exit app")) {
+         navigator["app"].exitApp();
+       }
+     }
+   });
+  }
 
 async signout(){
     const loading = await this.loadingController.create({
@@ -100,6 +114,10 @@ openDashboard(){
 }
 public ngOnDestroy() {
   this.routerEvents.unsubscribe();
+}
+
+openInfo(){
+  this.router.navigate(['information']); 
 }
 
 }

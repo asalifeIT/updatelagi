@@ -20,10 +20,12 @@ export class DashboardPage implements OnInit {
     private serviceService: ServiceService,
     private router: Router,
     public util: UtilService,
-    public navCtrl: NavController
+    public navCtrl: NavController,
+    private platform: Platform,
   ) { }
 
   ngOnInit() {
+    
       //ambil data dari localstorage
       let dataStorage=JSON.parse(localStorage.getItem(this.serviceService.TOKEN_KEY));
       // this.Username=dataStorage.data.Username;
@@ -38,6 +40,7 @@ export class DashboardPage implements OnInit {
           console.log("error");
         }
       );
+      
   }
 
   signout(){

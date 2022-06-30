@@ -23,10 +23,12 @@ export class MaintenancePage implements OnInit {
   constructor(
     public loadingController: LoadingController,
     public util: UtilService,
-    private router: Router
+    private router: Router,
+    private platform:Platform
   ) { }
 
   ngOnInit() {
+
   }
   openInfomain() {
     this.router.navigate(['infomaintan']);

@@ -1001,10 +1001,10 @@
   "resolved" "https://registry.npmjs.org/@capacitor/ios/-/ios-3.4.3.tgz"
   "version" "3.4.3"
 
-"@capacitor/keyboard@^1.2.2":
-  "integrity" "sha512-dOZSXJTY/tTbRQ+Neiny72BIXN2Hvf/2AgPpMdTErDfaQM7C2MMgtJrm+Mi+YUeT6AnJFmt68nHJGImAL4lzmA=="
-  "resolved" "https://registry.npmjs.org/@capacitor/keyboard/-/keyboard-1.2.2.tgz"
-  "version" "1.2.2"
+"@capacitor/keyboard@^1.2.3":
+  "integrity" "sha512-KTSzJkMa6CrmDIDhWfswNPqS7gvYlL25E1gqXbY7w/EhyBjJhEdF0bc6QUFufS+ZVMlcPafc0/E5P+pTfLnKiA=="
+  "resolved" "https://registry.npmjs.org/@capacitor/keyboard/-/keyboard-1.2.3.tgz"
+  "version" "1.2.3"
 
 "@capacitor/status-bar@^1.0.8":
   "integrity" "sha512-lhxa70K6vg0QjdddbT9RqFLfQ9a0Fk1OVE54MhUH30DWymv4h2LrC+mJgH6JS46WQbR2UCHRymfmVCq1PS2Qiw=="

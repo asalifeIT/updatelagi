@@ -38,7 +38,6 @@ export class DashTugashkPage implements OnInit {
 
   ngOnInit() {
     this.someOtherMethod();
-
     this.serviceService.getRecord('task/room').subscribe(
       data => {
         this.DataRecordRoom = data.body;

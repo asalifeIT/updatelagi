@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { LoadingController, ModalController } from '@ionic/angular';
+import { LoadingController, ModalController, Platform } from '@ionic/angular';
 import { ServiceService } from 'src/app/services/service.service';
 
 @Component({
@@ -18,6 +18,7 @@ export class UpdateDetailRoomComponent implements OnInit{
     public loadingController: LoadingController,
     private serviceService: ServiceService,
     private formBuilder: FormBuilder,
+    private platform: Platform
   ) { }
 
   dismissModal() {
@@ -25,6 +26,7 @@ export class UpdateDetailRoomComponent implements OnInit{
   }
 
   ngOnInit() {
+
     this.verifKamar = this.formBuilder.group({
       lantaikamar: new FormControl('false'),
       lantaitoilet: new FormControl('false'),

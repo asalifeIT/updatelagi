@@ -58,6 +58,8 @@ export class UpdateStatusComponent {
         loading.dismiss();
       }
     );
+    
   }
+  
 
 }

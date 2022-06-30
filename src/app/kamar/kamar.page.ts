@@ -112,6 +112,7 @@ export class KamarPage implements OnInit {
       }
     );
 
+
     this.FormKamar=this.formBuilder.group({
       mess:new FormControl('', Validators.compose([
         Validators.required

@@ -45,6 +45,7 @@ export class InfomaintanPage implements OnInit {
         console.log("err", error);
         }
       );
+
   }
   onBack() {
     this.router.navigate(['home']);
