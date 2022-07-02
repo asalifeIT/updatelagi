@@ -6,6 +6,21 @@
   terms found in the Website https://bunchdevelopers.com/license
   Copyright and Good Faith Purchasers © 2021-present bunchdevelopers.
 */
+:root {  
+  --ion-safe-area-top: 20px;  
+  --ion-safe-area-bottom: 22px;  
+}  
+.swiper-slide {  
+  display: block;  
+}  
+ion-slide > h2 {  
+  margin-top: 2.8rem;  
+}  
+ion-slide > img {  
+  max-height: 50%;  
+  max-width: 60%;  
+  margin: 36px 0;  
+}  
 
 .main_content_div {
   padding: 10px;

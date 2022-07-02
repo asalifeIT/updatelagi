@@ -67,7 +67,7 @@ export class UpdateDetailRoomComponent implements OnInit {
     this.serviceService.updateStatus(this.verifKamar.value, 'task/room-update/', this.data.id).subscribe(
       data => {
         console.log(data.body);
-        this.resultMessage = 'success';
+        this.resultMessage = 'success edit checklist Kamar';
         this.modalController.dismiss(this.resultMessage, 'resultMessage');
         loading.dismiss();
       },
@@ -105,7 +105,7 @@ export class UpdateDetailRoomComponent implements OnInit {
     await alert.present();
   }
 
-  isAnyNullValue(data) {
+  isAnyNullValue(data:any) {
     for (const [key, value] of Object.entries(data)) {
       if (value === 'false') {
         return true;

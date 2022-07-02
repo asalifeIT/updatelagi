@@ -10,6 +10,7 @@ import { UtilService } from 'src/app/services/util.service';
 import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 import { AstoinfoPage } from '../astoinfo/astoinfo.page';
 
+
 @Component({
   selector: 'app-information',
   templateUrl: './information.page.html',
@@ -17,6 +18,14 @@ import { AstoinfoPage } from '../astoinfo/astoinfo.page';
   
 })
 export class InformationPage implements OnInit {
+  slideOpts = {
+    initialSlide: 1,
+    speed: 400,
+    loop: true,
+    autoplay: {
+          delay: 4000
+    }
+  };
   tabID;
   constructor(
     private modalCtrl: ModalController,
@@ -31,5 +40,11 @@ export class InformationPage implements OnInit {
     this.router.navigate(['astoinfo']);
   }
 
+  openDev(){
+    this.router.navigate(['developer']);
+  }
 
+  openTeam(){
+    this.router.navigate(['myteam']);
+  }
 }
