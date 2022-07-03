@@ -6,41 +6,49 @@
   terms found in the Website https://bunchdevelopers.com/license
   Copyright and Good Faith Purchasers © 2021-present bunchdevelopers.
  -->
- <ion-header mode="md" class="ion-no-border">
-  <ion-toolbar></ion-toolbar>
-</ion-header>
-
-<ion-content>
+ <ion-content class="ion-padding" scrollY="false">
   <div class="main_content_div">
-    <ion-chip class="dash" color="dark">ASA</ion-chip>
     <div class="flex_title">
-      <ion-label></ion-label>
-      <ion-icon name="close" (click)="close()"></ion-icon>
+      <ion-icon color="light" name="close" (click)="close()"></ion-icon>
     </div>
-    <ion-row>
-      <ion-col style="padding-left: 0px;">
-        <p align="center">
-          <ion-thumbnail>
-            <img src="assets/images/asa.jpg"/>
-          </ion-thumbnail>
-        </p>
-        <p align="center"> <ion-note color="dark">ASTO SERVICE APP (ASA) Where It All Began</ion-note><br>
-        <ion-note  color="dark"> Developed By Lintas Orbit Jaya Tech (L.O.J)</ion-note></p>
-        <p align="center">
-          <ion-thumbnail>
-            <img src="assets/images/loj.jpg"/>
-          </ion-thumbnail>
-        </p>
+    <ion-row style="margin-bottom: 10px;">
+      <ion-col size="12">
+        <ion-icon name="logo-web-component"></ion-icon>
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col style="padding-left: 0px;">
-        <p align="center"> <ion-note color="dark">Asto Service App atau ASA adalah suatu aplikasi yang
-          bertujuan untuk meningkatkan kualitas alur komunikasi
-          serta sebagai media penampung aspirasi, komplain,
-          dan bantuan yang bersifat genting.</ion-note></p>
+      <ion-col size="12" [class.active]="tabID == 1">
+       <p><ion-label>ASA FEATURE</ion-label><br>
       </ion-col>
     </ion-row>
   </div>
-
+  <ion-slides>  
+    <ion-slides pager="true" [options]="slideOpts">  
+    <ion-slide>  
+      <img src="assets/images/ASA_Life.png"/>  
+      <h3>ASA LIFE</h3> 
+      <p>Mempermudah Pengguna Pada Lingkungan Mess</p>  
+    </ion-slide>  
+  
+    <ion-slide>  
+      <img src="assets/images/ASA_SGMS.png"/>  
+      <h3>ASA SGMC</h3>  
+      <p><b>Mempermudah Penginformasian Keadaan Darurat</b> <br> Coming Soon.....</p>  
+    </ion-slide>  
+  
+    <ion-slide>  
+      <img src="assets/images/ASA_Even.png"/>  
+      <h3>ASA EVEN</h3>  
+      <p><b>Mempermudah Penginformasian Keadaan Darurat</b><br> Coming Soon.....</p>  
+    </ion-slide>  
+  
+    <ion-slide>  
+      <img src="assets/images/ASA_Shop.png"/>  
+      <h3>ASA SHOP</h3>  
+      <p><b>Mempermudah Penginformasian Keadaan Darurat</b><br> Coming Soon.....</p>   
+    </ion-slide>  
+  </ion-slides>
+  </ion-slides>
+  <div style="display: flex;flex-direction: row; justify-content: center;">
+  </div>
 </ion-content>

@@ -6,78 +6,68 @@
   terms found in the Website https://bunchdevelopers.com/license
   Copyright and Good Faith Purchasers © 2021-present bunchdevelopers.
  -->
- <ion-header class="ion-padding" scroll-y="false" mode="md">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-note class="dash" color="dark">Menu Informasi</ion-note>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content fullscreen class="ion-padding" scroll-y="false">
-  <div class="main_content_div"><ion-chip class="dash" color="dark">Profile</ion-chip><br>
+<ion-content class="ion-padding" scrollY="false">
+  <div class="main_content_div">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+        <ion-chip class="dash" color="dark">Menu Informasi</ion-chip>
+      </ion-buttons>
+      <br>
+      <br>
     <ion-row style="margin-bottom: 10px;">
       <ion-col size="3" (click)="tabID = 1" [class.active]="tabID == 1" (click)="openAstoinfo()">
         <ion-icon name="logo-web-component"></ion-icon>
       </ion-col>
       <ion-col size="3" (click)="tabID = 2" [class.active]="tabID == 2" (click)="openDev()">
-        <ion-icon name="logo-buffer"></ion-icon>
+        <ion-icon name="logo-nodejs"></ion-icon>
       </ion-col>
       <ion-col size="3" (click)="tabID = 3" [class.active]="tabID == 3"  (click)="openTeam()">
         <!-- <ion-icon name="logo-usd"></ion-icon> -->
-        <ion-icon name="contract-sharp"></ion-icon>
+        <ion-icon name="people"></ion-icon>
       </ion-col>
       <ion-col size="3" (click)="tabID = 4" [class.active]="tabID == 4">
         <!-- <ion-icon name="logo-usd"></ion-icon> -->
-        <ion-icon name="walk-sharp"></ion-icon>
+        <ion-icon name="logo-closed-captioning"></ion-icon>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col size="3" [class.active]="tabID == 1">
        <p><ion-label>ASA</ion-label><br>
-
       </ion-col>
       <ion-col size="3" [class.active]="tabID == 2">
         <p><ion-label>Technology</ion-label><br>
- 
       </ion-col>
       <ion-col size="3" [class.active]="tabID == 3">
         <p> <ion-label>My Team</ion-label>
        </ion-col>
       <ion-col size="3" [class.active]="tabID == 4">
        <p><ion-label>Support</ion-label>
-        <ion-label>By</ion-label></p>
       </ion-col>
     </ion-row>
   </div>
 
-
   <ion-slides>  
     <ion-slides pager="true" [options]="slideOpts">  
     <ion-slide>  
-      <img src="assets/images/asa4.png"/>  
-      <h2>Welcome to the <b>JavaTpoint</b></h2>  
-      <p>JavaTpoint offers Corporate Training, Summer Training, Online Training and Winter Training on Java, Android, Python, Oracle, PHP, and many more technologies.</p>  
+      <img src="assets/images/asa4.png"/>     
+      <h4><b>(Asto Service App)</b></h4>  
+      <p>ASA adalah suatu aplikasi yang bertujuan untuk meningkatkan kualitas alur komunikasi serta sebagai media penampung aspirasi, komplain, dan bantuan yang bersifat genting.</p>  
     </ion-slide>  
-  
+
     <ion-slide>  
-      <img src="assets/images/asa2.jpg"/>  
-      <h2>What is Ionic?</h2>  
-      <p><b>Ionic Framework</b> is an open source SDK that enables developers to build high quality mobile apps with web technologies like HTML, CSS, and JavaScript.</p>  
+      <img src="assets/images/loj.jpg"/>     
+      <h4><b>(Asto Service App)</b></h4>  
+      <p>Salam Kami Dengan Penuh Cinta</p>  
     </ion-slide>  
-  
+
     <ion-slide>  
-      <img src="assets/images/asa2.png"/>  
-      <h2>What is Ionic Pro?</h2>  
-      <p><b>Ionic Pro</b> is a powerful set of services and features built on top of Ionic Framework that brings a totally new level of app development agility to mobile dev teams.</p>  
+      <img src="assets/images/gios.png"/>     
+      <h4><b>soon</b></h4>  
+      <p>Download our App Today & Experience Endless Possibilities</p>  
     </ion-slide>  
-  
-    <ion-slide>  
-      <img src="assets/images/asa3.png"/>  
-      <h2>Ready to Play?</h2>  
-      <ion-button fill="clear">Continue <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>  
-    </ion-slide>  
+
   </ion-slides>
   </ion-slides>
+  <div style="display: flex;flex-direction: row; justify-content: center;">
+  </div>
 </ion-content>

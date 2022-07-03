@@ -23,7 +23,7 @@ export class InformationPage implements OnInit {
     speed: 400,
     loop: true,
     autoplay: {
-          delay: 4000
+          delay: 1500
     }
   };
   tabID;

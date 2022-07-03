@@ -13,7 +13,14 @@ import { NgModule } from '@angular/core';
   styleUrls: ['./developer.page.scss'],
 })
 export class DeveloperPage implements OnInit {
-
+  slideOpts = {
+    initialSlide: 1,
+    speed: 400,
+    loop: true,
+    autoplay: {
+          delay: 2500
+    }
+  };
   constructor(
     private modalCtrl: ModalController,
     public loadingController: LoadingController,

@@ -12,7 +12,14 @@ import { NgModule } from '@angular/core';
   styleUrls: ['./astoinfo.page.scss'],
 })
 export class AstoinfoPage implements OnInit {
-
+  slideOpts = {
+    initialSlide: 1,
+    speed: 400,
+    loop: true,
+    autoplay: {
+          delay: 1500
+    }
+  };
   constructor(
     private modalCtrl: ModalController,
     public loadingController: LoadingController,
