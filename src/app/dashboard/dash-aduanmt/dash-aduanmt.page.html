@@ -33,18 +33,27 @@
       </ion-label>
     </div>
   </ion-item>
-  <ion-content class="ion-padding">
-    <ion-list>
-      <ion-item button *ngFor="let data of DataRecord; let i = index" (click)="openModal(data)">
-        <ion-label>
-          <h2>User: {{data.user_name}}</h2>
-          <p>Deskripsi: {{data.jenis_aduan}} ( {{data.lokasi}} )</p>
-          <p>Status: {{data.status}}</p>
-          <p *ngIf=" data.pic_nrp !== null"> PIC: {{data.pic_nrp}} </p>
-          <p *ngIf=" data.priority !== null"> Priority: {{data.priority}} </p>
-          <p *ngIf=" data.duration !== null">durasi: {{data.duration.substring(0, 10)}} </p>
-        </ion-label>
-      </ion-item>
-    </ion-list>
-  </ion-content>
+  <div *ngIf="this.serviceService.isHasAccess('MAINTENANCE', 'COMPLAINT', 'VIEW'); else noAccess">
+    <ion-content class="ion-padding">
+      <ion-list>
+        <ion-item button *ngFor="let data of DataRecord; let i = index" (click)="openModal(data)">
+          <ion-label>
+            <h2>User: {{data.user_name}}</h2>
+            <p>Deskripsi: {{data.jenis_aduan}} ( {{data.lokasi}} )</p>
+            <p>Status: {{data.status}}</p>
+            <p *ngIf=" data.pic_nrp !== null"> PIC: {{data.pic_nrp}} </p>
+            <p *ngIf=" data.priority !== null"> Priority: {{data.priority}} </p>
+            <p *ngIf=" data.duration !== null">durasi: {{data.duration.substring(0, 10)}} </p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </div>
+
+  <ng-template #noAccess>
+    <ion-content class="ion-padding">
+      <h1>You Have No Access To This Feature</h1>
+    </ion-content>
+  </ng-template>
+
 </ion-content>

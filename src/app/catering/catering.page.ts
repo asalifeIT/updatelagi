@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavController, ModalController, LoadingController, ToastController,Platform } from '@ionic/angular';
 import { UtilService } from 'src/app/services/util.service';
+import { ServiceService } from '../services/service.service';
 
 @Component({
   selector: 'app-catering',
@@ -24,7 +25,8 @@ export class CateringPage implements OnInit {
    constructor(
     public loadingController: LoadingController,
     private router: Router,
-    public util: UtilService
+    public util: UtilService,
+    private serviceService: ServiceService,
   ) { }
 
   ngOnInit() {

@@ -1,7 +1,7 @@
 import { ServiceService } from 'src/app/services/service.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormBuilder, FormGroup,  Validators } from '@angular/forms';
+import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController, ModalController, LoadingController, ToastController, Platform } from '@ionic/angular';
 import { ReplaySubject } from "rxjs/index";
 import { UtilService } from 'src/app/services/util.service';
@@ -113,20 +113,22 @@ export class DashAduanlaundryPage implements OnInit {
   }
 
   async openModal(data) {
-    const modal = await this.modalController.create({
-      component: UpdateStatusComponent,
-      componentProps: {
-        id: data.id,
-        status: data.status
+    if (this.serviceService.isHasAccess('LAUNDRY', 'COMPLAINT', 'EDIT')) {
+      const modal = await this.modalController.create({
+        component: UpdateStatusComponent,
+        componentProps: {
+          id: data.id,
+          status: data.status
+        }
+      });
+      await modal.present();
+      const message = await modal.onWillDismiss();
+      if (message.data === 'success') {
+        this.ngOnInit();
       }
-    });
-    await modal.present();
-    const message = await modal.onWillDismiss();
-    if (message.data === 'success') {
-      this.ngOnInit();
-    }
-    if (message.data) {
-      this.presentToast(message.data);
+      if (message.data) {
+        this.presentToast(message.data);
+      }
     }
   }
 }

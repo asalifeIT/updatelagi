@@ -28,12 +28,12 @@ export class DashAduancatPage implements OnInit {
   test: any;
   validations = {
     'status': [
-     { type: 'required', message: 'pilihan edit status harus di isi' }
+      { type: 'required', message: 'pilihan edit status harus di isi' }
     ],
     'id': [
       { type: 'required', message: 'pilihan edit status harus di isi' }
-     ]
-    };
+    ]
+  };
 
   constructor(
     private serviceService: ServiceService,
@@ -78,12 +78,12 @@ export class DashAduancatPage implements OnInit {
     );
   }
 
-  async updateaduan(id:string){
+  async updateaduan(id: string) {
     const loading = await this.loadingController.create({
       message: 'Please wait...'
     });
     await loading.present();
-    this.serviceService.updateaduan(this.FormStatus.value, 'catering/update-status/'+ 'id').subscribe(
+    this.serviceService.updateaduan(this.FormStatus.value, 'catering/update-status/' + 'id').subscribe(
       data => {
         this.presentToast("Edit Status Aduan Catering Sukses");
         console.log(this.FormStatus.value);
@@ -97,7 +97,7 @@ export class DashAduancatPage implements OnInit {
         console.log(this.FormStatus.value);
         this.FormStatus.reset();
         loading.dismiss();
-      }  
+      }
     );
   }
 
@@ -117,22 +117,24 @@ export class DashAduancatPage implements OnInit {
   ngOnDestroy() {
     if (typeof this.routerEvents !== 'undefined') this.routerEvents.unsubscribe();
   }
-  
+
   async openModal(data) {
-    const modal = await this.modalController.create({
-      component: UpdateStatusComponent,
-      componentProps: {
-        id: data.id,
-        status: data.status
+    if (this.serviceService.isHasAccess('CATERING', 'COMPLAINT', 'EDIT')) {
+      const modal = await this.modalController.create({
+        component: UpdateStatusComponent,
+        componentProps: {
+          id: data.id,
+          status: data.status
+        }
+      });
+      await modal.present();
+      const message = await modal.onWillDismiss();
+      if (message.data === 'success') {
+        this.ngOnInit();
       }
-    });
-    await modal.present();
-    const message = await modal.onWillDismiss();
-    if (message.data === 'success') {
-      this.ngOnInit();
-    }
-    if (message.data) {
-      this.presentToast(message.data);
+      if (message.data) {
+        this.presentToast(message.data);
+      }
     }
   }
 }

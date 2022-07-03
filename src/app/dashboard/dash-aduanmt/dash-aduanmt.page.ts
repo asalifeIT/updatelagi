@@ -124,26 +124,26 @@ export class DashAduanmtPage implements OnInit {
   }
 
   async openModal(data) {
-    const modal = await this.modalController.create({
-      component: UpdateStatusAndDetailComponent,
-      componentProps: {
-        id: data.id,
-        status: data.status,
-        priority: data.priority,
-        duration: data.duration,
-        pic_nrp: data.pic_nrp,
-        usersMt: this.DataUsersMt
+    if (this.serviceService.isHasAccess('MAINTENANCE', 'COMPLAINT', 'EDIT')) {
+      const modal = await this.modalController.create({
+        component: UpdateStatusAndDetailComponent,
+        componentProps: {
+          id: data.id,
+          status: data.status,
+          priority: data.priority,
+          duration: data.duration,
+          pic_nrp: data.pic_nrp,
+          usersMt: this.DataUsersMt
+        }
+      });
+      await modal.present();
+      const message = await modal.onWillDismiss();
+      if (message.data === 'success') {
+        this.ngOnInit();
       }
-    });
-    await modal.present();
-    const message = await modal.onWillDismiss();
-    if (message.data === 'success') {
-      this.ngOnInit();
-    }
-    if (message.data) {
-      this.presentToast(message.data);
+      if (message.data) {
+        this.presentToast(message.data);
+      }
     }
   }
-
 }
-

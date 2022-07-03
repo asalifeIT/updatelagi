@@ -15,71 +15,62 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-
-  <div class="main-header">
-    <ion-chip class="dash" color="light">DASHBOARD TUGAS HOUSEKEEPING</ion-chip>
-  </div>
-  <ion-item lines="none">
-    <ion-thumbnail>
-      <img src="assets/images/cus.png" />
-    </ion-thumbnail>
-    <div class="name">
-      <ion-label class="center">
-        <div>
-          <div>
-            Selamat Datang {{Username}}
-          </div>
-        </div>
-      </ion-label>
-    </div>
-  </ion-item>
-
-  <ion-content class="ion-padding">
+<ion-content>
+  <div class="ion-padding">
     <div class="main-header">
       <ion-chip class="dash" color="light">Inbox Tugas Housekeeping</ion-chip>
     </div>
 
-    <div class="segments">
-      <ion-segment mode="md" [(ngModel)]="current">
-        <ion-segment-button [value]="1">
-          <ion-label>Kamar</ion-label>
-        </ion-segment-button>
-        <ion-segment-button [value]="2">
-          <ion-label>Non Kamar</ion-label>
-        </ion-segment-button>
-      </ion-segment>
-    </div>
+    <div *ngIf="this.serviceService.isHasAccess('HOUSEKEEPING', 'TASK', 'VIEW'); else noAccess" >
+      <div class="segments">
+        <ion-segment mode="md" [(ngModel)]="current">
+          <ion-segment-button [value]="1">
+            <ion-label>Kamar</ion-label>
+          </ion-segment-button>
+          <ion-segment-button [value]="2">
+            <ion-label>Non Kamar</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </div>
 
-    <div *ngIf="current == 1 || current == null">
-      <div class="account">
-        <ion-content class="ion-padding">
-          <ion-list>
-            <ion-item button *ngFor="let data of DataRecordRoom; let i = index" (click)="openModalRoom(data)">
-              <ion-label>
-                <h2>User: {{data.user.name}}</h2>
-                <p>{{data.mess}} No. {{data.no_kamar}}</p>
-                <p>Poin: {{countPoinRoom(data)}}</p>
-              </ion-label>
-            </ion-item>
-          </ion-list>
-        </ion-content>
+      <div *ngIf="current == 1 || current == null">
+        <div class="account">
+          <ion-content class="ion-padding">
+            <ion-list>
+              <ion-item button *ngFor="let data of DataRecordRoom; let i = index" (click)="openModalRoom(data)">
+                <ion-label>
+                  <h2>User: {{data.user.name}}</h2>
+                  <p>{{data.mess}} No. {{data.no_kamar}}</p>
+                  <p>Poin: {{countPoinRoom(data)}}</p>
+                </ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-content>
+        </div>
+      </div>
+
+      <div *ngIf="current == 2">
+        <div class="account">
+          <ion-content class="ion-padding">
+            <ion-list>
+              <ion-item button *ngFor="let data of DataRecordNonRoom; let i = index" (click)="openModalNonRoom(data)">
+                <ion-label>
+                  <h2>User: {{data.user.name}}</h2>
+                  <p>{{data.mess}}</p>
+                  <p>Poin: {{countPoinNonRoom(data)}}</p>
+                </ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-content>
+        </div>
       </div>
     </div>
 
-    <div *ngIf="current == 2">
-      <div class="account">
-        <ion-content class="ion-padding">
-          <ion-list>
-            <ion-item button *ngFor="let data of DataRecordNonRoom; let i = index" (click)="openModalNonRoom(data)">
-              <ion-label>
-                <h2>User: {{data.user.name}}</h2>
-                <p>{{data.mess}}</p>
-                <p>Poin: {{countPoinNonRoom(data)}}</p>
-              </ion-label>
-            </ion-item>
-          </ion-list>
-        </ion-content>
-      </div>
-    </div>
-  </ion-content>
+    <ng-template #noAccess>
+      <ion-content scrollY="false">
+        <h1>You Have No Access To This Feature</h1>
+      </ion-content>
+    </ng-template>
+
+  </div>
+</ion-content>

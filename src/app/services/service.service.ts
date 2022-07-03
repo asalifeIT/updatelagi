@@ -199,20 +199,20 @@ export class ServiceService {
   }
 
 
-  updateaduan(form, url){
-    let dataStorage=JSON.parse(localStorage.getItem(this.TOKEN_KEY));
-    this.token=dataStorage;
+  updateaduan(form, url) {
+    let dataStorage = JSON.parse(localStorage.getItem(this.TOKEN_KEY));
+    this.token = dataStorage;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': "Bearer "+ this.token
+      'Authorization': "Bearer " + this.token
     });
     return this.http.put(this.API_URL + url, form, { headers: headers, observe: 'response' }).pipe(
       tap(Data => {
-        this.DataResponse=Data;        
-        let message='Data Anda terupdate.';
+        this.DataResponse = Data;
+        let message = 'Data Anda terupdate.';
         return message;
       }),
-      
+
       catchError((err) => {
         let message = "Gagal update! ";
         return throwError(err);
@@ -225,17 +225,17 @@ export class ServiceService {
     this.authenticationState.next(false);
   }
 
-  updateStatus(form, url, id){
-    let dataStorage=JSON.parse(localStorage.getItem(this.TOKEN_KEY));
-    this.token=dataStorage;
+  updateStatus(form, url, id) {
+    let dataStorage = JSON.parse(localStorage.getItem(this.TOKEN_KEY));
+    this.token = dataStorage;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': "Bearer "+ this.token
+      'Authorization': "Bearer " + this.token
     });
     return this.http.put(this.API_URL + url + id, form, { headers: headers, observe: 'response' }).pipe(
       tap(Data => {
-        this.DataLogin=Data;
-        let message='Data Anda terkirim.';
+        this.DataLogin = Data;
+        let message = 'Data Anda terkirim.';
         return message;
       }),
       catchError((err) => {
@@ -245,7 +245,182 @@ export class ServiceService {
     );
   }
 
+  getUserName() {
+    const user = JSON.parse(localStorage.getItem('user'));
+    return user.user.name;
+  }
 
+  isHasAccessDashboard() {
+    const user = JSON.parse(localStorage.getItem('user'));
+    console.log(user.user.name);
 
+    const roleUser = user.roles[2];
+    return (roleUser !== 'ROLE_CUS')
+  }
 
+  isHasAccess(_feature: string, _section: string, _action: string) {
+    const user = JSON.parse(localStorage.getItem('user'));
+    const roleUser = user.roles[2];
+
+    let feature = this.featuresApp.find(e => e.feature === _feature);
+    if (feature == null) return false;
+
+    let section = feature.sections.find(e => e.section === _section);
+    if (section == null) return false;
+
+    let action = section.actions.find(e => e.action === _action);
+    if (action == null) return false;
+
+    return !!action.hasAccess.find(item => JSON.stringify(item) === JSON.stringify(roleUser));
+  }
+
+  featuresApp =
+    [
+      {
+        'feature': 'CATERING',
+        'sections':
+          [
+            {
+              'section': 'COMPLAINT',
+              'actions':
+                [
+                  {
+                    'action': 'VIEW',
+                    'hasAccess': ['ROLE_MT', 'ROLE_HK', 'ROLE_SPV', 'ROLE_GS', 'ROLE_PROG', 'ROLE_HCGS']
+                  },
+                  {
+                    'action': 'ADD',
+                    'hasAccess': ['ROLE_CUS', 'ROLE_SPV', 'ROLE_GS', 'ROLE_PROG', 'ROLE_HCGS']
+                  },
+                  {
+                    'action': 'EDIT',
+                    'hasAccess': ['ROLE_PROG', 'ROLE_HCGS']
+                  },
+                ]
+            },
+            {
+              'section': 'RATING',
+              'actions':
+                [
+                  {
+                    'action': 'VIEW',
+                    'hasAccess': ['ROLE_MT', 'ROLE_HK', 'ROLE_SPV', 'ROLE_GS', 'ROLE_PROG', 'ROLE_HCGS']
+                  },
+                  {
+                    'action': 'ADD',
+                    'hasAccess': ['ROLE_CUS', 'ROLE_GS', 'ROLE_PROG', 'ROLE_HCGS']
+                  },
+                ]
+            }
+          ]
+      },
+      {
+        'feature': 'HOUSEKEEPING',
+        'sections':
+          [
+            {
+              'section': 'COMPLAINT',
+              'actions':
+                [
+                  {
+                    'action': 'VIEW',
+                    'hasAccess': ['ROLE_MT', 'ROLE_HK', 'ROLE_SPV', 'ROLE_GS', 'ROLE_PROG', 'ROLE_HCGS']
+                  },
+                  {
+                    'action': 'ADD',
+                    'hasAccess': ['ROLE_CUS', 'ROLE_SPV', 'ROLE_GS', 'ROLE_PROG', 'ROLE_HCGS']
+                  },
+                  {
+                    'action': 'EDIT',
+                    'hasAccess': ['ROLE_SPV', 'ROLE_GS', 'ROLE_PROG', 'ROLE_HCGS']
+                  },
+                ]
+            },
+            {
+              'section': 'TASK',
+              'actions':
+                [
+                  {
+                    'action': 'VIEW',
+                    'hasAccess': ['ROLE_HK', 'ROLE_SPV', 'ROLE_GS', 'ROLE_PROG', 'ROLE_HCGS']
+                  },
+                  {
+                    'action': 'ADD',
+                    'hasAccess': ['ROLE_HK', 'ROLE_PROG', 'ROLE_HCGS']
+                  },
+                  {
+                    'action': 'EDIT',
+                    'hasAccess': ['ROLE_SPV', 'ROLE_GS', 'ROLE_PROG', 'ROLE_HCGS']
+                  },
+                ]
+            }
+          ]
+      },
+      {
+        'feature': 'LAUNDRY',
+        'sections':
+          [
+            {
+              'section': 'COMPLAINT',
+              'actions':
+                [
+                  {
+                    'action': 'VIEW',
+                    'hasAccess': ['ROLE_MT', 'ROLE_HK', 'ROLE_SPV', 'ROLE_GS', 'ROLE_PROG', 'ROLE_HCGS']
+                  },
+                  {
+                    'action': 'ADD',
+                    'hasAccess': ['ROLE_CUS', 'ROLE_SPV', 'ROLE_GS', 'ROLE_PROG', 'ROLE_HCGS']
+                  },
+                  {
+                    'action': 'EDIT',
+                    'hasAccess': ['ROLE_SPV', 'ROLE_GS', 'ROLE_PROG', 'ROLE_HCGS']
+                  },
+                ]
+            },
+          ]
+      },
+      {
+        'feature': 'MAINTENANCE',
+        'sections':
+          [
+            {
+              'section': 'COMPLAINT',
+              'actions':
+                [
+                  {
+                    'action': 'VIEW',
+                    'hasAccess': ['ROLE_MT', 'ROLE_HK', 'ROLE_GS', 'ROLE_PROG', 'ROLE_HCGS']
+                  },
+                  {
+                    'action': 'ADD',
+                    'hasAccess': ['ROLE_CUS', 'ROLE_SPV', 'ROLE_GS', 'ROLE_PROG', 'ROLE_HCGS']
+                  },
+                  {
+                    'action': 'EDIT',
+                    'hasAccess': ['ROLE_MT', 'ROLE_GS', 'ROLE_PROG', 'ROLE_HCGS']
+                  },
+                ]
+            },
+            {
+              'section': 'TASK',
+              'actions':
+                [
+                  {
+                    'action': 'VIEW',
+                    'hasAccess': ['ROLE_MT', 'ROLE_GS', 'ROLE_PROG', 'ROLE_HCGS']
+                  },
+                  {
+                    'action': 'ADD',
+                    'hasAccess': ['ROLE_MT', 'ROLE_PROG', 'ROLE_HCGS']
+                  },
+                  {
+                    'action': 'EDIT',
+                    'hasAccess': ['ROLE_GS', 'ROLE_PROG', 'ROLE_HCGS']
+                  },
+                ]
+            }
+          ]
+      }
+    ];
 }

@@ -33,15 +33,25 @@
       </ion-label>
     </div>
   </ion-item>
-  <ion-content class="ion-padding">
-    <ion-list>
-      <ion-item button *ngFor="let data of DataRecord; let i = index" (click)="openModal(data)">
-        <ion-label>
-          <h2>User: {{data.user.name}}</h2>
-          <p>Saran: {{data.saran}}</p>
-          <p>Poin: {{data.nilai1 + data.nilai2 + data.nilai3 + data.nilai4 + data.nilai5 + data.nilai6 + data.nilai7 + data.nilai8}}</p>
-        </ion-label>
-      </ion-item>
-    </ion-list>
-  </ion-content>
+  <div *ngIf="this.serviceService.isHasAccess('CATERING', 'RATING', 'VIEW'); else noAccess">
+    <ion-content class="ion-padding">
+      <ion-list>
+        <ion-item button *ngFor="let data of DataRecord; let i = index" (click)="openModal(data)">
+          <ion-label>
+            <h2>User: {{data.user.name}}</h2>
+            <p>Saran: {{data.saran}}</p>
+            <p>Poin: {{data.nilai1 + data.nilai2 + data.nilai3 + data.nilai4 + data.nilai5 + data.nilai6 + data.nilai7 +
+              data.nilai8}}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </div>
+
+  <ng-template #noAccess>
+    <ion-content class="ion-padding">
+      <h1>You Have No Access To This Feature</h1>
+    </ion-content>
+  </ng-template>
+
 </ion-content>

@@ -34,15 +34,25 @@
       </ion-label>
     </div>
   </ion-item>
-  <ion-content class="ion-padding">
-    <ion-list>
-      <ion-item button *ngFor="let data of DataRecord; let i = index" (click)="openModal(data)">
-        <ion-label>
-          <h2>{{data.user_nrp}} {{data.user_name}}</h2>
-          <p>Deskripsi: {{data.deskripsi}}</p>
-          <p>Status: {{data.status.slice(0, 8)}}</p>
-        </ion-label>
-      </ion-item>
-    </ion-list>
+  
+  <div *ngIf="this.serviceService.isHasAccess('HOUSEKEEPING', 'COMPLAINT', 'VIEW'); else noAccess">
+    <ion-content class="ion-padding">
+      <ion-list>
+        <ion-item button *ngFor="let data of DataRecord; let i = index" (click)="openModal(data)">
+          <ion-label>
+            <h2>{{data.user_nrp}} {{data.user_name}}</h2>
+            <p>Deskripsi: {{data.deskripsi}}</p>
+            <p>Status: {{data.status.slice(0, 8)}}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+    </div>
+  
+    <ng-template #noAccess>
+      <ion-content class="ion-padding">
+        <h1>You Have No Access To This Feature</h1>
+      </ion-content>
+    </ng-template>
+  
   </ion-content>
-</ion-content>

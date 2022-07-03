@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavController, ModalController, LoadingController, ToastController,Platform } from '@ionic/angular';
 import { UtilService } from 'src/app/services/util.service';
+import { ServiceService } from '../services/service.service';
 
 @Component({
   selector: 'app-maintenance',
@@ -24,7 +25,8 @@ export class MaintenancePage implements OnInit {
     public loadingController: LoadingController,
     public util: UtilService,
     private router: Router,
-    private platform:Platform
+    private platform:Platform,
+    private serviceService: ServiceService,
   ) { }
 
   ngOnInit() {
