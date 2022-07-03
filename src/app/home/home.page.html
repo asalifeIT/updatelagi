@@ -21,7 +21,7 @@
       ASTO SERVICE - Where It All begin!
     </ion-note><br>
     <ion-note color="light" class="ion-margin-start">
-      <ion-label>Selamat datang! Anda Login Sebagai {{Username}}</ion-label>
+      <ion-label>Selamat datang! Anda Login Sebagai {{this.serviceService.getUserName()}}</ion-label>
     </ion-note>
 
     <ion-row>
@@ -41,80 +41,99 @@
       </ion-col>
     </ion-row>
 
+
     <ion-row class="ion-margin-horizontal">
-      <ion-col *ngFor="let item of catering" size="6">
-        <ion-card class="ion-text-center">
-          <ion-card-header>
-            <div align="center" (click)="openRest()">
-              <ion-thumbnail [style.background]="item?.background">
-                <img [src]="item?.src" />
-              </ion-thumbnail>
-            </div>
-          </ion-card-header>
-          <ion-card-content>
-            <ion-label color="dark">{{ item?.name }}</ion-label>
-          </ion-card-content>
-        </ion-card>
+
+
+      <ion-col
+        *ngIf="this.serviceService.isHasAccess('CATERING', 'COMPLAINT', 'ADD') || this.serviceService.isHasAccess('CATERING', 'RATING', 'ADD')"
+        size="6">
+        <div *ngFor="let item of catering">
+          <ion-card class="ion-text-center">
+            <ion-card-header>
+              <div align="center" (click)="openRest()">
+                <ion-thumbnail [style.background]="item?.background">
+                  <img [src]="item?.src" />
+                </ion-thumbnail>
+              </div>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-label color="dark">{{ item?.name }}</ion-label>
+            </ion-card-content>
+          </ion-card>
+        </div>
       </ion-col>
 
-      <ion-col *ngFor="let item of laundry" size="6">
-        <ion-card class="ion-text-center">
-          <ion-card-header>
-            <div align="center" (click)="openLaundry()">
-              <ion-thumbnail [style.background]="item?.background">
-                <img [src]="item?.src" />
-              </ion-thumbnail>
-            </div>
-          </ion-card-header>
-          <ion-card-content>
-            <ion-label color="dark">{{ item?.name }}</ion-label>
-          </ion-card-content>
-        </ion-card>
+      <ion-col *ngIf="this.serviceService.isHasAccess('LAUNDRY', 'COMPLAINT', 'ADD')" size="6">
+        <div *ngFor="let item of laundry">
+          <ion-card class="ion-text-center">
+            <ion-card-header>
+              <div align="center" (click)="openLaundry()">
+                <ion-thumbnail [style.background]="item?.background">
+                  <img [src]="item?.src" />
+                </ion-thumbnail>
+              </div>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-label color="dark">{{ item?.name }}</ion-label>
+            </ion-card-content>
+          </ion-card>
+        </div>
       </ion-col>
 
-      <ion-col *ngFor="let item of housekeeping" size="6">
-        <ion-card class="ion-text-center">
-          <ion-card-header>
-            <div align="center" (click)="openHkeeping()">
-              <ion-thumbnail [style.background]="item?.background">
-                <img [src]="item?.src" />
-              </ion-thumbnail>
-            </div>
-          </ion-card-header>
-          <ion-card-content>
-            <ion-label color="dark">{{ item?.name }}</ion-label>
-          </ion-card-content>
-        </ion-card>
+      <ion-col
+        *ngIf="this.serviceService.isHasAccess('HOUSEKEEPING', 'COMPLAINT', 'ADD') || this.serviceService.isHasAccess('HOUSEKEEPING', 'TASK', 'ADD')"
+        size="6">
+        <div *ngFor="let item of housekeeping">
+          <ion-card class="ion-text-center">
+            <ion-card-header>
+              <div align="center" (click)="openHkeeping()">
+                <ion-thumbnail [style.background]="item?.background">
+                  <img [src]="item?.src" />
+                </ion-thumbnail>
+              </div>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-label color="dark">{{ item?.name }}</ion-label>
+            </ion-card-content>
+          </ion-card>
+        </div>
       </ion-col>
 
-      <ion-col *ngFor="let item of maintenance" size="6">
-        <ion-card class="ion-text-center">
-          <ion-card-header>
-            <div align="center" (click)="openMaintenance()">
-              <ion-thumbnail [style.background]="item?.background">
-                <img [src]="item?.src" />
-              </ion-thumbnail>
-            </div>
-          </ion-card-header>
-          <ion-card-content>
-            <ion-label color="dark">{{ item?.name }}</ion-label>
-          </ion-card-content>
-        </ion-card>
+      <ion-col
+        *ngIf="this.serviceService.isHasAccess('MAINTENANCE', 'COMPLAINT', 'ADD') || this.serviceService.isHasAccess('MAINTENANCE', 'TASK', 'ADD')"
+        size="6">
+        <div *ngFor="let item of maintenance">
+          <ion-card class="ion-text-center">
+            <ion-card-header>
+              <div align="center" (click)="openMaintenance()">
+                <ion-thumbnail [style.background]="item?.background">
+                  <img [src]="item?.src" />
+                </ion-thumbnail>
+              </div>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-label color="dark">{{ item?.name }}</ion-label>
+            </ion-card-content>
+          </ion-card>
+        </div>
       </ion-col>
 
-      <ion-col *ngFor="let item of dashboard" size="6">
-        <ion-card class="ion-text-center">
-          <ion-card-header>
-            <div align="center" (click)="openDashboard()">
-              <ion-thumbnail [style.background]="item?.background">
-                <img [src]="item?.src" />
-              </ion-thumbnail>
-            </div>
-          </ion-card-header>
-          <ion-card-content>
-            <ion-label color="dark">{{ item?.name }}</ion-label>
-          </ion-card-content>
-        </ion-card>
+      <ion-col *ngIf="this.serviceService.isHasAccessDashboard()" size="6">
+        <div *ngFor="let item of dashboard">
+          <ion-card class="ion-text-center">
+            <ion-card-header>
+              <div align="center" (click)="openDashboard()">
+                <ion-thumbnail [style.background]="item?.background">
+                  <img [src]="item?.src" />
+                </ion-thumbnail>
+              </div>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-label color="dark">{{ item?.name }}</ion-label>
+            </ion-card-content>
+          </ion-card>
+        </div>
       </ion-col>
 
       <ion-col *ngFor="let item of info" size="6">
