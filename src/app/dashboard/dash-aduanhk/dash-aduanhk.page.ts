@@ -46,7 +46,7 @@ export class DashAduanhkPage implements OnInit {
     this.FormStatus = this.formBuilder.group({
       status: new FormControl('', Validators.compose([Validators.required])),
     });
- 
+
     console.log(this.FormStatus.errors);
     this.serviceService.getRecord('housekeeping/all').subscribe(
       data => {
@@ -113,21 +113,23 @@ export class DashAduanhkPage implements OnInit {
   }
 
   async openModal(data) {
-    const modal = await this.modalController.create({
-      component: UpdateStatusComponent,
-      componentProps: {
-        id: data.id,
-        status: data.status
+    if (this.serviceService.isHasAccess('HOUSEKEEPING', 'COMPLAINT', 'EDIT')) {
+      const modal = await this.modalController.create({
+        component: UpdateStatusComponent,
+        componentProps: {
+          id: data.id,
+          status: data.status
+        }
+      });
+      await modal.present();
+      const message = await modal.onWillDismiss();
+      if (message.data === 'success') {
+        this.ngOnInit();
       }
-    });
-    await modal.present();
-    const message = await modal.onWillDismiss();
-    if (message.data === 'success') {
-      this.ngOnInit();
-    }
-    if (message.data) {
-      this.presentToast(message.data);
+      if (message.data) {
+        this.presentToast(message.data);
+      }
     }
   }
-
 }
+
