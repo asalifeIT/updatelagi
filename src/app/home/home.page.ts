@@ -15,7 +15,7 @@ import { RouterEvent } from '@angular/router';
 export class HomePage implements OnInit {
   [x: string]: any;
   RouterEvent : any;
-  features: any[] = [
+  catering: any[] = [
     {id: 1, name: 'Catering', src: 'assets/svg/dining.svg', background: '', page: ''},
   ]; 
 

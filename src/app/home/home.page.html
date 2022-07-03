@@ -6,27 +6,27 @@
       </ion-button>
     </ion-buttons>
     <ion-label color="dark">
-   Menu Home
-  </ion-label>
-  <ion-buttons slot="end">
-    <ion-icon (click)="onBack()" name="home-outline"></ion-icon>
-  </ion-buttons>
+      Menu Home
+    </ion-label>
+    <ion-buttons slot="end">
+      <ion-icon (click)="onBack()" name="home-outline"></ion-icon>
+    </ion-buttons>
   </ion-item>
- </ion-header>
+</ion-header>
 
- <ion-content [fullscreen]="true" color="light">
+<ion-content [fullscreen]="true" color="light">
   <div class="main-header"></div>
-    <ion-grid>
+  <ion-grid>
     <ion-note color="light" class="ion-margin-start">
-     ASTO SERVICE - Where It All begin! 
-         </ion-note><br>
-         <ion-note color="light" class="ion-margin-start">
-        <ion-label>Selamat datang! Anda Login Sebagai {{Username}}</ion-label>
-             </ion-note>
+      ASTO SERVICE - Where It All begin!
+    </ion-note><br>
+    <ion-note color="light" class="ion-margin-start">
+      <ion-label>Selamat datang! Anda Login Sebagai {{Username}}</ion-label>
+    </ion-note>
 
     <ion-row>
       <ion-col size="6">
-        <ion-label>  
+        <ion-label>
           <ion-note color="light" class="ion-margin-start">
           </ion-note>
         </ion-label>
@@ -34,7 +34,7 @@
     </ion-row>
 
     <ion-row class="ion-margin-horizontal ion-margin-top">
-            <ion-col>
+      <ion-col>
         <ion-label color="light">
           <b></b>
         </ion-label>
@@ -42,10 +42,10 @@
     </ion-row>
 
     <ion-row class="ion-margin-horizontal">
-      <ion-col *ngFor="let item of features" size="6">
+      <ion-col *ngFor="let item of catering" size="6">
         <ion-card class="ion-text-center">
           <ion-card-header>
-            <div align="center"  (click)="openRest()" >
+            <div align="center" (click)="openRest()">
               <ion-thumbnail [style.background]="item?.background">
                 <img [src]="item?.src" />
               </ion-thumbnail>
@@ -53,14 +53,14 @@
           </ion-card-header>
           <ion-card-content>
             <ion-label color="dark">{{ item?.name }}</ion-label>
-           </ion-card-content>
+          </ion-card-content>
         </ion-card>
       </ion-col>
 
       <ion-col *ngFor="let item of laundry" size="6">
         <ion-card class="ion-text-center">
           <ion-card-header>
-            <div align="center"(click)="openLaundry()" >
+            <div align="center" (click)="openLaundry()">
               <ion-thumbnail [style.background]="item?.background">
                 <img [src]="item?.src" />
               </ion-thumbnail>
@@ -68,14 +68,14 @@
           </ion-card-header>
           <ion-card-content>
             <ion-label color="dark">{{ item?.name }}</ion-label>
-             </ion-card-content>
+          </ion-card-content>
         </ion-card>
       </ion-col>
 
       <ion-col *ngFor="let item of housekeeping" size="6">
         <ion-card class="ion-text-center">
           <ion-card-header>
-            <div align="center"(click)="openHkeeping()" >
+            <div align="center" (click)="openHkeeping()">
               <ion-thumbnail [style.background]="item?.background">
                 <img [src]="item?.src" />
               </ion-thumbnail>
@@ -83,14 +83,14 @@
           </ion-card-header>
           <ion-card-content>
             <ion-label color="dark">{{ item?.name }}</ion-label>
-             </ion-card-content>
+          </ion-card-content>
         </ion-card>
       </ion-col>
 
       <ion-col *ngFor="let item of maintenance" size="6">
         <ion-card class="ion-text-center">
           <ion-card-header>
-            <div align="center"(click)="openMaintenance()" >
+            <div align="center" (click)="openMaintenance()">
               <ion-thumbnail [style.background]="item?.background">
                 <img [src]="item?.src" />
               </ion-thumbnail>
@@ -98,14 +98,14 @@
           </ion-card-header>
           <ion-card-content>
             <ion-label color="dark">{{ item?.name }}</ion-label>
-             </ion-card-content>
+          </ion-card-content>
         </ion-card>
       </ion-col>
 
       <ion-col *ngFor="let item of dashboard" size="6">
         <ion-card class="ion-text-center">
           <ion-card-header>
-            <div align="center"(click)="openDashboard()" >
+            <div align="center" (click)="openDashboard()">
               <ion-thumbnail [style.background]="item?.background">
                 <img [src]="item?.src" />
               </ion-thumbnail>
@@ -113,14 +113,14 @@
           </ion-card-header>
           <ion-card-content>
             <ion-label color="dark">{{ item?.name }}</ion-label>
-             </ion-card-content>
+          </ion-card-content>
         </ion-card>
       </ion-col>
 
       <ion-col *ngFor="let item of info" size="6">
         <ion-card class="ion-text-center">
           <ion-card-header>
-            <div align="center"(click)="openInfo()" >
+            <div align="center" (click)="openInfo()">
               <ion-thumbnail [style.background]="item?.background">
                 <img [src]="item?.src" />
               </ion-thumbnail>
@@ -128,10 +128,10 @@
           </ion-card-header>
           <ion-card-content>
             <ion-label color="dark">{{ item?.name }}</ion-label>
-             </ion-card-content>
+          </ion-card-content>
         </ion-card>
       </ion-col>
-      </ion-row>
-      
+    </ion-row>
+
   </ion-grid>
 </ion-content>
