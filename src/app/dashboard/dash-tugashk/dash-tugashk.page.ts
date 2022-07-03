@@ -104,36 +104,40 @@ export class DashTugashkPage implements OnInit {
   }
 
   async openModalRoom(data) {
-    const modal = await this.modalController.create({
-      component: UpdateDetailRoomComponent,
-      componentProps: {
-        data: data
+    if (this.serviceService.isHasAccess('HOUSEKEEPING', 'TASK', 'EDIT')) {
+      const modal = await this.modalController.create({
+        component: UpdateDetailRoomComponent,
+        componentProps: {
+          data: data
+        }
+      });
+      await modal.present();
+      const message = await modal.onWillDismiss();
+      if (message.data === 'success') {
+        this.ngOnInit();
       }
-    });
-    await modal.present();
-    const message = await modal.onWillDismiss();
-    if (message.data === 'success') {
-      this.ngOnInit();
-    }
-    if (message.data) {
-      this.presentToast(message.data);
+      if (message.data) {
+        this.presentToast(message.data);
+      }
     }
   }
 
   async openModalNonRoom(data) {
-    const modal = await this.modalController.create({
-      component: UpdateDetailNonroomComponent,
-      componentProps: {
-        data: data
+    if (this.serviceService.isHasAccess('HOUSEKEEPING', 'TASK', 'EDIT')) {
+      const modal = await this.modalController.create({
+        component: UpdateDetailNonroomComponent,
+        componentProps: {
+          data: data
+        }
+      });
+      await modal.present();
+      const message = await modal.onWillDismiss();
+      if (message.data === 'success') {
+        this.ngOnInit();
       }
-    });
-    await modal.present();
-    const message = await modal.onWillDismiss();
-    if (message.data === 'success') {
-      this.ngOnInit();
-    }
-    if (message.data) {
-      this.presentToast(message.data);
+      if (message.data) {
+        this.presentToast(message.data);
+      }
     }
   }
 }
