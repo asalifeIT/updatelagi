@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormControl, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { NavController, ModalController, LoadingController, ToastController } from '@ionic/angular';
 import { RegisterPage } from '../register/register.page';
 import { ServiceService } from '../services/service.service';
 import { IonRouterOutlet, Platform } from '@ionic/angular';
-import { nextTick } from 'process';
 import { UtilService } from '../services/util.service';
 
 @Component({
@@ -14,10 +13,10 @@ import { UtilService } from '../services/util.service';
 })
 export class LoginPage implements OnInit {
 
-  FormLogin:FormGroup;
-  showPasswordText:any;
-  dataLogin:any;
-  permissions:string[];
+  FormLogin: FormGroup;
+  showPasswordText: any;
+  dataLogin: any;
+  permissions: string[];
   private routerEvents: any;
 
   validations = {
@@ -30,7 +29,7 @@ export class LoginPage implements OnInit {
   };
   authService: any;
 
-  
+
   constructor(
     private formBuilder: FormBuilder,
     private navCtrl: NavController,
@@ -41,34 +40,43 @@ export class LoginPage implements OnInit {
     private serviceService: ServiceService,
     private routerOutlet: IonRouterOutlet,
     private util: UtilService
-    
-    
-  ) {  }
+
+
+  ) { }
 
   ngOnInit() {
-    
-    //setting form login
-    this.FormLogin=this.formBuilder.group({
-      nrp:new FormControl('', Validators.compose([
+    this.FormLogin = this.formBuilder.group({
+      nrp: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      password:new FormControl('', Validators.compose([
+      password: new FormControl('', Validators.compose([
         Validators.required
       ]))
     });
 
   }
 
+  ionViewDidEnter() {
+    this.routerOutlet.swipeGesture = false;
+    this.util.disableSideMenu();
+  }
+
+  ionViewDidLeave() {
+    this.routerOutlet.swipeGesture = true;
+    this.util.enableSideMenu();
+
+  }
+
   //fungsi login
-  async login(){
+  async login() {
     const loading = await this.loadingController.create({
       message: 'Please wait...'
-      
+
     });
     await loading.present();
-    this.serviceService.loginApi(this.FormLogin.value,'signin').subscribe(
+    this.serviceService.loginApi(this.FormLogin.value, 'signin').subscribe(
       data => {
-        this.dataLogin=data;
+        this.dataLogin = data;
         this.presentToast("Login Berhasil")
         loading.dismiss();
       },
@@ -101,7 +109,7 @@ export class LoginPage implements OnInit {
   Login() {
     console.log("Anda sekarang login")
     this.authService.login(this.nrp, this.password)
-    }
+  }
   nrp(nrp: any, password: any) {
     throw new Error('Method not implemented.');
   }
@@ -110,8 +118,8 @@ export class LoginPage implements OnInit {
   }
 
 
-public clear() {
-  localStorage.clear();
-}
+  public clear() {
+    localStorage.clear();
+  }
 
 }
