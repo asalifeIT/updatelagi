@@ -2,6 +2,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonSlides } from '@ionic/angular';
+import { UtilService } from '../services/util.service';
 
 @Component({
   selector: 'app-welcome-page',
@@ -18,6 +19,7 @@ export class WelcomePagePage implements OnInit {
   slidesNumber: any = [];
 
   constructor(
+    private util: UtilService,
     private router: Router,
   ) {
     setTimeout(() => {
@@ -34,6 +36,7 @@ export class WelcomePagePage implements OnInit {
   }
 
   ngOnInit() {
+    this.util.disableSideMenu();
   }
 
   slideChanged(event) {
