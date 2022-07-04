@@ -15,10 +15,10 @@ import { MenuController, ModalController } from '@ionic/angular';
 
 
 export class AppComponent {
-  rootPage:any = 'TablePage';
+  rootPage: any = 'TablePage';
   [x: string]: any;
-  Username:any;
-  DataLogin:any;
+  Username: any;
+  DataLogin: any;
   loadingController: any;
   constructor(
     private platform: Platform,
@@ -31,10 +31,10 @@ export class AppComponent {
     public alertController: AlertController,
     private modalCtrl: ModalController, private menuCtrl: MenuController,
     public util: UtilService) {
-      platform.ready().then(() => {
-        statusBar.styleDefault();
-        splashScreen.hide();
-      });
+    platform.ready().then(() => {
+      statusBar.styleDefault();
+      splashScreen.hide();
+    });
     this.initializeApp();
   }
   close() {
@@ -49,27 +49,27 @@ export class AppComponent {
     });
   }
 
-  Auth(){
+  Auth() {
     this.serviceService.authenticationState.subscribe((data) => {
-      if (data==true) {
-          this.navCtrl.navigateRoot(['home']);
-        } else {
-          this.navCtrl.navigateRoot(['welcome-page']);
-        }
-        });
-        this.platform.backButton.subscribeWithPriority(10, (processNextHandler) => {
-          console.log('Back press handler!');
-          if (this._location.isCurrentPathEqualTo('/home')) {
-            // Show Exit Alert!
-            console.log('Show Exit Alert!');
-            this.showExitConfirm();
-            processNextHandler();
-          } else {
-            // Navigate to back page
-            console.log('Navigate to back page');
-            this._location.back();
-          }
-        });
+      if (data == true) {
+        this.navCtrl.navigateRoot(['home']);
+      } else {
+        this.navCtrl.navigateRoot(['welcome-page']);
+      }
+    });
+    this.platform.backButton.subscribeWithPriority(10, (processNextHandler) => {
+      console.log('Back press handler!');
+      if (this._location.isCurrentPathEqualTo('/home')) {
+        // Show Exit Alert!
+        console.log('Show Exit Alert!');
+        this.showExitConfirm();
+        processNextHandler();
+      } else {
+        // Navigate to back page
+        console.log('Navigate to back page');
+        this._location.back();
+      }
+    });
   }
 
   showExitConfirm() {
@@ -100,25 +100,25 @@ export class AppComponent {
   }
 
   ngOnInit() {
- //ambil data dari localstorage
- let dataStorage=JSON.parse(localStorage.getItem(this.serviceService.TOKEN_KEY));
- // this.Username=dataStorage.data.Username;
- this.serviceService.CekUser().subscribe(
-   data => {
-     this.DataLogin=data;
-     console.log(this.DataLogin)
-     this.Username=this.DataLogin.body.name;
-   },
-   error => {
-     console.log("error");
-   }
- );
+    //ambil data dari localstorage
+    let dataStorage = JSON.parse(localStorage.getItem(this.serviceService.TOKEN_KEY));
+    // this.Username=dataStorage.data.Username;
+    this.serviceService.CekUser().subscribe(
+      data => {
+        this.DataLogin = data;
+        console.log(this.DataLogin)
+        this.Username = this.DataLogin.body.name;
+      },
+      error => {
+        console.log("error");
+      }
+    );
 
   }
 
-     logout(){
+  logout() {
     localStorage.clear();
-     sessionStorage.clear();
+    sessionStorage.clear();
     this.router.navigate(['login']);
     localStorage.removeItem("signin");
     localStorage.removeItem("access_token");
@@ -128,11 +128,13 @@ export class AppComponent {
     localStorage.removeItem("discount_");
     localStorage.removeItem("discount_type");
     localStorage.removeItem("home");
-      }
-      public ngOnDestroy() {
-        this.router.navigate([]);
-      }
-      
+    this.util.closeSideMenu();
 
-    
+  }
+  public ngOnDestroy() {
+    this.router.navigate([]);
+  }
+
+
+
 }
