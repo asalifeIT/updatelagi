@@ -128,11 +128,6 @@ export class AppComponent {
     localStorage.removeItem("discount_");
     localStorage.removeItem("discount_type");
     localStorage.removeItem("home");
-<<<<<<< HEAD
-
-
-=======
->>>>>>> f28ef41a6bebbe4bf4cf7462db08266043fc4d9b
   }
 
   public ngOnDestroy() {
