@@ -57,7 +57,6 @@ export class LoginPage implements OnInit {
       ]))
     });
 
-
   }
 
   //fungsi login
@@ -70,7 +69,7 @@ export class LoginPage implements OnInit {
     this.serviceService.loginApi(this.FormLogin.value,'signin').subscribe(
       data => {
         this.dataLogin=data;
-        this.presentToast("Anda Login")
+        this.presentToast("Login Berhasil")
         loading.dismiss();
       },
       error => {
