@@ -1,4 +1,4 @@
- 
+
 import { Injectable } from '@angular/core';
 import { LoadingController, AlertController, ToastController, NavController, MenuController } from '@ionic/angular';
 import { Router } from '@angular/router';
@@ -24,9 +24,16 @@ export class UtilService {
     this.menuController.open();
   }
 
-  closeSideMenu() {
-    this.menuController.swipeGesture(false);
+  disableSideMenu() {
+    this.menuController.swipeGesture(false)
+    this.menuController.enable(false);
   }
+
+  enableSideMenu() {
+    this.menuController.swipeGesture(true)
+    this.menuController.enable(true);
+  }
+
   /*
   Start Loader
   Call this method to Start your Loader
