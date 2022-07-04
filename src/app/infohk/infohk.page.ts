@@ -49,7 +49,7 @@ export class InfohkPage implements OnInit {
       }
 
   onBack() {
-    this.router.navigate(['home']);
+    this.router.navigate(['housekeeping']);
   }
 
   openAdhk() {

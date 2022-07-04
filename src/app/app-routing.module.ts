@@ -41,21 +41,37 @@ const routes: Routes = [
   },
   {
     path: 'aduanhk',
+    canActivate:[RoleGuard, AuthenticationGuard],
+    data:{
+      role: ["ROLE_CUS"],
+    },
 
     loadChildren: () => import('./aduanhk/aduanhk.module').then( m => m.AduanhkPageModule)
   },
   {
     path: 'aduanlaundry',
+    canActivate:[RoleGuard, AuthenticationGuard],
+    data:{
+      role: ["ROLE_CUS"],
+    },
 
     loadChildren: () => import('./aduanlaundry/aduanlaundry.module').then( m => m.AduanlaundryPageModule)
   },
   {
     path: 'aduanmaintenance',
+    canActivate:[RoleGuard, AuthenticationGuard],
+    data:{
+      role: ["ROLE_CUS"],
+    },
 
     loadChildren: () => import('./aduanmaintenance/aduanmaintenance.module').then( m => m.AduanmaintenancePageModule)
   },
    {
     path: 'aduancatering',
+    canActivate:[RoleGuard, AuthenticationGuard],
+    data:{
+      role: ["ROLE_WORKER"],
+    },
 
     loadChildren: () => import('./aduancatering/aduancatering.module').then( m => m.AduancateringPageModule)
   },
@@ -89,16 +105,27 @@ const routes: Routes = [
   },
   {
     path: 'infoaduan',
-
+    canActivate:[RoleGuard, AuthenticationGuard],
+    data:{
+      role: ["ROLE_WORKER","ROLE_MEGAUSER","ROLE_SUPERUSER", "ROLE_HCGS"],
+    },
     loadChildren: () => import('./infoaduan/infoaduan.module').then( m => m.InfoaduanPageModule)
   },
   {
     path: 'infolaundry',
+    canActivate:[RoleGuard, AuthenticationGuard],
+    data:{
+      role: ["ROLE_WORKER","ROLE_MEGAUSER","ROLE_SUPERUSER", "ROLE_HCGS"],
+    },
 
     loadChildren: () => import('./infolaundry/infolaundry.module').then( m => m.InfolaundryPageModule)
   },
   {
     path: 'infohk',
+    canActivate:[RoleGuard, AuthenticationGuard],
+    data:{
+      role: ["ROLE_WORKER","ROLE_MEGAUSER","ROLE_SUPERUSER", "ROLE_HCGS"],
+    },
 
     loadChildren: () => import('./infohk/infohk.module').then( m => m.InfohkPageModule)
   },

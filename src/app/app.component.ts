@@ -128,7 +128,7 @@ export class AppComponent {
     localStorage.removeItem("discount_");
     localStorage.removeItem("discount_type");
     localStorage.removeItem("home");
-    this.util.closeSideMenu();
+
 
   }
   public ngOnDestroy() {
