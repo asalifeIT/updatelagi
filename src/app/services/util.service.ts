@@ -23,6 +23,10 @@ export class UtilService {
   openSideMenu() {
     this.menuController.open();
   }
+
+  closeSideMenu() {
+    this.menuController.swipeGesture(false);
+  }
   /*
   Start Loader
   Call this method to Start your Loader
