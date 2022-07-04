@@ -113,7 +113,7 @@ openDashboard(){
   this.router.navigate(['dashboard']);
 }
 public ngOnDestroy() {
-  this.routerEvents.unsubscribe();
+  this.router.navigate([]);
 }
 
 openInfo(){

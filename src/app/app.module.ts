@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule }    from '@angular/common/http';
 import { RegisterPageModule } from './register/register.module';
 import  {ReactiveFormsModule, FormsModule} from '@angular/forms';
+import { RoleGuard } from './guards/role.guard';
 
 
 @NgModule({
@@ -34,4 +35,6 @@ import  {ReactiveFormsModule, FormsModule} from '@angular/forms';
 export class AppModule {
   
 }
+
+
 

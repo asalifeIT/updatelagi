@@ -117,8 +117,8 @@ export class AppComponent {
   }
 
      logout(){
-      localStorage.clear();
-      sessionStorage.clear();
+    localStorage.clear();
+     sessionStorage.clear();
     this.router.navigate(['login']);
     localStorage.removeItem("signin");
     localStorage.removeItem("access_token");
@@ -127,10 +127,12 @@ export class AppComponent {
     localStorage.removeItem("refresh_token");
     localStorage.removeItem("discount_");
     localStorage.removeItem("discount_type");
+    localStorage.removeItem("home");
       }
-      ngOnDestroy() {
-        if (typeof this.routerEvents !== 'undefined') this.routerEvents.unsubscribe();
-    }
+      public ngOnDestroy() {
+        this.router.navigate([]);
+      }
+      
 
     
 }

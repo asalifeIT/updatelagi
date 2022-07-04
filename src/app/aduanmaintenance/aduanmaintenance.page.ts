@@ -83,7 +83,7 @@ export class AduanmaintenancePage implements OnInit {
     toast.present();
   }
   onBack() {
-    this.router.navigate(['home']);
+    this.router.navigate(['infomaintan']);
   }
 
 

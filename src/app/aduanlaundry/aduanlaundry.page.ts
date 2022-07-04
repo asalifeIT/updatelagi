@@ -104,6 +104,6 @@ export class AduanlaundryPage implements OnInit {
   }
 
   onBack() {
-    this.router.navigate(['home']);
+    this.router.navigate(['infolaundry']);
   }
 }

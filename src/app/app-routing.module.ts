@@ -14,6 +14,10 @@ const routes: Routes = [
     },
 
   { path: 'home',
+  canActivate:[RoleGuard, AuthenticationGuard],
+    data:{
+      role: ["ROLE_WORKER", "ROLE_MEGAUSER", "ROLE_SUPERUSER", "ROLE_HCGS", "ROLE_CUSTOMER"],
+    },
 
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
     
@@ -190,7 +194,8 @@ const routes: Routes = [
   {
     path: 'information',
     loadChildren: () => import('./information/information.module').then( m => m.InformationPageModule)
-  },  {
+  },
+  {
     path: 'astoinfo',
     loadChildren: () => import('./astoinfo/astoinfo.module').then( m => m.AstoinfoPageModule)
   },

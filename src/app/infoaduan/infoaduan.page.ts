@@ -52,7 +52,7 @@ export class InfoaduanPage implements OnInit {
   
 
   onBack() {
-    this.router.navigate(['home']);
+    this.router.navigate(['catering']);
   }
 
   openAdcatering() {

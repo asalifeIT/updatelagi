@@ -1,16 +1,13 @@
 <ion-header class="ion-no-border">
   <ion-item lines="none">
     <ion-buttons slot="start">
-      <ion-button (click)="util.openSideMenu()">
+      <ion-button (click)="util.openSideMenu()" color="light">
         <ion-icon name="menu"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-label color="dark">
+    <ion-label color="light">
       Menu Home
     </ion-label>
-    <ion-buttons slot="end">
-      <ion-icon (click)="onBack()" name="home-outline"></ion-icon>
-    </ion-buttons>
   </ion-item>
 </ion-header>
 
@@ -21,7 +18,7 @@
       ASTO SERVICE - Where It All begin!
     </ion-note><br>
     <ion-note color="light" class="ion-margin-start">
-      <ion-label>Selamat datang! Anda Login Sebagai {{this.serviceService.getUserName()}}</ion-label>
+      <ion-label>Selamat datang! {{this.serviceService.getUserName()}}</ion-label>
     </ion-note>
 
     <ion-row>

@@ -2988,7 +2988,7 @@
   "resolved" "https://registry.npmjs.org/cordova-plugin-whitelist/-/cordova-plugin-whitelist-1.3.5.tgz"
   "version" "1.3.5"
 
-"cordova-res@0.15.4":
+"cordova-res@^0.15.4":
   "integrity" "sha512-TjFZhjUtK8qq4DVrgR+KI7tKcUL704cnkTPRhHbKlCPzefHoz1tBOX93wc76dOMmOWKTsbJz83DIm6mqdp5Pmg=="
   "resolved" "https://registry.npmjs.org/cordova-res/-/cordova-res-0.15.4.tgz"
   "version" "0.15.4"
