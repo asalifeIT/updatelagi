@@ -118,7 +118,7 @@ export class AppComponent {
 
      logout(){
     localStorage.clear();
-     sessionStorage.clear();
+    sessionStorage.clear();
     this.router.navigate(['login']);
     localStorage.removeItem("signin");
     localStorage.removeItem("access_token");
