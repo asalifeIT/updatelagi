@@ -1,26 +1,18 @@
-<ion-header class="ion-no-border" mode="md">
-  <ion-toolbar>
+<ion-header class="ion-no-border">
+  <ion-item lines="none">
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-      <ion-back-button color="danger">Back</ion-back-button>
-    </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-button (click)="signout()">
-        <ion-label>Exit</ion-label>
-        <ion-icon slot="end" name="exit-outline" color="dark"></ion-icon>
+      <ion-button (click)="signout()" color="light">
+        <ion-icon name="menu"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-label color="dark">
+    <ion-label color="light">
+     Dashboard Tugas Housekeeping
     </ion-label>
-  </ion-toolbar>
+  </ion-item>
 </ion-header>
 
 <ion-content>
   <div class="ion-padding">
-    <div class="main-header">
-      <ion-chip class="dash" color="light">Inbox Tugas Housekeeping</ion-chip>
-    </div>
-
     <div *ngIf="this.serviceService.isHasAccess('HOUSEKEEPING', 'TASK', 'VIEW'); else noAccess">
       <div class="segments">
         <ion-segment mode="md" [(ngModel)]="current">

@@ -1,14 +1,8 @@
- <ion-header class="ion-padding" scroll-y="false" mode="md">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-note class="dash" color="dark">Menu Informasi</ion-note>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content fullscreen class="ion-padding" scroll-y="false">
-  <div class="main_content_div"><ion-chip class="dash" color="dark">Profile</ion-chip><br>
+ <ion-content fullscreen class="ion-padding" scroll-y="false">
+  <div class="main_content_div">
+    <ion-icon color="light" name="close" (click)="close()"></ion-icon>
+    <ion-chip class="dash" color="light">ASTO SERVICE APP (ASA)</ion-chip><br><br>
+    <ion-back-button></ion-back-button>
     <ion-row style="margin-bottom: 10px;">
       <ion-col size="3" (click)="tabID = 1" [class.active]="tabID == 1" (click)="openAstoinfo()">
         <ion-icon name="logo-web-component"></ion-icon>
@@ -20,7 +14,7 @@
         <!-- <ion-icon name="logo-usd"></ion-icon> -->
         <ion-icon name="people"></ion-icon>
       </ion-col>
-      <ion-col size="3" (click)="tabID = 4" [class.active]="tabID == 4">
+      <ion-col size="3" (click)="tabID = 4" [class.active]="tabID == 4" (click)="openSupport()">
         <!-- <ion-icon name="logo-usd"></ion-icon> -->
         <ion-icon name="logo-closed-captioning"></ion-icon>
       </ion-col>
@@ -30,13 +24,13 @@
        <p><ion-label>ASA</ion-label><br>
       </ion-col>
       <ion-col size="3" [class.active]="tabID == 2">
-        <p><ion-label>Technology</ion-label><br>
+        <p><ion-label>TECHNOLOGY</ion-label><br>
       </ion-col>
       <ion-col size="3" [class.active]="tabID == 3">
-        <p> <ion-label>My Team</ion-label>
+        <p> <ion-label>TEAM</ion-label>
        </ion-col>
       <ion-col size="3" [class.active]="tabID == 4">
-       <p><ion-label>Support</ion-label>
+       <p><ion-label>SUPPORT</ion-label>
       </ion-col>
     </ion-row>
   </div>

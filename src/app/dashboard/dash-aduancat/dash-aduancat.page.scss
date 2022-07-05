@@ -1,200 +1,152 @@
- ion-header {
-   ion-label {
-     font-size: 10px;
-     font-family: "regular";
+ 
+ion-header {
+  ion-label{
+    font-size:14px;
+    font-family: "regular";
    }
+   background: var(--ion-color-primary);
+  ion-item {
+    --background: transparent;
+    ion-avatar {
+      background: transparent;
+    }
+  }
+}
 
-   background: transparent;
+.dash{
+  display: flex;
+      flex-direction: column;
+      .name_lbl {
+        margin-bottom: 5px;
+        font-family: "bold";
+      }
+      .center {
+        font-size: 14px;
+        display: flex;
+        margin-left: 2rem;
+}
+}
+.main-header {
+  height: 5vh;
+  width: 150%;
+  background: linear-gradient(90deg, var(--ion-color-tertiary) 10%, var(--ion-color-primary) 100%);
+  box-shadow: 0 1px 10px var(--ion-color-light);
+  border-radius: 0 0 10% 10%;
+  margin-left: -14vh;
+  margin-top: -10px;
+}
 
-   ion-item {
-     --background: transparent;
+ion-content {
+  font-family:"regular";
+  ion-item {
+    margin-top: 10px;
+    ion-thumbnail {
+      img {
+        height: 60px;
+        width: 60px;
+        border-radius: 50%;
+      }
+    }
+    .name {
+      display: flex;
+      flex-direction: column;
+      .name_lbl {
+        margin-bottom: 5px;
+        font-family: "medium";
+      }
+      .center {
+        font-size: 14px;
+        display: flex;
+        margin-left: 2rem;
+      }
 
-     ion-avatar {
-       background: transparent;
-     }
-   }
- }
-
- ion-grid {
-   overflow-x: scroll;
- }
-
- ion-row {
-   display: table;
-   white-space: nowrap;
- }
-
- .dash {
-   display: flex;
-   flex-direction: column;
-
-   .name_lbl {
-     margin-bottom: 5px;
-     font-family: "bold";
-   }
-
-   .center {
-     font-size: 14px;
-     display: flex;
-     margin-left: 2rem;
-   }
- }
-
- .main-header {
-   height: 5vh;
-   width: 150%;
-   background: linear-gradient(90deg, var(--ion-color-tertiary) 10%, var(--ion-color-danger) 100%);
-   box-shadow: 0 1px 10px var(--ion-color-light);
-   border-radius: 0 0 10% 10%;
-   margin-left: -14vh;
-   margin-top: -10px;
- }
-
- ion-content {
-   font-family: "regular";
-
-   ion-item {
-     margin-top: 10px;
-
-     ion-thumbnail {
-       img {
-         height: 60px;
-         width: 60px;
-         border-radius: 50%;
-       }
-     }
-
-     .name {
-       display: flex;
-       flex-direction: column;
-
-       .name_lbl {
-         margin-bottom: 5px;
-         font-family: "medium";
-       }
-
-       .center {
-         font-size: 14px;
-         display: flex;
-         margin-left: 2rem;
-       }
-
-       .judul {
-         font-size: 14px;
-         display: flex;
-         margin-left: 2rem;
-       }
-     }
-
-     ion-button {
-       width: 70px;
-       height: 30px;
-     }
-   }
-
-   ion-row {
-     margin-top: 2rem;
-
-     ion-col {
-       box-shadow: 1px 3px 10px var(--box-shadow-color);
-       --box-shadow-color: lightgray;
-       border-radius: 10px;
-
-       .data {
-         display: flex;
-         flex-direction: column;
-         text-align: center;
-
-         .frst_lbl {
-           color: #dc4a0c;
-         }
-
-         .scnd_lbl {
-           margin-top: 5px;
-           font-size: 14px;
-           margin-bottom: 5px;
-         }
-       }
-     }
-   }
-
-   .account {
-     box-shadow: 1px 3px 10px var(--box-shadow-color);
-     --box-shadow-color: lightgray;
-     padding: 10px;
-     margin-top: 1rem;
-     border-radius: 10px;
-
-     .head_lbl {
-       font-size: 18px;
-       font-family: "semi-bold";
-       display: flex;
-       margin-left: 2rem;
-     }
-
-     .info {
-       ion-icon {
-         font-size: 20px;
-       }
-
-       ion-label {
-         font-size: 14px;
-       }
-     }
-   }
-
-   .nitification {
-     box-shadow: 1px 3px 10px var(--box-shadow-color);
-     --box-shadow-color: lightgray;
-     padding: 10px;
-     margin-top: 1rem;
-     border-radius: 10px;
-
-     .head_lbl {
-       font-size: 18px;
-       font-family: "semi-bold";
-     }
-
-     ion-item {
-       ion-icon {
-         font-size: 20px;
-       }
-
-       ion-label {
-         font-size: 14px;
-       }
-     }
-   }
-
-   .other {
-     box-shadow: 1px 3px 10px var(--box-shadow-color);
-     --box-shadow-color: lightgray;
-     padding: 10px;
-     margin-top: 1rem;
-     border-radius: 10px;
-
-     .head_lbl {
-       font-size: 18px;
-       font-family: "semi-bold";
-     }
-
-     ion-item {
-       ion-icon {
-         font-size: 20px;
-       }
-
-       ion-label {
-         font-size: 14px;
-       }
-     }
-   }
- }
-
- ion-item {
-   --padding-start: 0;
- }
-
- .no-access {
-   font-family: "regular";
-   text-align: center;
- }
+      .judul{
+        font-size: 14px;
+        display: flex;
+        margin-left: 2rem;
+      }
+    }
+    ion-button {
+      width: 70px;
+      height: 30px;
+    }
+  }
+  ion-row {
+    margin-top: 2rem;
+    ion-col {
+      box-shadow: 1px 3px 10px var(--box-shadow-color);
+      --box-shadow-color: lightgray;
+      border-radius: 10px;
+      .data {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        .frst_lbl {
+          color: #e84980;
+        }
+        .scnd_lbl {
+          margin-top: 5px;
+          font-size: 14px;
+          margin-bottom: 5px;
+        }
+      }
+    }
+  }
+  .account {
+    box-shadow: 1px 3px 10px var(--box-shadow-color);
+    --box-shadow-color: lightgray;
+    padding: 10px;
+    margin-top: 1rem;
+    border-radius: 10px;
+    .head_lbl {
+      font-size: 18px;
+      font-family: "semi-bold";
+    }
+    .info {
+      ion-icon {
+        font-size: 20px;
+      }
+      ion-label {
+        font-size: 14px;
+      }
+    }
+  }
+  .nitification {
+    box-shadow: 1px 3px 10px var(--box-shadow-color);
+    --box-shadow-color: lightgray;
+    padding: 10px;
+    margin-top: 1rem;
+    border-radius: 10px;
+    .head_lbl {
+      font-size: 18px;
+      font-family: "semi-bold";
+    }
+    ion-item {
+      ion-icon {
+        font-size: 20px;
+      }
+      ion-label {
+        font-size: 14px;
+      }
+    }
+  }
+  .other {
+    box-shadow: 1px 3px 10px var(--box-shadow-color);
+    --box-shadow-color: lightgray;
+    padding: 10px;
+    margin-top: 1rem;
+    border-radius: 10px;
+    .head_lbl {
+      font-size: 18px;
+      font-family: "semi-bold";
+    }
+    ion-item {
+      ion-icon {
+        font-size: 20px;
+      }
+      ion-label {
+        font-size: 14px;
+      }
+    }
+  }
+}

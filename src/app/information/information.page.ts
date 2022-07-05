@@ -47,4 +47,12 @@ export class InformationPage implements OnInit {
   openTeam(){
     this.router.navigate(['myteam']);
   }
-}
+  close(){
+    this.router.navigate(['home']);
+  }
+  openSupport(){
+    this.router.navigate(['support']);
+  }
+  }
+
+

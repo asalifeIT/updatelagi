@@ -231,6 +231,6 @@ export class NonkamarPage implements OnInit {
   }
 
   onBack() {
-    this.router.navigate(['housekeeping']);
+    this.router.navigate(['sub']);
   }
 }

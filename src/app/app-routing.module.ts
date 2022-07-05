@@ -35,7 +35,7 @@ const routes: Routes = [
     path: 'ratingcatering',
     canActivate:[RoleGuard, AuthenticationGuard],
     data:{
-      role: ["ROLE_WORKER"],
+      role: ["ROLE_WORKER", "ROLE_MEGAUSER", "ROLE_SUPERUSER", "ROLE_HCGS"],
     },
     loadChildren: () => import('./ratingcatering/ratingcatering.module').then( m => m.RatingcateringPageModule)
   },
@@ -233,7 +233,11 @@ const routes: Routes = [
   {
     path: 'myteam',
     loadChildren: () => import('./myteam/myteam.module').then( m => m.MyteamPageModule)
+  },  {
+    path: 'support',
+    loadChildren: () => import('./support/support.module').then( m => m.SupportPageModule)
   },
+
 
 
 ];

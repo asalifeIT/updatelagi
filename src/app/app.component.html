@@ -29,7 +29,8 @@
 
       <ion-card-content class="ion-text-center">
         <h5>
-          <ion-text color="light">Selamat datang</ion-text>
+          <ion-text color="light">Selamat datang </ion-text><br>
+          <ion-text color="light">Anda Login Sebagai {{this.serviceService.getUserName()}}!</ion-text>
         </h5>
         <ion-text color="light">
           <div style="display: flex;" class="ion-justify-content-center">
@@ -48,27 +49,22 @@
       </ion-item>
 
       <ion-item lines="none" (click)="home()">
-        <ion-icon slot="start" name="accessibility" color="primary"></ion-icon>
+        <ion-icon slot="start" src="/assets/svg/asalife.svg"></ion-icon>
         <ion-label>ASA LIFE</ion-label>
       </ion-item>
 
       <ion-item lines="none">
-        <ion-icon slot="start" name="newspaper" color="primary"></ion-icon>
-        <ion-label>ASA SGMS </ion-label>
+        <ion-icon slot="start" src="/assets/svg/sgms.svg"></ion-icon>
+        <ion-label>ASA SGMS (soon) </ion-label>
       </ion-item>
       <ion-item lines="none">
-        <ion-icon slot="start" name="bed" color="primary"></ion-icon>
-        <ion-label>ASA SHE</ion-label>
+        <ion-icon slot="start" src="/assets/svg/asaevent.svg"></ion-icon>
+        <ion-label>ASA EVENT (soon)</ion-label>
       </ion-item>
 
       <ion-item lines="none">
-        <ion-icon slot="start" name="shirt" color="primary"></ion-icon>
-        <ion-label>ASA SHOP</ion-label>
-      </ion-item>
-      <ion-item lines="none">
-        <ion-icon slot="start" name="keypad" color="primary"></ion-icon>
-        <ion-label>ASA SOCIAL</ion-label>
-
+        <ion-icon slot="start" src="/assets/svg/asashop.svg"></ion-icon>
+        <ion-label>ASA SHOP (soon)</ion-label>
       </ion-item>
       <ion-item lines="none" (click)="logout()">
         <ion-icon slot="start" name="log-out" color="primary"></ion-icon>

@@ -210,6 +210,6 @@ export class KamarPage implements OnInit {
   }
 
   onBack() {
-    this.router.navigate(['housekeeping']);
+    this.router.navigate(['sub']);
   }
 }
