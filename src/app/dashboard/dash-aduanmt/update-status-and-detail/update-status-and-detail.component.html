@@ -27,8 +27,8 @@
   </ion-item>
 
   <ion-item>
-    <ion-label>Durasi</ion-label>
-    <ion-datetime value="{{duration.substring(0, 10)}}" placeholder="Select Date" [formControl]="durasiInput"></ion-datetime>
+    <ion-label position="floating">Durasi</ion-label>
+    <ion-datetime value="{{(duration) ? duration.substring(0, 10) : ''}}" [formControl]="durasiInput"></ion-datetime>
   </ion-item>
 
   <ion-item>
