@@ -4,7 +4,7 @@ import { tap, timeout, map } from 'rxjs/operators';
 import { ReplaySubject } from 'rxjs';
 import { Platform, ToastController } from '@ionic/angular';
 import { catchError } from 'rxjs/operators';
-import { Observable, throwError } from 'rxjs';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -65,7 +65,7 @@ export class ServiceService {
     //ambil data dari localstorage
     let dataStorage = JSON.parse(localStorage.getItem(this.TOKEN_KEY));
     this.token = dataStorage;
-    console.log("token : " + this.token);
+    // console.log("token : " + this.token);
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': "Bearer " + this.token
@@ -94,7 +94,6 @@ export class ServiceService {
           localStorage.setItem(this.ROLE, JSON.stringify(this.DataLogin.roles[1]));
           localStorage.setItem("user", JSON.stringify(this.DataLogin));
           localStorage.setItem("roles", JSON.stringify(this.DataLogin.roles));
-          console.log(this.DataLogin.roles[1]);
           this.authenticationState.next(true);
         } else {
           this.authenticationState.next(false);
@@ -103,10 +102,10 @@ export class ServiceService {
       }),
       catchError((err, caught) => {
         let message = "error";
-        if (err.status == 400) {
+        if (err.status == 404) {
           message = 'User belum terdaftar. Silahkan hubungi admin.';
         } else if (err.status == 401) {
-          message = 'nrp dan kata sandi yang Anda masukkan tidak cocok. Silahkan periksa dan coba lagi.';
+          message = 'NRP dan kata sandi tidak cocok. Silahkan coba lagi.';
         } else {
           message = 'Tidak ada koneksi internet. Silakan periksa koneksi Anda.';
         }
@@ -246,14 +245,15 @@ export class ServiceService {
   }
 
   getUserName() {
-    const user = JSON.parse(localStorage.getItem('user'));
-    return user.user.name;
+    if (localStorage.getItem('user') !== null) {
+      const user = JSON.parse(localStorage.getItem('user'));
+      return user.user.name;
+    } 
+    else return 'User';
   }
 
   isHasAccessDashboard() {
     const user = JSON.parse(localStorage.getItem('user'));
-    console.log(user.user.name);
-
     const roleUser = user.roles[2];
     return (roleUser !== 'ROLE_CUS')
   }

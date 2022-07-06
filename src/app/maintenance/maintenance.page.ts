@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavController, ModalController, LoadingController, ToastController,Platform } from '@ionic/angular';
+import { LoadingController, Platform } from '@ionic/angular';
 import { UtilService } from 'src/app/services/util.service';
 import { ServiceService } from '../services/service.service';
 
@@ -11,27 +11,23 @@ import { ServiceService } from '../services/service.service';
 })
 export class MaintenancePage implements OnInit {
   aduanmaintan: any[] = [
-    {id: 1, name: '', src: '', background: '', page: ''},
+    { id: 1, name: '', src: '', background: '', page: '' },
 
   ];
-
   tgsmaintan: any[] = [
-    {id: 1, name: '', src: '', background: '', page: ''},
+    { id: 1, name: '', src: '', background: '', page: '' },
 
   ];
-
 
   constructor(
     public loadingController: LoadingController,
     public util: UtilService,
     private router: Router,
-    private platform:Platform,
+    private platform: Platform,
     private serviceService: ServiceService,
   ) { }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() { }
   openInfomain() {
     this.router.navigate(['infomaintan']);
   }
@@ -41,5 +37,4 @@ export class MaintenancePage implements OnInit {
   onBack() {
     this.router.navigate(['home']);
   }
-
 }

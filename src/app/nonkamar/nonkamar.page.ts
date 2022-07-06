@@ -1,13 +1,11 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
-import { NavController, ModalController, LoadingController, ToastController,Platform } from '@ionic/angular';
-import { RegisterPage } from '../register/register.page';
+import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NavController, ModalController, LoadingController, ToastController, Platform } from '@ionic/angular';
 import { ServiceService } from '../services/service.service';
-import {Observable, ReplaySubject, throwError} from "rxjs/index";
+import { ReplaySubject } from "rxjs/index";
 import { catchError } from 'rxjs/operators';
 import { UtilService } from 'src/app/services/util.service';
-import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 @Component({
   selector: 'app-nonkamar',
@@ -15,12 +13,12 @@ import { connectableObservableDescriptor } from 'rxjs/internal/observable/Connec
   styleUrls: ['./nonkamar.page.scss'],
 })
 export class NonkamarPage implements OnInit {
-  FormNonKamar:FormGroup;
-  authenticationState = new ReplaySubject(); 
+  FormNonKamar: FormGroup;
+  authenticationState = new ReplaySubject();
   authService: any;
-  message:any;
+  message: any;
   validations = {
-     'mess': [
+    'mess': [
       { type: 'required', message: 'harus di isi' }
     ],
     'ruangtvkacajendelakusen': [
@@ -98,13 +96,13 @@ export class NonkamarPage implements OnInit {
     'toiletteras': [
       { type: 'required', message: 'harus di isi' }
     ]
-   };
+  };
 
-   DataRecord: Object;
+  DataRecord: Object;
 
   constructor(
-    private formBuilder: FormBuilder, 
-    private navCtrl: NavController, 
+    private formBuilder: FormBuilder,
+    private navCtrl: NavController,
     public loadingController: LoadingController,
     public modalController: ModalController,
     private platform: Platform,
@@ -116,112 +114,114 @@ export class NonkamarPage implements OnInit {
 
   ngOnInit() {
 
-    this.FormNonKamar=this.formBuilder.group({
-      mess:new FormControl('', Validators.compose([
+    this.FormNonKamar = this.formBuilder.group({
+      mess: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      ruangtvkacajendelakusen:new FormControl('', Validators.compose([
+      ruangtvkacajendelakusen: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      ruangtvcermin:new FormControl('', Validators.compose([
+      ruangtvcermin: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      ruangtvdispenser:new FormControl('', Validators.compose([
+      ruangtvdispenser: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      ruangtvac:new FormControl('', Validators.compose([
+      ruangtvac: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      ruangtvfurniture:new FormControl('', Validators.compose([
+      ruangtvfurniture: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      ruangtvraktv:new FormControl('', Validators.compose([
+      ruangtvraktv: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      ruangtvtiraikarpet:new FormControl('', Validators.compose([
+      ruangtvtiraikarpet: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      ruangtvdinding:new FormControl('', Validators.compose([
+      ruangtvdinding: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      ruangtvlantai:new FormControl('', Validators.compose([
+      ruangtvlantai: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      koridortempatsampah:new FormControl('', Validators.compose([
+      koridortempatsampah: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      koridorpintu:new FormControl('', Validators.compose([
+      koridorpintu: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      koridorlantaisudutlantai:new FormControl('', Validators.compose([
+      koridorlantaisudutlantai: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      koridorkeset:new FormControl('', Validators.compose([
+      koridorkeset: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      koridorpantry:new FormControl('', Validators.compose([
+      koridorpantry: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      koridorwastafelchromefixture:new FormControl('', Validators.compose([
+      koridorwastafelchromefixture: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      koridorperalatanmakanrakpiring:new FormControl('', Validators.compose([
+      koridorperalatanmakanrakpiring: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      koridorpintudinding:new FormControl('', Validators.compose([
+      koridorpintudinding: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      koridorkancajendelakusen:new FormControl('', Validators.compose([
+      koridorkancajendelakusen: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      toiletpintudinding:new FormControl('', Validators.compose([
+      toiletpintudinding: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      toilettempatsampah:new FormControl('', Validators.compose([
+      toilettempatsampah: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      toiletwastafelchromefixture:new FormControl('', Validators.compose([
+      toiletwastafelchromefixture: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      toileturinoirselangtoiletbowl:new FormControl('', Validators.compose([
+      toileturinoirselangtoiletbowl: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      toiletshowerareacurtain:new FormControl('', Validators.compose([
+      toiletshowerareacurtain: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      toiletlantaisudutlantai:new FormControl('', Validators.compose([
+      toiletlantaisudutlantai: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      toiletteras:new FormControl('', Validators.compose([
+      toiletteras: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      });
-    console.log(this.FormNonKamar.errors);
+    });
   }
 
-  async submitNonKamar(){
+  async submitNonKamar() {
     const loading = await this.loadingController.create({
       message: 'Please wait...'
     });
     await loading.present();
-    this.serviceService.submitaduan(this.FormNonKamar.value, 'task/mess-add').subscribe(
-      data => {
-        this.presentToast("Rincian Tugas Anda Terkirim");
-        console.log(this.FormNonKamar.value);
-        this.FormNonKamar.reset();
-        loading.dismiss();
-      },
-      error => {
-        console.log(error);
-        this.presentToast("Gagal Terkirim, Silahkan Lengkapi Rincian Tugas!");
-        console.log(this.FormNonKamar.value);
-        this.FormNonKamar.reset();
-        loading.dismiss();
-      }
 
-    );
-   }
-   async presentToast(Message) {
+    if (this.FormNonKamar.valid) {
+      this.serviceService.submitaduan(this.FormNonKamar.value, 'task/mess-add').subscribe(
+        data => {
+          this.presentToast("Rincian Tugas Anda Terkirim");
+        },
+        error => {
+          this.presentToast("Gagal Terkirim, Silahkan Kirim Tugas Lain Waktu!");
+
+        }
+      );
+    }
+    else {
+      this.presentToast("Silahkan Lengkapi Isi Form!");
+    }
+
+    this.FormNonKamar.reset();
+    loading.dismiss();
+  }
+
+  async presentToast(Message) {
     const toast = await this.toastController.create({
       message: Message,
       duration: 2500,

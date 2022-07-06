@@ -7,31 +7,38 @@
         </ion-button>
       </ion-buttons>
       <ion-label color="primary">
-      Form Tugas Maintenance
-    </ion-label>
-    <ion-buttons slot="end">
-      <ion-icon (click)="onBack()" name="home-outline" color="primary"></ion-icon>
-    </ion-buttons>
+        Form Tugas Maintenance
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-icon (click)="onBack()" name="home-outline" color="primary"></ion-icon>
+      </ion-buttons>
     </ion-item>
-   </ion-header>
-   
+  </ion-header>
+
   <div class="main_content ion-padding">
 
     <ion-label class="sub_heading">Deskripsi</ion-label>
-    <ion-label class="sub_heading">Silahkan mengisi aduan apabila ditemukan hal-hal yang tidak berkenan</ion-label>
+    <ion-label class="sub_heading">Silahkan mengisi form berikut terkait kondisi aset</ion-label>
 
-  <div>
-  <form class="container" [formGroup]="FormTgsM" (ngSubmit)="submitTgsM()">
-      <ion-item><ion-input type="text" placeholder="Jenis Aset" formControlName="jenisaset"></ion-input></ion-item>
-      <ion-item> <ion-input type="text" placeholder="Lokasi Aset" formControlName="lokasiaset"></ion-input></ion-item>
-      <ion-item><ion-input type="text" placeholder="Keterangan" formControlName="keterangan"></ion-input></ion-item>
-      <ion-item>  
-        <ion-label>Status </ion-label>
-            <ion-select formControlName="status">
-              <ion-select-option ngvalue="BAGUS">BAGUS</ion-select-option>
-              <ion-select-option ngvalue="RUSAK">RUSAK</ion-select-option>
-            </ion-select></ion-item>  
-         <ion-button type="submit" expand="block" color="primary">Submit</ion-button>
+    <div>
+      <form class="container" [formGroup]="FormTgsM" (ngSubmit)="submitTgsM()">
+        <ion-item>
+          <ion-input type="text" placeholder="Jenis Aset" formControlName="jenisaset"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input type="text" placeholder="Lokasi Aset" formControlName="lokasiaset"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input type="text" placeholder="Keterangan" formControlName="keterangan"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Status </ion-label>
+          <ion-select formControlName="status">
+            <ion-select-option ngvalue="BAGUS">BAGUS</ion-select-option>
+            <ion-select-option ngvalue="RUSAK">RUSAK</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-button type="submit" expand="block" color="primary">Submit</ion-button>
       </form>
     </div>
   </div>

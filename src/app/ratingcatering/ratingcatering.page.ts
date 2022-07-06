@@ -1,13 +1,11 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
-import { NavController, ModalController, LoadingController, ToastController,Platform } from '@ionic/angular';
-import { RegisterPage } from '../register/register.page';
+import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NavController, ModalController, LoadingController, ToastController, Platform } from '@ionic/angular';
 import { ServiceService } from '../services/service.service';
-import {Observable, ReplaySubject, throwError} from "rxjs/index";
+import { ReplaySubject } from "rxjs/index";
 import { catchError } from 'rxjs/operators';
 import { UtilService } from 'src/app/services/util.service';
-import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 @Component({
   selector: 'app-ratingcatering',
@@ -15,10 +13,10 @@ import { connectableObservableDescriptor } from 'rxjs/internal/observable/Connec
   styleUrls: ['./ratingcatering.page.scss'],
 })
 export class RatingcateringPage implements OnInit {
-FormRatingCatering:FormGroup;
-authenticationState = new ReplaySubject(); 
+  FormRatingCatering: FormGroup;
+  authenticationState = new ReplaySubject();
   authService: any;
-  message:any;
+  message: any;
   validations = {
     'nilai1': [
       { type: 'required', message: 'pilihan harus di isi' }
@@ -50,8 +48,8 @@ authenticationState = new ReplaySubject();
   };
 
   constructor(
-    private formBuilder: FormBuilder, 
-    private navCtrl: NavController, 
+    private formBuilder: FormBuilder,
+    private navCtrl: NavController,
     public loadingController: LoadingController,
     public modalController: ModalController,
     private platform: Platform,
@@ -62,60 +60,60 @@ authenticationState = new ReplaySubject();
   ) { }
 
   ngOnInit() {
-    this.FormRatingCatering=this.formBuilder.group({
-      nilai1:new FormControl('', Validators.compose([
+    this.FormRatingCatering = this.formBuilder.group({
+      nilai1: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      nilai2:new FormControl('', Validators.compose([
+      nilai2: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      nilai3:new FormControl('', Validators.compose([
+      nilai3: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      nilai4:new FormControl('', Validators.compose([
+      nilai4: new FormControl('', Validators.compose([
         Validators.required
       ])),
-       nilai5:new FormControl('', Validators.compose([
-       Validators.required
-      ])),
-      nilai6:new FormControl('', Validators.compose([
+      nilai5: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      nilai7:new FormControl('', Validators.compose([
+      nilai6: new FormControl('', Validators.compose([
         Validators.required
       ])),
-    nilai8:new FormControl('', Validators.compose([
+      nilai7: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      saran:new FormControl('', Validators.compose([
+      nilai8: new FormControl('', Validators.compose([
         Validators.required
       ])),
+      saran: new FormControl(''),
     });
   }
 
-  async submitRatingcatering(){
+  async submitRatingcatering() {
     const loading = await this.loadingController.create({
       message: 'Please wait...'
     });
     await loading.present();
-    this.serviceService.submitaduan(this.FormRatingCatering.value, 'catering/rating-catering-many').subscribe(
-      data => {
-        this.presentToast("Hasil Rating Anda Terkirim");
-        console.log(this.FormRatingCatering.value);
-        this.FormRatingCatering.reset();
-        loading.dismiss();
-      },
-      error => {
-        console.log(error);
-        this.presentToast("Gagal Terkirim, Silahkan Anda memlih Rating Dahulu! ");
-        console.log(this.FormRatingCatering.value);
-        this.FormRatingCatering.reset();
-        loading.dismiss();
-      }
 
-    );
-   }
-   async presentToast(Message) {
+    if (this.FormRatingCatering.valid) {
+      this.serviceService.submitaduan(this.FormRatingCatering.value, 'catering/rating-catering-many').subscribe(
+        data => {
+          this.presentToast("Terima Kasih. Hasil Rating Anda Terkirim");
+        },
+        error => {
+          console.log(error);
+          this.presentToast("Gagal Terkirim, Silahkan kirim rating catering lain waktu!");
+        }
+      );
+    }
+    else {
+      this.presentToast("Silahkan Lengkapi Form Rating!");
+    }
+    this.FormRatingCatering.reset();
+    loading.dismiss();
+  }
+
+  async presentToast(Message) {
     const toast = await this.toastController.create({
       message: Message,
       duration: 2500,
@@ -127,8 +125,4 @@ authenticationState = new ReplaySubject();
   onBack() {
     this.router.navigate(['home']);
   }
-
-
-
-
 }
