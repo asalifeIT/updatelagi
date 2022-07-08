@@ -78,7 +78,7 @@ export class DashAduanmtPage implements OnInit {
     toast.present();
   }
 
-  signout() {
+  onBack() {
     this.router.navigate(['dashboard']);
   }
 

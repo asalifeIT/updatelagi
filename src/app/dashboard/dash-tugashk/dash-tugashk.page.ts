@@ -84,7 +84,7 @@ export class DashTugashkPage implements OnInit {
     window.location.reload();
   }
 
-  signout() {
+  onBack() {
     this.router.navigate(['dashboard']);
   }
 

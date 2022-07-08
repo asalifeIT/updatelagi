@@ -91,7 +91,7 @@ export class DashAduanlaundryPage implements OnInit {
     toast.present();
   }
 
-  signout() {
+  onBack() {
     this.router.navigate(['dashboard']);
   }
 

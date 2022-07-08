@@ -57,7 +57,7 @@ export class DashRatingcateringPage implements OnInit {
     );
   }
 
-  signout() {
+  onBack() {
     this.router.navigate(['dashboard']);
   }
 
