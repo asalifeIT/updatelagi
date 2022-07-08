@@ -1,14 +1,11 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
-import { NavController, ModalController, LoadingController, ToastController,Platform } from '@ionic/angular';
-import { RegisterPage } from '../register/register.page';
+import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NavController, ModalController, LoadingController, ToastController, Platform } from '@ionic/angular';
 import { ServiceService } from '../services/service.service';
-import {Observable, ReplaySubject, throwError} from "rxjs/index";
+import { ReplaySubject } from "rxjs/index";
 import { catchError } from 'rxjs/operators';
 import { UtilService } from 'src/app/services/util.service';
-import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
-
 
 @Component({
   selector: 'app-aduanlaundry',
@@ -16,12 +13,12 @@ import { connectableObservableDescriptor } from 'rxjs/internal/observable/Connec
   styleUrls: ['./aduanlaundry.page.scss'],
 })
 export class AduanlaundryPage implements OnInit {
-  FormAduanLaundry:FormGroup;
-  authenticationState = new ReplaySubject(); 
+  FormAduanLaundry: FormGroup;
+  authenticationState = new ReplaySubject();
   authService: any;
-  message:any;
+  message: any;
   validations = {
-     'mess': [
+    'mess': [
       { type: 'required', message: 'pilihan mess harus di isi' }
     ],
     'no_kamar': [
@@ -39,8 +36,8 @@ export class AduanlaundryPage implements OnInit {
   };
 
   constructor(
-    private formBuilder: FormBuilder, 
-    private navCtrl: NavController, 
+    private formBuilder: FormBuilder,
+    private navCtrl: NavController,
     public loadingController: LoadingController,
     public modalController: ModalController,
     private platform: Platform,
@@ -51,50 +48,49 @@ export class AduanlaundryPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.FormAduanLaundry=this.formBuilder.group({
-      mess:new FormControl('', Validators.compose([
+    this.FormAduanLaundry = this.formBuilder.group({
+      mess: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      no_kamar:new FormControl('', Validators.compose([
+      no_kamar: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      jenis_pakaian:new FormControl('', Validators.compose([
+      jenis_pakaian: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      jenis_deviasi:new FormControl('', Validators.compose([
+      jenis_deviasi: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      tanggal_loundry:new FormControl('', Validators.compose([
+      tanggal_loundry: new FormControl('', Validators.compose([
         Validators.required
       ])),
     });
-    console.log(this.FormAduanLaundry.errors);
-    
   }
 
-  async submitAduanLaundry(){
+  async submitAduanLaundry() {
     const loading = await this.loadingController.create({
       message: 'Please wait...'
     });
     await loading.present();
-    this.serviceService.submitaduan(this.FormAduanLaundry.value, 'laundry/add').subscribe(
-      data => {
-        this.presentToast("Aduan Laundry Anda Terkirim");
-        console.log(this.FormAduanLaundry.value);
-        this.FormAduanLaundry.reset();
-        loading.dismiss();
-      },
-      error => {
-        console.log(error);
-        this.presentToast("Gagal Terkirim, Silahkan Lengkapi Isi Aduan Laundry!");
-        console.log(this.FormAduanLaundry.value);
-        this.FormAduanLaundry.reset();
-        loading.dismiss();
-      }
 
-    );
-   }
-   async presentToast(Message) {
+    if (this.FormAduanLaundry.valid) {
+      this.serviceService.submitaduan(this.FormAduanLaundry.value, 'laundry/add').subscribe(
+        data => {
+          this.presentToast("Aduan Laundry Anda Terkirim");
+        },
+        error => {
+          this.presentToast("Gagal Terkirim, Silahkan kirim aduan lain waktu!");
+        }
+      );
+    }
+    else {
+      this.presentToast("Silahkan Lengkapi Isi Aduan Laundry!");
+    }
+    this.FormAduanLaundry.reset();
+    loading.dismiss();
+  }
+  
+  async presentToast(Message) {
     const toast = await this.toastController.create({
       message: Message,
       duration: 2500,

@@ -1,13 +1,11 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
-import { NavController, ModalController, LoadingController, ToastController,Platform } from '@ionic/angular';
-import { RegisterPage } from '../register/register.page';
+import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NavController, ModalController, LoadingController, ToastController, Platform } from '@ionic/angular';
 import { ServiceService } from '../services/service.service';
-import {Observable, ReplaySubject, throwError} from "rxjs/index";
+import { ReplaySubject, throwError } from "rxjs/index";
 import { catchError } from 'rxjs/operators';
 import { UtilService } from 'src/app/services/util.service';
-
 
 
 @Component({
@@ -16,11 +14,10 @@ import { UtilService } from 'src/app/services/util.service';
   styleUrls: ['./aduanhk.page.scss'],
 })
 export class AduanhkPage implements OnInit {
-
-  FormAduanHk:FormGroup;
-  authenticationState = new ReplaySubject(); 
+  FormAduanHk: FormGroup;
+  authenticationState = new ReplaySubject();
   authService: any;
-  message:any;
+  message: any;
   validations = {
     'lokasi': [
       { type: 'required', message: 'lokasi harus diisi.' }
@@ -31,8 +28,8 @@ export class AduanhkPage implements OnInit {
   };
 
   constructor(
-    private formBuilder: FormBuilder, 
-    private navCtrl: NavController, 
+    private formBuilder: FormBuilder,
+    private navCtrl: NavController,
     public loadingController: LoadingController,
     public modalController: ModalController,
     private platform: Platform,
@@ -43,38 +40,39 @@ export class AduanhkPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.FormAduanHk=this.formBuilder.group({
-      lokasi:new FormControl('', Validators.compose([
+    this.FormAduanHk = this.formBuilder.group({
+      lokasi: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      deskripsi:new FormControl('', Validators.compose([
+      deskripsi: new FormControl('', Validators.compose([
         Validators.required
       ]))
     });
 
   }
 
-  async submitAduanHk(){
+  async submitAduanHk() {
     const loading = await this.loadingController.create({
       message: 'Please wait...'
     });
     await loading.present();
 
-    this.serviceService.submitaduan(this.FormAduanHk.value, 'housekeeping/add').subscribe(
-      data => {
-        this.presentToast("Aduan House Keeping Anda Terkirim");
-        console.log(this.FormAduanHk.value);
-        this.FormAduanHk.reset();
-        loading.dismiss();
-      },
-         error => {
-          console.log(error);
-          this.presentToast("Gagal Terkirim, Silahkan Lengkapi Isi Aduan Housekeeping!");
-          console.log(this.FormAduanHk.value);
-          this.FormAduanHk.reset();
-          loading.dismiss();
-      }
-    );
+    if (this.FormAduanHk.valid) {
+      this.serviceService.submitaduan(this.FormAduanHk.value, 'housekeeping/add').subscribe(
+        data => {
+          this.presentToast("Aduan House Keeping Anda Terkirim");
+        },
+        error => {
+          this.presentToast("Gagal Terkirim, Silahkan kirim aduan lain waktu!");
+        }
+      );
+    }
+    else {
+      this.presentToast("Silahkan Lengkapi Isi Aduan Housekeeping!");
+    }
+
+    this.FormAduanHk.reset();
+    loading.dismiss();
   }
 
   async presentToast(Message) {
@@ -90,6 +88,6 @@ export class AduanhkPage implements OnInit {
   }
 
 
-  }
+}
 
 

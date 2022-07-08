@@ -34,8 +34,6 @@ export class HomePage implements OnInit {
     { id: 1, name: 'Informasi', src: 'assets/svg/info.svg', background: '', page: '' },
   ];
 
-
-  private routerEvents: any;
   Username: any;
   DataLogin: any;
   Dismis: any;
@@ -53,7 +51,6 @@ export class HomePage implements OnInit {
     this.serviceService.CekUser().subscribe(
       data => {
         this.DataLogin = data;
-        console.log(this.DataLogin)
         this.Username = this.DataLogin.body.name;
       },
       error => {
@@ -82,8 +79,6 @@ export class HomePage implements OnInit {
     this.serviceService.signout();
     loading.dismiss();
   }
-
-
 
   openRest() {
     this.router.navigate(['catering']);

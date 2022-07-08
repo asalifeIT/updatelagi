@@ -29,7 +29,6 @@ export class WelcomePagePage implements OnInit {
         for (let i = 0; i < this.slideLength; i++) {
           this.slidesNumber.push(i);
         }
-        console.log(this.slidesNumber);
       });
     }, 1000);
 

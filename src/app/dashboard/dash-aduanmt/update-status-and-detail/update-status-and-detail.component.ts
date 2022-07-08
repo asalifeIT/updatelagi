@@ -47,7 +47,7 @@ export class UpdateStatusAndDetailComponent {
       'priority': (this.priorityInput.value) ? this.priorityInput.value : this.priority
     }
 
-    console.log(payload);
+
 
     if (payload.picnrp === null || payload.priority === null || payload.duration === null ) {
       this.resultMessage = 'Gagal update data, silakan lengkapi pilihan';

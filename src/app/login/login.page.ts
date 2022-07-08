@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController, ModalController, LoadingController, ToastController } from '@ionic/angular';
 import { RegisterPage } from '../register/register.page';
 import { ServiceService } from '../services/service.service';
@@ -64,7 +64,6 @@ export class LoginPage implements OnInit {
   ionViewDidLeave() {
     this.routerOutlet.swipeGesture = true;
     this.util.enableSideMenu();
-
   }
 
   //fungsi login
@@ -74,18 +73,20 @@ export class LoginPage implements OnInit {
 
     });
     await loading.present();
-    this.serviceService.loginApi(this.FormLogin.value, 'signin').subscribe(
-      data => {
-        this.dataLogin = data;
-        this.presentToast("Login Berhasil")
-        loading.dismiss();
-      },
-      error => {
-        this.presentToast(error);
-        this.presentToast("Gagal Login, Anda Belum Register!")
-        loading.dismiss();
-      }
-    );
+    if (this.FormLogin.valid) {
+      this.serviceService.loginApi(this.FormLogin.value, 'signin').subscribe(
+        data => {
+          this.dataLogin = data;
+          this.presentToast("Login Berhasil", 800)
+        },
+        error => {
+          this.presentToast(error, 2000);
+        }
+      );
+    }
+    
+    this.FormLogin.reset();
+    loading.dismiss();
   }
 
   //menampilkan halaman register
@@ -96,10 +97,10 @@ export class LoginPage implements OnInit {
     return await modal.present();
   }
 
-  async presentToast(Message) {
+  async presentToast(Message, time) {
     const toast = await this.toastController.create({
       message: Message,
-      duration: 800,
+      duration: time,
       position: "top"
     });
     toast.present();
