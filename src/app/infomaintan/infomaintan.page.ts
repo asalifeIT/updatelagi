@@ -43,7 +43,7 @@ export class InfomaintanPage implements OnInit {
     );
   }
   onBack() {
-    this.router.navigate(['home']);
+    this.router.navigate(['maintenance']);
   }
   openAdmain() {
     this.router.navigate(['aduanmaintenance']);
