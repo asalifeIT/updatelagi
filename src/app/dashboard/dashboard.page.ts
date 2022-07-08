@@ -72,4 +72,8 @@ export class DashboardPage implements OnInit {
     this.router.navigate(['dash-ratingcatering']);
   }
 
+  onBack(){
+    this.router.navigate(['home']);
+  }
+
 }

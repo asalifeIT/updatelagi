@@ -49,7 +49,7 @@ export class InfolaundryPage implements OnInit {
     this.router.navigate(['home']);
   }
 
-  openAdlaundry() {
+  openAdlaundry(){
     this.router.navigate(['aduanlaundry']);
   }
 }

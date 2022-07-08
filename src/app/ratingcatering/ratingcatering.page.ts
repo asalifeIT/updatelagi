@@ -123,6 +123,6 @@ export class RatingcateringPage implements OnInit {
   }
 
   onBack() {
-    this.router.navigate(['home']);
+    this.router.navigate(['catering']);
   }
 }

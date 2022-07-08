@@ -92,6 +92,6 @@ export class TgsmaintenancePage implements OnInit {
   }
 
   onBack() {
-    this.router.navigate(['home']);
+    this.router.navigate(['maintenance']);
   }
 }
