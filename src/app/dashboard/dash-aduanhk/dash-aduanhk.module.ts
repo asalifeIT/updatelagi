@@ -4,7 +4,6 @@ import { IonicModule } from '@ionic/angular';
 import { DashAduanhkPageRoutingModule } from './dash-aduanhk-routing.module';
 import { DashAduanhkPage } from './dash-aduanhk.page';
 import  {ReactiveFormsModule, FormsModule} from '@angular/forms';
-import { UpdateStatusComponent } from './update-status/update-status.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -13,8 +12,7 @@ import { UpdateStatusComponent } from './update-status/update-status.component';
     DashAduanhkPageRoutingModule,
     ReactiveFormsModule
   ],
-  declarations: [DashAduanhkPage, UpdateStatusComponent],
-  entryComponents: [UpdateStatusComponent]
+  declarations: [DashAduanhkPage],
 
 })
 export class DashAduanhkPageModule {}

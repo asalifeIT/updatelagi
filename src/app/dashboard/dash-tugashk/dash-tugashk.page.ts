@@ -16,16 +16,11 @@ import { UpdateDetailNonroomComponent } from './update-detail-nonroom/update-det
 export class DashTugashkPage implements OnInit {
   [x: string]: any;
   authenticationState = new ReplaySubject();
-  authService: any;
   message: any;
   Data: any;
   DataLogin: any;
-  DataResponse: any;
-  DataCheckLogin: any;
   DataRecordRoom: any;
   DataRecordNonRoom: any;
-  stringJson: any;
-  stringObject: any;
 
   constructor(
     private serviceService: ServiceService,
@@ -37,34 +32,38 @@ export class DashTugashkPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.someOtherMethod();
-    this.serviceService.getRecord('task/room').subscribe(
-      data => {
-        this.DataRecordRoom = data.body;
-      },
-      error => {
-        console.log("err", error);
-      }
-    );
+    this.getUser();
+    this.getRecordMess();
+    this.getRecordRoom();
+  }
 
+  getUser() {
     this.serviceService.CekUser().subscribe(
       data => {
         this.DataLogin = data;
-        console.log(this.DataLogin)
         this.Username = this.DataLogin.body.name;
-        localStorage.getItem(JSON.parse(localStorage.getItem("role")));
       },
       error => {
         console.log("error");
       }
     );
-
   }
 
-  someOtherMethod() {
+  getRecordMess() {
     this.serviceService.getRecord2('task/mess').subscribe(
       data => {
         this.DataRecordNonRoom = data.body;
+      },
+      error => {
+        console.log("err", error);
+      }
+    );
+  }
+
+  getRecordRoom() {
+    this.serviceService.getRecord('task/room').subscribe(
+      data => {
+        this.DataRecordRoom = data.body;
       },
       error => {
         console.log("err", error);
