@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate } from '@angular/router';
 import { ServiceService } from './../services/service.service';
-import { ToastController } from '@ionic/angular';
-import { AlertController } from '@ionic/angular';
+import { ToastController, AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
 
@@ -15,7 +14,7 @@ export class AuthenticationGuard implements CanActivate {
   constructor(
     private serviceService: ServiceService,
     public toastController: ToastController,
-    private alertControl: AlertController,
+    private alertController: AlertController,
     private router: Router,
   ) { }
 
@@ -29,7 +28,7 @@ export class AuthenticationGuard implements CanActivate {
   }
 
   async presentAlertConfirm() {
-    const alert = await this.alertControl.create({
+    const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'Perhatian!',
       message: 'Anda Tidak Punya Akses. Silakan Login',

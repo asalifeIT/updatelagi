@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ServiceService } from './../services/service.service';
-import { NavController, ModalController, LoadingController, ToastController,Platform } from '@ionic/angular';
+import { NavController, ModalController, LoadingController, ToastController, Platform, AlertController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,7 @@ export class RoleGuard implements CanActivate {
   constructor(
     private serviceService:ServiceService,
       public toastController: ToastController,
+      public alertController: AlertController,
   ){ }
 
   canActivate(){
@@ -41,10 +42,27 @@ export class RoleGuard implements CanActivate {
    }
   }
 
-    alert("Maaf, Anda Tidak Punya Aksess!!!")
+    this.presentAlertConfirm();
     return false;
     } 
    
+  }
+
+  async presentAlertConfirm() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Perhatian!',
+      message: 'Anda Tidak Punya Akses. Silakan Login',
+      buttons: [
+        {
+          text: 'Okay',
+          handler: () => {
+            this.router.navigate(['login']);
+          },
+        },
+      ],
+    });
+    await alert.present();
   }
 }
 
