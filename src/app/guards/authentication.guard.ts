@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { Observable } from 'rxjs';
+import { CanActivate } from '@angular/router';
 import { ServiceService } from './../services/service.service';
-import { NavController, ModalController, LoadingController, ToastController, Platform } from '@ionic/angular';
+import { ToastController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
@@ -24,9 +23,9 @@ export class AuthenticationGuard implements CanActivate {
     if (this.serviceService.DataLogin) {
       return true;
     }
-    alert("Maaf, Anda Tidak Punya Akses!!");
-    // this.presentAlertConfirm(); 
-    return false;
+    this.presentAlertConfirm(); 
+    console.log('test')
+    return false; 
   }
 
   async presentAlertConfirm() {
