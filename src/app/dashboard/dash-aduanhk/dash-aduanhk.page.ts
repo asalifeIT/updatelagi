@@ -1,13 +1,11 @@
 import { ServiceService } from 'src/app/services/service.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators, ReactiveFormsModule, FormArray, AbstractControl } from '@angular/forms';
-import { NavController, ModalController, LoadingController, ToastController, Platform } from '@ionic/angular';
-import { Observable, ReplaySubject, throwError } from "rxjs/index";
+import { FormGroup } from '@angular/forms';
+import { AlertController, ModalController, LoadingController, ToastController } from '@ionic/angular';
+import { ReplaySubject } from "rxjs/index";
 import { catchError } from 'rxjs/operators';
 import { UtilService } from 'src/app/services/util.service';
-import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
-import { UpdateStatusComponent } from './update-status/update-status.component';
 
 @Component({
   selector: 'app-dash-aduanhk',
@@ -18,54 +16,31 @@ export class DashAduanhkPage implements OnInit {
   [x: string]: any;
   FormStatus: FormGroup;
   authenticationState = new ReplaySubject();
-  authService: any;
   message: any;
   Data: any;
   DataLogin: any;
-  DataResponse: any;
-  DataCheckLogin: any;
   DataRecord: any;
-  validations = {
-    'status': [
-      { type: 'required', message: 'pilihan edit status harus di isi' }
-    ]
-  };
+
   constructor(
     private serviceService: ServiceService,
-    private navCtrl: NavController,
     public loadingController: LoadingController,
     public modalController: ModalController,
-    private platform: Platform,
     public toastController: ToastController,
     private router: Router,
     public util: UtilService,
-    private formBuilder: FormBuilder
+    private alertController: AlertController,
   ) { }
 
   ngOnInit() {
-    this.FormStatus = this.formBuilder.group({
-      status: new FormControl('', Validators.compose([Validators.required])),
-    });
+    this.getUser();
+    this.getRecordHousekeeping();
+  }
 
-    console.log(this.FormStatus.errors);
-    this.serviceService.getRecord('housekeeping/all').subscribe(
-      data => {
-        this.DataRecord = data.body;
-        localStorage.getItem(JSON.stringify(this.DataRecord));
-        console.log(this.DataRecord);
-      },
-      error => {
-        console.log("err", error);
-      }
-    );
-    let dataStorage = JSON.parse(localStorage.getItem(this.serviceService.TOKEN_KEY));
-    // this.Username=dataStorage.data.Username;
+  getUser() {
     this.serviceService.CekUser().subscribe(
       data => {
         this.DataLogin = data;
-        console.log(this.DataLogin)
         this.Username = this.DataLogin.body.name;
-        localStorage.getItem(JSON.parse(localStorage.getItem("role")));
       },
       error => {
         console.log("error");
@@ -73,26 +48,41 @@ export class DashAduanhkPage implements OnInit {
     );
   }
 
-  async submitStatus() {
+  getRecordHousekeeping() {
+    this.serviceService.getRecord('housekeeping/all').subscribe(
+      data => {
+        this.DataRecord = data.body;
+      },
+      error => {
+        console.log("err", error);
+      }
+    );
+  }
+
+  async updateaduan(id: string, status: string, statusInit: string) {
     const loading = await this.loadingController.create({
       message: 'Please wait...'
     });
     await loading.present();
-    this.serviceService.submitaduan(this.FormStatus.value, 'housekeeping/update/1').subscribe(
-      data => {
-        this.presentToast("Edit Aduan Housekeeping Sukses");
-        console.log(this.FormStatus.value);
-        this.FormStatus.reset();
-        loading.dismiss();
-      },
-      error => {
-        console.log(error);
-        this.presentToast("Edit Aduan Housekeeping Gagal!!");
-        console.log(this.FormStatus.value);
-        this.FormStatus.reset();
-        loading.dismiss();
-      }
-    );
+
+    const payload = { 'status': status }
+
+    if (status === statusInit) {
+      this.presentToast("Edit Status Aduan Catering Sukses")
+    }
+    else {
+      this.serviceService.updateStatus(payload, 'housekeeping/update/', id).subscribe(
+        data => {
+          this.presentToast("Edit Status Aduan Catering Sukses")
+          this.ngOnInit();
+        },
+        error => {
+          this.presentToast("Edit Status Aduan Catering Gagal");
+          console.log(error.message)
+        }
+      );
+    }
+    loading.dismiss();
   }
 
   async presentToast(Message) {
@@ -113,22 +103,51 @@ export class DashAduanhkPage implements OnInit {
   }
 
   async openModal(data) {
+    let status: string = data.status;
     if (this.serviceService.isHasAccess('HOUSEKEEPING', 'COMPLAINT', 'EDIT')) {
-      const modal = await this.modalController.create({
-        component: UpdateStatusComponent,
-        componentProps: {
-          id: data.id,
-          status: data.status
-        }
+      const alert = await this.alertController.create({
+        cssClass: 'my-custom-class',
+        header: 'Ubah Status!',
+        message: 'Status sekarang: ' + data.status.slice(0, 8),
+        inputs: [
+          {
+            name: 'CLEANING',
+            type: 'radio',
+            label: 'CLEANING',
+            value: 'CLEANING_PROGRESS',
+            handler: () => {
+              status = 'CLEANING_PROGRESS'
+            },
+            checked: data.status == 'CLEANING_PROGRESS',
+          },
+          {
+            name: 'DONE',
+            type: 'radio',
+            label: 'DONE',
+            value: 'DONE',
+            handler: () => {
+              status = 'DONE'
+            },
+            checked: data.status == 'DONE',
+          },
+        ],
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            cssClass: 'secondary',
+            handler: () => {
+            },
+          },
+          {
+            text: 'Ok',
+            handler: () => {
+              this.updateaduan(data.id, status, data.status);
+            },
+          },
+        ],
       });
-      await modal.present();
-      const message = await modal.onWillDismiss();
-      if (message.data === 'success') {
-        this.ngOnInit();
-      }
-      if (message.data) {
-        this.presentToast(message.data);
-      }
+      await alert.present();
     }
   }
 }

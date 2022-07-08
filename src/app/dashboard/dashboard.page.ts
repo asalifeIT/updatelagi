@@ -3,8 +3,6 @@ import { Platform, NavController,LoadingController } from '@ionic/angular';
 import { ServiceService } from '../services/service.service';
 import { Router } from '@angular/router';
 import { UtilService } from 'src/app/services/util.service';
-import { PreloadAllModules, RouterModule, Routes, CanActivate } from '@angular/router';
-import { NgModule } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -21,26 +19,22 @@ export class DashboardPage implements OnInit {
     private router: Router,
     public util: UtilService,
     public navCtrl: NavController,
-    private platform: Platform,
   ) { }
 
   ngOnInit() {
-    
-      //ambil data dari localstorage
-      let dataStorage=JSON.parse(localStorage.getItem(this.serviceService.TOKEN_KEY));
-      // this.Username=dataStorage.data.Username;
-      this.serviceService.CekUser().subscribe(
-        data => {
-          this.DataLogin=data;
-          console.log(this.DataLogin)
-          this.Username=this.DataLogin.body.name;
-          localStorage.getItem(JSON.parse(localStorage.getItem("role")));
-        },
-        error => {
-          console.log("error");
-        }
-      );
-      
+    this.getUser();
+  }
+
+  getUser() {
+    this.serviceService.CekUser().subscribe(
+      data => {
+        this.DataLogin=data;
+        this.Username=this.DataLogin.body.name;
+      },
+      error => {
+        console.log("error");
+      }
+    );
   }
 
   signout(){

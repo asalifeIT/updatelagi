@@ -4,7 +4,6 @@ import { IonicModule } from '@ionic/angular';
 import { DashAduanlaundryPageRoutingModule } from './dash-aduanlaundry-routing.module';
 import { DashAduanlaundryPage } from './dash-aduanlaundry.page';
 import  {ReactiveFormsModule, FormsModule} from '@angular/forms';
-import { UpdateStatusComponent } from './update-status/update-status.component';
 
 @NgModule({
   imports: [
@@ -14,7 +13,6 @@ import { UpdateStatusComponent } from './update-status/update-status.component';
     DashAduanlaundryPageRoutingModule,
     ReactiveFormsModule
   ],
-  declarations: [DashAduanlaundryPage, UpdateStatusComponent],
-  entryComponents: [UpdateStatusComponent]
+  declarations: [DashAduanlaundryPage],
 })
 export class DashAduanlaundryPageModule {}
