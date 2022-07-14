@@ -1,7 +1,7 @@
 {
-  "name": "com.asalife.service",
+  "name": "com.asto.service",
   "version": "0.0.1",
-  "author": "Ionic Asabeta",
+  "author": "asto service",
   "homepage": "https://asabeta.com:8080/",
   "scripts": {
     "ng": "ng",
