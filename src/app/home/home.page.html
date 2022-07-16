@@ -1,8 +1,9 @@
+
 <ion-header class="ion-no-border">
   <ion-item lines="none">
-    <ion-buttons slot="start">
+    <ion-buttons>
       <ion-button (click)="util.openSideMenu()" color="light">
-        <ion-icon name="menu"></ion-icon>
+        <ion-icon name="apps-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-label color="light">
@@ -11,17 +12,20 @@
   </ion-item>
 </ion-header>
 
-<ion-content [fullscreen]="true" color="light">
+<ion-content [fullscreen]="true">
+
   <div class="main-header"></div>
   <ion-grid>
     <ion-note color="light" class="ion-margin-start">
       <div class="ion-text-center">
-      <ion-label>ASTO SERVICE APP - Where It All begin!</ion-label>
+      <ion-label>ASTO SERVICE APP - Where It All begin!</ion-label><br>
       </div>
     </ion-note>
     <ion-note color="light" class="ion-margin-start">
       <div class="ion-text-center">
-        <ion-label>Selamat datang {{this.serviceService.getUserName()}} !</ion-label>
+        <ion-label>Selamat datang {{this.serviceService.getUserName()}} </ion-label><br>
+        <ion-label>Website: http://asabeta.com/</ion-label><br>
+        <ion-label>Contact: +62 813-5091-6736</ion-label>
       </div>
     </ion-note>
     <br>
