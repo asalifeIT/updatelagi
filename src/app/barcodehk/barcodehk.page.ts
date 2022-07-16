@@ -8,29 +8,21 @@ import {Observable, ReplaySubject, throwError} from "rxjs/index";
 import { catchError } from 'rxjs/operators';
 import { UtilService } from 'src/app/services/util.service';
 import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
+import { AstoinfoPage } from '../astoinfo/astoinfo.page';
+
 
 @Component({
-  selector: 'app-sub',
-  templateUrl: './sub.page.html',
-  styleUrls: ['./sub.page.scss'],
+  selector: 'app-barcodehk',
+  templateUrl: './barcodehk.page.html',
+  styleUrls: ['./barcodehk.page.scss'],
 })
-export class SubPage implements OnInit {
+export class BarcodehkPage implements OnInit {
   [x: string]: any;
   DataRecord:any;
   FormInfo:FormGroup;
   authService: any;
   message:any;
- kamar: any[] = [
-    {id: 1, name: '', src: '', background: '', page: ''},
-
-  ];
-
-  nonkamar: any[] = [
-    {id: 1, name: '', src: '', background: '', page: ''},
-
-  ];
-
-  barcode: any[] = [
+  barcode1: any[] = [
     {id: 1, name: '', src: '', background: '', page: ''},
 
   ];
@@ -38,25 +30,33 @@ export class SubPage implements OnInit {
     {id: 1, name: '', src: '', background: '', page: ''},
 
   ];
-  
+  slideOpts = {
+    initialSlide: 1,
+    speed: 500,
+    loop: true,
+    autoplay: {
+          delay: 2500
+    }
+  };  tabID; 
 
   constructor(
     private serviceService:ServiceService,
     private navCtrl: NavController, 
       private router: Router,
-      public util: UtilService
+      public util: UtilService,
+      private modalCtrl: ModalController,
   ) { }
 
 
   ngOnInit() {
   }
-  openKamar() {
-    this.router.navigate(['kamar']);
+  openBarkamar() {
+    this.router.navigate(['barcodekamar']);
   }
-  openNon() {
-    this.router.navigate(['nonkamar']);
+  openBarnonkamar() {
+    this.router.navigate(['barcodenonkamar']);
   }
-  onBack() {
+  close() {
     this.router.navigate(['manual']);
   }
 }

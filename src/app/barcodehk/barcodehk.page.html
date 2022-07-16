@@ -1,0 +1,42 @@
+<ion-content>
+  <div class="main_content_div">
+    <ion-icon color="light" name="close" (click)="close()"></ion-icon>
+    <ion-chip class="dash" color="light">Task Tugas Housekeeping Barcode</ion-chip><br><br>
+    <ion-back-button></ion-back-button>
+    <ion-row style="margin-bottom: 10px;">
+      <ion-col size="6" (click)="tabID = 1" [class.active]="tabID == 1" (click)="openBarkamar()">
+        <ion-icon name="barcode-outline"></ion-icon>
+      </ion-col>
+      <ion-col size="6" (click)="tabID = 2" [class.active]="tabID == 2" (click)="openBarnonkamar()">
+        <ion-icon name="barcode-outline"></ion-icon>
+      </ion-col>
+
+    </ion-row>
+    <ion-row>
+      <ion-col size="6" [class.active]="tabID == 1">
+       <p><ion-label>Kamar</ion-label><br>
+      </ion-col>
+      <ion-col size="6" [class.active]="tabID == 2">
+        <p><ion-label>Non Kamar</ion-label><br>
+      </ion-col>
+    </ion-row>
+  </div>
+<ion-slides>  
+    <ion-slides pager="true" [options]="slideOpts">  
+    <ion-slide>  
+      <img src="assets/images/barcode.png"/>     
+      <h4><b>Task Housekeeping</b></h4>  
+      <p>Penginputan tugas Housekeping untuk kamar dan non kamar menggunakan pemindai / barcode</p>  
+    </ion-slide>  
+
+    <ion-slide>  
+      <img src="assets/svg/barcode1.svg"/>     
+      <h4><b>Mendukung Teknologi Pemindai</b></h4>  
+      <p>Inovasi Task dengan Barcode</p>  
+    </ion-slide>  
+
+   </ion-slides>
+  </ion-slides>
+  <div style="display: flex;flex-direction: row; justify-content: center;">
+  </div>
+</ion-content>

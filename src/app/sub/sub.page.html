@@ -7,7 +7,7 @@
       </ion-button>
     </ion-buttons>
     <ion-label color="light">
-   Tugas House Keeping
+   Task Manual
   </ion-label>
   <ion-buttons slot="end">
     <ion-icon (click)="onBack()" name="chevron-back-outline" color="light"></ion-icon>
@@ -21,13 +21,18 @@
     <ion-note color="light" class="ion-margin-start">
       <b></b> 
      </ion-note> 
-<br>
-<br>
+     <ion-card>
+      <img src="" />
+      <ion-card-header>
+        <p class="ttl" color="dark">Deskripsi : Silahkan mengisi tugas HK dengan pilihan manual </p>
+      </ion-card-header>
+    </ion-card>
+
      
 <div class="main_content" *ngFor="let item of kamar" (click)="openKamar()">
   <ion-row>
     <ion-col size="5"><br>
-      <div class="img" [style.backgroundImage]="'url(assets/svg/online-survey.svg)'"></div>
+      <div class="img" [style.backgroundImage]="'url(assets/svg/task1.svg)'"></div>
       </ion-col>
       <ion-col size="7">
         <div class="title">
@@ -55,7 +60,7 @@
           <div class="main_content" *ngFor="let item of nonkamar" (click)="openNon()">
           <ion-row>
             <ion-col size="5"><br>
-              <div class="img" [style.backgroundImage]="'url(assets/svg/online-survey.svg)'"></div>
+              <div class="img" [style.backgroundImage]="'url(assets/svg/task2.svg)'"></div>
               </ion-col>
               <ion-col size="7">
                 <div class="title">
@@ -79,15 +84,6 @@
             </ion-row>
            <div class="line"></div>
            </div>
-<br>
-           <ul color="dark" *ngFor="let data of DataRecord; let i = index">
-            <marquee>Aduan Masuk==> Nrp:{{data.user_nrp}}, Lokasi :{{data.lokasi}}, Deskripsi: {{data.deskripsi}}, Status: {{data.status}}</marquee>
-              <ion-progress-bar value="1" buffer="1"></ion-progress-bar>
-            </ul>
-
-
-
-
           </ion-grid>
-        </ion-content>
+</ion-content>
 

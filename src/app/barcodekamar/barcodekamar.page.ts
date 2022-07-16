@@ -8,55 +8,31 @@ import {Observable, ReplaySubject, throwError} from "rxjs/index";
 import { catchError } from 'rxjs/operators';
 import { UtilService } from 'src/app/services/util.service';
 import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
+import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
 
 @Component({
-  selector: 'app-sub',
-  templateUrl: './sub.page.html',
-  styleUrls: ['./sub.page.scss'],
+  selector: 'app-barcodekamar',
+  templateUrl: './barcodekamar.page.html',
+  styleUrls: ['./barcodekamar.page.scss'],
 })
-export class SubPage implements OnInit {
-  [x: string]: any;
-  DataRecord:any;
-  FormInfo:FormGroup;
-  authService: any;
-  message:any;
- kamar: any[] = [
+export class BarcodekamarPage implements OnInit {
+  barcode1: any[] = [
     {id: 1, name: '', src: '', background: '', page: ''},
-
   ];
-
-  nonkamar: any[] = [
-    {id: 1, name: '', src: '', background: '', page: ''},
-
-  ];
-
-  barcode: any[] = [
-    {id: 1, name: '', src: '', background: '', page: ''},
-
-  ];
-  barcode2: any[] = [
-    {id: 1, name: '', src: '', background: '', page: ''},
-
-  ];
-  
 
   constructor(
-    private serviceService:ServiceService,
-    private navCtrl: NavController, 
-      private router: Router,
-      public util: UtilService
+    private modalCtrl: ModalController,
+    private router: Router,
+    private barcodeScanner: BarcodeScanner
   ) { }
 
 
+  
   ngOnInit() {
   }
-  openKamar() {
-    this.router.navigate(['kamar']);
+  close() {
+    this.router.navigate(['barcodehk']);
   }
-  openNon() {
-    this.router.navigate(['nonkamar']);
-  }
-  onBack() {
-    this.router.navigate(['manual']);
-  }
+
+  
 }

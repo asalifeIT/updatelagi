@@ -10,31 +10,22 @@ import { UtilService } from 'src/app/services/util.service';
 import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 @Component({
-  selector: 'app-sub',
-  templateUrl: './sub.page.html',
-  styleUrls: ['./sub.page.scss'],
+  selector: 'app-manual',
+  templateUrl: './manual.page.html',
+  styleUrls: ['./manual.page.scss'],
 })
-export class SubPage implements OnInit {
+export class ManualPage implements OnInit {
   [x: string]: any;
   DataRecord:any;
   FormInfo:FormGroup;
   authService: any;
   message:any;
- kamar: any[] = [
-    {id: 1, name: '', src: '', background: '', page: ''},
-
-  ];
-
-  nonkamar: any[] = [
+manual: any[] = [
     {id: 1, name: '', src: '', background: '', page: ''},
 
   ];
 
   barcode: any[] = [
-    {id: 1, name: '', src: '', background: '', page: ''},
-
-  ];
-  barcode2: any[] = [
     {id: 1, name: '', src: '', background: '', page: ''},
 
   ];
@@ -50,13 +41,13 @@ export class SubPage implements OnInit {
 
   ngOnInit() {
   }
-  openKamar() {
-    this.router.navigate(['kamar']);
+  openManual() {
+    this.router.navigate(['sub']);
   }
-  openNon() {
-    this.router.navigate(['nonkamar']);
+  openBarcode() {
+    this.router.navigate(['barcodehk']);
   }
   onBack() {
-    this.router.navigate(['manual']);
+    this.router.navigate(['housekeeping']);
   }
 }

@@ -237,6 +237,22 @@ const routes: Routes = [
     path: 'support',
     loadChildren: () => import('./support/support.module').then( m => m.SupportPageModule)
   },
+  {
+    path: 'barcodehk',
+    loadChildren: () => import('./barcodehk/barcodehk.module').then( m => m.BarcodehkPageModule)
+  },
+  {
+    path: 'manual',
+    loadChildren: () => import('./manual/manual.module').then( m => m.ManualPageModule)
+  },
+  {
+    path: 'barcodekamar',
+    loadChildren: () => import('./barcodekamar/barcodekamar.module').then( m => m.BarcodekamarPageModule)
+  },
+  {
+    path: 'barcodenonkamar',
+    loadChildren: () => import('./barcodenonkamar/barcodenonkamar.module').then( m => m.BarcodenonkamarPageModule)
+  },
 
 
 
