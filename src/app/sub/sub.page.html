@@ -84,6 +84,37 @@
             </ion-row>
            <div class="line"></div>
            </div>
+           
+
+           <div class="main_content" *ngFor="let item of nonkamar" (click)="openBar()">
+            <ion-row>
+              <ion-col size="5"><br>
+                <div class="img" [style.backgroundImage]="'url(assets/svg/task2.svg)'"></div>
+                </ion-col>
+                <ion-col size="7">
+                  <div class="title">
+                    <ion-label class="ttl">Silahkan Scan</ion-label>
+                    <ion-label class="sub_ttl">Komponen dan Rincian Tugas HK </ion-label>
+                    <div class="icon_title">
+                      <div class="rate">
+                        <ion-icon name="checkmark-circle"></ion-icon>
+                        <ion-icon name="checkmark-circle"></ion-icon>
+                        <ion-icon name="checkmark-circle"></ion-icon>
+                        <ion-icon name="checkmark-circle"></ion-icon>
+                        <ion-icon name="checkmark-circle"></ion-icon>
+                      </div>
+                    </div>
+                    <div class="icon_title">
+                      <ion-icon slot="start" name="location-sharp"></ion-icon>
+                      <ion-label color="dark">Petunjuk?</ion-label>
+                    </div>
+                  </div>
+                </ion-col>
+              </ion-row>
+             <div class="line"></div>
+             </div>
+             
+
           </ion-grid>
 </ion-content>
 

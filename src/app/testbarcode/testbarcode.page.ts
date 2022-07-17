@@ -7,16 +7,18 @@ import { ReplaySubject } from "rxjs/index";
 import { catchError } from 'rxjs/operators';
 import { UtilService } from 'src/app/services/util.service';
 import { BarcodeScanner, BarcodeScannerOptions } from "@ionic-native/barcode-scanner/ngx";
+
 @Component({
-  selector: 'app-kamar',
-  templateUrl: './kamar.page.html',
-  styleUrls: ['./kamar.page.scss'],
+  selector: 'app-testbarcode',
+  templateUrl: './testbarcode.page.html',
+  styleUrls: ['./testbarcode.page.scss'],
 })
-export class KamarPage implements OnInit {
+export class TestbarcodePage implements OnInit {
   encodedData: any;
   scannedBarCode: {};
   barcodeScannerOptions: BarcodeScannerOptions;
   FormKamar: FormGroup;
+  FormNonKamar: FormGroup;
   authenticationState = new ReplaySubject();
   authService: any;
   message: any;
@@ -81,6 +83,84 @@ export class KamarPage implements OnInit {
       { type: 'required', message: 'harus di isi' }
     ],
     'lemari': [
+      { type: 'required', message: 'harus di isi' }
+    ],
+    'mess2': [
+      { type: 'required', message: 'harus di isi' }
+    ],
+    'ruangtvkacajendelakusen': [
+      { type: 'required', message: 'harus di isi' }
+    ],
+    'ruangtvcermin': [
+      { type: 'required', message: 'harus di isi' }
+    ],
+    'ruangtvdispenser': [
+      { type: 'required', message: 'harus di isi' }
+    ],
+    'ruangtvac': [
+      { type: 'required', message: 'harus di isi' }
+    ],
+    'ruangtvfurniture': [
+      { type: 'required', message: 'harus di isi' }
+    ],
+    'ruangtvraktv': [
+      { type: 'required', message: 'harus di isi' }
+    ],
+    'ruangtvtiraikarpet': [
+      { type: 'required', message: 'harus di isi' }
+    ],
+    'ruangtvdinding': [
+      { type: 'required', message: 'harus di isi' }
+    ],
+    'ruangtvlantai': [
+      { type: 'required', message: 'harus di isi' }
+    ],
+    'koridortempatsampah': [
+      { type: 'required', message: 'harus di isi' }
+    ],
+    'koridorpintu': [
+      { type: 'required', message: 'harus di isi' }
+    ],
+    'koridorlantaisudutlantai': [
+      { type: 'required', message: 'harus di isi' }
+    ],
+    'koridorkeset': [
+      { type: 'required', message: 'harus di isi' }
+    ],
+    'koridorpantry': [
+      { type: 'required', message: 'harus di isi' }
+    ],
+    'koridorwastafelchromefixture': [
+      { type: 'required', message: 'harus di isi' }
+    ],
+    'koridorperalatanmakanrakpiring': [
+      { type: 'required', message: 'harus di isi' }
+    ],
+    'koridorpintudinding': [
+      { type: 'required', message: 'harus di isi' }
+    ],
+    'koridorkancajendelakusen': [
+      { type: 'required', message: 'harus di isi' }
+    ],
+    'toiletpintudinding': [
+      { type: 'required', message: 'harus di isi' }
+    ],
+    'toilettempatsampah': [
+      { type: 'required', message: 'harus di isi' }
+    ],
+    'toiletwastafelchromefixture': [
+      { type: 'required', message: 'harus di isi' }
+    ],
+    'toileturinoirselangtoiletbowl': [
+      { type: 'required', message: 'harus di isi' }
+    ],
+    'toiletshowerareacurtain': [
+      { type: 'required', message: 'harus di isi' }
+    ],
+    'toiletlantaisudutlantai': [
+      { type: 'required', message: 'harus di isi' }
+    ],
+    'toiletteras': [
       { type: 'required', message: 'harus di isi' }
     ]
   };
@@ -226,3 +306,4 @@ export class KamarPage implements OnInit {
     this.router.navigate(['sub']);
   }
 }
+

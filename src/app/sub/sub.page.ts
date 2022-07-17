@@ -8,6 +8,7 @@ import {Observable, ReplaySubject, throwError} from "rxjs/index";
 import { catchError } from 'rxjs/operators';
 import { UtilService } from 'src/app/services/util.service';
 import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
+import { BarcodeScanner, BarcodeScannerOptions } from "@ionic-native/barcode-scanner/ngx";
 
 @Component({
   selector: 'app-sub',
@@ -44,8 +45,24 @@ export class SubPage implements OnInit {
     private serviceService:ServiceService,
     private navCtrl: NavController, 
       private router: Router,
-      public util: UtilService
-  ) { }
+      public util: UtilService,
+      private scanner: BarcodeScanner
+  ) {
+    this.encodedData = "Programming isn't about what you know";
+      
+    this.barcodeScannerOptions = {
+      showTorchButton: true,
+      showFlipCameraButton: true
+    };
+}
+scanBRcode() {
+  this.scanner.scan().then(res => {
+      this.scannedBarCode = res;
+    }).catch(err => {
+      alert(err);
+    });
+
+   }
 
 
   ngOnInit() {
@@ -58,5 +75,8 @@ export class SubPage implements OnInit {
   }
   onBack() {
     this.router.navigate(['manual']);
+  }
+  openBar(){
+    this.router.navigate(['testbarcode']); 
   }
 }

@@ -10,7 +10,7 @@ import { HttpClientModule }    from '@angular/common/http';
 import { RegisterPageModule } from './register/register.module';
 import  {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { RoleGuard } from './guards/role.guard';
-
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,6 +28,7 @@ import { RoleGuard } from './guards/role.guard';
   providers: [
     StatusBar,
     SplashScreen,
+    BarcodeScanner,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
    bootstrap: [AppComponent]

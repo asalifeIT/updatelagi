@@ -233,7 +233,8 @@ const routes: Routes = [
   {
     path: 'myteam',
     loadChildren: () => import('./myteam/myteam.module').then( m => m.MyteamPageModule)
-  },  {
+  },
+  {
     path: 'support',
     loadChildren: () => import('./support/support.module').then( m => m.SupportPageModule)
   },
@@ -242,17 +243,17 @@ const routes: Routes = [
     loadChildren: () => import('./barcodehk/barcodehk.module').then( m => m.BarcodehkPageModule)
   },
   {
-    path: 'manual',
-    loadChildren: () => import('./manual/manual.module').then( m => m.ManualPageModule)
-  },
-  {
     path: 'barcodekamar',
     loadChildren: () => import('./barcodekamar/barcodekamar.module').then( m => m.BarcodekamarPageModule)
   },
   {
     path: 'barcodenonkamar',
     loadChildren: () => import('./barcodenonkamar/barcodenonkamar.module').then( m => m.BarcodenonkamarPageModule)
+  },  {
+    path: 'testbarcode',
+    loadChildren: () => import('./testbarcode/testbarcode.module').then( m => m.TestbarcodePageModule)
   },
+
 
 
 

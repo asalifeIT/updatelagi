@@ -52,7 +52,7 @@ export class HousekeepingPage implements OnInit {
     this.router.navigate(['infohk']);
   }
   openSub() {
-    this.router.navigate(['manual']);
+    this.router.navigate(['sub']);
   }
    onBack() {
     this.router.navigate(['home']);
