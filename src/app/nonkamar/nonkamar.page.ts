@@ -6,6 +6,7 @@ import { ServiceService } from '../services/service.service';
 import { ReplaySubject } from "rxjs/index";
 import { catchError } from 'rxjs/operators';
 import { UtilService } from 'src/app/services/util.service';
+import { BarcodeScanner, BarcodeScannerOptions } from "@ionic-native/barcode-scanner/ngx";
 
 @Component({
   selector: 'app-nonkamar',
@@ -13,6 +14,9 @@ import { UtilService } from 'src/app/services/util.service';
   styleUrls: ['./nonkamar.page.scss'],
 })
 export class NonkamarPage implements OnInit {
+  encodedData: any;
+  scannedBarCode: {};
+  barcodeScannerOptions: BarcodeScannerOptions;
   FormNonKamar: FormGroup;
   authenticationState = new ReplaySubject();
   authService: any;
@@ -109,8 +113,23 @@ export class NonkamarPage implements OnInit {
     public toastController: ToastController,
     private serviceService: ServiceService,
     private router: Router,
-    public util: UtilService
-  ) { }
+    public util: UtilService,
+    private scanner: BarcodeScanner
+  ) {
+    this.encodedData = "Programming isn't about what you know";
+
+    this.barcodeScannerOptions = {
+      showTorchButton: true,
+      showFlipCameraButton: true
+    };
+}
+scanBRcode() {
+  this.scanner.scan().then(res => {
+      this.scannedBarCode = res;
+    }).catch(err => {
+      alert(err);
+    });
+}
 
   ngOnInit() {
 

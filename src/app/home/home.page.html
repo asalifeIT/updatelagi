@@ -1,18 +1,19 @@
 <ion-content [fullscreen]="true">
-<ion-header class="ion-no-border">
-  <ion-item lines="none">
-    <ion-buttons>
-      <ion-button (click)="util.openSideMenu()" color="light">
-        <ion-icon name="apps-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-label color="light">
-     Home
+  <ion-header class="ion-no-border">
+    <ion-item lines="none">
+      <ion-buttons slot="start">
+        <ion-button (click)="util.openSideMenu()" color="light">
+          <ion-icon class="home" name="apps-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-label color="light">
+      Home Dashboard
     </ion-label>
-  </ion-item>
-</ion-header>
-
+    </ion-item>
+   </ion-header>
+  
   <div class="main-header"></div>
+  
   <ion-grid>
     <ion-note color="light" class="ion-margin-start">
       <div class="ion-text-center">

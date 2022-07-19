@@ -7,6 +7,7 @@ import { ReplaySubject } from "rxjs/index";
 import { catchError } from 'rxjs/operators';
 import { UtilService } from 'src/app/services/util.service';
 import { BarcodeScanner, BarcodeScannerOptions } from "@ionic-native/barcode-scanner/ngx";
+
 @Component({
   selector: 'app-kamar',
   templateUrl: './kamar.page.html',
@@ -100,7 +101,7 @@ export class KamarPage implements OnInit {
     private scanner: BarcodeScanner
   ) { 
     this.encodedData = "Programming isn't about what you know";
-      
+
       this.barcodeScannerOptions = {
         showTorchButton: true,
         showFlipCameraButton: true

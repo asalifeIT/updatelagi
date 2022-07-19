@@ -249,14 +249,8 @@ const routes: Routes = [
   {
     path: 'barcodenonkamar',
     loadChildren: () => import('./barcodenonkamar/barcodenonkamar.module').then( m => m.BarcodenonkamarPageModule)
-  },  {
-    path: 'testbarcode',
-    loadChildren: () => import('./testbarcode/testbarcode.module').then( m => m.TestbarcodePageModule)
   },
-
-
-
-
+ 
 ];
 
 @NgModule({

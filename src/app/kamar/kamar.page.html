@@ -7,7 +7,7 @@
         </ion-button>
       </ion-buttons>
       <ion-label color="primary">
-      Rincian Tugas HK Kamar
+     Rincian Tugas HK Kamar
     </ion-label>
     <ion-buttons slot="end">
       <ion-icon (click)="onBack()" name="chevron-back-outline" color="primary"></ion-icon>
@@ -18,21 +18,7 @@
   <div class="main_content ion-padding">
     <ion-label class="sub_heading">Deskripsi</ion-label>
     <ion-label class="sub_heading">Rincian Komponen Ruangan Kamar</ion-label>
-    <ion-card>
-      <ion-card>
-        <ion-button color="danger" (click)="scanBRcode()" expand="block">
-          Scan Barcode 
-        </ion-button>
-    </ion-card>
-      <div *ngIf="scannedBarCode" >
-          <ion-item>
-             Pilihan Kamar: <strong>{{ scannedBarCode["text"] }}</strong>
-          </ion-item>
-          <ion-item>
-             Pilihan Nomor Kamar: <strong>{{ scannedBarCode["format"] }}</strong>
-          </ion-item>
-      </div>
-  </ion-card><br>
+
     <ion-card>
       <ion-card>
         <ion-button color="danger" (click)="scanBRcode()" expand="block">

@@ -19,22 +19,44 @@
 
     <ion-label class="sub_heading">Deskripsi</ion-label>
     <ion-label class="sub_heading">Rincian Komponen Ruangan Non-Kamar</ion-label>
-
+    <ion-card>
+    <ion-card>
+      <ion-button color="danger" (click)="scanBRcode()" expand="block">
+        Scan Barcode 
+      </ion-button>
+  </ion-card>
+    <div *ngIf="scannedBarCode">
+        <ion-item>
+           Pilihan Kamar: <strong>{{ scannedBarCode["text"] }}</strong>
+        </ion-item>
+    </div>
+  </ion-card>
   <div>
   <form class="container" [formGroup]="FormNonKamar" (ngSubmit)="submitNonKamar()">
+    <div *ngIf="scannedBarCode">
     <ion-item>  
-    <ion-label class="sub_heading">Pilihan Mess </ion-label>
-        <ion-select formControlName="mess">
-          <ion-select-option ngvalue="Mess Cheerful">Mess Cheerful</ion-select-option>
-          <ion-select-option ngvalue="Mess Funtastik">Mess Funtastik</ion-select-option>
-          <ion-select-option ngvalue="Mess Joyfull">Mess Joyfull</ion-select-option>
-          <ion-select-option ngvalue="Mess Safety">Mess Safety</ion-select-option>
-          <ion-select-option ngvalue="Mess Integrity">Mess Integrity</ion-select-option> 
-          <ion-select-option ngvalue="Mess Synergy">Mess Synergy</ion-select-option>
-          <ion-select-option ngvalue="Mess Greatful">Mess Greatful</ion-select-option>
-          <ion-select-option ngvalue="Mess Happyness">Mess Happyness</ion-select-option>
-          <ion-select-option ngvalue="Mess Powerfull">Mess Powerfull</ion-select-option>
-        </ion-select></ion-item>
+        <ion-label class="sub_heading">Pilihan Mess </ion-label>
+            <ion-select formControlName="mess">
+              <ion-select-option ngvalue="">Mess Cheerful</ion-select-option>
+            </ion-select>
+          </ion-item>
+      </div>
+      <div *ngIf="!scannedBarCode">
+        <ion-item>  
+            <ion-label class="sub_heading">Pilihan Mess </ion-label>
+                <ion-select formControlName="mess">
+                  <ion-select-option ngvalue="Mess Cheerful">Mess Cheerful</ion-select-option>
+                  <ion-select-option ngvalue="Mess Funtastik">Mess Funtastik</ion-select-option>
+                  <ion-select-option ngvalue="Mess Joyfull">Mess Joyfull</ion-select-option>
+                  <ion-select-option ngvalue="Mess Safety">Mess Safety</ion-select-option>
+                  <ion-select-option ngvalue="Mess Integrity">Mess Integrity</ion-select-option> 
+                  <ion-select-option ngvalue="Mess Synergy">Mess Synergy</ion-select-option>
+                  <ion-select-option ngvalue="Mess Greatful">Mess Greatful</ion-select-option>
+                  <ion-select-option ngvalue="Mess Happyness">Mess Happyness</ion-select-option>
+                  <ion-select-option ngvalue="Mess Powerfull">Mess Powerfull</ion-select-option>
+                </ion-select>
+              </ion-item>
+          </div>
         <ion-item lines="none">
           <ion-note color="dark" class="ion-margin-start">
       <ion-label class="sub_heading">Checklist Komponen Ruang Non-Kamar </ion-label>
