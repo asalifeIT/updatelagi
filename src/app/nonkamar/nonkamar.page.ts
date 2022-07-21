@@ -122,14 +122,14 @@ export class NonkamarPage implements OnInit {
       showTorchButton: true,
       showFlipCameraButton: true
     };
-}
-scanBRcode() {
-  this.scanner.scan().then(res => {
-      this.scannedBarCode = res;
+  }
+  scanBRcode() {
+    this.scanner.scan().then(res => {
+      this.scannedBarCode = res.text;
     }).catch(err => {
       alert(err);
     });
-}
+  }
 
   ngOnInit() {
 
