@@ -7,6 +7,7 @@ import { UtilService } from 'src/app/services/util.service';
 import { ServiceService } from './services/service.service';
 import { Location } from '@angular/common';
 import { MenuController, ModalController } from '@ionic/angular';
+import { FCM } from '@capacitor-community/fcm';
 
 @Component({
   selector: 'app-root',
@@ -119,7 +120,6 @@ export class AppComponent {
   logout() {
     localStorage.clear();
     sessionStorage.clear();
-    this.router.navigate(['login']);
     localStorage.removeItem("signin");
     localStorage.removeItem("access_token");
     localStorage.removeItem("roles");
@@ -128,6 +128,12 @@ export class AppComponent {
     localStorage.removeItem("discount_");
     localStorage.removeItem("discount_type");
     localStorage.removeItem("home");
+
+    FCM.deleteInstance()
+      .then(() => alert(`Token deleted`))
+      .catch((err) => console.log(err));
+    this.router.navigate(['welcome-page']);
+    location.reload();
   }
 
   public ngOnDestroy() {
