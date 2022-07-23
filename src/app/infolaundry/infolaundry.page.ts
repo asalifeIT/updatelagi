@@ -23,7 +23,7 @@ export class InfolaundryPage implements OnInit {
   ];
 
   constructor(
-    private serviceService: ServiceService,
+    public serviceService: ServiceService,
     private navCtrl: NavController,
     public loadingController: LoadingController,
     public modalController: ModalController,

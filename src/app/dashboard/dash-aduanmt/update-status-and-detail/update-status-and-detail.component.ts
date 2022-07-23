@@ -26,7 +26,7 @@ export class UpdateStatusAndDetailComponent {
   constructor(
     private modalController: ModalController,
     public loadingController: LoadingController,
-    private serviceService: ServiceService,
+    public serviceService: ServiceService,
 
   ) { }
 
@@ -61,7 +61,7 @@ export class UpdateStatusAndDetailComponent {
       loading.dismiss();
     }
 
-    if (this.statusInput.value === this.status && this.picInput.value === this.picInput && this.durasiInput.value === this.duration && this.priorityInput.value === this.priority ) {
+    if (this.statusInput.value === this.status && this.picInput.value === this.pic_nrp && this.durasiInput.value === this.duration && this.priorityInput.value === this.priority ) {
       this.resultMessage = 'Tidak ada data yang diupdate';
       this.modalController.dismiss(this.resultMessage, 'resultMessage');
       loading.dismiss();

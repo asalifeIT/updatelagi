@@ -26,7 +26,7 @@ export class CateringPage implements OnInit {
     public loadingController: LoadingController,
     private router: Router,
     public util: UtilService,
-    private serviceService: ServiceService,
+    public serviceService: ServiceService,
   ) { }
 
   ngOnInit() {

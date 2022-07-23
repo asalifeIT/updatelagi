@@ -2,7 +2,7 @@ import { ServiceService } from 'src/app/services/service.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ModalController, LoadingController, ToastController } from '@ionic/angular';
-import { ReplaySubject } from "rxjs/index";
+import { ReplaySubject } from "rxjs";
 import { UtilService } from 'src/app/services/util.service';
 import { UpdateStatusAndDetailComponent } from './update-status-and-detail/update-status-and-detail.component';
 
@@ -21,7 +21,7 @@ export class DashAduanmtPage implements OnInit {
   DataUsersMt: any;
 
   constructor(
-    private serviceService: ServiceService,
+    public serviceService: ServiceService,
     public loadingController: LoadingController,
     public modalController: ModalController,
     public toastController: ToastController,

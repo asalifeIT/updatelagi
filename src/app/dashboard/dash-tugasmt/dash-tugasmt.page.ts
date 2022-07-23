@@ -17,7 +17,7 @@ export class DashTugasmtPage implements OnInit {
   DataRecord: any;
 
   constructor(
-    private serviceService: ServiceService,
+    public serviceService: ServiceService,
     public loadingController: LoadingController,
     public modalController: ModalController,
     public toastController: ToastController,

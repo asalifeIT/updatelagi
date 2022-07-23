@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController, ModalController, LoadingController, ToastController, Platform } from '@ionic/angular';
 import { ServiceService } from '../services/service.service';
-import { ReplaySubject } from "rxjs/index";
+import { ReplaySubject } from "rxjs";
 import { catchError } from 'rxjs/operators';
 import { UtilService } from 'src/app/services/util.service';
 import { BarcodeScanner, BarcodeScannerOptions } from "@ionic-native/barcode-scanner/ngx";
@@ -95,7 +95,7 @@ export class KamarPage implements OnInit {
     public modalController: ModalController,
     private platform: Platform,
     public toastController: ToastController,
-    private serviceService: ServiceService,
+    public serviceService: ServiceService,
     private router: Router,
     public util: UtilService,
     private scanner: BarcodeScanner

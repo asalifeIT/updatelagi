@@ -4,7 +4,7 @@ import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Valida
 import { NavController, ModalController, LoadingController, ToastController,Platform } from '@ionic/angular';
 import { RegisterPage } from '../register/register.page';
 import { ServiceService } from '../services/service.service';
-import {Observable, ReplaySubject, throwError} from "rxjs/index";
+import {Observable, ReplaySubject, throwError} from "rxjs";
 import { catchError } from 'rxjs/operators';
 import { UtilService } from 'src/app/services/util.service';
 
@@ -38,7 +38,7 @@ export class TugashkPage implements OnInit {
     public modalController: ModalController,
     private platform: Platform,
     public toastController: ToastController,
-    private serviceService: ServiceService,
+    public serviceService: ServiceService,
     private router: Router,
     public util: UtilService
   ) { }

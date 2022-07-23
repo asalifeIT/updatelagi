@@ -2,7 +2,7 @@ import { ServiceService } from 'src/app/services/service.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ModalController, LoadingController, ToastController, AlertController } from '@ionic/angular';
-import { ReplaySubject } from "rxjs/index";
+import { ReplaySubject } from "rxjs";
 import { UtilService } from 'src/app/services/util.service';
 
 @Component({
@@ -19,7 +19,7 @@ export class DashAduancatPage implements OnInit {
   DataRecord: any;
 
   constructor(
-    private serviceService: ServiceService,
+    public serviceService: ServiceService,
     public loadingController: LoadingController,
     public modalController: ModalController,
     public toastController: ToastController,

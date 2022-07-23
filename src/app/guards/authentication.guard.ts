@@ -12,7 +12,7 @@ export class AuthenticationGuard implements CanActivate {
   DataLogin: any;
   [x: string]: any;
   constructor(
-    private serviceService: ServiceService,
+    public serviceService: ServiceService,
     public toastController: ToastController,
     private alertController: AlertController,
     private router: Router,

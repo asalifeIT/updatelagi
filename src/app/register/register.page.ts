@@ -48,7 +48,7 @@ export class RegisterPage implements OnInit {
     public toastController: ToastController,
     public alertController: AlertController,
     public modalController: ModalController,
-    private serviceService: ServiceService
+    public serviceService: ServiceService
   ) { }
 
   ngOnInit() {

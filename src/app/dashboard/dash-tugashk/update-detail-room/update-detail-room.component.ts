@@ -16,7 +16,7 @@ export class UpdateDetailRoomComponent implements OnInit {
   constructor(
     private modalController: ModalController,
     public loadingController: LoadingController,
-    private serviceService: ServiceService,
+    public serviceService: ServiceService,
     private formBuilder: FormBuilder,
     private alertControl: AlertController,
   ) { }

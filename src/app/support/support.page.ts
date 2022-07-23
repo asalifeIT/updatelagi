@@ -23,7 +23,7 @@ export class SupportPage implements OnInit {
   constructor(
     private modalCtrl: ModalController,
     public loadingController: LoadingController,
-    private serviceService: ServiceService,
+    public serviceService: ServiceService,
     private router: Router,
     public util: UtilService,
     public navCtrl: NavController,

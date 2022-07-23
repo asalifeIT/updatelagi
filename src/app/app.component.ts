@@ -24,7 +24,7 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private serviceService: ServiceService,
+    public serviceService: ServiceService,
     private navCtrl: NavController,
     private router: Router,
     private _location: Location,
