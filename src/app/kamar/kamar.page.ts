@@ -99,25 +99,27 @@ export class KamarPage implements OnInit {
     private router: Router,
     public util: UtilService,
     private scanner: BarcodeScanner
-  ) { 
+  ) {
     this.encodedData = "Programming isn't about what you know";
 
-      this.barcodeScannerOptions = {
-        showTorchButton: true,
-        showFlipCameraButton: true
-      };
+    this.barcodeScannerOptions = {
+      showTorchButton: true,
+      showFlipCameraButton: true
+    };
   }
   scanBRcode() {
     this.scanner.scan().then(res => {
-        this.scannedBarCode = res;
-      }).catch(err => {
-        alert(err);
-      });
+      let str = res.text;
+      let data = str.split("|");
+      this.scannedBarCode = data;
+    }).catch(err => {
+      alert(err);
+    });
   }
 
   ngOnInit() {
     this.serviceService.CekUser().subscribe(
-    data => {
+      data => {
         this.DataLogin = data;
         this.Username = this.DataLogin.body.name;
       },
