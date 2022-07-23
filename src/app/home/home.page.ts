@@ -20,7 +20,6 @@ export class HomePage implements OnInit {
   RouterEvent: any;
 
   items: { id: number, text: string }[] = [];
-  private readonly TOPIC_ = 'MT';
   fcmToken: string;
 
   catering: any[] = [
@@ -57,8 +56,11 @@ export class HomePage implements OnInit {
     public platform: Platform,
     private readonly changeDetectorRef: ChangeDetectorRef
   ) {
+    const user = JSON.parse(localStorage.getItem('user'));
+    const roleUser = user.roles[2];
+
     this.initFCM().then(() => {
-      FCM.subscribeTo({ topic: this.TOPIC_ });
+      FCM.subscribeTo({ topic: roleUser });
       this.getFcmToken();
     });
    }

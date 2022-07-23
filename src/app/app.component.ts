@@ -118,6 +118,10 @@ export class AppComponent {
   }
 
   logout() {
+    const user = JSON.parse(localStorage.getItem('user'));
+    const roleUser = user.roles[2];
+    FCM.unsubscribeFrom({ topic: roleUser });
+    
     localStorage.clear();
     sessionStorage.clear();
     localStorage.removeItem("signin");
