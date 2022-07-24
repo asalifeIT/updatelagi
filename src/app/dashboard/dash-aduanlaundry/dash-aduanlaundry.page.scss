@@ -13,6 +13,11 @@ ion-header {
   }
 }
 
+ion-list ion-item {
+  margin-right: 20px;
+}
+
+
 .dash{
   display: flex;
       flex-direction: column;

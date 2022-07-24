@@ -28,7 +28,7 @@
   </ion-item>
   <div *ngIf="this.serviceService.isHasAccess('MAINTENANCE', 'TASK', 'VIEW'); else noAccess">
     <ion-content>
-      <ion-list>
+      <ion-list >
         <ion-item button *ngFor="let data of DataRecord; let i = index" (click)="openModal(data)">
           <ion-label>
             <h2>{{data.user_nrp}} {{data.user_name}}</h2>
