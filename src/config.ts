@@ -1,5 +1,5 @@
 export const config = {
-  apiUrl: 'http://localhost:8080/users/my',
+  apiUrl: 'http://asabeta.com:8080/users/my',
   roles: {
       CUS:['CUS', 'ROLE_USER', 'ROLE_CUSTOMER', 'ROLE_CUS'],  // customer user
       MT:['MT', 'ROLE_USER', 'ROLE_WORKER', 'ROLE_MT'], //work user
