@@ -23,7 +23,7 @@
     <ion-card>
       <div style="display: flex; justify-content: space-between;">
         <ion-card-header>
-          <ion-card-subtitle color="dark">Klik Aduan Baru</ion-card-subtitle>
+          <ion-card-subtitle color="dark">Klik Tambah Aduan Baru</ion-card-subtitle>
           <ion-card-subtitle color="dark">Deskripsi</ion-card-subtitle>
         </ion-card-header>
         <ion-buttons slot="end">
@@ -37,15 +37,17 @@
     <ion-card>
       <ion-card-header>
         <ion-card-subtitle color="dark">Informasi Aduan House Keeping</ion-card-subtitle>
-        <ion-card-subtitle color="dark">List Aduan Anda</ion-card-subtitle>
+        <ion-card-subtitle color="medium">List Aduan Anda</ion-card-subtitle>
         <ion-progress-bar value="0" buffer="1"></ion-progress-bar>
       </ion-card-header>
-      <ul color="dark" *ngFor="let data of DataRecord; let i = index">
-        <li>Deskripsi: {{data.deskripsi}}</li>
-        <li>Lokasi : {{data.lokasi}}</li>
-        <li class="warna">Status: {{data.status}}</li>
-        <ion-progress-bar value="0.25" buffer="0.5"></ion-progress-bar>
-      </ul>
+      <div>
+        <div style="padding: 0 20px 20px 20px ;" color="dark" *ngFor="let data of DataRecord; let i = index">
+          <p style="margin: 0;">Deskripsi: {{data.deskripsi}}</p>
+          <p style="margin: 0;">Lokasi : {{data.lokasi}}</p>
+          <p style="margin: 0;" class="warna">Status: {{data.status}}</p>
+          <ion-progress-bar value="0.25" buffer="0.5"></ion-progress-bar>
+        </div>
+      </div>
     </ion-card>
   </ion-grid>
 </ion-content>
