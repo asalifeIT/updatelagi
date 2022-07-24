@@ -103,6 +103,7 @@ export class DashTugashkPage implements OnInit {
   }
 
   async openModalRoom(data) {
+    if (data.verified && this.serviceService.getUserRole() == 'ROLE_SPV') return;
     if (this.serviceService.isHasAccess('HOUSEKEEPING', 'TASK', 'EDIT')) {
       const modal = await this.modalController.create({
         component: UpdateDetailRoomComponent,
@@ -122,6 +123,7 @@ export class DashTugashkPage implements OnInit {
   }
 
   async openModalNonRoom(data) {
+    if (data.verified && this.serviceService.getUserRole() == 'ROLE_SPV') return;
     if (this.serviceService.isHasAccess('HOUSEKEEPING', 'TASK', 'EDIT')) {
       const modal = await this.modalController.create({
         component: UpdateDetailNonroomComponent,

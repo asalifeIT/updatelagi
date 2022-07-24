@@ -18,7 +18,7 @@ export class ServiceService {
   DataCheckLogin: any;
   authenticationState = new ReplaySubject();
   token: any;
-  API_URL = "http://asabeta.com:8080/api/";
+  API_URL = "http://localhost:8080/api/";
   TOKEN_KEY = 'accesstoken';
   REFRESH_TOKEN_KEY = 'refreshtoken';
   ROLE = 'role';
@@ -250,6 +250,11 @@ export class ServiceService {
       return user.user.name;
     } 
     else return 'User';
+  }
+
+  getUserRole() {
+    const user = JSON.parse(localStorage.getItem('user'));
+    return user.roles[2];
   }
 
   isHasAccessDashboard() {
