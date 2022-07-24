@@ -18,9 +18,6 @@ export class RatingcateringPage implements OnInit {
   authService: any;
   message: any;
   validations = {
-    'jenis': [
-      { type: 'required', message: 'pilihan harus di isi' }
-    ],
     'nilai1': [
       { type: 'required', message: 'pilihan harus di isi' }
     ],
@@ -48,7 +45,6 @@ export class RatingcateringPage implements OnInit {
     'saran': [
       { type: 'required', message: 'kritik dan saran harus isi' }
     ],
-
   };
 
   constructor(
@@ -65,9 +61,6 @@ export class RatingcateringPage implements OnInit {
 
   ngOnInit() {
     this.FormRatingCatering = this.formBuilder.group({
-      jenis: new FormControl('', Validators.compose([
-        Validators.required
-      ])),
       nilai1: new FormControl('', Validators.compose([
         Validators.required
       ])),

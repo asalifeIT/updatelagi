@@ -124,10 +124,7 @@ export class HomePage implements OnInit {
   openInfo() {
     this.router.navigate(['information']);
   }
-
-<<<<<<< HEAD
   
-=======
   handleNotification(data: { text: string, id: number }): void {
     if (!data.text) {
       return;
@@ -221,7 +218,7 @@ export class HomePage implements OnInit {
         .catch((error) => reject(error))
     })
   }
->>>>>>> 2ab7605143c7eecd9fdef86dc49a8e215a7659f4
+
 }
 
 
