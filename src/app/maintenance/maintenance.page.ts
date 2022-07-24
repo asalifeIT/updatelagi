@@ -24,7 +24,7 @@ export class MaintenancePage implements OnInit {
     public util: UtilService,
     private router: Router,
     private platform: Platform,
-    private serviceService: ServiceService,
+    public serviceService: ServiceService,
   ) { }
 
   ngOnInit() { }

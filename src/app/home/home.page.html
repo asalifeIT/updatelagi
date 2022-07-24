@@ -25,6 +25,7 @@
         <ion-label>Selamat datang {{this.serviceService.getUserName()}} </ion-label><br>
         <ion-label>Website: http://asabeta.com/</ion-label><br>
         <ion-label>Contact: +62 813-5091-6736</ion-label>
+        <ion-label>Token FCM : {{fcmToken}}</ion-label>
       </div>
     </ion-note>
     <br>
@@ -137,6 +138,13 @@
         </ion-card>
       </ion-col>
     </ion-row>
+    <ion-list style="display: none;">
+      <ion-item *ngFor="let item of items">
+        <ion-label class="ion-text-wrap">
+          {{item.id}}. {{item.text}}
+        </ion-label>
+      </ion-item>
+    </ion-list>
 
   </ion-grid>
 </ion-content>

@@ -23,7 +23,7 @@ export class InfolaundryPage implements OnInit {
   ];
 
   constructor(
-    private serviceService: ServiceService,
+    public serviceService: ServiceService,
     private navCtrl: NavController,
     public loadingController: LoadingController,
     public modalController: ModalController,
@@ -51,5 +51,11 @@ export class InfolaundryPage implements OnInit {
 
   openAdlaundry(){
     this.router.navigate(['aduanlaundry']);
+  }
+
+  getValueStatusBar(status) {
+    if (status == 'SEARCHING') return 0.33;
+    if (status == 'COMPENSATION') return 0.66;
+    if (status == 'DONE') return 1;
   }
 }

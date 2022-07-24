@@ -28,7 +28,7 @@
   </ion-item>
   
   <div *ngIf="this.serviceService.isHasAccess('HOUSEKEEPING', 'COMPLAINT', 'VIEW'); else noAccess">
-    <ion-content class="ion-padding">
+    <ion-content>
       <ion-list>
         <ion-item button *ngFor="let data of DataRecord; let i = index" (click)="openModal(data)">
           <ion-label>

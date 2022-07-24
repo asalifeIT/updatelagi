@@ -15,7 +15,7 @@ export class DashboardPage implements OnInit {
   DataLogin:any;
   constructor(
     public loadingController: LoadingController,
-    private serviceService: ServiceService,
+    public serviceService: ServiceService,
     private router: Router,
     public util: UtilService,
     public navCtrl: NavController,
