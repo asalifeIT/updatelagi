@@ -210,7 +210,7 @@ export class KamarPage implements OnInit {
       this.presentToast("Silahkan Lengkapi Isi Form!");
     }
 
-    this.FormKamar.reset();
+    this.ngOnInit();
     loading.dismiss();
 
   }

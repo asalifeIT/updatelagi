@@ -236,7 +236,7 @@ scanBRcode() {
       this.presentToast("Silahkan Lengkapi Isi Form!");
     }
 
-    this.FormNonKamar.reset();
+    this.ngOnInit();
     loading.dismiss();
   }
 
