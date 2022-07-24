@@ -85,6 +85,9 @@ export class RatingcateringPage implements OnInit {
       nilai8: new FormControl('', Validators.compose([
         Validators.required
       ])),
+      waktu: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
       saran: new FormControl(''),
     });
   }
