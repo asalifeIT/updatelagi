@@ -140,6 +140,17 @@ export class AppComponent {
     location.reload();
   }
 
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Coming soon...',
+      message: 'Fitur ini belum tersedia',
+      buttons: ['OK'],
+    });
+
+    await alert.present();
+  }
+
   public ngOnDestroy() {
     this.router.navigate([]);
   }
