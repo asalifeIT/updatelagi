@@ -51,4 +51,10 @@ export class InfoaduanPage implements OnInit {
   openAdcatering() {
     this.router.navigate(['aduancatering']);
   }
+
+  getValueStatusBar(status) {
+    if (status == 'INQUIRY') return 0.33;
+    if (status == 'INVESTIGATION') return 0.66;
+    if (status == 'CLOSED') return 1;
+  }
 }

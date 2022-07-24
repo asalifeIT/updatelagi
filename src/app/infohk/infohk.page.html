@@ -44,8 +44,8 @@
         <div style="padding: 0 20px 20px 20px ;" color="dark" *ngFor="let data of DataRecord; let i = index">
           <p style="margin: 0;">Deskripsi: {{data.deskripsi}}</p>
           <p style="margin: 0;">Lokasi : {{data.lokasi}}</p>
-          <p style="margin: 0;" class="warna">Status: {{data.status}}</p>
-          <ion-progress-bar value="0.25" buffer="0.5"></ion-progress-bar>
+          <p style="margin: 0;" class="warna">Status:  {{ (data.status == 'CLEANING_PROGRESS') ? 'CLEANING' : data.status}}</p>
+          <ion-progress-bar value="{{getValueStatusBar(data.status)}}" buffer="{{getValueStatusBar(data.status)}}"></ion-progress-bar>
         </div>
       </div>
     </ion-card>

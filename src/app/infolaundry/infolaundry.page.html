@@ -46,7 +46,7 @@
         <p style="margin: 0;">Jenis deviasi : {{data.jenis_deviasi}}</p>
         <p style="margin: 0;">Tanggal : {{data.tanggal_laundry.slice(0, 10)}}</p>
         <p style="margin: 0;" class="warna">Status : {{data.status}}</p>
-        <ion-progress-bar value="0.25" buffer="0.5"></ion-progress-bar>
+        <ion-progress-bar value="{{getValueStatusBar(data.status)}}" buffer="{{getValueStatusBar(data.status)}}"></ion-progress-bar>
       </div>
     </ion-card>
   </ion-grid>

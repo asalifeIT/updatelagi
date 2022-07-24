@@ -46,7 +46,7 @@
           <p style="margin: 0;">Deskripsi: {{data.kritik_saran}}</p>
           <p style="margin: 0;">Lokasi : {{data.lokasi}}</p>
           <p style="margin: 0;" class="warna">Status: {{data.status}}</p>
-          <ion-progress-bar value="0.25" buffer="0.5"></ion-progress-bar>
+          <ion-progress-bar value="{{getValueStatusBar(data.status)}}" buffer="{{getValueStatusBar(data.status)}}"></ion-progress-bar>
         </div>
       </div>
     </ion-card>
