@@ -122,19 +122,19 @@ export class NonkamarPage implements OnInit {
       showTorchButton: true,
       showFlipCameraButton: true
     };
-}
-scanBRcode() {
-  this.scanner.scan().then(res => {
-      this.scannedBarCode = res;
+  }
+  scanBRcode() {
+    this.scanner.scan().then(res => {
+      this.scannedBarCode = res.text;
     }).catch(err => {
       alert(err);
     });
-}
+  }
 
   ngOnInit() {
 
     this.FormNonKamar = this.formBuilder.group({
-      mess: new FormControl('', Validators.compose([
+      mess: new FormControl(this.scannedBarCode, Validators.compose([
         Validators.required
       ])),
       ruangtvkacajendelakusen: new FormControl(false, Validators.compose([
@@ -236,6 +236,7 @@ scanBRcode() {
       this.presentToast("Silahkan Lengkapi Isi Form!");
     }
 
+    this.scannedBarCode = {};
     this.ngOnInit();
     loading.dismiss();
   }

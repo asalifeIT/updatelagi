@@ -1,5 +1,5 @@
 {
-  "name": "com.asalife.service",
+  "name": "com.asto.service",
   "integrations": {
     "cordova": {},
     "capacitor": {}
