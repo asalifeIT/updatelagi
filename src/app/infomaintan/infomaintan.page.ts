@@ -22,7 +22,7 @@ export class InfomaintanPage implements OnInit {
   ];
 
   constructor(
-    private serviceService: ServiceService,
+    public serviceService: ServiceService,
     private navCtrl: NavController,
     public loadingController: LoadingController,
     public modalController: ModalController,
@@ -47,5 +47,12 @@ export class InfomaintanPage implements OnInit {
   }
   openAdmain() {
     this.router.navigate(['aduanmaintenance']);
+  }
+
+  getValueStatusBar(status) {
+    if (status == 'OPEN') return 0.25;
+    if (status == 'HOLD') return 0.5;
+    if (status == 'PROGRESS') return 0.75;
+    if (status == 'CLOSED') return 1;
   }
 }

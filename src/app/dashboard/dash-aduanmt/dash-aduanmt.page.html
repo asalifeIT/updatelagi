@@ -6,7 +6,7 @@
       </ion-button>
     </ion-buttons>
     <ion-label color="light">
-     Dashboard Aduan Maintenance
+      Dashboard Aduan Maintenance
     </ion-label>
   </ion-item>
 </ion-header>
@@ -27,8 +27,8 @@
     </div>
   </ion-item>
   <div *ngIf="this.serviceService.isHasAccess('MAINTENANCE', 'COMPLAINT', 'VIEW'); else noAccess">
-    <ion-content class="ion-padding">
-      <ion-list>
+    <ion-content>
+      <ion-list *ngIf="isNotMtUser()">
         <ion-item button *ngFor="let data of DataRecord; let i = index" (click)="openModal(data)">
           <ion-label>
             <h2>User: {{data.user_name}}</h2>
@@ -39,6 +39,20 @@
             <p *ngIf=" data.duration !== null">durasi: {{data.duration.substring(0, 10)}} </p>
           </ion-label>
         </ion-item>
+      </ion-list>
+      <ion-list *ngIf="!isNotMtUser()">
+        <div *ngFor="let data of DataRecord; let i = index" >
+          <ion-item *ngIf="data.pic_nrp !== null">
+            <ion-label button (click)="openModalUpdateStatus(data)" >
+              <h2>User: {{data.user_name}}</h2>
+              <p>Deskripsi: {{data.jenis_aduan}} ( {{data.lokasi}} )</p>
+              <p>Status: {{data.status}}</p>
+              <p>PIC: {{data.pic_nrp}} </p>
+              <p>Priority: {{data.priority}} </p>
+              <p>durasi: {{data.duration.substring(0, 10)}} </p>
+            </ion-label>
+          </ion-item>
+        </div>
       </ion-list>
     </ion-content>
   </div>

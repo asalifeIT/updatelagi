@@ -2,7 +2,7 @@ import { ServiceService } from './../services/service.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { NavController, ModalController, LoadingController, ToastController,Platform } from '@ionic/angular';
+import { NavController, ModalController, LoadingController, ToastController, Platform } from '@ionic/angular';
 import { catchError } from 'rxjs/operators';
 import { UtilService } from 'src/app/services/util.service';
 
@@ -13,36 +13,36 @@ import { UtilService } from 'src/app/services/util.service';
 })
 export class InfohkPage implements OnInit {
   [x: string]: any;
- DataRecord:any;
- FormInfo:FormGroup;
- authService: any;
- message:any;
+  DataRecord: any;
+  FormInfo: FormGroup;
+  authService: any;
+  message: any;
   aduan: any[1] = [
-    {id: 1, name: '', src: '', background: '', page: ''},
-     ];
+    { id: 1, name: '', src: '', background: '', page: '' },
+  ];
 
 
   constructor(
-    private serviceService:ServiceService,
-    private navCtrl: NavController, 
-      public loadingController: LoadingController,
-      public modalController: ModalController,
-      private platform: Platform,
-      public toastController: ToastController,
-      private router: Router,
-      public util: UtilService
+    private serviceService: ServiceService,
+    private navCtrl: NavController,
+    public loadingController: LoadingController,
+    public modalController: ModalController,
+    private platform: Platform,
+    public toastController: ToastController,
+    private router: Router,
+    public util: UtilService
   ) { }
 
   ngOnInit() {
     this.serviceService.getRecord('housekeeping/my').subscribe(
       data => {
-        this.DataRecord=data.body;
-        },
-        error => {
+        this.DataRecord = data.body;
+      },
+      error => {
         console.log("err", error);
-        }
-      );
       }
+    );
+  }
 
   onBack() {
     this.router.navigate(['housekeeping']);
@@ -50,5 +50,10 @@ export class InfohkPage implements OnInit {
 
   openAdhk() {
     this.router.navigate(['aduanhk']);
-    }
+  }
+
+  getValueStatusBar(status) {
+    if (status == 'CLEANING_PROGRESS') return 0.5;
+    if (status == 'DONE') return 1;
+  }
 }

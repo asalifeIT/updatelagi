@@ -37,7 +37,7 @@ export class LoginPage implements OnInit {
     public modalController: ModalController,
     private platform: Platform,
     public toastController: ToastController,
-    private serviceService: ServiceService,
+    public serviceService: ServiceService,
     private routerOutlet: IonRouterOutlet,
     private util: UtilService
 

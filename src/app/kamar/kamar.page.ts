@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController, ModalController, LoadingController, ToastController, Platform } from '@ionic/angular';
 import { ServiceService } from '../services/service.service';
-import { ReplaySubject } from "rxjs/index";
+import { ReplaySubject } from "rxjs";
 import { catchError } from 'rxjs/operators';
 import { UtilService } from 'src/app/services/util.service';
 import { BarcodeScanner, BarcodeScannerOptions } from "@ionic-native/barcode-scanner/ngx";
@@ -15,7 +15,7 @@ import { BarcodeScanner, BarcodeScannerOptions } from "@ionic-native/barcode-sca
 })
 export class KamarPage implements OnInit {
   encodedData: any;
-  scannedBarCode: {};
+  scannedBarCode: {} = [null, null];
   barcodeScannerOptions: BarcodeScannerOptions;
   FormKamar: FormGroup;
   authenticationState = new ReplaySubject();
@@ -95,7 +95,7 @@ export class KamarPage implements OnInit {
     public modalController: ModalController,
     private platform: Platform,
     public toastController: ToastController,
-    private serviceService: ServiceService,
+    public serviceService: ServiceService,
     private router: Router,
     public util: UtilService,
     private scanner: BarcodeScanner
@@ -135,58 +135,58 @@ export class KamarPage implements OnInit {
       nokamar: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      lantaikamar: new FormControl('', Validators.compose([
+      lantaikamar: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      lantaitoilet: new FormControl('', Validators.compose([
+      lantaitoilet: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      lantailangitkamar: new FormControl('', Validators.compose([
+      lantailangitkamar: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      lantailangitkamarmandi: new FormControl('', Validators.compose([
+      lantailangitkamarmandi: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      wc: new FormControl('', Validators.compose([
+      wc: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      wastafel: new FormControl('', Validators.compose([
+      wastafel: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      tempattidur: new FormControl('', Validators.compose([
+      tempattidur: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      sprei: new FormControl('', Validators.compose([
+      sprei: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      selimut: new FormControl('', Validators.compose([
+      selimut: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      ac: new FormControl('', Validators.compose([
+      ac: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      meja: new FormControl('', Validators.compose([
+      meja: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      cermin: new FormControl('', Validators.compose([
+      cermin: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      keran: new FormControl('', Validators.compose([
+      keran: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      shower: new FormControl('', Validators.compose([
+      shower: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      tempatsampah: new FormControl('', Validators.compose([
+      tempatsampah: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      jendela: new FormControl('', Validators.compose([
+      jendela: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      gorden: new FormControl('', Validators.compose([
+      gorden: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      lemari: new FormControl('', Validators.compose([
+      lemari: new FormControl(false, Validators.compose([
         Validators.required
       ])),
     });
@@ -212,7 +212,8 @@ export class KamarPage implements OnInit {
       this.presentToast("Silahkan Lengkapi Isi Form!");
     }
 
-    this.FormKamar.reset();
+    this.scannedBarCode = [null, null];
+    this.ngOnInit();
     loading.dismiss();
 
   }

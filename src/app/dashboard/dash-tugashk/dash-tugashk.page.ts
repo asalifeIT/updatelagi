@@ -2,7 +2,7 @@ import { ServiceService } from 'src/app/services/service.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ModalController, LoadingController, ToastController } from '@ionic/angular';
-import { ReplaySubject } from "rxjs/index";
+import { ReplaySubject } from "rxjs";
 import { UtilService } from 'src/app/services/util.service';
 import { UpdateDetailRoomComponent } from './update-detail-room/update-detail-room.component';
 import { UpdateDetailNonroomComponent } from './update-detail-nonroom/update-detail-nonroom.component';
@@ -23,7 +23,7 @@ export class DashTugashkPage implements OnInit {
   DataRecordNonRoom: any;
 
   constructor(
-    private serviceService: ServiceService,
+    public serviceService: ServiceService,
     public loadingController: LoadingController,
     public modalController: ModalController,
     public toastController: ToastController,
@@ -103,6 +103,7 @@ export class DashTugashkPage implements OnInit {
   }
 
   async openModalRoom(data) {
+    if (data.verified && this.serviceService.getUserRole() == 'ROLE_SPV') return;
     if (this.serviceService.isHasAccess('HOUSEKEEPING', 'TASK', 'EDIT')) {
       const modal = await this.modalController.create({
         component: UpdateDetailRoomComponent,
@@ -122,6 +123,7 @@ export class DashTugashkPage implements OnInit {
   }
 
   async openModalNonRoom(data) {
+    if (data.verified && this.serviceService.getUserRole() == 'ROLE_SPV') return;
     if (this.serviceService.isHasAccess('HOUSEKEEPING', 'TASK', 'EDIT')) {
       const modal = await this.modalController.create({
         component: UpdateDetailNonroomComponent,

@@ -4,10 +4,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators, ReactiveFormsModule,FormArray, AbstractControl } from '@angular/forms';
 import { NavController, ModalController, LoadingController, ToastController,Platform } from '@ionic/angular';
 import { RegisterPage } from '../register/register.page';
-import {Observable, ReplaySubject, throwError} from "rxjs/index";
+import {Observable, ReplaySubject, throwError} from "rxjs";
 import { catchError } from 'rxjs/operators';
 import { UtilService } from 'src/app/services/util.service';
-import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
+ 
 import { BarcodeScanner, BarcodeScannerOptions } from "@ionic-native/barcode-scanner/ngx";
 
 @Component({
@@ -74,7 +74,7 @@ scanBRcode() {
     this.router.navigate(['nonkamar']);
   }
   onBack() {
-    this.router.navigate(['manual']);
+    this.router.navigate(['housekeeping']);
   }
   openBar(){
     this.router.navigate(['testbarcode']); 

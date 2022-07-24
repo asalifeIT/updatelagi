@@ -23,7 +23,7 @@ export class InfoaduanPage implements OnInit {
 
 
   constructor(
-    private serviceService: ServiceService,
+    public serviceService: ServiceService,
     private navCtrl: NavController,
     public loadingController: LoadingController,
     public modalController: ModalController,
@@ -50,5 +50,11 @@ export class InfoaduanPage implements OnInit {
 
   openAdcatering() {
     this.router.navigate(['aduancatering']);
+  }
+
+  getValueStatusBar(status) {
+    if (status == 'INQUIRY') return 0.33;
+    if (status == 'INVESTIGATION') return 0.66;
+    if (status == 'CLOSED') return 1;
   }
 }

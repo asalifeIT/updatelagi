@@ -36,6 +36,10 @@ ion-header {
   margin-top: -10px;
 }
 
+ion-content ion-item {
+  margin-right: 20px;
+}
+
 ion-content {
   font-family:"regular";
   ion-item {

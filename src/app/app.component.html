@@ -55,20 +55,20 @@
         <ion-label>ASA LIFE</ion-label>
       </ion-item>
 
-      <ion-item lines="none">
+      <ion-item lines="none" (click)="presentAlert()">
         <ion-icon slot="start" src="/assets/svg/sgms.svg"></ion-icon>
         <ion-label>ASA SGMS (soon) </ion-label>
       </ion-item>
-      <ion-item lines="none">
+      <ion-item lines="none" (click)="presentAlert()">
         <ion-icon slot="start" src="/assets/svg/asaevent.svg"></ion-icon>
         <ion-label>ASA EVENT (soon)</ion-label>
       </ion-item>
 
-      <ion-item lines="none">
+      <ion-item lines="none" (click)="presentAlert()">
         <ion-icon slot="start" src="/assets/svg/asashop.svg"></ion-icon>
         <ion-label>ASA SHOP (soon)</ion-label>
       </ion-item>
-      <ion-item lines="none" (click)="logout()">
+      <ion-item lines="none" (click)="showExitConfirm()">
         <ion-icon slot="start" name="log-out" color="primary"></ion-icon>
         <ion-label>LOGOUT</ion-label>
       </ion-item>

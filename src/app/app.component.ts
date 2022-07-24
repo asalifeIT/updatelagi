@@ -7,6 +7,7 @@ import { UtilService } from 'src/app/services/util.service';
 import { ServiceService } from './services/service.service';
 import { Location } from '@angular/common';
 import { MenuController, ModalController } from '@ionic/angular';
+import { FCM } from '@capacitor-community/fcm';
 
 @Component({
   selector: 'app-root',
@@ -24,7 +25,7 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private serviceService: ServiceService,
+    public serviceService: ServiceService,
     private navCtrl: NavController,
     private router: Router,
     private _location: Location,
@@ -72,27 +73,29 @@ export class AppComponent {
     });
   }
 
-  showExitConfirm() {
-    this.alertController.create({
-      header: 'App termination',
-      message: 'Do you want to close the app?',
-      backdropDismiss: false,
-      buttons: [{
-        text: 'Stay',
-        role: 'cancel',
-        handler: () => {
-          console.log('Application exit prevented!');
-        }
-      }, {
-        text: 'Exit',
-        handler: () => {
-          navigator['app'].exitApp();
-        }
-      }]
-    })
-      .then(alert => {
-        alert.present();
-      });
+  async showExitConfirm() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Konfirmasi Logout',
+      message: 'Apakah Anda ingin keluar aplikasi?',
+      buttons: [
+        {
+          text: 'Batal',
+          role: 'cancel',
+          handler: () => {
+          },
+        },
+        {
+          text: 'Exit',
+          cssClass: 'secondary',
+          handler: () => {
+            this.logout();
+          },
+        },
+      ],
+    });
+
+    await alert.present();
   }
 
   home() {
@@ -117,15 +120,35 @@ export class AppComponent {
   }
 
   logout() {
+    const user = JSON.parse(localStorage.getItem('user'));
+    const roleUser = user.roles[2];
+    FCM.unsubscribeFrom({ topic: roleUser });
+    
     localStorage.clear();
     sessionStorage.clear();
-    this.router.navigate(['login']);
     localStorage.removeItem("signin");
     localStorage.removeItem("access_token");
     localStorage.removeItem("roles");
     localStorage.removeItem("user");
     localStorage.removeItem("refresh_token");
     localStorage.removeItem("home");
+
+    FCM.deleteInstance()
+      .then(() => alert(`Token deleted`))
+      .catch((err) => console.log(err));
+    this.router.navigate(['welcome-page']);
+    location.reload();
+  }
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Coming soon...',
+      message: 'Fitur ini belum tersedia',
+      buttons: ['OK'],
+    });
+
+    await alert.present();
   }
 
   public ngOnDestroy() {

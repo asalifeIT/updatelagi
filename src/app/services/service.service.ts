@@ -252,6 +252,11 @@ export class ServiceService {
     else return 'User';
   }
 
+  getUserRole() {
+    const user = JSON.parse(localStorage.getItem('user'));
+    return user.roles[2];
+  }
+
   isHasAccessDashboard() {
     const user = JSON.parse(localStorage.getItem('user'));
     const roleUser = user.roles[2];
