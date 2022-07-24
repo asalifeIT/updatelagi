@@ -118,9 +118,4 @@ export class LoginPage implements OnInit {
     throw new Error('Method not implemented.');
   }
 
-
-  public clear() {
-    localStorage.clear();
-  }
-
 }

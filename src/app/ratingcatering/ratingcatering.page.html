@@ -22,8 +22,17 @@
 
   <div>
   <form class="container" [formGroup]="FormRatingCatering" (ngSubmit)="submitRatingcatering()">
+    <ion-item>
+      <ion-label>1. Sedang berada pada menu apakah saat ini? </ion-label>
+      <ion-select formControlName="jenis">
+        <ion-select-option ngvalue="Mess Cheerful">Breakfast</ion-select-option>
+        <ion-select-option ngvalue="Mess Funtastik">Lunch</ion-select-option>
+        <ion-select-option ngvalue="Mess Joyfull">Diner</ion-select-option>
+        <ion-select-option ngvalue="Mess Joyfull">Supper</ion-select-option>
+      </ion-select>
+    </ion-item>
     <ion-item>  
-    <ion-label>1. Bagaimana kebersihan kantin kami saat anda makan?</ion-label>
+    <ion-label>2.  Bagaimana kebersihan kantin kami saat anda makan?</ion-label>
         <ion-select formControlName="nilai1">
           <ion-select-option value="-3">Tidak Bersih</ion-select-option>
           <ion-select-option value="-1">Kurang Bersih</ion-select-option>
@@ -33,7 +42,7 @@
          </ion-select>
         </ion-item>   
         <ion-item> 
-         <ion-label>2. Apakah anda menyukai cara kami menyajikan makan?</ion-label>
+         <ion-label>3. Apakah anda menyukai cara kami menyajikan makan?</ion-label>
          <ion-select formControlName="nilai2">
            <ion-select-option value="-3">Tidak Sama Sekali</ion-select-option>
            <ion-select-option value="0">Biasa Saja</ion-select-option>
@@ -43,7 +52,7 @@
           </ion-select>
         </ion-item>  
         <ion-item> 
-          <ion-label>3. Bagaimana cara Waiters kami memberi salam/menyapa anda?</ion-label>
+          <ion-label>4. Bagaimana cara Waiters kami memberi salam/menyapa anda?</ion-label>
           <ion-select formControlName="nilai3">
             <ion-select-option value="-3">Tidak Ramah</ion-select-option>
             <ion-select-option value="-2">Tidak Ada</ion-select-option>
@@ -54,7 +63,7 @@
          </ion-item>  
      
      <ion-item> 
-          <ion-label>4. Apakah Waiters kami sudah senyum pada anda?</ion-label>
+          <ion-label>5. Apakah Waiters kami sudah senyum pada anda?</ion-label>
           <ion-select formControlName="nilai4">
             <ion-select-option value="0">Belum</ion-select-option>
             <ion-select-option value="4">Sudah</ion-select-option>
@@ -62,7 +71,7 @@
          </ion-item>  
      
      <ion-item> 
-          <ion-label>5. Bagaimana pilihan menu kami saat ini?</ion-label>
+          <ion-label>6. Bagaimana pilihan menu kami saat ini?</ion-label>
           <ion-select formControlName="nilai5">
             <ion-select-option value="-3">Sangat Buruk</ion-select-option>
             <ion-select-option value="-2">Buruk</ion-select-option>
@@ -73,7 +82,7 @@
          </ion-item>  
      
      <ion-item> 
-          <ion-label>6. Bagaimana aroma makanan kami saat ini?</ion-label>
+          <ion-label>7. Bagaimana aroma makanan kami saat ini?</ion-label>
           <ion-select formControlName="nilai6">
             <ion-select-option value="-3">Berbau Tidak Sedap</ion-select-option>
             <ion-select-option value="-2">Agak Bau</ion-select-option>
@@ -84,7 +93,7 @@
          </ion-item> 
      
      <ion-item> 
-          <ion-label>7. Bagaimana rasa makanan kami saat ini?</ion-label>
+          <ion-label>8. Bagaimana rasa makanan kami saat ini?</ion-label>
           <ion-select formControlName="nilai7">
             <ion-select-option value="-3">Tidak Enak</ion-select-option>
             <ion-select-option value="-1">Kurang Enak</ion-select-option>
@@ -95,7 +104,7 @@
          </ion-item> 
      
      <ion-item> 
-          <ion-label>8. Bagaimana tekstur makanan kami saat ini?</ion-label>
+          <ion-label>9. Bagaimana tekstur makanan kami saat ini?</ion-label>
           <ion-select formControlName="nilai8">
             <ion-select-option value="-3">Alot</ion-select-option>
             <ion-select-option value="-2">Kurang Pas</ion-select-option>

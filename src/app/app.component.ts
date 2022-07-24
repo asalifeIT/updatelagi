@@ -125,8 +125,6 @@ export class AppComponent {
     localStorage.removeItem("roles");
     localStorage.removeItem("user");
     localStorage.removeItem("refresh_token");
-    localStorage.removeItem("discount_");
-    localStorage.removeItem("discount_type");
     localStorage.removeItem("home");
   }
 

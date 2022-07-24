@@ -107,6 +107,7 @@ export class HomePage implements OnInit {
     this.router.navigate(['information']);
   }
 
+  
 }
 
 
