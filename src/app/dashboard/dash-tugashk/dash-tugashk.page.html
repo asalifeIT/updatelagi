@@ -12,7 +12,7 @@
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
+  <div>
     <div *ngIf="this.serviceService.isHasAccess('HOUSEKEEPING', 'TASK', 'VIEW'); else noAccess">
       <div class="segments">
         <ion-segment mode="md" [(ngModel)]="current">
@@ -27,7 +27,7 @@
 
       <div *ngIf="current == 1 || current == null">
         <div class="account">
-          <ion-content class="ion-padding">
+          <ion-content>
             <ion-list>
               <ion-item button *ngFor="let data of DataRecordRoom; let i = index" (click)="openModalRoom(data)">
                 <ion-label>
@@ -43,7 +43,7 @@
 
       <div *ngIf="current == 2">
         <div class="account">
-          <ion-content class="ion-padding">
+          <ion-content>
             <ion-list>
               <ion-item button *ngFor="let data of DataRecordNonRoom; let i = index" (click)="openModalNonRoom(data)">
                 <ion-label>

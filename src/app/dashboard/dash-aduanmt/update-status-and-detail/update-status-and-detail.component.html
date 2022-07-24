@@ -5,8 +5,6 @@
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding">
-  <!-- <form class="container" [formGroup]="FormStatusDetail" (ngSubmit)="submitStatus()"> -->
-
   <ion-item>
     <div>
       <p style="font-size: 13; margin: 0;">Status</p>
@@ -14,7 +12,6 @@
     </div>
     <ion-button *ngIf="pic_nrp !== null" slot="end" (click)="openModalUpdateStatus()">update</ion-button>
   </ion-item>
-
   <ion-item>
     <ion-label position="floating">PIC</ion-label>
     <ion-select [formControl]="picInput" value="{{pic_nrp}}">
@@ -22,12 +19,10 @@
       </ion-select-option>
     </ion-select>
   </ion-item>
-
   <ion-item>
     <ion-label position="floating">Durasi</ion-label>
     <ion-datetime value="{{(duration) ? duration.substring(0, 10) : ''}}" [formControl]="durasiInput"></ion-datetime>
   </ion-item>
-
   <ion-item>
     <ion-label position="floating">Priority</ion-label>
     <ion-select [formControl]="priorityInput" value={{priority}}>
@@ -36,9 +31,7 @@
       <ion-select-option value="IMPORTANT_CRITICAL">Important & Critical</ion-select-option>
     </ion-select>
   </ion-item>
-
   <ion-button expand="block" (click)="updateDetail()" class="ion-margin-top">
     Update
   </ion-button>
-  <!-- </form> -->
 </ion-content>
