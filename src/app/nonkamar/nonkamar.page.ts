@@ -137,79 +137,79 @@ scanBRcode() {
       mess: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      ruangtvkacajendelakusen: new FormControl('', Validators.compose([
+      ruangtvkacajendelakusen: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      ruangtvcermin: new FormControl('', Validators.compose([
+      ruangtvcermin: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      ruangtvdispenser: new FormControl('', Validators.compose([
+      ruangtvdispenser: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      ruangtvac: new FormControl('', Validators.compose([
+      ruangtvac: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      ruangtvfurniture: new FormControl('', Validators.compose([
+      ruangtvfurniture: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      ruangtvraktv: new FormControl('', Validators.compose([
+      ruangtvraktv: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      ruangtvtiraikarpet: new FormControl('', Validators.compose([
+      ruangtvtiraikarpet: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      ruangtvdinding: new FormControl('', Validators.compose([
+      ruangtvdinding: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      ruangtvlantai: new FormControl('', Validators.compose([
+      ruangtvlantai: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      koridortempatsampah: new FormControl('', Validators.compose([
+      koridortempatsampah: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      koridorpintu: new FormControl('', Validators.compose([
+      koridorpintu: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      koridorlantaisudutlantai: new FormControl('', Validators.compose([
+      koridorlantaisudutlantai: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      koridorkeset: new FormControl('', Validators.compose([
+      koridorkeset: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      koridorpantry: new FormControl('', Validators.compose([
+      koridorpantry: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      koridorwastafelchromefixture: new FormControl('', Validators.compose([
+      koridorwastafelchromefixture: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      koridorperalatanmakanrakpiring: new FormControl('', Validators.compose([
+      koridorperalatanmakanrakpiring: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      koridorpintudinding: new FormControl('', Validators.compose([
+      koridorpintudinding: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      koridorkancajendelakusen: new FormControl('', Validators.compose([
+      koridorkancajendelakusen: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      toiletpintudinding: new FormControl('', Validators.compose([
+      toiletpintudinding: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      toilettempatsampah: new FormControl('', Validators.compose([
+      toilettempatsampah: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      toiletwastafelchromefixture: new FormControl('', Validators.compose([
+      toiletwastafelchromefixture: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      toileturinoirselangtoiletbowl: new FormControl('', Validators.compose([
+      toileturinoirselangtoiletbowl: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      toiletshowerareacurtain: new FormControl('', Validators.compose([
+      toiletshowerareacurtain: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      toiletlantaisudutlantai: new FormControl('', Validators.compose([
+      toiletlantaisudutlantai: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      toiletteras: new FormControl('', Validators.compose([
+      toiletteras: new FormControl(false, Validators.compose([
         Validators.required
       ])),
     });

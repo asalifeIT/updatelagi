@@ -133,58 +133,58 @@ export class KamarPage implements OnInit {
       nokamar: new FormControl('', Validators.compose([
         Validators.required
       ])),
-      lantaikamar: new FormControl('', Validators.compose([
+      lantaikamar: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      lantaitoilet: new FormControl('', Validators.compose([
+      lantaitoilet: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      lantailangitkamar: new FormControl('', Validators.compose([
+      lantailangitkamar: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      lantailangitkamarmandi: new FormControl('', Validators.compose([
+      lantailangitkamarmandi: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      wc: new FormControl('', Validators.compose([
+      wc: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      wastafel: new FormControl('', Validators.compose([
+      wastafel: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      tempattidur: new FormControl('', Validators.compose([
+      tempattidur: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      sprei: new FormControl('', Validators.compose([
+      sprei: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      selimut: new FormControl('', Validators.compose([
+      selimut: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      ac: new FormControl('', Validators.compose([
+      ac: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      meja: new FormControl('', Validators.compose([
+      meja: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      cermin: new FormControl('', Validators.compose([
+      cermin: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      keran: new FormControl('', Validators.compose([
+      keran: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      shower: new FormControl('', Validators.compose([
+      shower: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      tempatsampah: new FormControl('', Validators.compose([
+      tempatsampah: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      jendela: new FormControl('', Validators.compose([
+      jendela: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      gorden: new FormControl('', Validators.compose([
+      gorden: new FormControl(false, Validators.compose([
         Validators.required
       ])),
-      lemari: new FormControl('', Validators.compose([
+      lemari: new FormControl(false, Validators.compose([
         Validators.required
       ])),
     });
