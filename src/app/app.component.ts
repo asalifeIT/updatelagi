@@ -73,27 +73,29 @@ export class AppComponent {
     });
   }
 
-  showExitConfirm() {
-    this.alertController.create({
-      header: 'App termination',
-      message: 'Do you want to close the app?',
-      backdropDismiss: false,
-      buttons: [{
-        text: 'Stay',
-        role: 'cancel',
-        handler: () => {
-          console.log('Application exit prevented!');
-        }
-      }, {
-        text: 'Exit',
-        handler: () => {
-          navigator['app'].exitApp();
-        }
-      }]
-    })
-      .then(alert => {
-        alert.present();
-      });
+  async showExitConfirm() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Konfirmasi Logout',
+      message: 'Apakah Anda ingin keluar aplikasi?',
+      buttons: [
+        {
+          text: 'Batal',
+          role: 'cancel',
+          handler: () => {
+          },
+        },
+        {
+          text: 'Exit',
+          cssClass: 'secondary',
+          handler: () => {
+            this.logout();
+          },
+        },
+      ],
+    });
+
+    await alert.present();
   }
 
   home() {
