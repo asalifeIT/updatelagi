@@ -11,27 +11,27 @@
   </ion-item>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-item lines="none">
-    <ion-thumbnail>
-      <img src="assets/images/cus.png" />
-    </ion-thumbnail>
-    <div class="name">
-      <ion-label class="center">
+<ion-item lines="none">
+  <ion-thumbnail>
+    <img src="assets/images/cus.png" />
+  </ion-thumbnail>
+  <div class="name">
+    <ion-label class="center">
+      <div>
         <div>
-          <div>
-            Selamat Datang {{Username}}
-          </div>
+          Selamat Datang {{Username}}
         </div>
-      </ion-label>
-    </div>
-  </ion-item>
+      </div>
+    </ion-label>
+  </div>
+</ion-item>
+<ion-content [fullscreen]="true">
   <div *ngIf="this.serviceService.isHasAccess('MAINTENANCE', 'COMPLAINT', 'VIEW'); else noAccess">
-    <ion-content>
+    <ion-content class="data-record">
       <ion-list *ngIf="isNotMtUser()">
         <ion-item button *ngFor="let data of DataRecord; let i = index" (click)="openModal(data)">
-          <ion-label>
-            <h2>User: {{data.user_name}}</h2>
+          <ion-label style="margin: 10 0 0 0 ;">
+            <h2>{{data.user_name}}</h2>
             <p>Deskripsi: {{data.jenis_aduan}} ( {{data.lokasi}} )</p>
             <p>Status: {{data.status}}</p>
             <p *ngIf=" data.pic_nrp !== null"> PIC: {{data.pic_nrp}} </p>
@@ -43,8 +43,8 @@
       <ion-list *ngIf="!isNotMtUser()">
         <div *ngFor="let data of DataRecord; let i = index" >
           <ion-item *ngIf="data.pic_nrp !== null">
-            <ion-label button (click)="openModalUpdateStatus(data)" >
-              <h2>User: {{data.user_name}}</h2>
+            <ion-label style="margin: 10 0 0 0 ;" button (click)="openModalUpdateStatus(data)" >
+              <h2>{{data.user_name}}</h2>
               <p>Deskripsi: {{data.jenis_aduan}} ( {{data.lokasi}} )</p>
               <p>Status: {{data.status}}</p>
               <p>PIC: {{data.pic_nrp}} </p>

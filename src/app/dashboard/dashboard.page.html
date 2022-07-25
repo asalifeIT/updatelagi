@@ -2,30 +2,32 @@
   <ion-item lines="none">
     <ion-buttons slot="end">
       <ion-button (click)="onBack()" color="light">
-        <ion-icon name="chevron-back-outline" ></ion-icon>
+        <ion-icon name="chevron-back-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-label color="light">
-     Panel Dashboard
+      Panel Dashboard
     </ion-label>
   </ion-item>
 </ion-header>
 
- <ion-content [fullscreen]="true">
-   <ion-item lines="none">
-    <ion-thumbnail>
-      <img src="assets/images/cus.png"/>
-    </ion-thumbnail>
-    <div class="name">
-      <ion-label class="center"><div>
+<ion-item lines="none">
+  <ion-thumbnail>
+    <img src="assets/images/cus.png" />
+  </ion-thumbnail>
+  <div class="name">
+    <ion-label class="center">
+      <div>
         <div>
-        Selamat Datang {{Username}}
+          Selamat Datang {{Username}}
         </div>
-      </div></ion-label>
-    </div>
-  </ion-item>
+      </div>
+    </ion-label>
+  </div>
+</ion-item>
 
-    <div class="account">
+<ion-content [fullscreen]="true">
+  <div class="account">
     <ion-label class="head_lbl">Informasi Aduan</ion-label>
     <div class="info">
       <ion-item lines="none">
@@ -57,7 +59,7 @@
       <ion-icon name="bed-outline" color="primary" style="margin-right: 10px;"></ion-icon>
       <ion-label>House Keeping</ion-label>
       <ion-icon slot="end" name="chevron-forward" color="medium" (click)="dashTgsHk()"></ion-icon>
-      </ion-item>
+    </ion-item>
     <ion-item lines="none">
       <ion-icon name="construct-outline" color="primary" style="margin-right: 10px;"></ion-icon>
       <ion-label>Maintenance</ion-label>
@@ -75,4 +77,3 @@
 
   </div>
 </ion-content>
-

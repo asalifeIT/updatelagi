@@ -15,6 +15,7 @@ import { UpdateDetailNonroomComponent } from './update-detail-nonroom/update-det
 
 export class DashTugashkPage implements OnInit {
   [x: string]: any;
+  current: any = 1;
   authenticationState = new ReplaySubject();
   message: any;
   Data: any;

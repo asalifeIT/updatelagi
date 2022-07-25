@@ -11,27 +11,27 @@
   </ion-item>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-item lines="none">
-    <ion-thumbnail>
-      <img src="assets/images/cus.png" />
-    </ion-thumbnail>
-    <div class="name">
-      <ion-label class="center">
+<ion-item lines="none">
+  <ion-thumbnail>
+    <img src="assets/images/cus.png" />
+  </ion-thumbnail>
+  <div class="name">
+    <ion-label class="center">
+      <div>
         <div>
-          <div>
-            Selamat Datang {{Username}}
-          </div>
+          Selamat Datang {{Username}}
         </div>
-      </ion-label>
-    </div>
-  </ion-item>
-  <div *ngIf="this.serviceService.isHasAccess('MAINTENANCE', 'TASK', 'VIEW'); else noAccess">
-    <ion-content>
+      </div>
+    </ion-label>
+  </div>
+</ion-item>
+<ion-content [fullscreen]="true">
+<div *ngIf="this.serviceService.isHasAccess('MAINTENANCE', 'TASK', 'VIEW'); else noAccess">
+    <ion-content class="data-record">
       <ion-list >
         <ion-item button *ngFor="let data of DataRecord; let i = index" (click)="openModal(data)">
-          <ion-label>
-            <h2>{{data.user_nrp}} {{data.user_name}}</h2>
+          <ion-label style="margin: 10 0 0 0 ;">
+            <h2>{{data.user_name}}</h2>
             <p>Jenis Aset: {{data.jenis_aset}}</p>
             <p>Lokasi Aset: {{data.lokasi_aset}}</p>
             <p>Status: {{data.status}}</p>

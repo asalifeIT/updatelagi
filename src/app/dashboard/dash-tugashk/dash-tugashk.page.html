@@ -6,69 +6,82 @@
       </ion-button>
     </ion-buttons>
     <ion-label color="light">
-     Dashboard Tugas Housekeeping
+      Dashboard Tugas Housekeeping
     </ion-label>
   </ion-item>
 </ion-header>
 
-<ion-content>
-  <div>
-    <div *ngIf="this.serviceService.isHasAccess('HOUSEKEEPING', 'TASK', 'VIEW'); else noAccess">
-      <div class="segments">
-        <ion-segment mode="md" [(ngModel)]="current">
-          <ion-segment-button [value]="1">
-            <ion-label>Kamar</ion-label>
-          </ion-segment-button>
-          <ion-segment-button [value]="2">
-            <ion-label>Non Kamar</ion-label>
-          </ion-segment-button>
-        </ion-segment>
-      </div>
-
-      <div *ngIf="current == 1 || current == null">
-        <div class="account">
-          <ion-content>
-            <ion-list>
-              <ion-item button *ngFor="let data of DataRecordRoom; let i = index" (click)="openModalRoom(data)">
-                <ion-label>
-                  <h2>User: {{data.user.name}}</h2>
-                  <p>{{data.mess}} No. {{data.no_kamar}}</p>
-                  <p>Poin: {{ (data.verified) ? countPoinRoom(data) : 'Belum diverifikasi'}}</p>
-                </ion-label>
-              </ion-item>
-            </ion-list>
-          </ion-content>
+<ion-item lines="none">
+  <ion-thumbnail>
+    <img src="assets/images/cus.png" />
+  </ion-thumbnail>
+  <div class="name">
+    <ion-label class="center">
+      <div>
+        <div>
+          Selamat Datang {{Username}}
         </div>
       </div>
+    </ion-label>
+  </div>
+</ion-item>
 
-      <div *ngIf="current == 2">
-        <div class="account">
-          <ion-content>
-            <ion-list>
-              <ion-item button *ngFor="let data of DataRecordNonRoom; let i = index" (click)="openModalNonRoom(data)">
-                <ion-label>
-                  <h2>User: {{data.user.name}}</h2>
-                  <p>{{data.mess}}</p>
-                  <p>Poin: {{ (data.verified) ? countPoinNonRoom(data) : 'Belum diverifikasi'}}</p>
-                </ion-label>
-              </ion-item>
-            </ion-list>
-          </ion-content>
-        </div>
+<ion-content [fullscreen]="true">
+  <div *ngIf="this.serviceService.isHasAccess('HOUSEKEEPING', 'TASK', 'VIEW'); else noAccess">
+    <div class="segments">
+      <ion-segment mode="md" [(ngModel)]="current">
+        <ion-segment-button [value]="1">
+          <ion-label>Kamar</ion-label>
+        </ion-segment-button>
+        <ion-segment-button [value]="2">
+          <ion-label>Non Kamar</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+  </div>
+  <div *ngIf="this.serviceService.isHasAccess('HOUSEKEEPING', 'TASK', 'VIEW'); else noAccess">
+    <div *ngIf="current == 1 || current == null">
+      <div class="account">
+        <ion-content>
+          <ion-list class="data-record">
+            <ion-item button *ngFor="let data of DataRecordRoom; let i = index" (click)="openModalRoom(data)">
+              <ion-label style="margin: 10 0 0 0 ;">
+                <h2>{{data.user.name}}</h2>
+                <p>{{data.mess}} No. {{data.no_kamar}}</p>
+                <p>Poin: {{ (data.verified) ? countPoinRoom(data) : 'Belum diverifikasi'}}</p>
+              </ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-content>
       </div>
     </div>
 
-    <ng-template #noAccess>
-      <ion-content>
-        <ion-label class="center">
-          <div class="no-access">
-            <img src="assets/images/no-access.png" />
-            <div>Maaf,</div>
-            <div>Anda tidak punya akses !</div>
-          </div>
-        </ion-label>
-      </ion-content>
-    </ng-template>
-
+    <div *ngIf="current == 2">
+      <div class="account">
+        <ion-content>
+          <ion-list class="data-record">
+            <ion-item button *ngFor="let data of DataRecordNonRoom; let i = index" (click)="openModalNonRoom(data)">
+              <ion-label style="margin: 10 0 0 0 ;">
+                <h2>{{data.user.name}}</h2>
+                <p>{{data.mess}}</p>
+                <p>Poin: {{ (data.verified) ? countPoinNonRoom(data) : 'Belum diverifikasi'}}</p>
+              </ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-content>
+      </div>
+    </div>
   </div>
+
+  <ng-template #noAccess>
+    <ion-content>
+      <ion-label class="center">
+        <div class="no-access">
+          <img src="assets/images/no-access.png" />
+          <div>Maaf,</div>
+          <div>Anda tidak punya akses !</div>
+        </div>
+      </ion-label>
+    </ion-content>
+  </ng-template>
 </ion-content>
