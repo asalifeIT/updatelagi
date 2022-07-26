@@ -40,6 +40,10 @@ export class InfohkPage implements OnInit {
     );
   }
 
+  canScroll() {
+    return (this.DataRecord.length > 5 ) 
+  }
+
   onBack() {
     this.router.navigate(['housekeeping']);
   }
