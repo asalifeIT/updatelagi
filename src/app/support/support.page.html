@@ -1,4 +1,4 @@
-<ion-content>
+<ion-content [fullscreen]="true" scrollY="false">
   <div class="main_content_div">
     <div class="flex_title">
       <ion-icon color="light" name="close" (click)="close()"></ion-icon>
@@ -18,11 +18,12 @@
   <ion-slides>
     <ion-slides pager="true" [options]="slideOpts">
       <ion-slide>
-        <img src="assets/images/astra.png" />
-        <p><ion-label>Mari Kembangkan Masa Depan Bersama!
-          Fondasi kami, idemu, bersama-sama kita maju dan berkembang untuk menciptakan masa depan bersama.</ion-label></p>
-        https://career.astra.co.id/
-        </ion-slide>
+        <img src="assets/images/kpp_astra.png" />
+        <p style="padding: 10px;">
+          <ion-label>PT. Kalimantan Prima Persada
+          </ion-label>
+        </p>
+      </ion-slide>
     </ion-slides>
   </ion-slides>
   <div style="display: flex;flex-direction: row; justify-content: center;">

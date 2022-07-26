@@ -11,10 +11,9 @@
   </ion-item>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-item lines="none">
-    <ion-thumbnail>
-      <img src="assets/images/cus.png" />
+<ion-item lines="none">
+  <ion-thumbnail>
+    <img src="assets/images/cus.png" />
     </ion-thumbnail>
     <div class="name">
       <ion-label class="center">
@@ -26,12 +25,13 @@
       </ion-label>
     </div>
   </ion-item>
+  <ion-content [fullscreen]="true">
   <div *ngIf="this.serviceService.isHasAccess('LAUNDRY', 'COMPLAINT', 'VIEW'); else noAccess">
-    <ion-content>
+    <ion-content class="data-record">
       <ion-list>
         <ion-item button *ngFor="let data of DataRecord; let i = index" (click)="openModal(data)">
-          <ion-label>
-            <h2>{{data.user_nrp}} {{data.user_name}}</h2>
+          <ion-label style="margin: 10 0 0 0 ;">
+            <h2>{{data.user_name}}</h2>
             <p>Deskripsi: {{data.jenis_deviasi}}</p>
             <p>Status: {{data.status}}</p>
           </ion-label>

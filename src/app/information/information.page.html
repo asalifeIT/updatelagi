@@ -1,7 +1,7 @@
- <ion-content>
+<ion-content [fullscreen]="true"  scrollY="false">
   <div class="main_content_div">
     <ion-icon color="light" name="close" (click)="close()"></ion-icon>
-    <ion-chip class="dash" color="light">ASTO SERVICE APP (ASA)</ion-chip><br><br>
+    <ion-chip class="dash" color="light">ASTO SERVICE APPLICATION (ASA)</ion-chip><br><br>
     <ion-back-button></ion-back-button>
     <ion-row style="margin-bottom: 10px;">
       <ion-col size="3" (click)="tabID = 1" [class.active]="tabID == 1" (click)="openAstoinfo()">
@@ -10,7 +10,7 @@
       <ion-col size="3" (click)="tabID = 2" [class.active]="tabID == 2" (click)="openDev()">
         <ion-icon name="logo-nodejs"></ion-icon>
       </ion-col>
-      <ion-col size="3" (click)="tabID = 3" [class.active]="tabID == 3"  (click)="openTeam()">
+      <ion-col size="3" (click)="tabID = 3" [class.active]="tabID == 3" (click)="openTeam()">
         <!-- <ion-icon name="logo-usd"></ion-icon> -->
         <ion-icon name="people"></ion-icon>
       </ion-col>
@@ -21,41 +21,49 @@
     </ion-row>
     <ion-row>
       <ion-col size="3" [class.active]="tabID == 1">
-       <p><ion-label>ASA</ion-label><br>
+        <p>
+          <ion-label>ASA</ion-label><br>
       </ion-col>
       <ion-col size="3" [class.active]="tabID == 2">
+<<<<<<< HEAD
         <p><ion-label>FITUR</ion-label><br>
+=======
+        <p>
+          <ion-label>TECH</ion-label><br>
+>>>>>>> 78be1de997d13ae7a5ff52d97296bcfade37d82f
       </ion-col>
       <ion-col size="3" [class.active]="tabID == 3">
-        <p> <ion-label>TEAM</ion-label>
-       </ion-col>
+        <p>
+          <ion-label>TEAM</ion-label>
+      </ion-col>
       <ion-col size="3" [class.active]="tabID == 4">
-       <p><ion-label>SUPPORT</ion-label>
+        <p>
+          <ion-label>SUPPORT</ion-label>
       </ion-col>
     </ion-row>
   </div>
 
-  <ion-slides>  
-    <ion-slides pager="true" [options]="slideOpts">  
-    <ion-slide>  
-      <img src="assets/images/asa4.png"/>     
-      <h4><b>(Asto Service App)</b></h4>  
-      <p>ASA adalah suatu aplikasi yang bertujuan untuk meningkatkan kualitas alur komunikasi serta sebagai media penampung aspirasi, komplain, dan bantuan yang bersifat genting.</p>  
-    </ion-slide>  
+  <ion-slides>
+    <ion-slides pager="true" [options]="slideOpts">
+      <ion-slide>
+        <img style="height: 200px; margin-bottom: 0;" src="assets/images/asa-information.png" />
+        <h4><b>Asto Service Application</b></h4>
+        <p style="padding: 0 10px;">Menjadi media penampung aspirasi, aduan, dan bantuan kepada karyawan</p>
+      </ion-slide>
 
-    <ion-slide>  
-      <img src="assets/images/loj.jpg"/>     
-      <h4><b>(Asto Service App)</b></h4>  
-      <p>Salam Kami Dengan Penuh Cinta</p>  
-    </ion-slide>  
+      <ion-slide>
+        <img style="height: 200px; margin-bottom: 0;" src="assets/images/loj-application.png" />
+        <h4><b>Lintas Orbit Jaya</b></h4>
+        <p style="padding: 0 10px;">Salam Kami dengan Penuh Cinta</p>
+      </ion-slide>
 
-    <ion-slide>  
-      <img src="assets/images/gios.png"/>     
-      <h4><b>soon</b></h4>  
-      <p>Download our App Today & Experience Endless Possibilities</p>  
-    </ion-slide>  
+      <ion-slide>
+        <img style="height: 200px; margin-bottom: 0;" src="assets/images/gios-information.png" />
+        <h4><b>Available soon</b></h4>
+        <p style="padding: 0 10px;">Akan tersedia secara publik melalui app store dan play store</p>
+      </ion-slide>
 
-  </ion-slides>
+    </ion-slides>
   </ion-slides>
   <div style="display: flex;flex-direction: row; justify-content: center;">
   </div>

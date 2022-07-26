@@ -13,11 +13,6 @@ ion-header {
   }
 }
 
-ion-list ion-item {
-  margin-right: 20px;
-}
-
-
 .dash{
   display: flex;
       flex-direction: column;
@@ -41,10 +36,13 @@ ion-list ion-item {
   margin-top: -10px;
 }
 
+.data-record ion-list ion-item {
+  margin-right: 20px;
+}
+
 ion-content {
   font-family:"regular";
   ion-item {
-    margin-top: 10px;
     ion-thumbnail {
       img {
         height: 60px;
