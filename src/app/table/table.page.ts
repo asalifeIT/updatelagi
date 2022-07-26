@@ -9,7 +9,5 @@ export class TablePage implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
