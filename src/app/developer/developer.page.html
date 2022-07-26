@@ -1,4 +1,4 @@
-<ion-content>
+<ion-content [fullscreen]="true"  scrollY="false">
   <div class="main_content_div">
     <div class="flex_title">
       <ion-icon color="light" name="close" (click)="close()"></ion-icon>
@@ -11,7 +11,7 @@
     <ion-row>
       <ion-col size="12">
         <p>
-          <ion-label>TECHNOLOGY FEATURE</ion-label><br>
+          <ion-label>USED TECHNOLOGY</ion-label><br>
       </ion-col>
     </ion-row>
   </div>
@@ -19,32 +19,30 @@
     <ion-slides pager="true" [options]="slideOpts">
       <ion-slide>
         <img src="assets/images/angular.png" />
-        <h3>Multicross Flatform</h3>
-        <p>Aplikasi dibuat dengan Angular dan menggunakan kode serta kemampuan untuk membangun aplikasi untuk target
-          penerapan apa pun. Untuk web, web seluler, seluler asli, dan desktop asli.</p>
+        <h3>Angular JS</h3>
+        <p style="padding: 0 10px; font-size: 15px;">Asto Service Application (ASA) dibuat dengan menggunakan Framework Angular. Framework ini telah dipercaya oleh kalangan developer dalam membangun aplikasi yang kompleks dan andal
+          serta dapat menjadi salah satu pilihan terbaik dalam membangun aplikasi cross-platform mobile dengan Ionic Framework.</p>
       </ion-slide>
 
       <ion-slide>
         <img src="assets/images/java.png" />
-        <h3>User Friendly Design</h3>
-        <p>Asto Service App (ASA) dibuat dengan bahasa pemerograman javascript dengan framework Angular dengan
-          didukung dengan multicross platform Ionic dan webserver menggunakan bahasa pemerograman java dengan
-          memanfaatkan DMBS Postgre sehingga aplikasi yang dibangun sudah mengunakan teknologi terkini dan terbaru</p>
+        <h3>Java Spring Boot</h3>
+        <p style="padding: 0 10px;font-size: 15px;">Asto Service Application (ASA) didukung dengan bahasa pemprograman Java dengan menggunakan framework Spring Boot pada sisi backend. 
+        Penggunaan framework Spring Boot dapat membantu dalam pembuatan aplikasi kompleks dengan security yang lebih baik dan aman.</p>
       </ion-slide>
 
       <ion-slide>
         <img src="assets/images/postgre.png" />
-        <h3>DBMS Postgre</h3>
-        <p>Sebuah sistem basis data yang disebarluaskan secara bebas menurut Perjanjian lisensi BSD. Peranti lunak ini
-          merupakan salah satu basis data yang paling banyak digunakan saat ini, selain MySQL dan Oracle. PostgreSQL
-          menyediakan fitur yang berguna untuk replikasi basis data</p>
+        <h3>DBMS PostgreSQL</h3>
+        <p style="padding: 0 10px;font-size: 15px;">Asto Service Application (ASA) menggunakan DBMS PostgreSQL dalam menyimpan data. Sistem basis data relasional ini bersifat open source yang telah dikembangkan selama 30 tahun  
+          serta telah mendapatkan reputasi yang baik dalam hal keandalan, ketahanan fitur, dan kinerja.</p>
       </ion-slide>
 
       <ion-slide>
         <img src="assets/images/ionic.png" />
-        <h2>Ionic Framework</h2>
-        <p>Sebuah framework untuk membangun aplikasi hibrida menggunakan HTML, CSS, dan JavaScript dan dukungan
-          Capacitor dan Cordova </p>
+        <h3>Ionic Framework</h3>
+        <p style="padding: 0 10px;font-size: 15px;">Asto Service Application (ASA) dibangun dengan Ionic Framework yakni sebuah framework aplikasi mobile berbasis HTML5 yang dapat digunakan untuk mengembangkan 
+          aplikasi mobile dengan teknologi web seperti HTML, CSS, dan Javascript.</p>
       </ion-slide>
     </ion-slides>
   </ion-slides>

@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.asto.service',
-  appName: 'com.asto.service',
+  appId: 'com.asalife.service',
+  appName: 'com.asalife.service',
   webDir: 'www',
   bundledWebRuntime: false,
   cordova: {
