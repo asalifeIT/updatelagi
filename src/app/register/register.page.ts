@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
-import { NavController, LoadingController, ToastController, Platform, ModalController, AlertController } from '@ionic/angular';
+import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LoadingController, ToastController, ModalController, AlertController } from '@ionic/angular';
 import { ServiceService } from '../services/service.service';
 
 @Component({
@@ -42,9 +42,7 @@ export class RegisterPage implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder, 
-    private navCtrl: NavController, 
     public loadingController: LoadingController,
-    private platform: Platform,
     public toastController: ToastController,
     public alertController: AlertController,
     public modalController: ModalController,
@@ -114,5 +112,4 @@ export class RegisterPage implements OnInit {
     });
     await alert.present();
   }
-
 }

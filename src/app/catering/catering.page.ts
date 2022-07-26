@@ -29,9 +29,7 @@ export class CateringPage implements OnInit {
     public serviceService: ServiceService,
   ) { }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() { }
 
   onBack() {
     this.router.navigate(['home']);

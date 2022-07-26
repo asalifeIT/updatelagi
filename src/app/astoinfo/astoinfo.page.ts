@@ -3,8 +3,6 @@ import { Platform, NavController,LoadingController, ModalController } from '@ion
 import { ServiceService } from '../services/service.service';
 import { Router } from '@angular/router';
 import { UtilService } from 'src/app/services/util.service';
-import { PreloadAllModules, RouterModule, Routes, CanActivate } from '@angular/router';
-import { NgModule } from '@angular/core';
 
 @Component({
   selector: 'app-astoinfo',
@@ -28,13 +26,9 @@ export class AstoinfoPage implements OnInit {
     public util: UtilService,
     public navCtrl: NavController,
     private platform: Platform,
-    
- 
     ) { }
 
-    ngOnInit() {
-    }
-
+    ngOnInit() {}
 
     close(){
       this.router.navigate(['information']);

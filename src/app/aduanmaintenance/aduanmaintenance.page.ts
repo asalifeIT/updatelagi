@@ -4,7 +4,6 @@ import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { NavController, ModalController, LoadingController, ToastController, Platform } from '@ionic/angular';
 import { ServiceService } from '../services/service.service';
 import { ReplaySubject } from "rxjs";
-import { catchError } from 'rxjs/operators';
 import { UtilService } from 'src/app/services/util.service';
 
 @Component({

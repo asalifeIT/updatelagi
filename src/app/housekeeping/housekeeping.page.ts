@@ -2,8 +2,7 @@ import { ServiceService } from './../services/service.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { NavController, ModalController, LoadingController, ToastController, Platform } from '@ionic/angular';
-import { catchError } from 'rxjs/operators';
+import { ModalController, LoadingController, ToastController } from '@ionic/angular';
 import { UtilService } from 'src/app/services/util.service';
 
 @Component({
@@ -27,10 +26,8 @@ export class HousekeepingPage implements OnInit {
 
   constructor(
     public serviceService: ServiceService,
-    private navCtrl: NavController,
     public loadingController: LoadingController,
     public modalController: ModalController,
-    private platform: Platform,
     public toastController: ToastController,
     private router: Router,
     public util: UtilService

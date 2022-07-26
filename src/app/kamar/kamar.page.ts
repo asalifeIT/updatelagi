@@ -1,10 +1,9 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NavController, ModalController, LoadingController, ToastController, Platform } from '@ionic/angular';
+import { ModalController, LoadingController, ToastController } from '@ionic/angular';
 import { ServiceService } from '../services/service.service';
 import { ReplaySubject } from "rxjs";
-import { catchError } from 'rxjs/operators';
 import { UtilService } from 'src/app/services/util.service';
 import { BarcodeScanner, BarcodeScannerOptions } from "@ionic-native/barcode-scanner/ngx";
 
@@ -14,7 +13,6 @@ import { BarcodeScanner, BarcodeScannerOptions } from "@ionic-native/barcode-sca
   styleUrls: ['./kamar.page.scss'],
 })
 export class KamarPage implements OnInit {
-  encodedData: any;
   scannedBarCode: {} = [null, null];
   barcodeScannerOptions: BarcodeScannerOptions;
   FormKamar: FormGroup;
@@ -90,18 +88,14 @@ export class KamarPage implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private navCtrl: NavController,
     public loadingController: LoadingController,
     public modalController: ModalController,
-    private platform: Platform,
     public toastController: ToastController,
     public serviceService: ServiceService,
     private router: Router,
     public util: UtilService,
     private scanner: BarcodeScanner
   ) {
-    this.encodedData = "Programming isn't about what you know";
-
     this.barcodeScannerOptions = {
       showTorchButton: true,
       showFlipCameraButton: true
@@ -118,15 +112,7 @@ export class KamarPage implements OnInit {
   }
 
   ngOnInit() {
-    this.serviceService.CekUser().subscribe(
-      data => {
-        this.DataLogin = data;
-        this.Username = this.DataLogin.body.name;
-      },
-      error => {
-        console.log("error");
-      }
-    );
+    this.getUser();
 
     this.FormKamar = this.formBuilder.group({
       mess: new FormControl('', Validators.compose([
@@ -190,6 +176,10 @@ export class KamarPage implements OnInit {
         Validators.required
       ])),
     });
+  }
+
+  getUser() {
+    this.Username = this.serviceService.getUserName();
   }
 
   async submitKamar() {
