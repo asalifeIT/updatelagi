@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { tap, timeout, map } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { ReplaySubject } from 'rxjs';
 import { Platform, ToastController } from '@ionic/angular';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +18,8 @@ export class ServiceService {
   DataLogin: any;
   DataResponse: any;
   DataCheckLogin: any;
+
+  authState = new BehaviorSubject(false);
   authenticationState = new ReplaySubject();
   token: any;
   API_URL = "http://asabeta.com:8080/api/";
@@ -26,61 +30,31 @@ export class ServiceService {
 
   constructor(
     private http: HttpClient,
+    private router: Router,
     private platform: Platform,
     public toastController: ToastController
   ) {
     this.platform.ready().then(() => {
-      this.checkToken();
+      this.ifLoggedIn();
     });
   }
 
+  ifLoggedIn() {
+    let dataStorage = JSON.parse(localStorage.getItem(this.TOKEN_KEY));
+
+    if (dataStorage) {
+      this.authState.next(true);
+    }
+  }
+
+  isAuthenticated() {
+    return this.authState.value;
+  }
 
   options(arg0: string, options: any) {
     throw new Error('Method not implemented.');
   }
 
-  //jika token tidak ada maka authenticationState=false
-  //jika token ada maka akan memanggil fungsi cekUser
-  checkToken() {
-    if (localStorage.getItem(this.TOKEN_KEY) == null || localStorage.getItem(this.TOKEN_KEY) == '') {
-      this.authenticationState.next(false);
-    } else {
-      this.CekUser().subscribe(data => {
-        this.DataCheckLogin = data;
-        if (this.DataCheckLogin.status == "success") {
-          this.authenticationState.next(true);
-        } else {
-          this.authenticationState.next(false);
-        }
-      },
-        err => {
-          this.authenticationState.next(false);
-        });
-    }
-  }
-
-  //cek user di sisi client
-  CekUser() {
-
-    //ambil data dari localstorage
-    let dataStorage = JSON.parse(localStorage.getItem(this.TOKEN_KEY));
-    this.token = dataStorage;
-    // console.log("token : " + this.token);
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': "Bearer " + this.token
-    });
-    return this.http.get(this.API_URL + 'users/my', { headers: headers, observe: 'response' })
-      .pipe(
-        timeout(8000),
-        tap(Data => {
-          return Data;
-        }),
-
-      );
-  }
-
-  //login
   loginApi(credentials, type) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -94,9 +68,12 @@ export class ServiceService {
           localStorage.setItem(this.ROLE, JSON.stringify(this.DataLogin.roles[1]));
           localStorage.setItem("user", JSON.stringify(this.DataLogin));
           localStorage.setItem("roles", JSON.stringify(this.DataLogin.roles));
-          this.authenticationState.next(true);
+          localStorage.setItem("userName", JSON.stringify(this.DataLogin.user.name));
+
+          this.router.navigate(['home']);
+          this.authState.next(true);
         } else {
-          this.authenticationState.next(false);
+          this.authState.next(false);
         }
         return Data;
       }),
@@ -114,9 +91,6 @@ export class ServiceService {
     );
   }
 
-
-
-  //register
   RegisterApi(credentials, type) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -214,7 +188,7 @@ export class ServiceService {
 
       catchError((err) => {
         let message = "Gagal update! ";
-        return throwError(err);
+        return throwError(message);
       })
     );
   }
@@ -246,9 +220,9 @@ export class ServiceService {
 
   getUserName() {
     if (localStorage.getItem('user') !== null) {
-      const user = JSON.parse(localStorage.getItem('user'));
-      return user.user.name;
-    } 
+      const userName = JSON.parse(localStorage.getItem('userName'));
+      return userName;
+    }
     else return 'User';
   }
 

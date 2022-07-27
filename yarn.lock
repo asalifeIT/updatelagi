@@ -1155,6 +1155,13 @@
     "express" "^4.16.2"
     "tslib" "^2.0.1"
 
+"@ionic/storage@^3.0.6":
+  "integrity" "sha512-sw+zSJINIpbQCGZR9mEtb9N0WmZLuhcMVqOZJBqLuDACAMdXqG39zmp5nSVqhGI1/9X3nd0K5gVn6icyVfUnUg=="
+  "resolved" "https://registry.npmjs.org/@ionic/storage/-/storage-3.0.6.tgz"
+  "version" "3.0.6"
+  dependencies:
+    "localforage" "^1.9.0"
+
 "@ionic/utils-array@^2.1.5", "@ionic/utils-array@2.1.5":
   "integrity" "sha512-HD72a71IQVBmQckDwmA8RxNVMTbxnaLbgFOl+dO5tbvW9CkkSFCv41h6fUuNsSEVgngfkn0i98HDuZC8mk+lTA=="
   "resolved" "https://registry.npmjs.org/@ionic/utils-array/-/utils-array-2.1.5.tgz"
@@ -6111,6 +6118,13 @@
   dependencies:
     "immediate" "~3.0.5"
 
+"lie@3.1.1":
+  "integrity" "sha512-RiNhHysUjhrDQntfYSfY4MU24coXXdEOgw9WGcKHNeEwffDYbF//u87M1EWaMGzuFoSbqW0C9C6lEEhDOAswfw=="
+  "resolved" "https://registry.npmjs.org/lie/-/lie-3.1.1.tgz"
+  "version" "3.1.1"
+  dependencies:
+    "immediate" "~3.0.5"
+
 "loader-runner@^2.4.0":
   "integrity" "sha512-Jsmr89RcXGIwivFY21FcRrisYZfvLMTWx5kOLc+JTxtpBOG6xML0vzbc6SEQG2FO9/4Fc3wW4LVcB5DmGflaRw=="
   "resolved" "https://registry.npmjs.org/loader-runner/-/loader-runner-2.4.0.tgz"
@@ -6124,6 +6138,13 @@
     "big.js" "^5.2.2"
     "emojis-list" "^2.0.0"
     "json5" "^1.0.1"
+
+"localforage@^1.9.0":
+  "integrity" "sha512-14/H1aX7hzBBmmh7sGPd+AOMkkIrHM3Z1PAyGgZigA1H1p5O5ANnMyWzvpAETtG68/dC4pC0ncy3+PPGzXZHPg=="
+  "resolved" "https://registry.npmjs.org/localforage/-/localforage-1.10.0.tgz"
+  "version" "1.10.0"
+  dependencies:
+    "lie" "3.1.1"
 
 "locate-path@^3.0.0":
   "integrity" "sha512-7AO748wWnIhNqAuaty2ZWHkQHRSNfPVIsPIfwEOWO22AmaoVrWavlOcMR5nzTLNYvp36X220/maaRsrec1G65A=="

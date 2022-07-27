@@ -63,19 +63,14 @@ export class HomePage implements OnInit {
       FCM.subscribeTo({ topic: roleUser });
       this.getFcmToken();
     });
-   }
+  }
 
   ngOnInit() {
-    this.serviceService.CekUser().subscribe(
-      data => {
-        this.DataLogin = data;
-        this.Username = this.DataLogin.body.name;
-      },
-      error => {
-        console.log("error");
-      }
-    );
+    this.getUser();
+  }
 
+  getUser() {
+    this.Username = this.serviceService.getUserName();
   }
 
   deactivateBackButton() {
@@ -124,7 +119,7 @@ export class HomePage implements OnInit {
   openInfo() {
     this.router.navigate(['information']);
   }
-  
+
   handleNotification(data: { text: string, id: number }): void {
     if (!data.text) {
       return;

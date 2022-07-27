@@ -1,10 +1,9 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NavController, ModalController, LoadingController, ToastController, Platform } from '@ionic/angular';
+import { ModalController, LoadingController, ToastController } from '@ionic/angular';
 import { ServiceService } from '../services/service.service';
 import { ReplaySubject } from "rxjs";
-import { catchError } from 'rxjs/operators';
 import { UtilService } from 'src/app/services/util.service';
 
 @Component({
@@ -49,10 +48,8 @@ export class RatingcateringPage implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private navCtrl: NavController,
     public loadingController: LoadingController,
     public modalController: ModalController,
-    private platform: Platform,
     public toastController: ToastController,
     public serviceService: ServiceService,
     private router: Router,

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoadingController, Platform } from '@ionic/angular';
+import { LoadingController } from '@ionic/angular';
 import { UtilService } from 'src/app/services/util.service';
 import { ServiceService } from '../services/service.service';
 
@@ -23,11 +23,11 @@ export class MaintenancePage implements OnInit {
     public loadingController: LoadingController,
     public util: UtilService,
     private router: Router,
-    private platform: Platform,
     public serviceService: ServiceService,
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {}
+  
   openInfomain() {
     this.router.navigate(['infomaintan']);
   }

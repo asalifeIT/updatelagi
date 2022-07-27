@@ -34,15 +34,7 @@ export class DashAduanlaundryPage implements OnInit {
   }
 
   getUser() {
-    this.serviceService.CekUser().subscribe(
-      data => {
-        this.DataLogin = data;
-        this.Username = this.DataLogin.body.name;
-      },
-      error => {
-        console.log("error");
-      }
-    );
+    this.Username = this.serviceService.getUserName();
   }
 
   getRecordLaundry() {

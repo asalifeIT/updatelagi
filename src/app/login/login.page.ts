@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NavController, ModalController, LoadingController, ToastController } from '@ionic/angular';
+import { ModalController, LoadingController, ToastController } from '@ionic/angular';
 import { RegisterPage } from '../register/register.page';
 import { ServiceService } from '../services/service.service';
 import { IonRouterOutlet, Platform } from '@ionic/angular';
@@ -17,7 +17,6 @@ export class LoginPage implements OnInit {
   showPasswordText: any;
   dataLogin: any;
   permissions: string[];
-  private routerEvents: any;
 
   validations = {
     'nrp': [
@@ -32,16 +31,12 @@ export class LoginPage implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private navCtrl: NavController,
     public loadingController: LoadingController,
     public modalController: ModalController,
-    private platform: Platform,
     public toastController: ToastController,
     public serviceService: ServiceService,
     private routerOutlet: IonRouterOutlet,
     private util: UtilService
-
-
   ) { }
 
   ngOnInit() {

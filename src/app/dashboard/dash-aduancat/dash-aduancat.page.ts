@@ -34,16 +34,7 @@ export class DashAduancatPage implements OnInit {
   }
 
   getUser() {
-    this.serviceService.CekUser().subscribe(
-      data => {
-        this.DataLogin = data;
-        this.Username = this.DataLogin.body.name;
-        localStorage.getItem(JSON.parse(localStorage.getItem("role")));
-      },
-      error => {
-        console.log("error");
-      }
-    );
+    this.Username = this.serviceService.getUserName();
   }
 
   getRecordCatering() {

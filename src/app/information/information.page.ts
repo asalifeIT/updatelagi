@@ -1,15 +1,5 @@
-import { ServiceService } from './../services/service.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators, ReactiveFormsModule,FormArray, AbstractControl } from '@angular/forms';
-import { NavController, ModalController, LoadingController, ToastController,Platform } from '@ionic/angular';
-import { RegisterPage } from '../register/register.page';
-import {Observable, ReplaySubject, throwError} from "rxjs";
-import { catchError } from 'rxjs/operators';
-import { UtilService } from 'src/app/services/util.service';
- 
-import { AstoinfoPage } from '../astoinfo/astoinfo.page';
-
 
 @Component({
   selector: 'app-information',
@@ -28,13 +18,10 @@ export class InformationPage implements OnInit {
   };
   tabID;
   constructor(
-    private modalCtrl: ModalController,
     private router: Router
     )  { }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   openAstoinfo(){
     this.router.navigate(['astoinfo']);

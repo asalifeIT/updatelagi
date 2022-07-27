@@ -16,7 +16,7 @@ import { FCM } from '@capacitor-community/fcm';
 })
 
 export class AppComponent {
-  rootPage: any = 'TablePage';
+  rootPage: any = 'welcome-page';
   [x: string]: any;
   Username: any;
   DataLogin: any;
@@ -32,12 +32,26 @@ export class AppComponent {
     public alertController: AlertController,
     private modalCtrl: ModalController, private menuCtrl: MenuController,
     public util: UtilService) {
-    platform.ready().then(() => {
-      statusBar.styleDefault();
-      splashScreen.hide();
-    });
-    this.initializeApp();
+
+    this.initializeApps();
   }
+
+  initializeApps() {
+    this.platform.ready().then(() => {
+      this.statusBar.styleDefault();
+      this.splashScreen.hide();
+
+      this.serviceService.authState.subscribe(state => {
+        if (state) {
+          this.navCtrl.navigateRoot(['home']);
+        } else {
+          this.navCtrl.navigateRoot(['welcome-page']);
+        }
+      });
+
+    });
+  }
+
   close() {
     this.menuCtrl.close();
   }
@@ -103,35 +117,27 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    //ambil data dari localstorage
-    let dataStorage = JSON.parse(localStorage.getItem(this.serviceService.TOKEN_KEY));
-    // this.Username=dataStorage.data.Username;
-    this.serviceService.CekUser().subscribe(
-      data => {
-        this.DataLogin = data;
-        console.log(this.DataLogin)
-        this.Username = this.DataLogin.body.name;
-      },
-      error => {
-        console.log("error");
-      }
-    );
+    this.getUser();
+  }
 
+  getUser() {
+    this.Username = this.serviceService.getUserName();
   }
 
   logout() {
     const user = JSON.parse(localStorage.getItem('user'));
     const roleUser = user.roles[2];
     FCM.unsubscribeFrom({ topic: roleUser });
-    
-    localStorage.clear();
-    sessionStorage.clear();
+
     localStorage.removeItem("signin");
     localStorage.removeItem("access_token");
     localStorage.removeItem("roles");
     localStorage.removeItem("user");
+    localStorage.removeItem("userName");
     localStorage.removeItem("refresh_token");
     localStorage.removeItem("home");
+    localStorage.clear(); 
+    sessionStorage.clear();
 
     FCM.deleteInstance()
       .then(() => alert(`Token deleted`))
