@@ -1,34 +1,35 @@
 <ion-header class="ion-no-border" mode="md">
   <ion-toolbar>
     <ion-title>Detail Rating</ion-title>
-    <ion-button slot="end">
-      <ion-button (click)="dismissModal()">Close</ion-button>
-    </ion-button>
+    <ion-button slot="end" (click)="dismissModal()">Close</ion-button>
   </ion-toolbar>
 </ion-header>
 <ion-content>
   <ion-item>
-    <p>Poin pertanyaan no 1 : {{data.nilai1}}</p>
+    <p>1. Bagaimana kebersihan kantin kami saat anda makan? <b>{{data.nilai1}} poin </b></p>
   </ion-item>
   <ion-item>
-    <p>Poin pertanyaan no 2 : {{data.nilai2}}</p>
+    <p>2. Apakah anda menyukai cara kami menyajikan makan? <b>{{data.nilai2}} poin </b></p>
   </ion-item>
   <ion-item>
-    <p>Poin pertanyaan no 3 : {{data.nilai3}}</p>
+    <p>3. Bagaimana cara Waiters kami memberi salam/menyapa anda? <b>{{data.nilai3}} poin </b></p>
   </ion-item>
   <ion-item>
-    <p>Poin pertanyaan no 4 : {{data.nilai4}}</p>
+    <p>4. Apakah Waiters kami sudah senyum pada anda? <b>{{data.nilai4}} poin </b></p>
   </ion-item>
   <ion-item>
-    <p>Poin pertanyaan no 5 : {{data.nilai5}}</p>
+    <p>5. Bagaimana pilihan menu kami saat ini? <b>{{data.nilai5}} poin </b></p>
   </ion-item>
   <ion-item>
-    <p>Poin pertanyaan no 6 : {{data.nilai6}}</p>
+    <p>6. Bagaimana aroma makanan kami saat ini? <b>{{data.nilai6}} poin </b></p>
   </ion-item>
   <ion-item>
-    <p>Poin pertanyaan no 7 : {{data.nilai7}}</p>
+    <p>7. Bagaimana rasa makanan kami saat ini? <b>{{data.nilai7}} poin </b></p>
   </ion-item>
   <ion-item>
-    <p>Poin pertanyaan no 8 : {{data.nilai8}}</p>
+    <p>8. Bagaimana tekstur makanan kami saat ini? <b>{{data.nilai8}} poin </b></p>
+  </ion-item>
+  <ion-item>
+    <p>9. Menu makanan <b>{{data.waktu}} </b></p>
   </ion-item>
 </ion-content>
