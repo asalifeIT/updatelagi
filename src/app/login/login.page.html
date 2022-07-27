@@ -1,18 +1,16 @@
-
-
-<div class="color_div">
-  <ion-card-title>
-    <ion-grid>
-  <img src="assets/images/loj-login.png"/>
-   </ion-grid>
-</ion-card-title><br>
-<ion-card>
-    <ion-label class="awal">ASTO SERVICE - Where It All begin!</ion-label>
-    <ion-label class="awal">Website: http://asabeta.com/</ion-label>
-    <ion-label class="awal">Contact: +62 813-5091-6736</ion-label>
-    </ion-card>
-</div>
-   <ion-grid>
+<ion-content [fullscreen]="true"  scrollY="false">
+  <div class="main_content_div">
+    <ion-note color="light" class="ion-margin-start">
+      <div class="ion-text-center"><br>
+        <ion-label>ASTO SERVICE APPLICATION (ASA)</ion-label><br>
+        <ion-label> Where It All begin!</ion-label><br><br>
+      </div>
+    </ion-note>
+    <div class="ion-text-center"><br>
+      <img src="assets/images/lojj.png"/>
+    </div>
+  </div>
+  <ion-grid>
     <ion-card-content class="ion-no-margin">
      <ion-card-header class="ion-no-margin">
    <form [formGroup]="FormLogin" (ngSubmit)="login()">
@@ -26,7 +24,7 @@
        <ng-container *ngFor="let validation of validations.nrp">
          <div class="error-message" *ngIf="FormLogin.get('nrp').hasError(validation.type) && (FormLogin.get('nrp').dirty || FormLogin.get('nrp').touched)">
            <span>{{ validation.message }}</span>
-           <br><br>
+           <br>
          </div>
        </ng-container>
      </div> 
@@ -48,10 +46,12 @@
          </div>
        </ng-container>
      </div>
- <section>
-          <ion-button class="expand-block" type="submit"  [disabled]="!FormLogin.valid">Login</ion-button>
-         </section>
+     <ion-col size="12">
+     <ion-button class="expand-block" type="submit"  [disabled]="!FormLogin.valid">Login</ion-button>
+     </ion-col>
    </form>
- </ion-card-header></ion-card-content>
-   </ion-grid>
    
+ </ion-card-header>
+</ion-card-content>
+   </ion-grid>
+</ion-content>
