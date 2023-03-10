@@ -1,0 +1,64 @@
+<div class="ion-text-center">
+  <div class="content ion-padding">
+    <ion-text color="primary">
+      <h3 class="ion-no-margin">Beri Rating</h3>
+    </ion-text>
+    <ion-text color="dark">
+      <p>
+        Berikan rating dan masukan anda demi kualitas layanan yang lebih baik.
+      </p>
+    </ion-text>
+    <form
+      [formGroup]="FormRatingAccomplishment"
+      (ngSubmit)="submitRatingAccomplishment()"
+    >
+      <div class="rate">
+        <input
+          type="radio"
+          id="star1"
+          name="bintang"
+          formControlName="bintang"
+          value="1"
+        />
+        <label for="star1" title="text">1 star</label>
+        <input
+          type="radio"
+          id="star2"
+          name="bintang"
+          formControlName="bintang"
+          value="2"
+        />
+        <label for="star2" title="text">2 stars</label>
+        <input
+          type="radio"
+          id="star3"
+          name="bintang"
+          formControlName="bintang"
+          value="3"
+        />
+        <label for="star3" title="text">3 stars</label>
+        <input
+          type="radio"
+          id="star4"
+          name="bintang"
+          formControlName="bintang"
+          value="4"
+        />
+        <label for="star4" title="text">4 stars</label>
+        <input
+          type="radio"
+          id="star5"
+          name="bintang"
+          formControlName="bintang"
+          value="5"
+        />
+        <label for="star5" title="text">5 stars</label>
+      </div>
+      <ion-item>
+        <ion-label position="floating">Isi saran</ion-label>
+        <ion-input type="text" formControlName="feedback"></ion-input>
+      </ion-item>
+      <ion-button type="submit">Kirim!</ion-button>
+    </form>
+  </div>
+</div>

@@ -6,15 +6,16 @@
           <ion-icon name="apps-outline"></ion-icon>
         </ion-button>
       </ion-buttons>
-      <ion-label color="light">
-        Info Aduan Catering
-      </ion-label>
+      <ion-label color="light"> Info Aduan Catering </ion-label>
       <ion-buttons slot="end">
-        <ion-icon (click)="onBack()" name="chevron-back-outline" color="light"></ion-icon>
+        <ion-icon
+          (click)="onBack()"
+          name="chevron-back-outline"
+          color="light"
+        ></ion-icon>
       </ion-buttons>
     </ion-item>
   </ion-header>
-
 
   <div class="main-header"></div>
   <ion-grid>
@@ -22,33 +23,67 @@
       <b></b>
     </ion-note>
     <ion-card>
-      <div style="display: flex; justify-content: space-between;">
+      <div style="display: flex; justify-content: space-between">
         <ion-card-header>
-          <ion-card-subtitle color="dark">Klik Tambah Aduan Baru</ion-card-subtitle>
+          <ion-card-subtitle color="dark"
+            >Klik Tambah Aduan Baru</ion-card-subtitle
+          >
           <ion-card-subtitle color="dark">Deskripsi</ion-card-subtitle>
         </ion-card-header>
         <ion-buttons slot="end">
-          <ion-icon style="font-size: 40px; padding: 0 20px;" (click)="openAdcatering()" name="add-circle"></ion-icon>
+          <ion-icon
+            style="font-size: 40px; padding: 0 20px"
+            (click)="openAdcatering()"
+            name="add-circle"
+          ></ion-icon>
         </ion-buttons>
       </div>
-      <ion-card-content style="padding-top: 0;" color="dark">
-        <p>Silahkan mengisi aduan apabila ditemukan hal-hal yang tidak berkenan</p>
+      <ion-card-content style="padding-top: 0" color="dark">
+        <p>
+          Silahkan mengisi aduan apabila ditemukan hal-hal yang tidak berkenan
+        </p>
       </ion-card-content>
     </ion-card>
-    <ion-card>
-      <ion-card-header>
-        <ion-card-subtitle color="dark">Informasi Aduan Catering</ion-card-subtitle>
-        <ion-card-subtitle color="medium">List Aduan Anda</ion-card-subtitle>
-        <ion-progress-bar value="0" buffer="1"></ion-progress-bar>
-      </ion-card-header>
-      <div>
-        <div style="padding: 0 20px 20px 20px ;" color="dark" *ngFor="let data of DataRecord; let i = index">
-          <p style="margin: 0;">Deskripsi: {{data.kritik_saran}}</p>
-          <p style="margin: 0;">Lokasi : {{data.lokasi}}</p>
-          <p style="margin: 0;" class="warna">Status: {{data.status}}</p>
-          <ion-progress-bar value="{{getValueStatusBar(data.status)}}" buffer="{{getValueStatusBar(data.status)}}"></ion-progress-bar>
-        </div>
-      </div>
+
+    <!-- Card List Aduan dari user -->
+    <ion-card *ngFor="let data of DataRecord; let i = index">
+      <ion-card-content style="padding-bottom: 0; color: black">
+        {{data.kritik_saran}}.
+        <ion-badge color="{{statusBagde(data.status)}}">
+          {{data.status}}
+        </ion-badge>
+      </ion-card-content>
+      <ion-card-content
+        style="padding-top: 4px; padding-bottom: 0"
+        color="dark"
+      >
+        <ion-icon name="location-outline"></ion-icon>{{data.lokasi}}
+      </ion-card-content>
+
+      <div *ngIf="data.status!=='CLOSED'" style="height: 20px"></div>
+
+      <ion-button
+        *ngIf="data.status=='CLOSED'"
+        (click)="openModalRejectAduan(data)"
+        fill="clear"
+        >Komplain Ulang</ion-button
+      >
+      <ion-button
+        *ngIf="data.status=='CLOSED'"
+        (click)="openModalRatingAduan(data)"
+        fill="clear"
+        >Beri Rating</ion-button
+      >
     </ion-card>
   </ion-grid>
 </ion-content>
+
+<style>
+  ion-card-content::first-letter {
+    text-transform: capitalize;
+  }
+
+  ion-card-content ::first-letter {
+    text-transform: capitalize;
+  }
+</style>
