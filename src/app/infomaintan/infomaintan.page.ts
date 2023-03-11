@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { Component, OnInit } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 import {
+  AlertController,
   ModalController,
   LoadingController,
   ToastController,
@@ -25,6 +26,7 @@ export class InfomaintanPage implements OnInit {
   aduan: any[1] = [{ id: 1, name: "", src: "", background: "", page: "" }];
 
   constructor(
+    private alertController: AlertController,
     public serviceService: ServiceService,
     public loadingController: LoadingController,
     public modalController: ModalController,
@@ -64,7 +66,8 @@ export class InfomaintanPage implements OnInit {
       cssClass: "adaptable-modal",
       componentProps: {
         id: data.id,
-        status: data.status,
+        bintang: data.bintang,
+        feedback: data.feedback,
       },
     });
     await modal.present();
@@ -87,5 +90,32 @@ export class InfomaintanPage implements OnInit {
     if (status == "HOLD") return "danger";
     if (status == "PROGRESS") return "warning";
     if (status == "CLOSED") return "success";
+  }
+
+  async openModalConfirm(data) {
+    const alert = await this.alertController.create({
+      cssClass: "my-custom-class",
+      header: "Konfirmasi Penyelesaian Aduan",
+      message:
+        "Pilih tombol 'Ok' untuk menkorfirmasi bahwa aduan telah diselesaikan serta memberi rating." +
+        "<br> Pilih tombol 'Tolak' untuk melakukan pengajuan ulang aduan",
+      buttons: [
+        {
+          text: "Tolak",
+          role: "tolak",
+          cssClass: "secondary",
+          handler: () => {
+            this.openModalRejectAduan(data);
+          },
+        },
+        {
+          text: "Ok",
+          handler: () => {
+            this.openModalRatingAduan(data);
+          },
+        },
+      ],
+    });
+    await alert.present();
   }
 }
