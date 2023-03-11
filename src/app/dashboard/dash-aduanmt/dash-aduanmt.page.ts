@@ -1,16 +1,20 @@
-import { ServiceService } from 'src/app/services/service.service';
-import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
-import { AlertController, ModalController, LoadingController, ToastController } from '@ionic/angular';
+import { ServiceService } from "src/app/services/service.service";
+import { Router } from "@angular/router";
+import { Component, OnInit } from "@angular/core";
+import {
+  AlertController,
+  ModalController,
+  LoadingController,
+  ToastController,
+} from "@ionic/angular";
 import { ReplaySubject } from "rxjs/index";
-import { UtilService } from 'src/app/services/util.service';
-import { UpdateStatusAndDetailComponent } from './update-status-and-detail/update-status-and-detail.component';
-
+import { UtilService } from "src/app/services/util.service";
+import { UpdateStatusAndDetailComponent } from "./update-status-and-detail/update-status-and-detail.component";
 
 @Component({
-  selector: 'app-dash-aduanmt',
-  templateUrl: './dash-aduanmt.page.html',
-  styleUrls: ['./dash-aduanmt.page.scss'],
+  selector: "app-dash-aduanmt",
+  templateUrl: "./dash-aduanmt.page.html",
+  styleUrls: ["./dash-aduanmt.page.scss"],
 })
 export class DashAduanmtPage implements OnInit {
   [x: string]: any;
@@ -28,8 +32,8 @@ export class DashAduanmtPage implements OnInit {
     public toastController: ToastController,
     private router: Router,
     public util: UtilService,
-    public alertController: AlertController,
-  ) { }
+    public alertController: AlertController
+  ) {}
 
   ngOnInit() {
     this.getUser();
@@ -38,11 +42,11 @@ export class DashAduanmtPage implements OnInit {
   }
 
   getUsersMt() {
-    this.serviceService.getRecord('users/mt').subscribe(
-      data => {
+    this.serviceService.getRecord("users/mt").subscribe(
+      (data) => {
         this.DataUsersMt = data.body;
       },
-      error => {
+      (error) => {
         console.log("err", error);
       }
     );
@@ -53,11 +57,11 @@ export class DashAduanmtPage implements OnInit {
   }
 
   getRecordMaintenance() {
-    this.serviceService.getRecord('maintenance/all').subscribe(
-      data => {
+    this.serviceService.getRecord("maintenance/all").subscribe(
+      (data) => {
         this.DataRecord = data.body;
       },
-      error => {
+      (error) => {
         console.log("err", error);
       }
     );
@@ -67,21 +71,22 @@ export class DashAduanmtPage implements OnInit {
     const toast = await this.toastController.create({
       message: Message,
       duration: 2500,
-      position: "top"
+      position: "top",
     });
     toast.present();
   }
 
   onBack() {
-    this.router.navigate(['dashboard']);
+    this.router.navigate(["dashboard"]);
   }
 
   ngOnDestroy() {
-    if (typeof this.routerEvents !== 'undefined') this.routerEvents.unsubscribe();
+    if (typeof this.routerEvents !== "undefined")
+      this.routerEvents.unsubscribe();
   }
 
   async openModal(data) {
-    if (this.serviceService.isHasAccess('MAINTENANCE', 'COMPLAINT', 'EDIT')) {
+    if (this.serviceService.isHasAccess("MAINTENANCE", "COMPLAINT", "EDIT")) {
       const modal = await this.modalController.create({
         component: UpdateStatusAndDetailComponent,
         componentProps: {
@@ -90,12 +95,12 @@ export class DashAduanmtPage implements OnInit {
           priority: data.priority,
           duration: data.duration,
           pic_nrp: data.pic_nrp,
-          usersMt: this.DataUsersMt
-        }
+          usersMt: this.DataUsersMt,
+        },
       });
       await modal.present();
       const message = await modal.onWillDismiss();
-      if (message.data === 'success') {
+      if (message.data === "success") {
         this.ngOnInit();
       }
       if (message.data) {
@@ -105,69 +110,68 @@ export class DashAduanmtPage implements OnInit {
   }
 
   isNotMtUser() {
-    const user = JSON.parse(localStorage.getItem('user'));
+    const user = JSON.parse(localStorage.getItem("user"));
     const roleUser = user.roles[2];
-    return roleUser != 'ROLE_MT'
+    return roleUser != "ROLE_MT";
   }
 
   async openModalUpdateStatus(data) {
     let newStatus: string = data.status;
     const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      header: 'Ubah Status!',
-      message: 'Status sekarang: ' + data.status,
+      cssClass: "my-custom-class",
+      header: "Ubah Status!",
+      message: "Status sekarang: " + data.status,
       inputs: [
         {
-          name: 'OPEN',
-          type: 'radio',
-          label: 'OPEN',
-          value: 'OPEN',
+          name: "OPEN",
+          type: "radio",
+          label: "OPEN",
+          value: "OPEN",
           handler: () => {
-            newStatus = 'OPEN'
+            newStatus = "OPEN";
           },
-          checked: data.status == 'OPEN',
+          checked: data.status == "OPEN",
         },
         {
-          name: 'PROGRESS',
-          type: 'radio',
-          label: 'PROGRESS',
-          value: 'PROGRESS',
+          name: "PROGRESS",
+          type: "radio",
+          label: "PROGRESS",
+          value: "PROGRESS",
           handler: () => {
-            newStatus = 'PROGRESS'
+            newStatus = "PROGRESS";
           },
-          checked: data.status == 'PROGRESS',
+          checked: data.status == "PROGRESS",
         },
         {
-          name: 'HOLD',
-          type: 'radio',
-          label: 'HOLD',
-          value: 'HOLD',
+          name: "HOLD",
+          type: "radio",
+          label: "HOLD",
+          value: "HOLD",
           handler: () => {
-            newStatus = 'HOLD'
+            newStatus = "HOLD";
           },
-          checked: data.status == 'HOLD',
+          checked: data.status == "HOLD",
         },
         {
-          name: 'CLOSED',
-          type: 'radio',
-          label: 'CLOSED',
-          value: 'CLOSED',
+          name: "CLOSED",
+          type: "radio",
+          label: "CLOSED",
+          value: "CLOSED",
           handler: () => {
-            newStatus = 'CLOSED'
+            newStatus = "CLOSED";
           },
-          checked: data.status == 'CLOSED',
+          checked: data.status == "CLOSED",
         },
       ],
       buttons: [
         {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: () => {
-          },
+          text: "Cancel",
+          role: "cancel",
+          cssClass: "secondary",
+          handler: () => {},
         },
         {
-          text: 'Ok',
+          text: "Ok",
           handler: () => {
             this.updateStatus(newStatus, data.id);
           },
@@ -179,27 +183,36 @@ export class DashAduanmtPage implements OnInit {
 
   async updateStatus(newStatus, id) {
     const loading = await this.loadingController.create({
-      message: 'Please wait...'
+      message: "Please wait...",
     });
     await loading.present();
 
     const payload = {
-      'status': newStatus
-    }
+      status: newStatus,
+    };
 
-    this.serviceService.updateStatus(payload, 'maintenance/update-status-order/', id).subscribe(
-      data => {
-        console.log(data.body);
-        loading.dismiss();
-        this.ngOnInit();
-        this.presentToast("Success Update Status")
-      },
-      error => {
-        console.log(error.message);
-        this.presentToast("Failed Update Status")
+    this.serviceService
+      .updateStatus(payload, "maintenance/update-status-order/", id)
+      .subscribe(
+        (data) => {
+          console.log(data.body);
+          loading.dismiss();
+          this.ngOnInit();
+          this.presentToast("Success Update Status");
+        },
+        (error) => {
+          console.log(error.message);
+          this.presentToast("Failed Update Status");
 
-        loading.dismiss();
-      }
-    );
+          loading.dismiss();
+        }
+      );
+  }
+
+  handleRefresh(event) {
+    setTimeout(() => {
+      this.ngOnInit();
+      event.target.complete();
+    }, 2000);
   }
 }
