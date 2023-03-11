@@ -71,6 +71,11 @@ export class InfomaintanPage implements OnInit {
       },
     });
     await modal.present();
+
+    const message = await modal.onWillDismiss();
+    if (message.data === "SUCCESS") {
+      this.ngOnInit();
+    }
   }
 
   async openModalRejectAduan(data) {
@@ -83,6 +88,11 @@ export class InfomaintanPage implements OnInit {
       },
     });
     await modal.present();
+
+    const message = await modal.onWillDismiss();
+    if (message.data === "SUCCESS") {
+      this.ngOnInit();
+    }
   }
 
   statusBagde(status) {
