@@ -1,13 +1,18 @@
-import { ServiceService } from 'src/app/services/service.service';
-import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
-import { AlertController,  ModalController, LoadingController, ToastController } from '@ionic/angular';
-import { UtilService } from 'src/app/services/util.service';
+import { ServiceService } from "src/app/services/service.service";
+import { Router } from "@angular/router";
+import { Component, OnInit } from "@angular/core";
+import {
+  AlertController,
+  ModalController,
+  LoadingController,
+  ToastController,
+} from "@ionic/angular";
+import { UtilService } from "src/app/services/util.service";
 
 @Component({
-  selector: 'app-dash-tugasmt',
-  templateUrl: './dash-tugasmt.page.html',
-  styleUrls: ['./dash-tugasmt.page.scss'],
+  selector: "app-dash-tugasmt",
+  templateUrl: "./dash-tugasmt.page.html",
+  styleUrls: ["./dash-tugasmt.page.scss"],
 })
 export class DashTugasmtPage implements OnInit {
   [x: string]: any;
@@ -24,7 +29,7 @@ export class DashTugasmtPage implements OnInit {
     private router: Router,
     public util: UtilService,
     private alertController: AlertController
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.getUser();
@@ -36,11 +41,11 @@ export class DashTugasmtPage implements OnInit {
   }
 
   getRecordMaintenance() {
-    this.serviceService.getRecord('maintenance/task').subscribe(
-      data => {
+    this.serviceService.getRecord("maintenance/task").subscribe(
+      (data) => {
         this.DataRecord = data.body;
       },
-      error => {
+      (error) => {
         console.log("err", error);
       }
     );
@@ -48,26 +53,27 @@ export class DashTugasmtPage implements OnInit {
 
   async updateTask(id: string, status: string, statusInit: string) {
     const loading = await this.loadingController.create({
-      message: 'Please wait...'
+      message: "Please wait...",
     });
     await loading.present();
 
-    const payload = { 'status': status }
+    const payload = { status: status };
 
     if (status === statusInit) {
-      this.presentToast("Edit Status Aduan Catering Sukses")
-    } 
-    else {
-      this.serviceService.updateStatus(payload, 'maintenance/task-update/', id).subscribe(
-        data => {
-          this.presentToast("Edit Status Aduan Catering Sukses")
-          this.ngOnInit();
-        },
-        error => {
-          this.presentToast("Edit Status Aduan Catering Gagal");
-          console.log(error.message)
-        }
-      );
+      this.presentToast("Edit Status Aduan Catering Sukses");
+    } else {
+      this.serviceService
+        .updateStatus(payload, "maintenance/task-update/", id)
+        .subscribe(
+          (data) => {
+            this.presentToast("Edit Status Aduan Catering Sukses");
+            this.ngOnInit();
+          },
+          (error) => {
+            this.presentToast("Edit Status Aduan Catering Gagal");
+            console.log(error.message);
+          }
+        );
     }
     loading.dismiss();
   }
@@ -76,58 +82,58 @@ export class DashTugasmtPage implements OnInit {
     const toast = await this.toastController.create({
       message: Message,
       duration: 2500,
-      position: "top"
+      position: "top",
     });
     toast.present();
   }
 
   onBack() {
-    this.router.navigate(['dashboard']);
+    this.router.navigate(["dashboard"]);
   }
 
   ngOnDestroy() {
-    if (typeof this.routerEvents !== 'undefined') this.routerEvents.unsubscribe();
+    if (typeof this.routerEvents !== "undefined")
+      this.routerEvents.unsubscribe();
   }
 
   async openModal(data) {
     let status: string = data.status;
-    if (this.serviceService.isHasAccess('HOUSEKEEPING', 'COMPLAINT', 'EDIT')) {
+    if (this.serviceService.isHasAccess("HOUSEKEEPING", "COMPLAINT", "EDIT")) {
       const alert = await this.alertController.create({
-        cssClass: 'my-custom-class',
-        header: 'Ubah Status!',
-        message: 'Status sekarang: ' + data.status,
+        cssClass: "my-custom-class",
+        header: "Ubah Status!",
+        message: "Status sekarang: " + data.status,
         inputs: [
           {
-            name: 'RUSAK',
-            type: 'radio',
-            label: 'RUSAK',
-            value: 'RUSAK',
+            name: "RUSAK",
+            type: "radio",
+            label: "RUSAK",
+            value: "RUSAK",
             handler: () => {
-              status = 'RUSAK'
+              status = "RUSAK";
             },
-            checked: data.status == 'RUSAK',
+            checked: data.status == "RUSAK",
           },
           {
-            name: 'BAGUS',
-            type: 'radio',
-            label: 'BAGUS',
-            value: 'BAGUS',
+            name: "BAGUS",
+            type: "radio",
+            label: "BAGUS",
+            value: "BAGUS",
             handler: () => {
-              status = 'BAGUS'
+              status = "BAGUS";
             },
-            checked: data.status == 'BAGUS',
-          }
+            checked: data.status == "BAGUS",
+          },
         ],
         buttons: [
           {
-            text: 'Cancel',
-            role: 'cancel',
-            cssClass: 'secondary',
-            handler: () => {
-            },
+            text: "Cancel",
+            role: "cancel",
+            cssClass: "secondary",
+            handler: () => {},
           },
           {
-            text: 'Ok',
+            text: "Ok",
             handler: () => {
               this.updateTask(data.id, status, data.status);
             },
@@ -136,5 +142,12 @@ export class DashTugasmtPage implements OnInit {
       });
       await alert.present();
     }
+  }
+
+  handleRefresh(event) {
+    setTimeout(() => {
+      this.ngOnInit();
+      event.target.complete();
+    }, 2000);
   }
 }
