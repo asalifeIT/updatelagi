@@ -22,6 +22,7 @@ import { ServiceService } from "src/app/services/service.service";
   styleUrls: ["./reject-aduan.component.scss"],
 })
 export class RejectAduanComponent implements OnInit {
+  resultMessage: any;
   FormRejectAccomplishment: FormGroup;
   @Input() id: string;
   @Input() status: string;
@@ -54,7 +55,8 @@ export class RejectAduanComponent implements OnInit {
         .subscribe(
           (data) => {
             this.presentToast("Terima kasih. Aduan Anda akan diproses ulang");
-            this.dismiss();
+            this.resultMessage = "SUCCESS";
+            this.modalController.dismiss(this.resultMessage, "resultMessage");
           },
           (error) => {
             this.presentToast(
