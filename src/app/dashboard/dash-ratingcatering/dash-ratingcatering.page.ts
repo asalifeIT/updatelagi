@@ -1,15 +1,19 @@
-import { ServiceService } from 'src/app/services/service.service';
-import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
-import { ModalController, LoadingController, ToastController } from '@ionic/angular';
+import { ServiceService } from "src/app/services/service.service";
+import { Router } from "@angular/router";
+import { Component, OnInit } from "@angular/core";
+import {
+  ModalController,
+  LoadingController,
+  ToastController,
+} from "@ionic/angular";
 import { ReplaySubject } from "rxjs";
-import { UtilService } from 'src/app/services/util.service';
-import { DetailRatingComponent } from './detail-rating/detail-rating.component';
+import { UtilService } from "src/app/services/util.service";
+import { DetailRatingComponent } from "./detail-rating/detail-rating.component";
 
 @Component({
-  selector: 'app-dash-ratingcatering',
-  templateUrl: './dash-ratingcatering.page.html',
-  styleUrls: ['./dash-ratingcatering.page.scss'],
+  selector: "app-dash-ratingcatering",
+  templateUrl: "./dash-ratingcatering.page.html",
+  styleUrls: ["./dash-ratingcatering.page.scss"],
 })
 export class DashRatingcateringPage implements OnInit {
   [x: string]: any;
@@ -26,8 +30,8 @@ export class DashRatingcateringPage implements OnInit {
     public modalController: ModalController,
     public toastController: ToastController,
     private router: Router,
-    public util: UtilService,
-  ) { }
+    public util: UtilService
+  ) {}
 
   ngOnInit() {
     this.getUser();
@@ -35,11 +39,11 @@ export class DashRatingcateringPage implements OnInit {
   }
 
   getRecordRatingCatering() {
-    this.serviceService.getRecord('catering/rating-catering-many').subscribe(
-      data => {
+    this.serviceService.getRecord("catering/rating-catering-many").subscribe(
+      (data) => {
         this.DataRecord = data.body;
       },
-      error => {
+      (error) => {
         console.log("err", error);
       }
     );
@@ -50,21 +54,28 @@ export class DashRatingcateringPage implements OnInit {
   }
 
   onBack() {
-    this.router.navigate(['dashboard']);
+    this.router.navigate(["dashboard"]);
   }
 
   ngOnDestroy() {
-
-    if (typeof this.routerEvents !== 'undefined') this.routerEvents.unsubscribe();
+    if (typeof this.routerEvents !== "undefined")
+      this.routerEvents.unsubscribe();
   }
 
   async openModal(data) {
     const modal = await this.modalController.create({
       component: DetailRatingComponent,
       componentProps: {
-        data: data
-      }
+        data: data,
+      },
     });
     await modal.present();
+  }
+
+  handleRefresh(event) {
+    setTimeout(() => {
+      this.ngOnInit();
+      event.target.complete();
+    }, 2000);
   }
 }
