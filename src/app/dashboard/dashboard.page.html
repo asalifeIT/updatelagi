@@ -5,22 +5,18 @@
         <ion-icon name="chevron-back-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-label color="light">
-      Panel Dashboard
-    </ion-label>
+    <ion-label color="light"> Panel Dashboard </ion-label>
   </ion-item>
 </ion-header>
 
-<ion-item lines="none">
+<ion-item lines="none" style="display: block; padding: 10px 0 10px 0">
   <ion-thumbnail>
     <img src="assets/images/cus.png" />
   </ion-thumbnail>
   <div class="name">
     <ion-label class="center">
       <div>
-        <div>
-          Selamat Datang {{Username}}
-        </div>
+        <div>Selamat Datang {{Username}}</div>
       </div>
     </ion-label>
   </div>
@@ -31,24 +27,60 @@
     <ion-label class="head_lbl">Informasi Aduan</ion-label>
     <div class="info">
       <ion-item lines="none">
-        <ion-icon name="restaurant-outline" color="primary" style="margin-right: 10px;"></ion-icon>
+        <ion-icon
+          name="restaurant-outline"
+          color="primary"
+          style="margin-right: 10px"
+        ></ion-icon>
         <ion-label>Catering</ion-label>
-        <ion-icon slot="end" name="chevron-forward" color="medium" (click)="dashCat()"></ion-icon>
+        <ion-icon
+          slot="end"
+          name="chevron-forward"
+          color="medium"
+          (click)="dashCat()"
+        ></ion-icon>
       </ion-item>
       <ion-item lines="none">
-        <ion-icon name="shirt-outline" color="primary" style="margin-right: 10px;"></ion-icon>
+        <ion-icon
+          name="shirt-outline"
+          color="primary"
+          style="margin-right: 10px"
+        ></ion-icon>
         <ion-label>Laundry</ion-label>
-        <ion-icon slot="end" name="chevron-forward" color="medium" (click)="dashLaundry()"></ion-icon>
+        <ion-icon
+          slot="end"
+          name="chevron-forward"
+          color="medium"
+          (click)="dashLaundry()"
+        ></ion-icon>
       </ion-item>
       <ion-item lines="none">
-        <ion-icon name="bed-outline" color="primary" style="margin-right: 10px;"></ion-icon>
+        <ion-icon
+          name="bed-outline"
+          color="primary"
+          style="margin-right: 10px"
+        ></ion-icon>
         <ion-label>House Keeping</ion-label>
-        <ion-icon slot="end" name="chevron-forward" color="medium" (click)="dashHk()"></ion-icon>
+        <ion-icon
+          slot="end"
+          name="chevron-forward"
+          color="medium"
+          (click)="dashHk()"
+        ></ion-icon>
       </ion-item>
       <ion-item lines="none">
-        <ion-icon name="construct-outline" color="primary" style="margin-right: 10px;"></ion-icon>
+        <ion-icon
+          name="construct-outline"
+          color="primary"
+          style="margin-right: 10px"
+        ></ion-icon>
         <ion-label>Maintenance</ion-label>
-        <ion-icon slot="end" name="chevron-forward" color="medium" (click)="dashMain()"></ion-icon>
+        <ion-icon
+          slot="end"
+          name="chevron-forward"
+          color="medium"
+          (click)="dashMain()"
+        ></ion-icon>
       </ion-item>
     </div>
   </div>
@@ -56,24 +88,50 @@
   <div class="other">
     <ion-label class="head_lbl">Informasi Tugas</ion-label>
     <ion-item lines="none">
-      <ion-icon name="bed-outline" color="primary" style="margin-right: 10px;"></ion-icon>
+      <ion-icon
+        name="bed-outline"
+        color="primary"
+        style="margin-right: 10px"
+      ></ion-icon>
       <ion-label>House Keeping</ion-label>
-      <ion-icon slot="end" name="chevron-forward" color="medium" (click)="dashTgsHk()"></ion-icon>
+      <ion-icon
+        slot="end"
+        name="chevron-forward"
+        color="medium"
+        (click)="dashTgsHk()"
+      ></ion-icon>
     </ion-item>
     <ion-item lines="none">
-      <ion-icon name="construct-outline" color="primary" style="margin-right: 10px;"></ion-icon>
+      <ion-icon
+        name="construct-outline"
+        color="primary"
+        style="margin-right: 10px"
+      ></ion-icon>
       <ion-label>Maintenance</ion-label>
-      <ion-icon slot="end" name="chevron-forward" color="medium" (click)="dashTgsMt()"></ion-icon>
+      <ion-icon
+        slot="end"
+        name="chevron-forward"
+        color="medium"
+        (click)="dashTgsMt()"
+      ></ion-icon>
     </ion-item>
   </div>
 
   <div class="other">
     <ion-label class="head_lbl">Informasi Rating</ion-label>
     <ion-item lines="none">
-      <ion-icon name="restaurant-outline" color="primary" style="margin-right: 10px;"></ion-icon>
+      <ion-icon
+        name="restaurant-outline"
+        color="primary"
+        style="margin-right: 10px"
+      ></ion-icon>
       <ion-label>Catering</ion-label>
-      <ion-icon slot="end" name="chevron-forward" color="medium" (click)="dashRating()"></ion-icon>
+      <ion-icon
+        slot="end"
+        name="chevron-forward"
+        color="medium"
+        (click)="dashRating()"
+      ></ion-icon>
     </ion-item>
-
   </div>
 </ion-content>
