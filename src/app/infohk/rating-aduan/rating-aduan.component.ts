@@ -30,6 +30,7 @@ export class RatingAduanComponent implements OnInit {
   constructor(
     public toastController: ToastController,
     private formBuilder: FormBuilder,
+    public modalController: ModalController,
     private loadingController: LoadingController,
     public serviceService: ServiceService
   ) {}
@@ -60,20 +61,19 @@ export class RatingAduanComponent implements OnInit {
             this.presentToast(
               "Terima kasih. Rating Aduan Housekeeping Anda Telah Terkirim"
             );
+            this.dismiss();
           },
           (error) => {
             this.presentToast(
               "Gagal Terkirim, Silahkan kirim rating aduan lain waktu!"
             );
+            this.dismiss();
           }
         );
     } else {
       this.presentToast("Silahkan Lengkapi Isi Rating untuk Aduan Anda!");
     }
     loading.dismiss();
-
-    console.log(this.FormRatingAccomplishment.value);
-    console.log(this.id);
   }
 
   async presentToast(Message) {
@@ -83,5 +83,11 @@ export class RatingAduanComponent implements OnInit {
       position: "top",
     });
     toast.present();
+  }
+
+  dismiss() {
+    this.modalController.dismiss({
+      dismissed: true,
+    });
   }
 }
