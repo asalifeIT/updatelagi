@@ -27,6 +27,7 @@ export class RejectAduanComponent implements OnInit {
   @Input() status: string;
 
   constructor(
+    public modalController: ModalController,
     public toastController: ToastController,
     private formBuilder: FormBuilder,
     private loadingController: LoadingController,
@@ -53,20 +54,19 @@ export class RejectAduanComponent implements OnInit {
         .subscribe(
           (data) => {
             this.presentToast("Terima kasih. Aduan Anda akan diproses ulang");
+            this.dismiss();
           },
           (error) => {
             this.presentToast(
               "Gagal Terkirim, Silahkan coba kirim ulang lain waktu!"
             );
+            this.dismiss();
           }
         );
     } else {
       this.presentToast("Silahkan Lengkapi Isi Komentar!");
     }
     loading.dismiss();
-
-    console.log(this.FormRejectAccomplishment.value);
-    console.log(this.id);
   }
 
   async presentToast(Message) {
@@ -76,5 +76,11 @@ export class RejectAduanComponent implements OnInit {
       position: "top",
     });
     toast.present();
+  }
+
+  dismiss() {
+    this.modalController.dismiss({
+      dismissed: true,
+    });
   }
 }
