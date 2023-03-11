@@ -49,6 +49,11 @@
     <ion-card *ngFor="let data of DataRecord; let i = index">
       <ion-card-content style="padding-bottom: 0; color: black">
         {{data.kritik_saran}}.
+      </ion-card-content>
+      <ion-card-content
+        style="padding-top: 4px; padding-bottom: 0"
+        color="dark"
+      >
         <ion-badge color="{{statusBagde(data.status)}}">
           {{data.status}}
         </ion-badge>
@@ -59,7 +64,11 @@
       >
         <ion-icon name="location-outline"></ion-icon>{{data.lokasi}}
       </ion-card-content>
-
+      <ion-progress-bar
+        value="{{getValueStatusBar(data.status)}}"
+        buffer="{{getValueStatusBar(data.status)}}"
+        color="{{statusBagde(data.status)}}"
+      ></ion-progress-bar>
       <div *ngIf="data.status!=='CLOSED'" style="height: 20px"></div>
 
       <ion-button

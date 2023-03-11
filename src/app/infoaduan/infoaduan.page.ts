@@ -90,11 +90,11 @@ export class InfoaduanPage implements OnInit {
       return "success";
     }
     if (status == "INQUIRY") {
-      return "warning";
+      return "secondary";
     }
 
     if (status == "INVESTIGATION") {
-      return "primary";
+      return "warning";
     }
   }
 }
