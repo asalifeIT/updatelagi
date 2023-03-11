@@ -1,0 +1,23 @@
+<div class="ion-text-center">
+  <div class="content ion-padding">
+    <ion-text color="primary">
+      <h3 class="ion-no-margin">Ajukan Ulang Komplain</h3>
+    </ion-text>
+    <ion-text color="dark">
+      <p>
+        Ajukan ulang komplain Anda, jika penanganan yang diberikan kurang
+        memuaskan.
+      </p>
+    </ion-text>
+    <form
+      [formGroup]="FormRejectAccomplishment"
+      (ngSubmit)="submitRejectAccomplishment()"
+    >
+      <ion-item>
+        <ion-label position="floating">Isi komentar</ion-label>
+        <ion-input type="text" formControlName="komentar"></ion-input>
+      </ion-item>
+      <ion-button type="submit">Kirim!</ion-button>
+    </form>
+  </div>
+</div>
