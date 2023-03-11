@@ -44,33 +44,6 @@
         </p>
       </ion-card-content>
     </ion-card>
-    <ion-card>
-      <ion-card-header>
-        <ion-card-subtitle color="dark"
-          >Informasi Aduan House Keeping</ion-card-subtitle
-        >
-        <ion-card-subtitle color="medium">List Aduan Anda</ion-card-subtitle>
-        <ion-progress-bar value="0" buffer="1"></ion-progress-bar>
-      </ion-card-header>
-      <div>
-        <div
-          style="padding: 0 20px 20px 20px"
-          color="dark"
-          *ngFor="let data of DataRecord; let i = index"
-        >
-          <p style="margin: 0">Deskripsi: {{data.deskripsi}}</p>
-          <p style="margin: 0">Lokasi : {{data.lokasi}}</p>
-          <p style="margin: 0" class="warna">
-            Status: {{ (data.status == 'CLEANING_PROGRESS') ? 'CLEANING' :
-            data.status}}
-          </p>
-          <ion-progress-bar
-            value="{{getValueStatusBar(data.status)}}"
-            buffer="{{getValueStatusBar(data.status)}}"
-          ></ion-progress-bar>
-        </div>
-      </div>
-    </ion-card>
 
     <!-- Card List Aduan dari user -->
     <ion-card *ngFor="let data of DataRecord; let i = index">
@@ -92,7 +65,11 @@
         <ion-icon name="location-outline"></ion-icon>
         {{data.lokasi}}
       </ion-card-content>
-
+      <ion-progress-bar
+        value="{{getValueStatusBar(data.status)}}"
+        buffer="{{getValueStatusBar(data.status)}}"
+        color="{{statusBagde(data.status)}}"
+      ></ion-progress-bar>
       <div *ngIf="data.status!=='DONE'" style="height: 20px"></div>
 
       <ion-button

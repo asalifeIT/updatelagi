@@ -92,7 +92,7 @@ export class InfohkPage implements OnInit {
     }
 
     if (status == "CLEANING_PROGRESS") {
-      return "tertiary";
+      return "warning";
     }
   }
 }
