@@ -125,4 +125,11 @@ export class InfohkPage implements OnInit {
     });
     await alert.present();
   }
+
+  handleRefresh(event) {
+    setTimeout(() => {
+      this.ngOnInit();
+      event.target.complete();
+    }, 2000);
+  }
 }
