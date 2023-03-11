@@ -22,6 +22,7 @@ import { ServiceService } from "src/app/services/service.service";
   styleUrls: ["./rating-aduan.component.scss"],
 })
 export class RatingAduanComponent implements OnInit {
+  resultMessage: any;
   FormRatingAccomplishment: FormGroup;
   @Input() id: string;
   @Input() bintang: Number;
@@ -64,7 +65,8 @@ export class RatingAduanComponent implements OnInit {
             this.presentToast(
               "Terima kasih. Rating Aduan Catering Anda Telah Terkirim"
             );
-            this.dismiss();
+            this.resultMessage = "SUCCESS";
+            this.modalController.dismiss(this.resultMessage, "resultMessage");
           },
           (error) => {
             this.presentToast(
