@@ -1,27 +1,23 @@
-<ion-content [fullscreen]="true" scrollY="true">
-  <ion-header class="ion-no-border">
-    <ion-item lines="none">
-      <ion-buttons slot="start">
-        <ion-button (click)="util.openSideMenu()" color="light">
-          <ion-icon name="apps-outline"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-      <ion-label color="light"> Info Aduan Laundry </ion-label>
-      <ion-buttons slot="end">
-        <ion-icon
-          (click)="onBack()"
-          name="chevron-back-outline"
-          color="light"
-        ></ion-icon>
-      </ion-buttons>
-    </ion-item>
-  </ion-header>
+<ion-header class="ion-no-border">
+  <ion-item lines="none">
+    <ion-buttons slot="start">
+      <ion-button (click)="util.openSideMenu()" color="light">
+        <ion-icon name="apps-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-label color="light"> Info Aduan Laundry </ion-label>
+    <ion-buttons slot="end">
+      <ion-icon
+        (click)="onBack()"
+        name="chevron-back-outline"
+        color="light"
+      ></ion-icon>
+    </ion-buttons>
+  </ion-item>
 
   <div class="main-header"></div>
+  <div style="height: 50px"></div>
   <ion-grid>
-    <ion-note color="light" class="ion-margin-start">
-      <b></b>
-    </ion-note>
     <ion-card>
       <div style="display: flex; justify-content: space-between">
         <ion-card-header>
@@ -44,8 +40,19 @@
         </p>
       </ion-card-content>
     </ion-card>
+  </ion-grid>
+</ion-header>
+
+<ion-content [fullscreen]="true" scrollY="true">
+  <ion-grid>
+    <ion-note color="light" class="ion-margin-start">
+      <b></b>
+    </ion-note>
 
     <!-- Card List Aduan dari user -->
+    <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
     <ion-card *ngFor="let data of DataRecord; let i = index">
       <ion-card-content style="padding-bottom: 0; color: black">
         {{data.jenis_pakaian}}. {{data.jenis_deviasi}}.
