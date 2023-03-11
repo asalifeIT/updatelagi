@@ -3,8 +3,9 @@ import { Router } from "@angular/router";
 import { Component, OnInit } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 import {
-  ModalController,
+  AlertController,
   LoadingController,
+  ModalController,
   ToastController,
 } from "@ionic/angular";
 import { UtilService } from "src/app/services/util.service";
@@ -26,6 +27,7 @@ export class InfolaundryPage implements OnInit {
 
   constructor(
     public serviceService: ServiceService,
+    private alertController: AlertController,
     public loadingController: LoadingController,
     public modalController: ModalController,
     public toastController: ToastController,
@@ -65,7 +67,8 @@ export class InfolaundryPage implements OnInit {
       cssClass: "adaptable-modal",
       componentProps: {
         id: data.id,
-        status: data.status,
+        bintang: data.bintang,
+        feedback: data.feedback,
       },
     });
     await modal.present();
@@ -94,5 +97,32 @@ export class InfolaundryPage implements OnInit {
     if (status == "SEARCHING") {
       return "secondary";
     }
+  }
+
+  async openModalConfirm(data) {
+    const alert = await this.alertController.create({
+      cssClass: "my-custom-class",
+      header: "Konfirmasi Penyelesaian Aduan",
+      message:
+        "Pilih tombol 'Ok' untuk menkorfirmasi bahwa aduan telah diselesaikan serta memberi rating." +
+        "<br> Pilih tombol 'Tolak' untuk melakukan pengajuan ulang aduan",
+      buttons: [
+        {
+          text: "Tolak",
+          role: "tolak",
+          cssClass: "secondary",
+          handler: () => {
+            this.openModalRejectAduan(data);
+          },
+        },
+        {
+          text: "Ok",
+          handler: () => {
+            this.openModalRatingAduan(data);
+          },
+        },
+      ],
+    });
+    await alert.present();
   }
 }

@@ -73,16 +73,16 @@
       <div *ngIf="data.status!=='DONE'" style="height: 20px"></div>
 
       <ion-button
-        *ngIf="data.status==='DONE'"
-        (click)="openModalRejectAduan(data)"
+        *ngIf="data.status==='DONE' && data.bintang==null"
+        (click)="openModalConfirm(data)"
         fill="clear"
-        >Komplain Ulang</ion-button
+        >Konfirmasi</ion-button
       >
       <ion-button
-        *ngIf="data.status==='DONE'"
+        *ngIf="data.status==='DONE' && data.bintang!==null"
         (click)="openModalRatingAduan(data)"
         fill="clear"
-        >Beri Rating</ion-button
+        >Lihat Rating</ion-button
       >
     </ion-card>
   </ion-grid>
