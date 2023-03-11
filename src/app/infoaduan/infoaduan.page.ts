@@ -67,7 +67,8 @@ export class InfoaduanPage implements OnInit {
       cssClass: "adaptable-modal",
       componentProps: {
         id: data.id,
-        status: data.status,
+        bintang: data.bintang,
+        feedback: data.feedback,
       },
     });
     await modal.present();
@@ -96,5 +97,32 @@ export class InfoaduanPage implements OnInit {
     if (status == "INVESTIGATION") {
       return "warning";
     }
+  }
+
+  async openModalConfirm(data) {
+    const alert = await this.alertController.create({
+      cssClass: "my-custom-class",
+      header: "Konfirmasi Penyelesaian Aduan",
+      message:
+        "Pilih tombol 'Ok' untuk menkorfirmasi bahwa aduan telah diselesaikan serta memberi rating." +
+        "<br> Pilih tombol 'Tolak' untuk melakukan pengajuan ulang aduan",
+      buttons: [
+        {
+          text: "Tolak",
+          role: "tolak",
+          cssClass: "secondary",
+          handler: () => {
+            this.openModalRejectAduan(data);
+          },
+        },
+        {
+          text: "Ok",
+          handler: () => {
+            this.openModalRatingAduan(data);
+          },
+        },
+      ],
+    });
+    await alert.present();
   }
 }

@@ -24,7 +24,8 @@ import { ServiceService } from "src/app/services/service.service";
 export class RatingAduanComponent implements OnInit {
   FormRatingAccomplishment: FormGroup;
   @Input() id: string;
-  @Input() status: string;
+  @Input() bintang: Number;
+  @Input() feedback: string;
 
   constructor(
     public toastController: ToastController,
@@ -35,8 +36,11 @@ export class RatingAduanComponent implements OnInit {
 
   ngOnInit() {
     this.FormRatingAccomplishment = this.formBuilder.group({
-      bintang: new FormControl("", Validators.compose([Validators.required])),
-      feedback: new FormControl(""),
+      bintang: new FormControl(
+        `${this.bintang}`,
+        Validators.compose([Validators.required])
+      ),
+      feedback: new FormControl(this.feedback),
     });
   }
 

@@ -71,17 +71,18 @@
       ></ion-progress-bar>
       <div *ngIf="data.status!=='CLOSED'" style="height: 20px"></div>
 
+      <!-- Button konfirmasi aduan -->
       <ion-button
-        *ngIf="data.status=='CLOSED'"
-        (click)="openModalRejectAduan(data)"
+        *ngIf="data.status==='CLOSED' && data.bintang==null"
+        (click)="openModalConfirm(data)"
         fill="clear"
-        >Komplain Ulang</ion-button
+        >Konfirmasi</ion-button
       >
       <ion-button
-        *ngIf="data.status=='CLOSED'"
+        *ngIf="data.status==='CLOSED' && data.bintang!==null"
         (click)="openModalRatingAduan(data)"
         fill="clear"
-        >Beri Rating</ion-button
+        >Lihat Rating</ion-button
       >
     </ion-card>
   </ion-grid>
