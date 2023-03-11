@@ -39,7 +39,10 @@ export class RatingAduanComponent implements OnInit {
     this.FormRatingAccomplishment = this.formBuilder.group({
       bintang: new FormControl(
         `${this.bintang}`,
-        Validators.compose([Validators.required])
+        Validators.compose([
+          Validators.required,
+          Validators.pattern("^[1-5]*$"),
+        ])
       ),
       feedback: new FormControl(this.feedback),
     });
