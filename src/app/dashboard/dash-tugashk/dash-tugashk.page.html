@@ -5,29 +5,30 @@
         <ion-icon name="chevron-back-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-label color="light">
-      Dashboard Tugas Housekeeping
-    </ion-label>
+    <ion-label color="light"> Dashboard Tugas Housekeeping </ion-label>
   </ion-item>
 </ion-header>
 
-<ion-item lines="none">
+<ion-item lines="none" style="display: block; padding: 10px 0 10px 0">
   <ion-thumbnail>
     <img src="assets/images/cus.png" />
   </ion-thumbnail>
   <div class="name">
     <ion-label class="center">
       <div>
-        <div>
-          Selamat Datang {{Username}}
-        </div>
+        <div>Selamat Datang {{Username}}</div>
       </div>
     </ion-label>
   </div>
 </ion-item>
 
 <ion-content [fullscreen]="true">
-  <div *ngIf="this.serviceService.isHasAccess('HOUSEKEEPING', 'TASK', 'VIEW'); else noAccess">
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div
+    *ngIf="this.serviceService.isHasAccess('HOUSEKEEPING', 'TASK', 'VIEW'); else noAccess"
+  >
     <div class="segments">
       <ion-segment mode="md" [(ngModel)]="current">
         <ion-segment-button [value]="1">
@@ -39,20 +40,29 @@
       </ion-segment>
     </div>
   </div>
-  <div *ngIf="this.serviceService.isHasAccess('HOUSEKEEPING', 'TASK', 'VIEW'); else noAccess">
+  <div
+    *ngIf="this.serviceService.isHasAccess('HOUSEKEEPING', 'TASK', 'VIEW'); else noAccess"
+  >
     <div *ngIf="current == 1 || current == null">
       <div class="account">
         <ion-content>
           <ion-list class="data-record">
-            <ion-item button *ngFor="let data of DataRecordRoom; let i = index" (click)="openModalRoom(data)">
-              <ion-label style="margin: 10 0 0 0 ;">
+            <ion-item
+              button
+              *ngFor="let data of DataRecordRoom; let i = index"
+              (click)="openModalRoom(data)"
+            >
+              <ion-label style="margin: 10 0 0 0">
                 <h2>{{data.user.name}}</h2>
                 <p>{{data.mess}} No. {{data.no_kamar}}</p>
-                <p>Poin: {{ (data.verified) ? countPoinRoom(data) : 'Belum diverifikasi'}}</p>
+                <p>
+                  Poin: {{ (data.verified) ? countPoinRoom(data) : 'Belum
+                  diverifikasi'}}
+                </p>
               </ion-label>
             </ion-item>
           </ion-list>
-          <div style="height: 20px;"></div>
+          <div style="height: 20px"></div>
         </ion-content>
       </div>
     </div>
@@ -61,15 +71,22 @@
       <div class="account">
         <ion-content>
           <ion-list class="data-record">
-            <ion-item button *ngFor="let data of DataRecordNonRoom; let i = index" (click)="openModalNonRoom(data)">
-              <ion-label style="margin: 10 0 0 0 ;">
+            <ion-item
+              button
+              *ngFor="let data of DataRecordNonRoom; let i = index"
+              (click)="openModalNonRoom(data)"
+            >
+              <ion-label style="margin: 10 0 0 0">
                 <h2>{{data.user.name}}</h2>
                 <p>{{data.mess}}</p>
-                <p>Poin: {{ (data.verified) ? countPoinNonRoom(data) : 'Belum diverifikasi'}}</p>
+                <p>
+                  Poin: {{ (data.verified) ? countPoinNonRoom(data) : 'Belum
+                  diverifikasi'}}
+                </p>
               </ion-label>
             </ion-item>
           </ion-list>
-          <div style="height: 20px;"></div>
+          <div style="height: 20px"></div>
         </ion-content>
       </div>
     </div>

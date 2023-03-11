@@ -1,18 +1,21 @@
-import { ServiceService } from 'src/app/services/service.service';
-import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
-import { ModalController, LoadingController, ToastController } from '@ionic/angular';
+import { ServiceService } from "src/app/services/service.service";
+import { Router } from "@angular/router";
+import { Component, OnInit } from "@angular/core";
+import {
+  ModalController,
+  LoadingController,
+  ToastController,
+} from "@ionic/angular";
 import { ReplaySubject } from "rxjs";
-import { UtilService } from 'src/app/services/util.service';
-import { UpdateDetailRoomComponent } from './update-detail-room/update-detail-room.component';
-import { UpdateDetailNonroomComponent } from './update-detail-nonroom/update-detail-nonroom.component';
+import { UtilService } from "src/app/services/util.service";
+import { UpdateDetailRoomComponent } from "./update-detail-room/update-detail-room.component";
+import { UpdateDetailNonroomComponent } from "./update-detail-nonroom/update-detail-nonroom.component";
 
 @Component({
-  selector: 'app-dash-tugashk',
-  templateUrl: './dash-tugashk.page.html',
-  styleUrls: ['./dash-tugashk.page.scss'],
+  selector: "app-dash-tugashk",
+  templateUrl: "./dash-tugashk.page.html",
+  styleUrls: ["./dash-tugashk.page.scss"],
 })
-
 export class DashTugashkPage implements OnInit {
   [x: string]: any;
   current: any = 1;
@@ -29,8 +32,8 @@ export class DashTugashkPage implements OnInit {
     public modalController: ModalController,
     public toastController: ToastController,
     private router: Router,
-    public util: UtilService,
-  ) { }
+    public util: UtilService
+  ) {}
 
   ngOnInit() {
     this.getUser();
@@ -43,22 +46,22 @@ export class DashTugashkPage implements OnInit {
   }
 
   getRecordMess() {
-    this.serviceService.getRecord2('task/mess').subscribe(
-      data => {
+    this.serviceService.getRecord2("task/mess").subscribe(
+      (data) => {
         this.DataRecordNonRoom = data.body;
       },
-      error => {
+      (error) => {
         console.log("err", error);
       }
     );
   }
 
   getRecordRoom() {
-    this.serviceService.getRecord('task/room').subscribe(
-      data => {
+    this.serviceService.getRecord("task/room").subscribe(
+      (data) => {
         this.DataRecordRoom = data.body;
       },
-      error => {
+      (error) => {
         console.log("err", error);
       }
     );
@@ -68,7 +71,7 @@ export class DashTugashkPage implements OnInit {
     const toast = await this.toastController.create({
       message: Message,
       duration: 2500,
-      position: "top"
+      position: "top",
     });
     toast.present();
   }
@@ -78,35 +81,80 @@ export class DashTugashkPage implements OnInit {
   }
 
   onBack() {
-    this.router.navigate(['dashboard']);
+    this.router.navigate(["dashboard"]);
   }
 
   ngOnDestroy() {
-    if (typeof this.routerEvents !== 'undefined') this.routerEvents.unsubscribe();
+    if (typeof this.routerEvents !== "undefined")
+      this.routerEvents.unsubscribe();
   }
 
   countPoinRoom(data) {
-    const poin = data.lantai_kamar + data.lantai_toilet + data.lantai_langit_kamar + data.lantai_langit_kamar_mandi + data.wc + data.wastafel + data.tempat_tidur + data.sprei + data.selimut + data.ac + data.meja + data.cermin + data.keran + data.shower + data.tempat_sampah + data.jendela + data.gorden + data.lemari;
+    const poin =
+      data.lantai_kamar +
+      data.lantai_toilet +
+      data.lantai_langit_kamar +
+      data.lantai_langit_kamar_mandi +
+      data.wc +
+      data.wastafel +
+      data.tempat_tidur +
+      data.sprei +
+      data.selimut +
+      data.ac +
+      data.meja +
+      data.cermin +
+      data.keran +
+      data.shower +
+      data.tempat_sampah +
+      data.jendela +
+      data.gorden +
+      data.lemari;
     return poin;
   }
 
   countPoinNonRoom(data) {
-    const poin = data.ruang_tv_kaca_jendela_kusen + data.ruang_tv_cermin + data.ruang_tv_dispenser + data.ruang_tv_ac + data.ruang_tv_furniture + data.ruang_tv_rak_tv + data.ruang_tv_tirai_karpet + data.ruang_tv_dinding + data.ruang_tv_lantai + data.koridor_tempat_sampah + data.koridor_pintu + data.koridor_lantai_sudut_lantai + data.koridor_keset + data.koridor_pantry + data.koridor_wastafel_chrome_fixture + data.koridor_peralatan_makan_rak_piring + data.koridor_pintu_dinding + data.koridor_kanca_jendela_kusen + data.toilet_pintu_dinding + data.toilet_tempat_sampah + data.toilet_wastafel_chrome_fixture + data.toilet_urinoir_selang_toilet_bowl + data.toilet_shower_area_curtain + data.toilet_lantai_sudut_lantai + data.toilet_teras;
+    const poin =
+      data.ruang_tv_kaca_jendela_kusen +
+      data.ruang_tv_cermin +
+      data.ruang_tv_dispenser +
+      data.ruang_tv_ac +
+      data.ruang_tv_furniture +
+      data.ruang_tv_rak_tv +
+      data.ruang_tv_tirai_karpet +
+      data.ruang_tv_dinding +
+      data.ruang_tv_lantai +
+      data.koridor_tempat_sampah +
+      data.koridor_pintu +
+      data.koridor_lantai_sudut_lantai +
+      data.koridor_keset +
+      data.koridor_pantry +
+      data.koridor_wastafel_chrome_fixture +
+      data.koridor_peralatan_makan_rak_piring +
+      data.koridor_pintu_dinding +
+      data.koridor_kanca_jendela_kusen +
+      data.toilet_pintu_dinding +
+      data.toilet_tempat_sampah +
+      data.toilet_wastafel_chrome_fixture +
+      data.toilet_urinoir_selang_toilet_bowl +
+      data.toilet_shower_area_curtain +
+      data.toilet_lantai_sudut_lantai +
+      data.toilet_teras;
     return poin;
   }
 
   async openModalRoom(data) {
-    if (data.verified && this.serviceService.getUserRole() == 'ROLE_SPV') return;
-    if (this.serviceService.isHasAccess('HOUSEKEEPING', 'TASK', 'EDIT')) {
+    if (data.verified && this.serviceService.getUserRole() == "ROLE_SPV")
+      return;
+    if (this.serviceService.isHasAccess("HOUSEKEEPING", "TASK", "EDIT")) {
       const modal = await this.modalController.create({
         component: UpdateDetailRoomComponent,
         componentProps: {
-          data: data
-        }
+          data: data,
+        },
       });
       await modal.present();
       const message = await modal.onWillDismiss();
-      if (message.data === 'success') {
+      if (message.data === "success") {
         this.ngOnInit();
       }
       if (message.data) {
@@ -116,22 +164,30 @@ export class DashTugashkPage implements OnInit {
   }
 
   async openModalNonRoom(data) {
-    if (data.verified && this.serviceService.getUserRole() == 'ROLE_SPV') return;
-    if (this.serviceService.isHasAccess('HOUSEKEEPING', 'TASK', 'EDIT')) {
+    if (data.verified && this.serviceService.getUserRole() == "ROLE_SPV")
+      return;
+    if (this.serviceService.isHasAccess("HOUSEKEEPING", "TASK", "EDIT")) {
       const modal = await this.modalController.create({
         component: UpdateDetailNonroomComponent,
         componentProps: {
-          data: data
-        }
+          data: data,
+        },
       });
       await modal.present();
       const message = await modal.onWillDismiss();
-      if (message.data === 'success') {
+      if (message.data === "success") {
         this.ngOnInit();
       }
       if (message.data) {
         this.presentToast(message.data);
       }
     }
+  }
+
+  handleRefresh(event) {
+    setTimeout(() => {
+      this.ngOnInit();
+      event.target.complete();
+    }, 2000);
   }
 }
