@@ -5,39 +5,44 @@
         <ion-icon name="chevron-back-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-label color="light">
-     Dashboard Aduan Laundry
-    </ion-label>
+    <ion-label color="light"> Dashboard Aduan Laundry </ion-label>
   </ion-item>
 </ion-header>
 
-<ion-item lines="none">
+<ion-item lines="none" style="display: block; padding: 10px 0 10px 0">
   <ion-thumbnail>
     <img src="assets/images/cus.png" />
-    </ion-thumbnail>
-    <div class="name">
-      <ion-label class="center">
-        <div>
-          <div>
-            Selamat Datang {{Username}}
-          </div>
-        </div>
-      </ion-label>
-    </div>
-  </ion-item>
-  <ion-content [fullscreen]="true">
-  <div *ngIf="this.serviceService.isHasAccess('LAUNDRY', 'COMPLAINT', 'VIEW'); else noAccess">
+  </ion-thumbnail>
+  <div class="name">
+    <ion-label class="center">
+      <div>
+        <div>Selamat Datang {{Username}}</div>
+      </div>
+    </ion-label>
+  </div>
+</ion-item>
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div
+    *ngIf="this.serviceService.isHasAccess('LAUNDRY', 'COMPLAINT', 'VIEW'); else noAccess"
+  >
     <ion-content class="data-record">
       <ion-list>
-        <ion-item button *ngFor="let data of DataRecord; let i = index" (click)="openModal(data)">
-          <ion-label style="margin: 10 0 0 0 ;">
+        <ion-item
+          button
+          *ngFor="let data of DataRecord; let i = index"
+          (click)="openModal(data)"
+        >
+          <ion-label style="margin: 10 0 0 0">
             <h2>{{data.user_name}}</h2>
             <p>Deskripsi: {{data.jenis_deviasi}}</p>
             <p>Status: {{data.status}}</p>
           </ion-label>
         </ion-item>
       </ion-list>
-      <div style="height: 20px;"></div>
+      <div style="height: 20px"></div>
     </ion-content>
   </div>
 
@@ -52,5 +57,4 @@
       </ion-label>
     </ion-content>
   </ng-template>
-
 </ion-content>
