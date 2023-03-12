@@ -6,34 +6,40 @@
           <ion-icon name="apps-outline"></ion-icon>
         </ion-button>
       </ion-buttons>
-      <ion-label color="primary">
-        Form Rating Catering
-      </ion-label>
-      <ion-buttons slot="end">
-        <ion-icon (click)="onBack()" name="chevron-back-outline" color="primary"></ion-icon>
-      </ion-buttons>
+      <ion-label color="primary"> Form Rating Catering </ion-label>
     </ion-item>
   </ion-header>
 
   <div class="main_content ion-padding">
-
     <ion-label class="sub_heading">Deskripsi</ion-label>
-    <ion-label class="sub_heading">Silahkan mengisi rating nilai sesuai dengan pilihan</ion-label>
+    <ion-label class="sub_heading"
+      >Silahkan mengisi rating nilai sesuai dengan pilihan</ion-label
+    >
 
     <div>
-      <form class="container" [formGroup]="FormRatingCatering" (ngSubmit)="submitRatingcatering()">
+      <form
+        class="container"
+        [formGroup]="FormRatingCatering"
+        (ngSubmit)="submitRatingcatering()"
+      >
         <ion-item>
-          <ion-label>1. Bagaimana kebersihan kantin kami saat anda makan?</ion-label>
+          <ion-label
+            >1. Bagaimana kebersihan kantin kami saat anda makan?</ion-label
+          >
           <ion-select formControlName="nilai1">
             <ion-select-option value="-3">Tidak Bersih</ion-select-option>
             <ion-select-option value="-1">Kurang Bersih</ion-select-option>
             <ion-select-option value="1">Bersih</ion-select-option>
             <ion-select-option value="2">Cukup Bersih</ion-select-option>
-            <ion-select-option value="3">Sangat Bersih Sekali</ion-select-option>
+            <ion-select-option value="3"
+              >Sangat Bersih Sekali</ion-select-option
+            >
           </ion-select>
         </ion-item>
         <ion-item>
-          <ion-label>2. Apakah anda menyukai cara kami menyajikan makan?</ion-label>
+          <ion-label
+            >2. Apakah anda menyukai cara kami menyajikan makan?</ion-label
+          >
           <ion-select formControlName="nilai2">
             <ion-select-option value="-3">Tidak Sama Sekali</ion-select-option>
             <ion-select-option value="0">Biasa Saja</ion-select-option>
@@ -43,7 +49,10 @@
           </ion-select>
         </ion-item>
         <ion-item>
-          <ion-label>3. Bagaimana cara Waiters kami memberi salam/menyapa anda?</ion-label>
+          <ion-label
+            >3. Bagaimana cara Waiters kami memberi salam/menyapa
+            anda?</ion-label
+          >
           <ion-select formControlName="nilai3">
             <ion-select-option value="-3">Tidak Ramah</ion-select-option>
             <ion-select-option value="-2">Tidak Ada</ion-select-option>
@@ -105,7 +114,9 @@
           </ion-select>
         </ion-item>
         <ion-item>
-          <ion-label>9. Sedang berada pada menu apakah Anda saat ini?</ion-label>
+          <ion-label
+            >9. Sedang berada pada menu apakah Anda saat ini?</ion-label
+          >
           <ion-select formControlName="waktu">
             <ion-select-option value="Breakfast">Breakfast</ion-select-option>
             <ion-select-option value="Lunch">Lunch</ion-select-option>
@@ -114,11 +125,23 @@
           </ion-select>
         </ion-item>
         <ion-item>
-          <ion-input type="text" name="kritik_saran" placeholder="Kritik dan saran" formControlName="saran"></ion-input>
+          <ion-input
+            type="text"
+            name="kritik_saran"
+            placeholder="Kritik dan saran"
+            formControlName="saran"
+          ></ion-input>
         </ion-item>
 
-        <ion-button type="submit" expand="block" color="primary">Submit</ion-button>
+        <ion-button type="submit" expand="block" color="primary"
+          >Submit</ion-button
+        >
       </form>
     </div>
   </div>
+  <ion-fab (click)="onBack()" horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button color="dark">
+      <ion-icon md="caret-back" ios="chevron-back-circle-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

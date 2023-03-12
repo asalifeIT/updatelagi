@@ -1,41 +1,46 @@
 <ion-content [fullscreen]="true" scrollY="false">
-<ion-header class="ion-no-border">
-  <ion-item lines="none">
-    <ion-buttons slot="start">
-      <ion-button (click)="util.openSideMenu()" color="light">
-        <ion-icon name="apps-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-label color="light">
-      Catering 
-    </ion-label>
-    <ion-buttons slot="end">
-      <ion-icon (click)="onBack()" name="chevron-back-outline" color="light"></ion-icon>
-    </ion-buttons>
-  </ion-item>
-</ion-header>
-
+  <ion-header class="ion-no-border">
+    <ion-item lines="none">
+      <ion-buttons slot="start">
+        <ion-button (click)="util.openSideMenu()" color="light">
+          <ion-icon name="apps-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-label color="light"> Catering </ion-label>
+    </ion-item>
+  </ion-header>
 
   <div class="main-header"></div>
   <ion-grid>
     <ion-note color="light" class="ion-margin-start">
       <b></b>
     </ion-note>
-    <br>
-    <br>
-    <br>
-    
+    <br />
+    <br />
+    <br />
 
-    <div *ngIf="this.serviceService.isHasAccess('CATERING', 'COMPLAINT', 'ADD')">
-      <div class="main_content" *ngFor="let item of aduan" (click)="openInfoaduan()">
+    <div
+      *ngIf="this.serviceService.isHasAccess('CATERING', 'COMPLAINT', 'ADD')"
+    >
+      <div
+        class="main_content"
+        *ngFor="let item of aduan"
+        (click)="openInfoaduan()"
+      >
         <ion-row>
-          <ion-col size="5"><br>
-            <div class="img" [style.backgroundImage]="'url(assets/svg/positive-feedback.svg)'"></div>
+          <ion-col size="5"
+            ><br />
+            <div
+              class="img"
+              [style.backgroundImage]="'url(assets/svg/positive-feedback.svg)'"
+            ></div>
           </ion-col>
           <ion-col size="7">
             <div class="title">
               <ion-label color="dark" class="ttl">Aduan Catering</ion-label>
-              <ion-label class="sub_ttl1">Form Isian Aduan Pelayanan Catering</ion-label>
+              <ion-label class="sub_ttl1"
+                >Form Isian Aduan Pelayanan Catering</ion-label
+              >
               <div class="icon_title">
                 <ion-icon slot="start" name="star"></ion-icon>
                 <ion-label color="dark">Isikan Aduan Anda</ion-label>
@@ -52,10 +57,18 @@
     </div>
 
     <div *ngIf="this.serviceService.isHasAccess('CATERING', 'RATING', 'ADD')">
-      <div class="main_content" *ngFor="let item of rating" (click)="openRatingcat()">
+      <div
+        class="main_content"
+        *ngFor="let item of rating"
+        (click)="openRatingcat()"
+      >
         <ion-row>
-          <ion-col size="5"><br>
-            <div class="img" [style.backgroundImage]="'url(assets/svg/feedback-testimonial.svg)'"></div>
+          <ion-col size="5"
+            ><br />
+            <div
+              class="img"
+              [style.backgroundImage]="'url(assets/svg/feedback-testimonial.svg)'"
+            ></div>
           </ion-col>
           <ion-col size="7">
             <div class="title">
@@ -72,7 +85,9 @@
               </div>
               <div class="icon_title">
                 <ion-icon slot="start" name="location-sharp"></ion-icon>
-                <ion-label color="dark">Terdiri dari 5 (lima) pilihan</ion-label>
+                <ion-label color="dark"
+                  >Terdiri dari 5 (lima) pilihan</ion-label
+                >
               </div>
             </div>
           </ion-col>
@@ -81,4 +96,9 @@
       </div>
     </div>
   </ion-grid>
+  <ion-fab (click)="onBack()" horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button color="dark">
+      <ion-icon md="caret-back" ios="chevron-back-circle-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

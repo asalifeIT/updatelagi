@@ -6,13 +6,6 @@
       </ion-button>
     </ion-buttons>
     <ion-label color="light"> Info Aduan Catering </ion-label>
-    <ion-buttons slot="end">
-      <ion-icon
-        (click)="onBack()"
-        name="chevron-back-outline"
-        color="light"
-      ></ion-icon>
-    </ion-buttons>
   </ion-item>
 
   <div class="main-header"></div>
@@ -43,7 +36,7 @@
   </ion-grid>
 </ion-header>
 
-<ion-content [fullscreen]="true" scrollY="true">
+<ion-content>
   <ion-grid>
     <ion-note color="light" class="ion-margin-start">
       <b></b>
@@ -93,14 +86,18 @@
       >
     </ion-card>
   </ion-grid>
+  <ion-fab (click)="onBack()" horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button color="dark">
+      <ion-icon md="caret-back" ios="chevron-back-circle-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <style>
+    ion-card-content::first-letter {
+      text-transform: capitalize;
+    }
+
+    ion-card-content ::first-letter {
+      text-transform: capitalize;
+    }
+  </style>
 </ion-content>
-
-<style>
-  ion-card-content::first-letter {
-    text-transform: capitalize;
-  }
-
-  ion-card-content ::first-letter {
-    text-transform: capitalize;
-  }
-</style>
