@@ -6,13 +6,6 @@
       </ion-button>
     </ion-buttons>
     <ion-label color="light"> Info House Keeping </ion-label>
-    <ion-buttons slot="end">
-      <ion-icon
-        (click)="onBack()"
-        name="chevron-back-outline"
-        color="light"
-      ></ion-icon>
-    </ion-buttons>
   </ion-item>
 
   <div class="main-header"></div>
@@ -93,4 +86,9 @@
       >
     </ion-card>
   </ion-grid>
+  <ion-fab (click)="onBack()" horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button color="dark">
+      <ion-icon md="caret-back" ios="chevron-back-circle-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

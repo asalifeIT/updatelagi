@@ -6,30 +6,49 @@
           <ion-icon name="apps-outline"></ion-icon>
         </ion-button>
       </ion-buttons>
-      <ion-label color="primary">
-      Form Aduan House Keeping
-    </ion-label>
-    <ion-buttons slot="end">
-      <ion-icon (click)="onBack()" name="chevron-back-outline" color="primary"></ion-icon>
-    </ion-buttons>
+      <ion-label color="primary"> Form Aduan House Keeping </ion-label>
     </ion-item>
   </ion-header>
 
   <div class="main_content ion-padding">
     <ion-label class="sub_heading">Deskripsi</ion-label>
-    <ion-label class="sub_heading">Silahkan mengisi aduan apabila ditemukan hal-hal yang tidak berkenan</ion-label>
+    <ion-label class="sub_heading"
+      >Silahkan mengisi aduan apabila ditemukan hal-hal yang tidak
+      berkenan</ion-label
+    >
     <!-- Tambahkan ini pada bagian form -->
     <div>
-      <form class="container" [formGroup]="FormAduanHk" (ngSubmit)="submitAduanHk()">
+      <form
+        class="container"
+        [formGroup]="FormAduanHk"
+        (ngSubmit)="submitAduanHk()"
+      >
         <ion-item>
-          <ion-input type="text" name="lokasi" placeholder="Lokasi" formControlName="lokasi"></ion-input>
+          <ion-input
+            type="text"
+            name="lokasi"
+            placeholder="Lokasi"
+            formControlName="lokasi"
+          ></ion-input>
         </ion-item>
         <ion-item>
-          <ion-input type="text" name="deskripsi_aduan" placeholder="Deskripsi Aduan" formControlName="deskripsi">
+          <ion-input
+            type="text"
+            name="deskripsi_aduan"
+            placeholder="Deskripsi Aduan"
+            formControlName="deskripsi"
+          >
           </ion-input>
         </ion-item>
-        <ion-button type="submit" expand="block" color="primary">Submit</ion-button>
+        <ion-button type="submit" expand="block" color="primary"
+          >Submit</ion-button
+        >
       </form>
     </div>
   </div>
+  <ion-fab (click)="onBack()" horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button color="dark">
+      <ion-icon md="caret-back" ios="chevron-back-circle-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
