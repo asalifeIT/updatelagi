@@ -1,10 +1,5 @@
 <ion-header class="ion-no-border">
   <ion-item lines="none">
-    <ion-buttons slot="end">
-      <ion-button (click)="onBack()" color="light">
-        <ion-icon name="chevron-back-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
     <ion-label color="light"> Dashboard Aduan Catering </ion-label>
   </ion-item>
 </ion-header>
@@ -57,4 +52,9 @@
       </ion-label>
     </ion-content>
   </ng-template>
+  <ion-fab (click)="onBack()" horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button color="dark">
+      <ion-icon md="caret-back" ios="chevron-back-circle-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
