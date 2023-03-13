@@ -21,9 +21,7 @@
   <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <div
-    *ngIf="this.serviceService.isHasAccess('HOUSEKEEPING', 'COMPLAINT', 'VIEW'); else noAccess"
-  >
+  <div>
     <ion-content class="data-record">
       <ion-list>
         <ion-item

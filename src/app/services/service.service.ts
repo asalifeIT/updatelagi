@@ -341,7 +341,6 @@ export class ServiceService {
             {
               action: "VIEW",
               hasAccess: [
-                "ROLE_MT",
                 "ROLE_HK",
                 "ROLE_SPV",
                 "ROLE_GS",
