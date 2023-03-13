@@ -54,8 +54,9 @@
         style="padding-top: 4px; padding-bottom: 0"
         color="dark"
       >
-        Durasi: {{(data.duration) ? data.duration : ''}}
-        <ion-badge color="warning" *ngIf="data.duration==null">
+        PIC: {{(data.pic_nrp) ? data.pic_nrp : ''}} {{(data.pic_name) ?
+        data.pic_name : ''}}
+        <ion-badge color="warning" *ngIf="data.pic_nrp==null">
           waiting
         </ion-badge>
       </ion-card-content>
