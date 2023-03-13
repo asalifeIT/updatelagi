@@ -21,7 +21,8 @@
   <div class="account">
     <ion-label class="head_lbl">Informasi Aduan</ion-label>
     <div class="info">
-      <ion-item lines="none">
+      <ion-item lines="none"
+      *ngIf="this.serviceService.isHasAccess('CATERING', 'COMPLAINT', 'VIEW');>
         <ion-icon
           name="restaurant-outline"
           color="primary"
