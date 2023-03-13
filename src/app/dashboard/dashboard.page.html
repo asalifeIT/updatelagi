@@ -105,7 +105,10 @@
         (click)="dashTgsHk()"
       ></ion-icon>
     </ion-item>
-    <ion-item lines="none">
+    <ion-item
+      lines="none"
+      *ngIf="this.serviceService.isHasAccess('MAINTENANCE', 'TASK', 'VIEW');"
+    >
       <ion-icon
         name="construct-outline"
         color="primary"
