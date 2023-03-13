@@ -32,7 +32,9 @@
             <h2>{{data.user_name}}</h2>
             <p>Deskripsi: {{data.jenis_aduan}} ( {{data.lokasi}} )</p>
             <p>Status: {{data.status}}</p>
-            <p *ngIf=" data.pic_nrp !== null">PIC: {{data.pic_nrp}}</p>
+            <p *ngIf=" data.pic_nrp !== null">
+              PIC: {{data.pic_nrp}} {{data.pic_name}}
+            </p>
             <p *ngIf=" data.priority !== null">Priority: {{data.priority}}</p>
             <p *ngIf=" data.duration !== null">
               durasi: {{data.duration.substring(0, 10)}}
