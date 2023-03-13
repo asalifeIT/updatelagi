@@ -95,6 +95,7 @@ export class DashAduanmtPage implements OnInit {
     if (this.serviceService.isHasAccess("MAINTENANCE", "COMPLAINT", "EDIT")) {
       const modal = await this.modalController.create({
         component: UpdateStatusAndDetailComponent,
+        cssClass: "adaptable-modal",
         componentProps: {
           id: data.id,
           status: data.status,
