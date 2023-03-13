@@ -88,7 +88,10 @@
 
   <div class="other">
     <ion-label class="head_lbl">Informasi Tugas</ion-label>
-    <ion-item lines="none">
+    <ion-item
+      lines="none"
+      *ngIf="this.serviceService.isHasAccess('HOUSEKEEPING', 'TASK', 'VIEW');"
+    >
       <ion-icon
         name="bed-outline"
         color="primary"

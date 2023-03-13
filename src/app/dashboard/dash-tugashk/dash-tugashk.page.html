@@ -21,9 +21,7 @@
   <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <div
-    *ngIf="this.serviceService.isHasAccess('HOUSEKEEPING', 'TASK', 'VIEW'); else noAccess"
-  >
+  <div>
     <div class="segments">
       <ion-segment mode="md" [(ngModel)]="current">
         <ion-segment-button [value]="1">
@@ -35,9 +33,7 @@
       </ion-segment>
     </div>
   </div>
-  <div
-    *ngIf="this.serviceService.isHasAccess('HOUSEKEEPING', 'TASK', 'VIEW'); else noAccess"
-  >
+  <div>
     <div *ngIf="current == 1 || current == null">
       <div class="account">
         <ion-content>
