@@ -24,6 +24,7 @@ export class DashAduanmtPage implements OnInit {
   DataLogin: any;
   DataRecord: any;
   DataUsersMt: any;
+  nrpUser: string;
 
   constructor(
     private serviceService: ServiceService,
@@ -39,6 +40,7 @@ export class DashAduanmtPage implements OnInit {
     this.getUser();
     this.getRecordMaintenance();
     this.getUsersMt();
+    this.getUserNrp();
   }
 
   getUsersMt() {
@@ -54,6 +56,10 @@ export class DashAduanmtPage implements OnInit {
 
   getUser() {
     this.Username = this.serviceService.getUserName();
+  }
+
+  getUserNrp() {
+    this.nrpUser = this.serviceService.getNrpUser();
   }
 
   getRecordMaintenance() {

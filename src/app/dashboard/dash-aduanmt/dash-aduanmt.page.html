@@ -42,7 +42,7 @@
       </ion-list>
       <ion-list *ngIf="!isNotMtUser()">
         <div *ngFor="let data of DataRecord; let i = index">
-          <ion-item *ngIf="data.pic_nrp !== null">
+          <ion-item *ngIf="data.pic_nrp === nrpUser ">
             <ion-label
               style="margin: 10 0 0 0"
               button
