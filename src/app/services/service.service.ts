@@ -292,14 +292,7 @@ export class ServiceService {
           actions: [
             {
               action: "VIEW",
-              hasAccess: [
-                "ROLE_MT",
-                "ROLE_HK",
-                "ROLE_SPV",
-                "ROLE_GS",
-                "ROLE_PROG",
-                "ROLE_HCGS",
-              ],
+              hasAccess: ["ROLE_SPV", "ROLE_GS", "ROLE_PROG", "ROLE_HCGS"],
             },
             {
               action: "ADD",
