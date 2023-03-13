@@ -11,6 +11,7 @@ import {
 import { ReplaySubject } from "rxjs";
 import { catchError } from "rxjs/operators";
 import { UtilService } from "src/app/services/util.service";
+import { UpdateStatusAndPicComponent } from "./update-status-and-pic/update-status-and-pic.component";
 
 @Component({
   selector: "app-dash-aduanhk",
@@ -25,6 +26,10 @@ export class DashAduanhkPage implements OnInit {
   Data: any;
   DataLogin: any;
   DataRecord: any;
+  DataUsersHk: any;
+
+  Username: String;
+  nrpUser: String;
 
   constructor(
     public serviceService: ServiceService,
@@ -38,11 +43,28 @@ export class DashAduanhkPage implements OnInit {
 
   ngOnInit() {
     this.getUser();
+    this.getUserNrp();
     this.getRecordHousekeeping();
+    this.getUsersHk();
   }
 
   getUser() {
     this.Username = this.serviceService.getUserName();
+  }
+
+  getUserNrp() {
+    this.nrpUser = this.serviceService.getNrpUser();
+  }
+
+  getUsersHk() {
+    this.serviceService.getRecord("users/hk").subscribe(
+      (data) => {
+        this.DataUsersHk = data.body;
+      },
+      (error) => {
+        console.log("err", error);
+      }
+    );
   }
 
   getRecordHousekeeping() {
@@ -102,6 +124,33 @@ export class DashAduanhkPage implements OnInit {
   }
 
   async openModal(data) {
+    if (this.serviceService.isHasAccess("HOUSEKEEPING", "COMPLAINT", "EDIT")) {
+      const modal = await this.modalController.create({
+        component: UpdateStatusAndPicComponent,
+        cssClass: "adaptable-modal",
+        componentProps: {
+          id: data.id,
+          status: data.status,
+          pic_nrp: data.pic_nrp,
+          pic_name: data.pic_name,
+          usersHk: this.DataUsersHk,
+        },
+      });
+      await modal.present();
+      const message = await modal.onWillDismiss();
+
+      if (message.data === "SUCCESS") {
+        setTimeout(() => {
+          this.ngOnInit();
+        }, 1000);
+      }
+      if (message.data) {
+        this.presentToast(message.data);
+      }
+    }
+  }
+
+  async openModalEditStatus(data) {
     let status: string = data.status;
     if (this.serviceService.isHasAccess("HOUSEKEEPING", "COMPLAINT", "EDIT")) {
       const alert = await this.alertController.create({
@@ -147,6 +196,12 @@ export class DashAduanhkPage implements OnInit {
       });
       await alert.present();
     }
+  }
+
+  isNotHkUser() {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const roleUser = user.roles[2];
+    return roleUser != "ROLE_HK";
   }
 
   handleRefresh(event) {

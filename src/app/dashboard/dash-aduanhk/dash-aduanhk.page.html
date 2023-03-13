@@ -23,7 +23,7 @@
   </ion-refresher>
   <div>
     <ion-content class="data-record">
-      <ion-list>
+      <ion-list *ngIf="isNotHkUser()">
         <ion-item
           button
           *ngFor="let data of DataRecord; let i = index"
@@ -31,10 +31,26 @@
         >
           <ion-label style="margin: 10 0 0 0">
             <h2>{{data.user_name}}</h2>
-            <p>Deskripsi: {{data.deskripsi}}</p>
+            <p>Deskripsi: {{data.deskripsi}} )</p>
             <p>Status: {{data.status.slice(0, 8)}}</p>
+            <p *ngIf=" data.pic_nrp !== null">PIC: {{data.pic_nrp}}</p>
           </ion-label>
         </ion-item>
+      </ion-list>
+      <ion-list *ngIf="!isNotHkUser()">
+        <div *ngFor="let data of DataRecord; let i = index">
+          <ion-item *ngIf="data.pic_nrp === nrpUser">
+            <ion-label
+              style="margin: 10 0 0 0"
+              button
+              (click)="openModalEditStatus(data)"
+            >
+              <h2>{{data.user_name}}</h2>
+              <p>Deskripsi: {{data.deskripsi}} )</p>
+              <p>Status: {{data.status.slice(0, 8)}}</p>
+            </ion-label>
+          </ion-item>
+        </div>
       </ion-list>
       <div style="height: 20px"></div>
     </ion-content>

@@ -254,6 +254,13 @@ export class ServiceService {
     } else return "User";
   }
 
+  getNrpUser() {
+    if (localStorage.getItem("user") !== null) {
+      const user = JSON.parse(localStorage.getItem("user"));
+      return user.user.nrp;
+    } else return null;
+  }
+
   getUserRole() {
     const user = JSON.parse(localStorage.getItem("user"));
     return user.roles[2];
@@ -353,7 +360,13 @@ export class ServiceService {
             },
             {
               action: "EDIT",
-              hasAccess: ["ROLE_SPV", "ROLE_GS", "ROLE_PROG", "ROLE_HCGS"],
+              hasAccess: [
+                "ROLE_HK",
+                "ROLE_SPV",
+                "ROLE_GS",
+                "ROLE_PROG",
+                "ROLE_HCGS",
+              ],
             },
           ],
         },
