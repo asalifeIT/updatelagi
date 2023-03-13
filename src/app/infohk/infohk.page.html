@@ -54,6 +54,16 @@
         style="padding-top: 4px; padding-bottom: 0"
         color="dark"
       >
+        PIC: {{(data.pic_nrp) ? data.pic_nrp : ''}} {{(data.pic_name) ?
+        data.pic_name : ''}}
+        <ion-badge color="warning" *ngIf="data.pic_nrp==null">
+          waiting
+        </ion-badge>
+      </ion-card-content>
+      <ion-card-content
+        style="padding-top: 4px; padding-bottom: 0"
+        color="dark"
+      >
         <ion-badge color="{{statusBagde(data.status)}}">
           {{ (data.status == 'CLEANING_PROGRESS') ? 'CLEANING' : data.status}}
         </ion-badge>
