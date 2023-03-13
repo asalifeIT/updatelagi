@@ -20,9 +20,7 @@
   <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <div
-    *ngIf="this.serviceService.isHasAccess('CATERING', 'RATING', 'VIEW'); else noAccess"
-  >
+  <div>
     <ion-content class="data-record">
       <ion-list>
         <ion-item
@@ -43,18 +41,6 @@
       <div style="height: 20px"></div>
     </ion-content>
   </div>
-
-  <ng-template #noAccess>
-    <ion-content>
-      <ion-label class="center">
-        <div class="no-access">
-          <img src="assets/images/no-access.png" />
-          <div>Maaf,</div>
-          <div>Anda tidak punya akses !</div>
-        </div>
-      </ion-label>
-    </ion-content>
-  </ng-template>
   <ion-fab (click)="onBack()" horizontal="end" vertical="bottom" slot="fixed">
     <ion-fab-button color="dark">
       <ion-icon md="caret-back" ios="chevron-back-circle-outline"></ion-icon>

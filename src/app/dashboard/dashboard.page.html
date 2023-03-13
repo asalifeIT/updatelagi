@@ -112,7 +112,10 @@
     </ion-item>
   </div>
 
-  <div class="other">
+  <div
+    class="other"
+    *ngIf="this.serviceService.isHasAccess('CATERING', 'RATING', 'VIEW');"
+  >
     <ion-label class="head_lbl">Informasi Rating</ion-label>
     <ion-item lines="none">
       <ion-icon
