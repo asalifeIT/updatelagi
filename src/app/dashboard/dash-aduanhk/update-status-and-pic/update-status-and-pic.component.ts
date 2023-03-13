@@ -59,7 +59,7 @@ export class UpdateStatusAndPicComponent implements OnInit {
       .updateStatus(payload, "housekeeping/set-pic/", this.id)
       .subscribe(
         (data) => {
-          this.resultMessage = "success";
+          this.resultMessage = "SUCCESS";
 
           this.modalController.dismiss(this.resultMessage, "resultMessage");
           loading.dismiss();
@@ -73,6 +73,9 @@ export class UpdateStatusAndPicComponent implements OnInit {
 
   async openModalEditStatus(id, data) {
     let status: string = data;
+    if (this.pic_nrp === null) {
+      return;
+    }
     if (this.serviceService.isHasAccess("HOUSEKEEPING", "COMPLAINT", "EDIT")) {
       const alert = await this.alertController.create({
         cssClass: "my-custom-class",
